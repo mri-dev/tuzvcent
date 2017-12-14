@@ -30,7 +30,26 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 <header>
-
+  <div class="top">
+    <div class="pw">
+      ---
+    </div>
+  </div>
+  <div class="main">
+    <div class="pw">
+      ---
+    </div>
+  </div>
+  <div class="bottom">
+    <div class="pw">
+      ---
+    </div>
+  </div>
+  <div class="sec-bottom">
+    <div class="pw">
+      ---
+    </div>
+  </div>
 </header>
 <?php if ( !$this->homepage ): ?>
 <!-- Content View -->

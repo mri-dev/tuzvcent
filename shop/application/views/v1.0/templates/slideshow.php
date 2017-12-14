@@ -1,5 +1,5 @@
 <div class="slideShow">
-	<? if( count($this->slideshow ) > 0 && false):  foreach($this->slideshow as $ss): ?>
+	<? if( count($this->slideshow ) > 0):  foreach($this->slideshow as $ss): ?>
 		<div>
 			<? if($ss['url'] != ''): ?><a href="<?=$ss['url']?>"><? endif; ?>
 	    	<img src="<?=$ss['kep']?>">
@@ -12,7 +12,6 @@
 	    			<h3><?=$ss['alcim']?></h3>
 	    			<? endif; ?>
 	    		</div>
-
 	    	</div>
 	    	<? endif; ?>
 	    	<? if($ss['focim_link']): ?>
