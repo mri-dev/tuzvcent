@@ -4,12 +4,345 @@ header {
 
 	.top {
 		background-color: $color-grey;
-		padding: 5px 0;
+		padding: 8px 0;
+
+		.flex {
+			align-items: center;
+		}
+
+		.contact {
+			font-size: 0.75em;
+			border-right: 1px solid #aaaaaa;
+			flex: 1;
+			.flex {
+				align-items: center;
+				& > div {
+					line-height: 1;
+					flex: 1;
+
+					.wrapper{
+						padding: 0 10px;
+						color: white;
+
+						a {
+							color: white;
+							text-decoration: none;
+						}
+
+						i {
+							color: lighten($color-orange, 10%);
+							float: left;
+					    font-size: 24px;
+					    margin: -2px 5px 0 0;
+						}
+					}
+					.val {
+						margin-top: 5px;
+						font-size: 0.95em;
+					}
+				}
+			}
+		}
+		.social {
+			.flex {
+				align-items: center;
+				justify-content: flex-start;
+
+				& > div {
+					padding: 0 2px;
+				}
+
+				a {
+					padding: 0;
+					width: 20px;
+					line-height: 20px;
+					display: block;
+					text-align: center;
+					color: white;
+					background-color: #aaaaaa;
+					@include border-radius(10px);
+				}
+			}
+		}
+		.actions {
+			padding: 0 20px;
+			flex-basis: 300px;
+			& > div.flex {
+				align-items: center;
+				justify-content: space-between;
+				& > div {
+					flex: 1;
+					padding: 0 5px;
+					button {
+						@include border-radius(5px);
+						border:  none;
+						font-weight: bold;
+						font-size: 0.67em;
+						padding: 10px;
+						display: block;
+						width: 100%;
+					}
+					&.visszahivas{
+						button {
+							background: $color-red;
+							color: white;
+							text-transform: uppercase;
+						}
+					}
+					&.ajanlatkeres{
+						button {
+							background: saturate(lighten($color-orange, 5%), 10);
+							color: $color-grey;
+							text-transform: uppercase;
+						}
+					}
+				}
+			}
+		}
+		.tudastar {
+			padding-left: 10px;
+			height: 30px;
+
+			& > .flex > div {
+				padding: 0 3px;
+				height: 30px;
+				line-height: 30px;
+			}
+			.ico{
+				.wrap{
+					width: 30px;
+					height: 30px;
+					line-height: 30px;
+					background-color: $color-orange;
+					color: white;
+					text-align: center;
+					font-size: 20px;
+					@include border-radius(30px);
+				}
+			}
+			& > .flex > .text {
+				text-transform: uppercase;
+			}
+			.dropmenu{
+				.dropmenu-container{
+					cursor: pointer;
+					background-color: white;
+					color: $color-grey;
+					font-size: 0.7em;
+					text-transform: none !important;
+
+					.text {
+						padding: 0 10px;
+					}
+
+					.arrow {
+						height: 30px;
+						width: 30px;
+						text-align: center;
+						padding: 0;
+						color: $color-red;
+						font-size: 14px;
+						background-color: lighten($color-grey, 70%);
+					}
+				}
+			}
+		}
 	}
 
 	.main {
 		background-color: $color-red;
 		padding: 10px 0;
+
+		& > .pw > .flex {
+			align-items: center;
+		}
+
+		.logo {
+			flex-basis: $size-sidebar;
+		}
+
+		.searcher {
+			flex: 1;
+			text-align: right;
+			.searchform {
+				padding: 2px;
+				float: right;
+				width: 70%;
+				background: white;
+
+				.flex {
+					.input {
+						flex: 1;
+					}
+					.button {
+						flex-basis: 85px;
+						button {
+							width: 100%;
+							text-align: center;
+							text-transform: uppercase;
+							font-size: 0.7em;
+							color: lighten($color-red, 10%);
+
+							i {
+								font-size: 18px;
+								vertical-align: middle;
+								margin: -1px 5px 0 0;
+							}
+						}
+					}
+				}
+
+				input[type=text] {
+					background: transparent;
+					border: none;
+					width: 100%;
+					color: $color-red;
+
+					@include border-radius-left(5px);
+				}
+
+				input[type=text],
+				button {
+					line-height: 30px;
+					padding: 0 5px;
+				}
+
+				button {
+					background: transparent;
+					color: $color-red;
+					border: none;
+					border-left: 1px solid #e6e6e6;
+					padding: 0 8px;
+					vertical-align: middle;
+					cursor: pointer;
+				}
+			}
+		}
+		.actions {
+			flex-basis: 35%;
+			padding-left: 20px;
+			font-size: 0.9em;
+
+			& > .flex {
+				align-items: center;
+				justify-content: space-between;
+				& > div{
+					height: 56px;
+				}
+				& > div:not(.div) {
+					text-align: center;
+					flex-basis: 65px;
+				}
+				& > div.cart{
+					flex: 1;
+				}
+				& > .div{
+					flex-basis: 6px;
+					position: relative;
+
+					&:after{
+						height: 70%;
+						position: absolute;
+						width: 1px;
+						content: "";
+						top: 0;
+						-webkit-transform: translate(50%, -50%);
+          	transform: translate(50%, -50%);
+						right: 50%;
+						top: 50%;
+						background-color: white;
+					}
+				}
+			}
+
+			.badge {
+				pointer-events: none;
+				position: absolute;
+				right: 2px;
+				bottom: 2px;
+				background-color: #ffcc00;
+				color: black;
+				font-size: 11px;
+				width: 20px;
+				z-index: 10;
+				height: 20px;
+				padding: 0;
+				line-height: 20px;
+				text-align: center;
+				border-radius: 20px;
+			}
+
+			.cart {
+				padding: 0 10px;
+				.flex {
+					align-items: center;
+					& > div.ico {
+						flex-basis: 35px;
+					}
+					& > div.info {
+						flex: 1;
+					}
+				}
+
+				.badge {
+					bottom: 5px;
+					right: -10px;
+				}
+				.info {
+					line-height: 1;
+					padding: 0 5px 0 15px;
+					text-align: left;
+					.h {
+						border-bottom: 1px solid #ffffffb0;
+				    padding: 0px 0 2px 0;
+				    margin: 0 0 2px 0;
+					}
+					.l {
+						font-size: 0.7em;
+						margin: 5px 0;
+					}
+					.cash {
+						font-weight: bold;
+						font-size: 1.3em;
+					}
+				}
+			}
+
+			a.holder {
+				padding: 5px;
+				display: block;
+				color: white;
+				text-decoration: none;
+				-webkit-transition: all 0.3s;
+  			transition: all 0.3s;
+
+
+				&:hover{
+					background-color: #971116;
+					-webkit-transform: scale(0.9);
+         	transform: scale(0.9);
+				}
+			}
+
+			i {
+				font-size: 35px;
+				vertical-align: middle;
+				height: 35px;
+			}
+
+			.ico {
+				height: 35px;
+				position: relative;
+				text-align: center;
+
+				img {
+					max-height: 35px;
+					height: 35px;
+				}
+			}
+
+
+		}
 	}
 
 	.bottom {
@@ -42,110 +375,8 @@ header {
 			pointer-events: none;
 		}
 	}
-
-	.contact {
-		margin: 5px 0;
-		display: block;
-
-		span {
-			font-weight: bold;
-			margin-left: 15px;
-		}
-
-		a {
-			color: white;
-			text-decoration:none;
-		}
-	}
-
-	.short-menu {
-		li {
-			display: -moz-inline-stack;
-        	display: inline-block;
-        	*display: inline;
-        	zoom: 1;
-        	line-height: 36px;
-        	margin-left: 10px;
-		}
-
-		li a {
-			/*padding: 0 20px;
-			font-size: 0.9em;
-			line-height: 36px;*/
-			padding: 0 5px;
-		    font-size: 0.90em;
-		    line-height: 34px;
-			display: block;
-			color: white;
-		}
-
-		li.cp {
-			position: relative;
-		}
-
-		li.cp a {
-			background: darken($color-pr, 10%);
-			@include border-radius-top(8px);
-		}
-
-		li.cp .alerts {
-			position: absolute;
-			background: #00a1e3;
-			right: 0;
-			bottom: -14px;
-			border: 2px solid #fff;
-			font-weight: bold;
-		    line-height: 1;
-		    padding: 0;
-		    -moz-transform: translate(50%, 0);
-		    -webkit-transform: translate(50%, 0);
-		    transform: translate(50%, 0);
-
-		    @include border-radius(6px);
-
-			a {
-				background: transparent;
-				display: block;
-				color: white;
-				font-size: 1em;
-				line-height: 1.5;
-				font-weight: bold;
-				text-decoration: none;
-				padding: 0 8px;
-			}
-		}
-
-	}
 }
 
-.searchform {
-	input[type=text] {
-		background: #fff;
-		border: 2px solid $color-sec;
-		width: 85%;
-		color: $color-pr;
-
-		@include border-radius-left(5px);
-	}
-
-	input[type=text],
-	button {
-		line-height: 30px;
-		padding: 0 14px;
-	}
-
-	button {
-		background: darken( $color-sec, 10% );
-		color: white;
-		border: 2px solid  $color-sec;
-		border-left: none;
-		padding: 0 8px;
-		vertical-align: middle;
-		cursor: pointer;
-
-		@include border-radius-right(5px);
-	}
-}
 
 .general-sidebar {
 	width: 20%;

@@ -10,6 +10,21 @@
 	font-size: 0.9em;
 }
 
+.social {
+	.facebook a {
+		background-color: #6984c1 !important;
+	}
+	.youtube a {
+		background-color: #e02b31 !important;
+	}
+	.googleplus a {
+		background-color: #ea5448 !important;
+	}
+	.twitter a {
+		background-color: #26c6f7 !important;
+	}
+}
+
 .slideShow {
 	position: relative;
 	background: #FFFFFF;
@@ -2210,8 +2225,6 @@
 }
 
 .account  {
-	padding: 15px;
-
 	h1 {
 		text-transform: uppercase;
 	    font-weight: bold;

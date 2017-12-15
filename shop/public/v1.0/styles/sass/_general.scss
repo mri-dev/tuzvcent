@@ -124,9 +124,9 @@ hr {
 }
 
 body, html {
-	font-family: 'PT Sans', sans-serif;
+	font-family: $font-sans-narrow;
 	font-weight: 400;
-	font-size: 0.875em;
+	font-size: 0.9em;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0);
     text-rendering: optimizeLegibility !important;
     -webkit-font-smoothing: antialiased !important;
