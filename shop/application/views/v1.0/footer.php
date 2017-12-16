@@ -14,17 +14,108 @@
 					<div class="flex">
 						<div class="about">
 							<div class="wrapper">
-								<h2>Rólunk</h2>
+								<h3>Rólunk</h3>
 								<div class="aboutus">
 									<?php echo $this->settings['about_us']; ?>
 								</div>
 							</div>
 						</div>
 						<div class="links">
-							linkek
+							<div class="wrapper">
+								<div class="flex">
+									<div class="segitseg">
+										<h3>Segítség</h3>
+										<ul>
+											<? foreach ( $this->menu_footer->tree as $menu ): ?>
+												<li>
+													<? if($menu['link']): ?><a href="<?=($menu['link']?:'')?>"><? endif; ?>
+														<span class="item <?=$menu['css_class']?>" style="<?=$menu['css_styles']?>">
+															<? if($menu['kep']): ?><img src="<?=\PortalManager\Formater::sourceImg($menu['kep'])?>"><? endif; ?>
+															<?=$menu['nev']?></span>
+													<? if($menu['link']): ?></a><? endif; ?>
+													<? if($menu['child']): ?>
+														<? foreach ( $menu['child'] as $child ) { ?>
+															<div class="item <?=$child['css_class']?>">
+																<?
+																// Inclue
+																if(strpos( $child['nev'], '=' ) === 0 ): ?>
+																	<? echo $this->templates->get( str_replace('=','',$child['nev']), array( 'view' => $this ) ); ?>
+																<? else: ?>
+																<? if($child['link']): ?><a href="<?=$child['link']?>"><? endif; ?>
+																<? if($child['kep']): ?><img src="<?=\PortalManager\Formater::sourceImg($child['kep'])?>"><? endif; ?>
+																<span style="<?=$child['css_styles']?>"><?=$child['nev']?></span>
+																<? if($child['link']): ?></a><? endif; ?>
+																<? endif; ?>
+															</div>
+														<? } ?>
+													<? endif; ?>
+												</li>
+											<? endforeach; ?>
+										</ul>
+									</div>
+									<div class="tudastar">
+										<div class="ico">
+				              <div class="wrap">
+				                  <i class="fa fa-lightbulb-o"></i>
+				              </div>
+				            </div>
+										<h3>Tudástár</h3>
+										<ul>
+											<li><a href="#">Cikk címe</a></li>
+											<li><a href="#">Cikk címe</a></li>
+											<li><a href="#">Cikk címe</a></li>
+											<li><a href="#">Cikk címe</a></li>
+											<li><a href="#">Cikk címe</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
 						</div>
 						<div class="subs">
-							subs
+							<div class="subbox">
+								<div class="wrapper">
+									<div class="title">
+										<h3>Feliratkozás</h3>
+									</div>
+									<div class="form">
+										<form class="" action="" method="post">
+											<div class="name">
+												<div class="flex flexmob-exc-resp">
+													<div class="ico">
+														<i class="fa fa-user"></i>
+													</div>
+													<div class="input">
+														<input type="text" name="name" value="" placeholder="Név">
+													</div>
+												</div>
+											</div>
+											<div class="email">
+												<div class="flex flexmob-exc-resp">
+													<div class="ico">
+														<i class="fa fa-envelope"></i>
+													</div>
+													<div class="input">
+														<input type="text" name="email" value="" placeholder="E-mail">
+													</div>
+												</div>
+											</div>
+											<div class="phone">
+												<div class="flex flexmob-exc-resp">
+													<div class="ico">
+														<i class="fa fa-phone"></i>
+													</div>
+													<div class="input">
+														<input type="text" name="phone" value="" placeholder="Telefon">
+													</div>
+												</div>
+											</div>
+											<div class="button">
+												<button type="submit" name="subscribe">Mehet</button>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
