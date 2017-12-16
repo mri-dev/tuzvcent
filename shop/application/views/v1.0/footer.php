@@ -13,7 +13,12 @@
 				<div class="wrapper">
 					<div class="flex">
 						<div class="about">
-							about
+							<div class="wrapper">
+								<h2>Rólunk</h2>
+								<div class="aboutus">
+									<?php echo $this->settings['about_us']; ?>
+								</div>
+							</div>
 						</div>
 						<div class="links">
 							linkek
@@ -32,11 +37,14 @@
 	          <a href="<?=$this->settings['page_url']?>"><img src="<?=IMG?>tuzvedelmicentrum_logo_white.svg" alt="<?=$this->settings['page_title']?>"></a>
 	        </div>
 					<div class="navi">
-						nav
+						<div class="flex">
+							<div class=""><a href="/p/aszf">Általános Szerződési Feltételek</a></div>
+							<div class=""><a href="/p/aszf#garancia">Garancia</a></div>
+							<div class=""><a href="/p/aszf#szallitasfizetes">Szállítás & Fizetés</a></div>
+							<div class=""><a href="/kapcsolat">Ügyfélszolgálat és Kapcsolat</a></div>
+						</div>
 					</div>
-					<div class="dead-subs">
-						deadsubs
-					</div>
+					<div class="dead-subs"></div>
 				</div>
 			</div>
 		</div>
