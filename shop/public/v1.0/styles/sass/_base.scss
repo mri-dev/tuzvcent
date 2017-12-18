@@ -10,6 +10,34 @@
 	font-size: 0.9em;
 }
 
+.text-italic {
+	font-style: italic !important;
+}
+.text-underline {
+	text-decoration: underline !important;
+}
+.text-uc {
+	text-transform: uppercase !important;
+}
+.text-big {
+	font-size:22px !important;
+}
+.text-huge {
+	font-size:28px !important;
+}
+.text-spaced {
+	letter-spacing: 2px !important;
+}
+.text-height-medium {
+	line-height: 40px;
+}
+.text-height-large {
+	line-height: 80px;
+}
+.text-height-big {
+	line-height: 125px;
+}
+
 .social {
 	.facebook a {
 		background-color: #6984c1 !important;

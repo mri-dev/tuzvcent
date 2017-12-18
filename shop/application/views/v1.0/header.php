@@ -203,7 +203,66 @@
   </div>
   <div class="bottom">
     <div class="pw">
-      ---
+      <div class="nav">
+				<ul>
+					<? foreach ( $this->menu_header->tree as $menu ): ?>
+					<li>
+						<a href="<?=($menu['link']?:'')?>">
+							<? if($menu['kep']): ?><img src="<?=\PortalManager\Formater::sourceImg($child['kep'])?>"><? endif; ?>
+							<?=$menu['nev']?> <? if($menu['child']): ?><i class="fa fa-angle-down"></i><? endif; ?></a>
+						<? if($menu['child']): ?>
+						<div class="sub nav-sub-view">
+							<div class="pw">
+								<div class="inside">
+									<? foreach($menu['child'] as $child): ?>
+									<?
+										$has_stacklink = false;
+										//print_r($child['child']);
+										if( $child['child'] && count($child['child']) > 0) {
+											foreach($child['child'] as $e):
+												if ( strpos($e['css_class'], 'nav-link-stackview') !== false ) {
+													$has_stacklink = true;
+													break;
+												}
+											endforeach;
+										}
+									?>
+									<div class="sub-col <?=($has_stacklink) ? 'has-stacklink' : ''?> <?=($child['lista'] ? 'kat-childlist' : '')?>">
+										<div class="item item-header <?=$child['css_class']?>" >
+										<? if($child['link']): ?><a href="<?=$child['link']?>"><? endif; ?>
+										<? if($child['kep']): ?><img src="<?=\PortalManager\Formater::sourceImg($child['kep'])?>"><? endif; ?>
+										<span style="<?=$child['css_styles']?>"><?=$child['nev']?></span>
+										<? if($child['link']): ?></a><? endif; ?>
+										</div>
+										<? if($child['lista']): ?>
+										<? foreach ($child['lista'] as $elem ) { ?>
+											<div class="item <?=$elem['css_class']?>">
+												<? if($elem['link']): ?><a href="<?=$elem['link']?>"><? endif; ?>
+												<span style="<?=$elem['css_styles']?>"><?=$elem['neve']?></span>
+												<? if($elem['link']): ?></a><? endif; ?>
+											</div>
+										<? }?>
+										<? endif; ?>
+										<? if($child['child']): ?>
+										<? foreach ($child['child'] as $elem ) { ?>
+											<div class="item <?=$elem['css_class']?>">
+												<? if($elem['link']): ?><a href="<?=$elem['link']?>"><? endif; ?>
+												<? if($elem['kep']): ?><img src="<?=\PortalManager\Formater::sourceImg($elem['kep'])?>"><? endif; ?>
+												<span style="<?=$elem['css_styles']?>"><?=$elem['nev']?></span>
+												<? if($elem['link']): ?></a><? endif; ?>
+											</div>
+										<? }?>
+										<? endif; ?>
+									</div>
+									<? endforeach; ?>
+								</div>
+							</div>
+						</div>
+						<? endif; ?>
+					</li>
+					<? endforeach; ?>
+				</ul>
+			</div>
     </div>
   </div>
   <div class="sec-bottom">
