@@ -173,19 +173,34 @@
             </div>
             <div class="div"></div>
             <div class="cart">
-              <a href="/kosar" class="holder">
-                <div class="flex">
+              <div class="holder" id="mb-cart">
+                <div class="flex" mb-event="true" data-mb='{ "event": "toggleOnClick", "target" : "#mb-cart" }'>
                   <div class="ico">
-                    <span class="badge">99</span>
-                    <img src="<?=IMG?>icons/cart.svg" alt="Kosár">
+                    <span class="badge" id="cart-item-num-v">0</span>
+                    <img src="<?=IMG?>icons/cart.svg" alt="Kosár" />
                   </div>
                   <div class="info">
                     <div class="h">Kosár tartalom</div>
                     <div class="l">Összeg</div>
-                    <div class="cash"><span class="amount">123 456</span> Ft</div>
+                    <div class="cash"><span class="amount" id="cart-item-prices">0</span> Ft</div>
                   </div>
                 </div>
-              </a>
+                <div class="floating">
+                  <div id="cartContent" class="overflowed">
+          					<div class="noItem"><div class="inf">A kosár üres</div></div>
+          				</div>
+                  <div class="whattodo">
+                    <div class="flex">
+                      <div class="doempty">
+                        <a href="/kosar/?clear=1">Kosár ürítése <i class="fa fa-trash"></i></a>
+                      </div>
+                      <div class="doorder">
+                        <a href="/kosar">Megrendelése <i class="fa fa-arrow-circle-o-right"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
             <div class="div"></div>
             <div class="contact">

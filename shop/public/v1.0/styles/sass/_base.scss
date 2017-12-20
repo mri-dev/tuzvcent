@@ -1242,7 +1242,7 @@
 	.item {
 		position: relative;
 		padding: 12px;
-		border-bottom: 1px solid #d7d7d7;
+		border-bottom: 1px solid #eceff2;
 
 		.img {
 			float: left;
@@ -1270,7 +1270,6 @@
 			cursor: pointer;
 			z-index: 100;
 			margin-left:4px;
-			color: $color-pr;
 		}
 		.info .name .in {
 			font-weight: bold;
@@ -1280,17 +1279,30 @@
 			cursor: pointer;
 		}
 		.info .name a {
-			font-size: 1.2em;
-			color: #fff;
+			font-size: 1.5em;
+			color: $color-orange;
 			line-height: 18px;
+			font-weight: bold;
 		}
-		.info .remove {
+
+		.info .name a {
+			font-size: 1.5em;
+			color: $color-orange;
+			line-height: 18px;
+			font-weight: bold;
+		}
+		.remove {
 			position: absolute;
 			top: -5px;
 			right: 0;
-			padding: 0 5px;
-			color: #000;
-			background: darken( $color-sec, 20% );
+			padding: 0;
+			color: #bdc0c2;
+			font-size: 20px;
+		}
+		.sub .ar {
+			color: $color-red;
+			font-size: 1.3em;
+			font-weight: bold;
 		}
 		.info .remove :hover {
 			cursor: pointer;

@@ -235,6 +235,83 @@ header {
 				}
 				& > div.cart{
 					flex: 1;
+					position: relative;
+					z-index: 200;
+
+					&:hover{
+						background-color: #971116;
+					}
+
+					& > div.holder{
+						height: 100%;
+						padding: 5px 0;
+					}
+
+					.flex{
+						z-index: 12;
+					}
+
+					& > div.holder#mb-cart{
+						position: relative;
+					}
+
+					.floating{
+						right: -13px;
+						top: 100%;
+						width: 350px;
+						position: absolute;
+						z-index: 10;
+						background: #ffffff;
+    				outline: 4px solid #c5161d91;
+
+						#cartContent{
+							color: $color-grey;
+						}
+
+						.whattodo{
+							.flex{
+								& > div {
+									flex: 1;
+									a{
+										display: block;
+										text-align: center;
+										padding: 0 10px;
+										color: white !important;
+										height: 42px;
+										line-height: 42px;
+										text-decoration: none;
+										font-size: 0.9em;
+										i{
+											font-size: 20px;
+											height: 22px !important;
+											line-height: 1;
+											vertical-align: middle;
+										}
+									}
+
+									&.doorder{
+										background: $color-red;
+										a{
+											font-size: 1.15em;
+											text-transform: uppercase;
+											font-weight: bold;
+										}
+									}
+
+									&.doempty{
+										background: $color-grey;
+										a{
+											color: #a9a9a9 !important;
+										}
+										i{
+											font-size: 15px;
+											height: 17px !important;
+										}
+									}
+								}
+							}
+						}
+					}
 				}
 				& > .div{
 					flex-basis: 6px;
@@ -252,6 +329,16 @@ header {
 						top: 50%;
 						background-color: white;
 					}
+				}
+				& > div.cart > div.holder > .floating{
+					-webkit-transition: all .3s;
+  					transition: all .3s;
+					display: none;
+					-webkit-transform-origin: top right;
+          transform-origin: top right;
+				}
+				& > div.cart > div.holder:hover > .floating{
+					display: block;
 				}
 			}
 
@@ -341,7 +428,21 @@ header {
 				}
 			}
 
+			.adder i,
+			.remove i {
+				font-size: 18px !important;
+				height: 18px !important;
+				line-height: 18px !important;
+			}
 
+			.adder {
+				i[class*=fa-minus] {
+					color: #f16e74;
+				}
+				i[class*=fa-plus] {
+					color: #8fd083;
+				}
+			}
 		}
 	}
 

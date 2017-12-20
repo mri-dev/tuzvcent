@@ -28,7 +28,6 @@
 <?=$this->addJS('app',false,false)?>
 <?=$this->addJS('upload',false,false)?>
 <?=$this->addJS('angular-cookies',false, false)?>
-<?=$this->addJS('popup.receiver',false, false)?>
 <?=$this->addJS('jquery.cetelemCalculator',false, false)?>
 <script type="text/javascript" src="<?=JS?>slick/slick.min.js"></script>
 <script type="text/javascript" src="<?=JS?>fancybox/jquery.fancybox.js?v=2.1.4"></script>
@@ -49,9 +48,9 @@
 		$.post('<?=AJAX_POST?>',{
 			type: 'log',
 			mode: 'searching',
-			val: srcString	
+			val: srcString
 		},function(re){
-			document.location.href='/kereses/'+srcString; 
-		},"html");		
+			document.location.href='/kereses/'+srcString;
+		},"html");
 	}
 </script>
