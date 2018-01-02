@@ -1,4 +1,4 @@
-<?	
+<?
 use DatabaseManager\Database;
 
 use PortalManager\AdminUser;
@@ -29,43 +29,45 @@ class Controller {
     public $fnTemp          = array();
     public static $user_opt = array();
 
-    function __construct($arg = array()){
+    function __construct($arg = array())
+    {
         $this->start_time = microtime(true);
         $this->is_admin = $arg[admin];
         Session::init();
         Helper::setMashineID();
-        $this->gets 		= Helper::GET();
+        $this->gets = Helper::GET();
 
         //$this->memory_usage();
 
         // CORE
        // $this->model 		= new Model();
-        $this->view 		= new View();
-        $this->db           = new Database();
+        $this->view = new View();
+        $this->db = new Database();
         //////////////////////////////////////////////////////
         $this->view->settings = $this->getAllValtozo();
-        $this->gets 		= Helper::GET();
-        $this->view->gets 	= $this->gets;
+        $this->gets = Helper::GET();
+        $this->view->gets = $this->gets;
 
-        $this->AdminUser    = new AdminUser( array( 'db' => $this->db, 'view' => $this->view, 'settings' => $this->view->settings )  );
-        $this->wp           = new WPMigrator( array( 'db' => $this->db) );
-        $this->User         = new Users(array( 
-                                            'db' => $this->db, 
-                                            'view' => $this->view, 
-                                            'admin' => $this->is_admin
-                                        ));
-        $this->shop         = new Shop(array( 
-                                        'db' => $this->db, 
-                                        'view' => $this->view,
-                                        'user' => $this->User->get()
-                                    ));
-		
-        $this->Portal       = new Portal( array( 'db' => $this->db, 'view' => $this->view )  );
-        $this->captcha      = (new Captcha)
-                                ->init( 
-                                    $this->view->settings['recaptcha_public_key'], 
-                                    $this->view->settings['recaptcha_private_key'] 
-                                );       
+        $this->AdminUser = new AdminUser( array( 'db' => $this->db, 'view' => $this->view, 'settings' => $this->view->settings )  );
+        $this->wp = new WPMigrator( array( 'db' => $this->db) );
+        $this->User = new Users(array(
+          'db' => $this->db,
+          'view' => $this->view,
+          'admin' => $this->is_admin
+        ));
+
+        $this->shop = new Shop(array(
+          'db' => $this->db,
+          'view' => $this->view,
+          'user' => $this->User->get()
+        ));
+
+        $this->Portal = new Portal( array( 'db' => $this->db, 'view' => $this->view )  );
+        $this->captcha = (new Captcha)
+        ->init(
+            $this->view->settings['recaptcha_public_key'],
+            $this->view->settings['recaptcha_private_key']
+        );
 
         $this->casadashops  = new CasadaShops( array( 'db' => $this->db ) );
         if( isset($_COOKIE['geo_latlng']) )
@@ -76,42 +78,15 @@ class Controller {
             $myPos = explode(",",$_COOKIE['geo_latlng']);
             $this->casadashops->setMyPosition($myPos);
         }
-        
+
         $this->out( 'db',   $this->db );
-        $this->out( 'casadashops', $this->casadashops );    
-        $this->out( 'casadapillanatok', (new GalleryHelper('casadapillanatok', 'slug', array('db'=>$this->db, 'settings' => $this->view->settings))) );   
-        $this->out( 'casadapartnerek',  (new GalleryHelper('partnerek', 'slug', array('db'=>$this->db, 'settings' => $this->view->settings))) );                                         
         $this->out( 'user', $this->User->get( self::$user_opt ) );
-        $this->out( 'wp',   $this->wp );
+        //$this->out( 'wp',   $this->wp );
 
-
-        $templates          = new Template( VIEW . 'templates/' );     
-        $this->out( 'templates', $templates );  
-
-        $this->out( 'highlight_text', $this->Portal->getHighlightItems() ); 
-
-        $lastnews_arg = array();
-        $lastnews_arg['limit'] = 5;
-        $this->out( 'last_news', (new News( false, array( 'db' => $this->db )  ))->getTree( $lastnews_arg ) );
-
-        // Casada pillanatok
-        if (file_exists('admin/src/uploads/esemenyek')) 
-        {
-            $pillanatok = new FileLister( 'admin/src/uploads/esemenyek' );
-            $this->out( 'pillanatok', $pillanatok->getFolderItems( array( 'allowedExtension' => 'gif|png|jpg|jpeg|JPG' ) ) );
-        }
-
-        // Teljes termék
-        $footer_products = new Products(array( 
-            'db'    => $this->db,
-            'user'  => $this->view->user
-        ));
-        $footer_products->prepareList(array(
-            'filters' => array(
-                'footer_listing' => array(1)
-            )
-        ));
-        $this->out( 'footer_products', $footer_products->getList() );
+        $templates = new Template( VIEW . 'templates/' );
+        $this->out( 'templates', $templates );
+        $this->out( 'highlight_text', $this->Portal->getHighlightItems() );
+        $this->out( 'slideshow', $this->Portal->getSlideshow() );
 
         // Menük
         $tree = null;
@@ -142,11 +117,11 @@ class Controller {
               }
         }
 
-        if ( $_GET['msgkey'] ) {            
+        if ( $_GET['msgkey'] ) {
             $this->out( $_GET['msgkey'], Helper::makeAlertMsg('pSuccess', $_GET[$_GET['msgkey']]) );
         }
 
-        $this->out( 'states', array(              
+        $this->out( 'states', array(
             0=>"Bács-Kiskun",
             1=>"Baranya",
             2=>"Békés",
@@ -168,7 +143,7 @@ class Controller {
             18=>"Veszprém",
             19=>"Zala",
         ) );
-			
+
         if(!$arg[hidePatern]){ $this->hidePatern = false; }
 
          $this->view->valuta  = 'Ft';
@@ -205,7 +180,7 @@ class Controller {
         $this->view->called = $this->fnTemp;
     }
 
-    
+
 
     function setTitle($title){
         $this->view->title = $title;
@@ -229,14 +204,14 @@ class Controller {
 
         $v['domain'] = 'http://'.str_replace( array('www.', 'http://'), '', $v['page_url']);
 
-        if (strpos($v['alert_email'],",") !== false) 
+        if (strpos($v['alert_email'],",") !== false)
         {
           $v['alert_email'] = explode(",",$v['alert_email']);
         }
 
         return $v;
     }
-    
+
     function setValtozok($key,$val){
         $iq = "UPDATE beallitasok SET bErtek = '$val' WHERE bKulcs = '$key'";
         $this->db->query($iq);
@@ -272,7 +247,7 @@ class Controller {
             # Render FOOTER
             $this->view->render($subfolder.$this->theme_wire.'footer',$mode);
         }
-        $this->db = null;         
+        $this->db = null;
        // $this->memory_usage();
 
         $this->finish_time = microtime(true);

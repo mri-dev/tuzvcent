@@ -613,6 +613,66 @@ header {
 	}
 	.sec-bottom{
 		background-color: #eceff2;
+		height: 32px;
+
+		.highlight-view{
+			text-align: center;
+			.hl-cont {
+				margin: 0 auto;
+				position: relative;
+				height: 32px;
+
+				& > a.handler {
+					position: absolute;
+					top: 50%;
+					-webkit-transform: translateY(-50%);
+        	transform: translateY(-50%);
+					font-size: 17px;
+    			color: #cacaca;
+					text-decoration: none;
+
+					&:hover{
+						color: #666666;
+					}
+
+					&.prev{
+						left: 5px;
+					}
+					&.next {
+						right: 5px;
+					}
+				}
+
+				ul {
+					float:left;
+					position: absolute;
+					left:50%;
+					top: 0;
+					bottom: 0;
+					height: 32px;
+					-webkit-transform: translateX(-50%);
+        	transform: translateX(-50%);
+
+					li {
+						display: none;
+						background: $color-orange;
+						padding: 10px;
+						height: 32px;
+						font-size: 0.9em;
+						font-weight: bold;
+
+						&.active {
+							display: block;
+						}
+
+						a{
+							color: white;
+							font-weight: normal;
+						}
+					}
+				}
+			}
+		}
 	}
 
 	a, a:visited {

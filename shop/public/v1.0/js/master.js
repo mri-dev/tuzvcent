@@ -2,7 +2,7 @@ $(function(){
 	searchFilters();
 	getLocation();
 
-	$.cookieAccepter('https://www.ws1.web-pro.hu/aszf/');
+	$.cookieAccepter('https://www.tuzvedelmicentrum.web-pro.hu/p/aszf/');
 
 	var transports_c 			= $('.transports');
 
@@ -13,7 +13,7 @@ $(function(){
 	var footer_height 			= $('#footer').height();
 
 	$(document).scroll(function(){
-		var top = $(this).scrollTop();		
+		var top = $(this).scrollTop();
 
 		if(top > 200){
 			if($('#topper .upTop').css('display') == 'none'){
@@ -209,17 +209,17 @@ $(function(){
 	  slidesToShow: 1,
 	  slidesToScroll: 1,
 	  autoplay: true,
-  	  autoplaySpeed: 8000,
-  	  adaptiveHeight: true,
-  	  responsive : [
-  	  	{
-  	  		breakpoint: 480,
-  	  		settings : {
-  	  			mobileFirst : true,
-  	  			respondTo : window
-  	  		}
-  	  	}
-  	  ]
+	  autoplaySpeed: 8000,
+	  adaptiveHeight: true,
+	  responsive : [
+	  	{
+	  		breakpoint: 480,
+	  		settings : {
+	  			mobileFirst : true,
+	  			respondTo : window
+	  		}
+	  	}
+	  ]
 	});
 
 	var hlviewer = setInterval( function(){

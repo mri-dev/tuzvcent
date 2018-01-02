@@ -282,7 +282,24 @@
   </div>
   <div class="sec-bottom">
     <div class="pw">
-      ---
+      <? if( count($this->highlight_text) > 0 ): ?>
+      <div class="highlight-view">
+      	<div class="items">
+      		<div class="hl-cont">
+      			<? if( count($this->highlight_text['data']) > 1 ): ?>
+      			<a href="javascript:void(0);" title="Előző" class="prev handler" key="prev"><i class="fa fa-angle-left"></i> |</a>
+      			<a href="javascript:void(0);" title="Következő" class="next handler" key="next">| <i class="fa fa-angle-right"></i></a>
+      			<? endif; ?>
+      			<ul>
+      				<? $step = 0; foreach( $this->highlight_text['data'] as $text ): $step++; ?>
+      				<li class="<?=($step == 1)?'active':''?>" index="<?=$step?>"><?=$text['tartalom']?></li>
+      				<? endforeach; ?>
+      			</ul>
+            <div class="clr"></div>
+      		</div>
+      	</div>
+      </div>
+      <? endif; ?>
     </div>
   </div>
 </header>
