@@ -211,6 +211,7 @@ $(function(){
 	  autoplay: true,
 	  autoplaySpeed: 8000,
 	  adaptiveHeight: true,
+		arrows: true,
 	  responsive : [
 	  	{
 	  		breakpoint: 480,
