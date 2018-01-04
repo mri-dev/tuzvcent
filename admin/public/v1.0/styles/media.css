@@ -59,6 +59,9 @@ body.blured > *  {
   border: 1px solid #e5e5e5;
   border-bottom: 2px solid #cccccc;
 }
+#login {
+  margin: 20% auto 0 auto;
+}
 a, a:visited {
 	color: #ed9606;
 }
@@ -107,13 +110,13 @@ div[class*=col-p-5]{
 
 button, input[type=button], input[type=submit]{
 	color:#ffffff;
-	background:#f27346;
+	background: #fab108;
 	border:0;
 	padding:4px 10px;
   border-radius: 5px;
 }
 button:hover{
-	background:#24659a;
+	background:#fe8024;
 }
 #top{
 	background-color: #c5161d;
@@ -214,6 +217,8 @@ body.blured-bg #top {
 #login .bg{
 	background-color: #ffffff14 !important;
 	padding:20px 40px;
+  border-radius: 4px;
+  box-shadow: 0 5px 30px -10px black;
 }
 #login .bg i{
 	width:15px !important;
