@@ -53,8 +53,6 @@
 	}
 }
 
-
-
 .slideShow {
 	position: relative;
 	background: #FFFFFF;
@@ -251,6 +249,19 @@
 	}
 	.slidesjs-play:before {
 		content: "\f04b";
+	}
+}
+
+.category-listing{
+	.list-view{
+		& >.grid-layout {
+			.grid-row.filter-sidebar {
+				flex-basis: $size-sidebar;
+			}
+			.grid-row.products {
+				flex: 1;
+			}
+		}
 	}
 }
 

@@ -336,6 +336,14 @@ header {
 					display: none;
 					-webkit-transform-origin: top right;
           transform-origin: top right;
+
+					.whattodo{
+						display: none;
+
+						&.active{
+							display: block;
+						}
+					}
 				}
 				& > div.cart > div.holder:hover > .floating{
 					display: block;

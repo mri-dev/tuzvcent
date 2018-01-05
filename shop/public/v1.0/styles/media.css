@@ -898,10 +898,18 @@ header .main .actions > .flex > div.cart > div.holder > .floating {
   transform-origin: top right;
 }
 /* line 340, sass/_header.scss */
+header .main .actions > .flex > div.cart > div.holder > .floating .whattodo {
+  display: none;
+}
+/* line 343, sass/_header.scss */
+header .main .actions > .flex > div.cart > div.holder > .floating .whattodo.active {
+  display: block;
+}
+/* line 348, sass/_header.scss */
 header .main .actions > .flex > div.cart > div.holder:hover > .floating {
   display: block;
 }
-/* line 345, sass/_header.scss */
+/* line 353, sass/_header.scss */
 header .main .actions .badge {
   pointer-events: none;
   position: absolute;
@@ -918,50 +926,50 @@ header .main .actions .badge {
   text-align: center;
   border-radius: 20px;
 }
-/* line 362, sass/_header.scss */
+/* line 370, sass/_header.scss */
 header .main .actions .cart {
   padding: 0 10px;
 }
-/* line 364, sass/_header.scss */
+/* line 372, sass/_header.scss */
 header .main .actions .cart .flex {
   align-items: center;
 }
-/* line 366, sass/_header.scss */
+/* line 374, sass/_header.scss */
 header .main .actions .cart .flex > div.ico {
   flex-basis: 35px;
 }
-/* line 369, sass/_header.scss */
+/* line 377, sass/_header.scss */
 header .main .actions .cart .flex > div.info {
   flex: 1;
 }
-/* line 374, sass/_header.scss */
+/* line 382, sass/_header.scss */
 header .main .actions .cart .badge {
   bottom: 5px;
   right: -10px;
 }
-/* line 378, sass/_header.scss */
+/* line 386, sass/_header.scss */
 header .main .actions .cart .info {
   line-height: 1;
   padding: 0 5px 0 15px;
   text-align: left;
 }
-/* line 382, sass/_header.scss */
+/* line 390, sass/_header.scss */
 header .main .actions .cart .info .h {
   border-bottom: 1px solid #ffffffb0;
   padding: 0px 0 2px 0;
   margin: 0 0 2px 0;
 }
-/* line 387, sass/_header.scss */
+/* line 395, sass/_header.scss */
 header .main .actions .cart .info .l {
   font-size: 0.7em;
   margin: 5px 0;
 }
-/* line 391, sass/_header.scss */
+/* line 399, sass/_header.scss */
 header .main .actions .cart .info .cash {
   font-weight: bold;
   font-size: 1.3em;
 }
-/* line 398, sass/_header.scss */
+/* line 406, sass/_header.scss */
 header .main .actions a.holder {
   padding: 5px;
   display: block;
@@ -970,51 +978,51 @@ header .main .actions a.holder {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
-/* line 407, sass/_header.scss */
+/* line 415, sass/_header.scss */
 header .main .actions a.holder:hover {
   background-color: #971116;
   -webkit-transform: scale(0.9);
   transform: scale(0.9);
 }
-/* line 414, sass/_header.scss */
+/* line 422, sass/_header.scss */
 header .main .actions i {
   font-size: 35px;
   vertical-align: middle;
   height: 35px;
 }
-/* line 420, sass/_header.scss */
+/* line 428, sass/_header.scss */
 header .main .actions .ico {
   height: 35px;
   position: relative;
   text-align: center;
 }
-/* line 425, sass/_header.scss */
+/* line 433, sass/_header.scss */
 header .main .actions .ico img {
   max-height: 35px;
   height: 35px;
 }
-/* line 432, sass/_header.scss */
+/* line 440, sass/_header.scss */
 header .main .actions .adder i,
 header .main .actions .remove i {
   font-size: 18px !important;
   height: 18px !important;
   line-height: 18px !important;
 }
-/* line 439, sass/_header.scss */
+/* line 447, sass/_header.scss */
 header .main .actions .adder i[class*=fa-minus] {
   color: #f16e74;
 }
-/* line 442, sass/_header.scss */
+/* line 450, sass/_header.scss */
 header .main .actions .adder i[class*=fa-plus] {
   color: #8fd083;
 }
-/* line 449, sass/_header.scss */
+/* line 457, sass/_header.scss */
 header .bottom {
   background-color: #971116;
   padding: 0;
   position: relative;
 }
-/* line 455, sass/_header.scss */
+/* line 463, sass/_header.scss */
 header .bottom .nav .sub {
   display: none;
   position: absolute;
@@ -1025,7 +1033,7 @@ header .bottom .nav .sub {
   top: 32px;
   z-index: 100;
 }
-/* line 465, sass/_header.scss */
+/* line 473, sass/_header.scss */
 header .bottom .nav .sub .inside {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1035,60 +1043,60 @@ header .bottom .nav .sub .inside {
   justify-content: space-between;
   padding: 15px 0;
 }
-/* line 473, sass/_header.scss */
+/* line 481, sass/_header.scss */
 header .bottom .nav .sub .inside > .sub-col {
   position: relative;
   flex: 1;
   padding: 0 20px;
   align-self: stretch;
 }
-/* line 479, sass/_header.scss */
+/* line 487, sass/_header.scss */
 header .bottom .nav .sub .inside > .sub-col .item {
   font-size: 0.9em;
 }
-/* line 481, sass/_header.scss */
+/* line 489, sass/_header.scss */
 header .bottom .nav .sub .inside > .sub-col .item.item-header {
   text-transform: uppercase;
   font-weight: bold;
   font-size: 1.1em;
   margin-top: 5px;
 }
-/* line 489, sass/_header.scss */
+/* line 497, sass/_header.scss */
 header .bottom .nav .sub .inside > .sub-col .item.nav-img-icon img {
   height: 15px;
   vertical-align: text-top;
 }
-/* line 495, sass/_header.scss */
+/* line 503, sass/_header.scss */
 header .bottom .nav .sub .inside > .sub-col .item.nav-img-small img {
   height: 48px;
   vertical-align: text-top;
 }
-/* line 501, sass/_header.scss */
+/* line 509, sass/_header.scss */
 header .bottom .nav .sub .inside > .sub-col .item.nav-img-medium img {
   height: 96px;
   vertical-align: text-top;
 }
-/* line 507, sass/_header.scss */
+/* line 515, sass/_header.scss */
 header .bottom .nav .sub .inside > .sub-col .item.nav-img-large img {
   height: 180px;
   vertical-align: text-top;
 }
-/* line 513, sass/_header.scss */
+/* line 521, sass/_header.scss */
 header .bottom .nav .sub .inside > .sub-col .item.nav-img-top img {
   display: block;
   margin: 0 auto 4px auto;
 }
-/* line 520, sass/_header.scss */
+/* line 528, sass/_header.scss */
 header .bottom .nav .sub .inside > .sub-col .item.item-align-center a {
   text-align: center;
 }
-/* line 525, sass/_header.scss */
+/* line 533, sass/_header.scss */
 header .bottom .nav .sub .inside > .sub-col .item a {
   line-height: 1.3;
   padding: 2px 0;
   display: block;
 }
-/* line 531, sass/_header.scss */
+/* line 539, sass/_header.scss */
 header .bottom .nav .sub .inside > .sub-col .item.nav-link-stackview {
   font-weight: bold !important;
   font-size: 1.05em !important;
@@ -1099,13 +1107,13 @@ header .bottom .nav .sub .inside > .sub-col .item.nav-link-stackview {
   text-transform: uppercase;
   line-height: 1;
 }
-/* line 541, sass/_header.scss */
+/* line 549, sass/_header.scss */
 header .bottom .nav .sub .inside > .sub-col .item.nav-link-stackview span:after {
   content: "\f105";
   font-family: 'FontAwesome';
   margin: 0 0 0 5px;
 }
-/* line 548, sass/_header.scss */
+/* line 556, sass/_header.scss */
 header .bottom .nav .sub .inside > .sub-col:after {
   height: 100%;
   content: "";
@@ -1116,11 +1124,11 @@ header .bottom .nav .sub .inside > .sub-col:after {
   top: 0;
   bottom: 0;
 }
-/* line 559, sass/_header.scss */
+/* line 567, sass/_header.scss */
 header .bottom .nav .sub .inside > .sub-col.has-stacklink {
   padding-bottom: 30px;
 }
-/* line 565, sass/_header.scss */
+/* line 573, sass/_header.scss */
 header .bottom .nav .sub .inside > .sub-col:first-child:before {
   height: 100%;
   content: "";
@@ -1131,12 +1139,12 @@ header .bottom .nav .sub .inside > .sub-col:first-child:before {
   top: 0;
   bottom: 0;
 }
-/* line 577, sass/_header.scss */
+/* line 585, sass/_header.scss */
 header .bottom .nav .sub .inside a {
   color: #404040;
   text-decoration: none;
 }
-/* line 584, sass/_header.scss */
+/* line 592, sass/_header.scss */
 header .bottom .nav > ul {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1144,7 +1152,7 @@ header .bottom .nav > ul {
   flex-wrap: wrap;
   align-items: center;
 }
-/* line 592, sass/_header.scss */
+/* line 600, sass/_header.scss */
 header .bottom .nav > ul > li > a {
   text-transform: uppercase;
   font-weight: bold;
@@ -1153,35 +1161,35 @@ header .bottom .nav > ul > li > a {
   text-decoration: none;
   display: block;
 }
-/* line 600, sass/_header.scss */
+/* line 608, sass/_header.scss */
 header .bottom .nav > ul > li:hover {
   background: #eceff2;
   color: #404040;
 }
-/* line 603, sass/_header.scss */
+/* line 611, sass/_header.scss */
 header .bottom .nav > ul > li:hover > a {
   color: #404040;
 }
-/* line 606, sass/_header.scss */
+/* line 614, sass/_header.scss */
 header .bottom .nav > ul > li:hover > .sub {
   display: block;
 }
-/* line 614, sass/_header.scss */
+/* line 622, sass/_header.scss */
 header .sec-bottom {
   background-color: #eceff2;
   height: 32px;
 }
-/* line 618, sass/_header.scss */
+/* line 626, sass/_header.scss */
 header .sec-bottom .highlight-view {
   text-align: center;
 }
-/* line 620, sass/_header.scss */
+/* line 628, sass/_header.scss */
 header .sec-bottom .highlight-view .hl-cont {
   margin: 0 auto;
   position: relative;
   height: 32px;
 }
-/* line 625, sass/_header.scss */
+/* line 633, sass/_header.scss */
 header .sec-bottom .highlight-view .hl-cont > a.handler {
   position: absolute;
   top: 50%;
@@ -1191,19 +1199,19 @@ header .sec-bottom .highlight-view .hl-cont > a.handler {
   color: #cacaca;
   text-decoration: none;
 }
-/* line 634, sass/_header.scss */
+/* line 642, sass/_header.scss */
 header .sec-bottom .highlight-view .hl-cont > a.handler:hover {
   color: #666666;
 }
-/* line 638, sass/_header.scss */
+/* line 646, sass/_header.scss */
 header .sec-bottom .highlight-view .hl-cont > a.handler.prev {
   left: 5px;
 }
-/* line 641, sass/_header.scss */
+/* line 649, sass/_header.scss */
 header .sec-bottom .highlight-view .hl-cont > a.handler.next {
   right: 5px;
 }
-/* line 646, sass/_header.scss */
+/* line 654, sass/_header.scss */
 header .sec-bottom .highlight-view .hl-cont ul {
   float: left;
   position: absolute;
@@ -1214,7 +1222,7 @@ header .sec-bottom .highlight-view .hl-cont ul {
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
 }
-/* line 656, sass/_header.scss */
+/* line 664, sass/_header.scss */
 header .sec-bottom .highlight-view .hl-cont ul li {
   display: none;
   background: #f09f0f;
@@ -1223,29 +1231,29 @@ header .sec-bottom .highlight-view .hl-cont ul li {
   font-size: 0.9em;
   font-weight: bold;
 }
-/* line 664, sass/_header.scss */
+/* line 672, sass/_header.scss */
 header .sec-bottom .highlight-view .hl-cont ul li.active {
   display: block;
 }
-/* line 668, sass/_header.scss */
+/* line 676, sass/_header.scss */
 header .sec-bottom .highlight-view .hl-cont ul li a {
   color: white;
   font-weight: normal;
 }
-/* line 678, sass/_header.scss */
+/* line 686, sass/_header.scss */
 header a, header a:visited {
   color: white;
 }
-/* line 682, sass/_header.scss */
+/* line 690, sass/_header.scss */
 header .logo {
   position: relative;
 }
-/* line 683, sass/_header.scss */
+/* line 691, sass/_header.scss */
 header .logo img {
   max-height: 50px;
   max-width: 100%;
 }
-/* line 690, sass/_header.scss */
+/* line 698, sass/_header.scss */
 header .logo .cimke {
   display: none;
   position: absolute;
@@ -1256,14 +1264,14 @@ header .logo .cimke {
   pointer-events: none;
 }
 
-/* line 703, sass/_header.scss */
+/* line 711, sass/_header.scss */
 .general-sidebar {
   width: 20%;
   float: left;
   display: table-cell;
   vertical-align: top;
 }
-/* line 710, sass/_header.scss */
+/* line 718, sass/_header.scss */
 .general-sidebar .menu li.menu-item {
   display: table;
   width: 100%;
@@ -1271,7 +1279,7 @@ header .logo .cimke {
   border: 1px solid #f0a114;
   background: #f3b03a;
 }
-/* line 717, sass/_header.scss */
+/* line 725, sass/_header.scss */
 .general-sidebar .menu li.menu-item a {
   display: table-cell;
   font-size: 1.1em;
@@ -1284,23 +1292,23 @@ header .logo .cimke {
   vertical-align: middle;
   text-decoration: none;
 }
-/* line 729, sass/_header.scss */
+/* line 737, sass/_header.scss */
 .general-sidebar .menu li.menu-item a img {
   float: left;
   margin-right: 5px;
   vertical-align: middle;
 }
-/* line 735, sass/_header.scss */
+/* line 743, sass/_header.scss */
 .general-sidebar .menu li.menu-item a i {
   width: 25px;
   height: 25px;
   font-size: 25px;
 }
-/* line 741, sass/_header.scss */
+/* line 749, sass/_header.scss */
 .general-sidebar .menu li.menu-item a span {
   line-height: 25px;
 }
-/* line 746, sass/_header.scss */
+/* line 754, sass/_header.scss */
 .general-sidebar .menu li.menu-item span.icon {
   width: 35px;
   text-align: center;
@@ -1308,19 +1316,19 @@ header .logo .cimke {
   vertical-align: middle;
   padding-left: 8px;
 }
-/* line 754, sass/_header.scss */
+/* line 762, sass/_header.scss */
 .general-sidebar .menu li.menu-item i.dashicons {
   line-height: 28px;
   font-size: 1.2em;
 }
-/* line 759, sass/_header.scss */
+/* line 767, sass/_header.scss */
 .general-sidebar .menu li.blank-divider {
   background: transparent;
   border: none;
   padding: 10px 0;
   display: block;
 }
-/* line 765, sass/_header.scss */
+/* line 773, sass/_header.scss */
 .general-sidebar .menu li.text-item-header {
   font-size: 1.1em;
   text-transform: uppercase;
@@ -1329,17 +1337,17 @@ header .logo .cimke {
   font-family: "PT Sans Narrow", sans-serif;
   text-align: center;
 }
-/* line 773, sass/_header.scss */
+/* line 781, sass/_header.scss */
 .general-sidebar .menu li.kat-child {
   border-left: 2px solid #cccccc;
 }
-/* line 775, sass/_header.scss */
+/* line 783, sass/_header.scss */
 .general-sidebar .menu li.kat-child a {
   font-weight: normal;
   font-size: 0.9em;
   text-transform: none;
 }
-/* line 781, sass/_header.scss */
+/* line 789, sass/_header.scss */
 .general-sidebar .menu li.text-thin a {
   font-weight: 400;
   font-size: 1.2em;
@@ -1348,11 +1356,11 @@ header .logo .cimke {
   width: 100%;
   text-transform: lowercase;
 }
-/* line 791, sass/_header.scss */
+/* line 799, sass/_header.scss */
 .general-sidebar .menu .webshop-cat-items li.cat-item {
   border-bottom: 1px solid #DCDCDC;
 }
-/* line 794, sass/_header.scss */
+/* line 802, sass/_header.scss */
 .general-sidebar .menu .webshop-cat-items li.cat-item a {
   font-weight: 400;
   font-size: 1.2em;
@@ -1361,12 +1369,12 @@ header .logo .cimke {
   width: 100%;
   text-transform: lowercase;
 }
-/* line 807, sass/_header.scss */
+/* line 815, sass/_header.scss */
 .general-sidebar .menu li.menu-item.has-icon.two-row:not(.text-thin) span.ic {
   display: table-cell;
   vertical-align: middle;
 }
-/* line 811, sass/_header.scss */
+/* line 819, sass/_header.scss */
 .general-sidebar .menu li.menu-item.has-icon.two-row:not(.text-thin) span.text {
   display: table-cell;
   vertical-align: middle;
@@ -1452,13 +1460,13 @@ header .logo .cimke {
   background-color: #26c6f7 !important;
 }
 
-/* line 58, sass/_base.scss */
+/* line 56, sass/_base.scss */
 .slideShow {
   position: relative;
   background: #FFFFFF;
   width: 100%;
 }
-/* line 63, sass/_base.scss */
+/* line 61, sass/_base.scss */
 .slideShow .info-box {
   position: absolute;
   color: white;
@@ -1470,16 +1478,16 @@ header .logo .cimke {
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
 }
-/* line 74, sass/_base.scss */
+/* line 72, sass/_base.scss */
 .slideShow .info-box .strip {
   position: relative;
   float: left;
 }
-/* line 78, sass/_base.scss */
+/* line 76, sass/_base.scss */
 .slideShow .info-box .strip > div:not(.more-link) {
   float: left;
 }
-/* line 81, sass/_base.scss */
+/* line 79, sass/_base.scss */
 .slideShow .info-box .strip .main {
   background: #c5161d;
   text-transform: uppercase;
@@ -1488,7 +1496,7 @@ header .logo .cimke {
   font-size: 3em;
   line-height: 1.2;
 }
-/* line 89, sass/_base.scss */
+/* line 87, sass/_base.scss */
 .slideShow .info-box .strip .second {
   background: #404040;
   padding: 8px;
@@ -1496,7 +1504,7 @@ header .logo .cimke {
   line-height: 1.2;
   margin-top: 10px;
 }
-/* line 99, sass/_base.scss */
+/* line 97, sass/_base.scss */
 .slideShow .more-link a {
   background: #c5161d;
   padding: 5px 10px;
@@ -1511,13 +1519,13 @@ header .logo .cimke {
   -ms-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 111, sass/_base.scss */
+/* line 109, sass/_base.scss */
 .slideShow .more-link {
   position: absolute;
   right: 0;
   bottom: -50px;
 }
-/* line 117, sass/_base.scss */
+/* line 115, sass/_base.scss */
 .slideShow .slick-dots {
   position: absolute;
   bottom: 15px;
@@ -1526,17 +1534,17 @@ header .logo .cimke {
   transform: translateX(-50%);
   z-index: 1000;
 }
-/* line 125, sass/_base.scss */
+/* line 123, sass/_base.scss */
 .slideShow .slick-slide {
   position: relative;
 }
-/* line 128, sass/_base.scss */
+/* line 126, sass/_base.scss */
 .slideShow .slick-dots li {
   float: left;
   margin: 0;
   display: block;
 }
-/* line 133, sass/_base.scss */
+/* line 131, sass/_base.scss */
 .slideShow .slick-dots li button {
   display: block;
   width: 12px;
@@ -1549,7 +1557,7 @@ header .logo .cimke {
   border: none;
   background: transparent;
 }
-/* line 146, sass/_base.scss */
+/* line 144, sass/_base.scss */
 .slideShow .slick-dots li button:before {
   color: #f09f0f;
   font-size: 10px;
@@ -1563,20 +1571,20 @@ header .logo .cimke {
   top: 0;
   text-shadow: none;
 }
-/* line 159, sass/_base.scss */
+/* line 157, sass/_base.scss */
 .slideShow .slick-dots li.slick-active button:before {
   color: #ffda00;
   font-size: 12px;
   content: "\f111";
   font-family: FontAwesome;
 }
-/* line 165, sass/_base.scss */
+/* line 163, sass/_base.scss */
 .slideShow .slidesjs-navigation {
   position: absolute;
   top: 0;
   z-index: 1000;
 }
-/* line 172, sass/_base.scss */
+/* line 170, sass/_base.scss */
 .slideShow .slick-prev,
 .slideShow .slick-next {
   background: #ffca00;
@@ -1594,15 +1602,15 @@ header .logo .cimke {
   filter: alpha(opacity=100);
   border: none;
 }
-/* line 188, sass/_base.scss */
+/* line 186, sass/_base.scss */
 .slideShow .slick-prev {
   left: 10px;
 }
-/* line 191, sass/_base.scss */
+/* line 189, sass/_base.scss */
 .slideShow .slick-next {
   right: 10px;
 }
-/* line 194, sass/_base.scss */
+/* line 192, sass/_base.scss */
 .slideShow .slick-prev:before {
   content: "\f104";
   font-size: 40px;
@@ -1615,7 +1623,7 @@ header .logo .cimke {
   top: 10px;
   left: 0;
 }
-/* line 206, sass/_base.scss */
+/* line 204, sass/_base.scss */
 .slideShow .slick-next:before {
   content: "\f105";
   font-size: 40px;
@@ -1628,13 +1636,13 @@ header .logo .cimke {
   top: 10px;
   right: 0;
 }
-/* line 219, sass/_base.scss */
+/* line 217, sass/_base.scss */
 .slideShow .slick-prev:hover,
 .slideShow .slick-next:hover {
   opacity: 1;
   filter: alpha(opacity=100);
 }
-/* line 225, sass/_base.scss */
+/* line 223, sass/_base.scss */
 .slideShow .slidesjs-stop,
 .slideShow .slidesjs-play {
   display: block;
@@ -1649,7 +1657,7 @@ header .logo .cimke {
   left: 10px;
   z-index: 1000;
 }
-/* line 239, sass/_base.scss */
+/* line 237, sass/_base.scss */
 .slideShow .slidesjs-stop:before,
 .slideShow .slidesjs-play:before {
   color: #fff;
@@ -1664,34 +1672,43 @@ header .logo .cimke {
   top: 0;
   text-shadow: 0 0 5px #c5161d;
 }
-/* line 252, sass/_base.scss */
+/* line 250, sass/_base.scss */
 .slideShow .slidesjs-play:before {
   content: "\f04b";
 }
 
-/* line 257, sass/_base.scss */
+/* line 258, sass/_base.scss */
+.category-listing .list-view > .grid-layout .grid-row.filter-sidebar {
+  flex-basis: 280px;
+}
+/* line 261, sass/_base.scss */
+.category-listing .list-view > .grid-layout .grid-row.products {
+  flex: 1;
+}
+
+/* line 268, sass/_base.scss */
 .shop-cat {
   display: table;
   width: 100%;
   background: #f2ae35;
   border-bottom: 2px solid #f09f0f;
 }
-/* line 263, sass/_base.scss */
+/* line 274, sass/_base.scss */
 .shop-cat .cat {
   display: table-cell;
   vertical-align: top;
   width: 25%;
 }
-/* line 269, sass/_base.scss */
+/* line 280, sass/_base.scss */
 .shop-cat .cat .img img {
   width: 100%;
   max-width: 100%;
 }
-/* line 275, sass/_base.scss */
+/* line 286, sass/_base.scss */
 .shop-cat .cat .title {
   text-align: center;
 }
-/* line 277, sass/_base.scss */
+/* line 288, sass/_base.scss */
 .shop-cat .cat .title a {
   color: #302003;
   font-weight: bold;
@@ -1699,40 +1716,40 @@ header .logo .cimke {
   padding: 10px 0;
 }
 
-/* line 287, sass/_base.scss */
+/* line 298, sass/_base.scss */
 .sub-categories {
   width: 100%;
   display: block;
   position: relative;
 }
-/* line 292, sass/_base.scss */
+/* line 303, sass/_base.scss */
 .sub-categories .title {
   padding: 10px 0;
   text-align: center;
 }
-/* line 296, sass/_base.scss */
+/* line 307, sass/_base.scss */
 .sub-categories .title h3 {
   color: black;
   font-size: 1.4em;
   letter-spacing: -1px;
 }
-/* line 302, sass/_base.scss */
+/* line 313, sass/_base.scss */
 .sub-categories .title a.back {
   font-size: 0.8em;
   color: #5c5c5c;
 }
-/* line 308, sass/_base.scss */
+/* line 319, sass/_base.scss */
 .sub-categories .item {
   display: inline-block;
   *display: inline;
   zoom: 1;
   width: 25%;
 }
-/* line 315, sass/_base.scss */
+/* line 326, sass/_base.scss */
 .sub-categories .item .img img {
   width: 100%;
 }
-/* line 320, sass/_base.scss */
+/* line 331, sass/_base.scss */
 .sub-categories .item .title a {
   font-weight: bold;
   display: block;
@@ -1742,37 +1759,37 @@ header .logo .cimke {
   color: #c5161d;
 }
 
-/* line 334, sass/_base.scss */
+/* line 345, sass/_base.scss */
 .webshop-product-top .items .item {
   margin-bottom: 15px;
 }
-/* line 335, sass/_base.scss */
+/* line 346, sass/_base.scss */
 .webshop-product-top .items .item a {
   text-decoration: none;
 }
-/* line 339, sass/_base.scss */
+/* line 350, sass/_base.scss */
 .webshop-product-top .items .item .irow {
   display: table;
   width: 100%;
 }
-/* line 345, sass/_base.scss */
+/* line 356, sass/_base.scss */
 .webshop-product-top .items .item .image, .webshop-product-top .items .item .details {
   display: table-cell;
   vertical-align: top;
 }
-/* line 350, sass/_base.scss */
+/* line 361, sass/_base.scss */
 .webshop-product-top .items .item .image {
   width: 25%;
   -webkit-box-shadow: 35px 11px 41px -5px #aaaaaa;
   -mozbox-shadow: 35px 11px 41px -5px #aaaaaa;
   box-shadow: 35px 11px 41px -5px #aaaaaa;
 }
-/* line 356, sass/_base.scss */
+/* line 367, sass/_base.scss */
 .webshop-product-top .items .item .image img {
   width: 100%;
   max-width: 100%;
 }
-/* line 362, sass/_base.scss */
+/* line 373, sass/_base.scss */
 .webshop-product-top .items .item .details {
   background: #f2a927;
   width: 60%;
@@ -1780,7 +1797,7 @@ header .logo .cimke {
   -moz-box-shadow: inset 38px 0px 17px -32px #aaaaaa;
   box-shadow: inset 38px 0px 17px -32px #aaaaaa;
 }
-/* line 370, sass/_base.scss */
+/* line 381, sass/_base.scss */
 .webshop-product-top .items .item .details .info-row-top .garancia {
   background: #fff;
   float: right;
@@ -1795,26 +1812,26 @@ header .logo .cimke {
   border: 1px solid #f09f0f;
   border-right: none;
 }
-/* line 384, sass/_base.scss */
+/* line 395, sass/_base.scss */
 .webshop-product-top .items .item .details .info-row-top .garancia .year {
   color: #c5161d;
   font-size: 2em;
 }
-/* line 390, sass/_base.scss */
+/* line 401, sass/_base.scss */
 .webshop-product-top .items .item .details .info-row-top .infos {
   padding: 8px 0;
   color: black;
 }
-/* line 394, sass/_base.scss */
+/* line 405, sass/_base.scss */
 .webshop-product-top .items .item .details .info-row-top .infos .cimkek {
   float: right;
   margin-right: 5px;
 }
-/* line 398, sass/_base.scss */
+/* line 409, sass/_base.scss */
 .webshop-product-top .items .item .details .info-row-top .infos .cimkek img {
   height: 25px;
 }
-/* line 403, sass/_base.scss */
+/* line 414, sass/_base.scss */
 .webshop-product-top .items .item .details .info-row-top .infos .title h3 a {
   padding: 0 15px;
   color: black;
@@ -1822,13 +1839,13 @@ header .logo .cimke {
   font-weight: bold;
   line-height: 1;
 }
-/* line 410, sass/_base.scss */
+/* line 421, sass/_base.scss */
 .webshop-product-top .items .item .details .info-row-top .infos .subtitle {
   font-weight: bold;
   padding: 0 15px;
   margin-top: 5px;
 }
-/* line 415, sass/_base.scss */
+/* line 426, sass/_base.scss */
 .webshop-product-top .items .item .details .info-row-top .infos .params {
   font-family: "Roboto", sans-serif;
   padding: 0 15px;
@@ -1836,24 +1853,24 @@ header .logo .cimke {
   line-height: 1.6;
   margin-top: 8px;
 }
-/* line 422, sass/_base.scss */
+/* line 433, sass/_base.scss */
 .webshop-product-top .items .item .details .info-row-top .infos .params table td {
   padding: 0 5px 0 0;
 }
-/* line 426, sass/_base.scss */
+/* line 437, sass/_base.scss */
 .webshop-product-top .items .item .details .info-row-top .infos .params .short-desc {
   height: 65px;
   overflow: hidden;
   padding-right: 10px;
 }
-/* line 434, sass/_base.scss */
+/* line 445, sass/_base.scss */
 .webshop-product-top .items .item .details .info-row-bottom {
   display: table;
   margin-top: 10px;
   width: 100%;
   height: 50px;
 }
-/* line 440, sass/_base.scss */
+/* line 451, sass/_base.scss */
 .webshop-product-top .items .item .details .info-row-bottom .gift {
   font-family: "Roboto", sans-serif;
   color: black;
@@ -1862,12 +1879,12 @@ header .logo .cimke {
   font-size: 0.75em;
   line-height: 1;
 }
-/* line 448, sass/_base.scss */
+/* line 459, sass/_base.scss */
 .webshop-product-top .items .item .details .info-row-bottom .gift img {
   float: left;
   margin: 0 10px 5px 0;
 }
-/* line 454, sass/_base.scss */
+/* line 465, sass/_base.scss */
 .webshop-product-top .items .item .details .info-row-bottom .url a {
   background: #302003;
   padding: 3px 8px;
@@ -1877,19 +1894,19 @@ header .logo .cimke {
   -ms-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 461, sass/_base.scss */
+/* line 472, sass/_base.scss */
 .webshop-product-top .items .item .details .info-row-bottom .price {
   text-align: left;
   font-family: "Roboto", sans-serif;
 }
-/* line 465, sass/_base.scss */
+/* line 476, sass/_base.scss */
 .webshop-product-top .items .item .details .info-row-bottom .price .current {
   font-weight: bold;
   font-size: 1.6em;
   color: #c5161d;
   text-align: center;
 }
-/* line 471, sass/_base.scss */
+/* line 482, sass/_base.scss */
 .webshop-product-top .items .item .details .info-row-bottom .price .old {
   color: black;
   font-size: 0.7em;
@@ -1897,7 +1914,7 @@ header .logo .cimke {
   margin-bottom: 5px;
   margin-top: -5px;
 }
-/* line 478, sass/_base.scss */
+/* line 489, sass/_base.scss */
 .webshop-product-top .items .item .details .info-row-bottom .price .old .percents {
   text-decoration: none;
   color: white;
@@ -1920,7 +1937,7 @@ header .logo .cimke {
   -ms-border-radius: 3px;
   border-radius: 3px;
 }
-/* line 496, sass/_base.scss */
+/* line 507, sass/_base.scss */
 .webshop-product-top .items .item .details .info-row-bottom > div {
   display: table-cell;
   width: 33.333333333%;
@@ -1929,11 +1946,11 @@ header .logo .cimke {
   border-right: 1px solid #905f09;
   padding: 5px 10px;
 }
-/* line 504, sass/_base.scss */
+/* line 515, sass/_base.scss */
 .webshop-product-top .items .item .details .info-row-bottom > div:last-child {
   border-right: none;
 }
-/* line 509, sass/_base.scss */
+/* line 520, sass/_base.scss */
 .webshop-product-top .items .item .buttons {
   width: 100%;
   height: 100%;
@@ -1941,35 +1958,35 @@ header .logo .cimke {
   *display: block;
   zoom: 1;
 }
-/* line 516, sass/_base.scss */
+/* line 527, sass/_base.scss */
 .webshop-product-top .items .item .buttons div {
   text-align: center;
   font-weight: bold;
   width: 100%;
   display: table;
 }
-/* line 524, sass/_base.scss */
+/* line 535, sass/_base.scss */
 .webshop-product-top .items .item .buttons .holder {
   height: 100%;
 }
-/* line 528, sass/_base.scss */
+/* line 539, sass/_base.scss */
 .webshop-product-top .items .item .buttons a {
   display: table-cell;
   color: white;
   font-size: 1.25em;
   vertical-align: middle;
 }
-/* line 535, sass/_base.scss */
+/* line 546, sass/_base.scss */
 .webshop-product-top .items .item .buttons div.watch:not(.autoheight) {
   height: 128px;
   background: #302003;
 }
-/* line 540, sass/_base.scss */
+/* line 551, sass/_base.scss */
 .webshop-product-top .items .item .buttons div.order:not(.autoheight) {
   height: 81px;
   background: #c5161d;
 }
-/* line 546, sass/_base.scss */
+/* line 557, sass/_base.scss */
 .webshop-product-top .items .item .extra-info {
   display: table;
   width: 60%;
@@ -1977,7 +1994,7 @@ header .logo .cimke {
   color: white;
   background: black;
 }
-/* line 553, sass/_base.scss */
+/* line 564, sass/_base.scss */
 .webshop-product-top .items .item .extra-info .each {
   display: table-cell;
   vertical-align: top;
@@ -1989,12 +2006,12 @@ header .logo .cimke {
   border-top: 3px solid black;
   border-bottom: 3px solid black;
 }
-/* line 564, sass/_base.scss */
+/* line 575, sass/_base.scss */
 .webshop-product-top .items .item .extra-info .each:last-child {
   border-right: none;
 }
 
-/* line 573, sass/_base.scss */
+/* line 584, sass/_base.scss */
 .home h1.stitle, .home h3.stitle {
   text-transform: uppercase;
   font-size: 1.6em;
@@ -2003,7 +2020,7 @@ header .logo .cimke {
   color: #302003;
 }
 
-/* line 583, sass/_base.scss */
+/* line 594, sass/_base.scss */
 .category-listing h1 {
   text-transform: uppercase;
   font-size: 1.6em;
@@ -2011,12 +2028,12 @@ header .logo .cimke {
   margin: 10px;
   color: #302003;
 }
-/* line 592, sass/_base.scss */
+/* line 603, sass/_base.scss */
 .category-listing .category-title .filters {
   float: right;
   margin-right: 5px;
 }
-/* line 596, sass/_base.scss */
+/* line 607, sass/_base.scss */
 .category-listing .category-title .filters ul li {
   padding: 0 2px;
   float: right;
@@ -2024,7 +2041,7 @@ header .logo .cimke {
   height: 25px;
   line-height: 25px;
 }
-/* line 602, sass/_base.scss */
+/* line 613, sass/_base.scss */
 .category-listing .category-title .filters ul li button {
   background: #c07f0c;
   color: white;
@@ -2033,7 +2050,7 @@ header .logo .cimke {
   border: 1px solid #905f09;
   line-height: 1;
 }
-/* line 611, sass/_base.scss */
+/* line 622, sass/_base.scss */
 .category-listing .category-title .filters ul li select {
   padding: 5px;
   font-size: 0.8em;
@@ -2041,12 +2058,12 @@ header .logo .cimke {
   height: 25px;
 }
 
-/* line 627, sass/_base.scss */
+/* line 638, sass/_base.scss */
 .product-view .divider {
   height: 2px;
   margin: 10px 0;
 }
-/* line 632, sass/_base.scss */
+/* line 643, sass/_base.scss */
 .product-view .cetelem-calc-btn {
   position: relative;
   background: #71C54E;
@@ -2057,10 +2074,10 @@ header .logo .cimke {
   font-size: 0.75em;
   margin-top: 20px;
 }
-/* line 642, sass/_base.scss */
+/* line 653, sass/_base.scss */
 .product-view .cetelem-calc-btn .cetelem-calc-box {
   position: absolute;
-  background: rgba(42, 117, 45, 0);
+  background: rgba(42, 117, 45, 0.9);
   bottom: 0;
   right: 100%;
   width: 300px;
@@ -2073,41 +2090,41 @@ header .logo .cimke {
   -moz-box-shadow: 0 3px 5px -3px #0b2f0c;
   box-shadow: 0 3px 5px -3px #0b2f0c;
 }
-/* line 658, sass/_base.scss */
+/* line 669, sass/_base.scss */
 .product-view .cetelem-calc-btn .cetelem-calc-box p {
   margin: 0 0 10px 0;
 }
-/* line 663, sass/_base.scss */
+/* line 674, sass/_base.scss */
 .product-view .cetelem-calc-btn:hover .cetelem-calc-box {
   display: block;
 }
-/* line 668, sass/_base.scss */
+/* line 679, sass/_base.scss */
 .product-view .cetelem-calc-btn.orange {
   background: #EF891E;
   margin-top: 0;
 }
-/* line 672, sass/_base.scss */
+/* line 683, sass/_base.scss */
 .product-view .cetelem-calc-btn.orange .cetelem-calc-box {
-  background: rgba(228, 127, 21, 0);
+  background: rgba(228, 127, 21, 0.94);
   font-size: 1em;
 }
-/* line 676, sass/_base.scss */
+/* line 687, sass/_base.scss */
 .product-view .cetelem-calc-btn.orange .cetelem-calc-box h3 {
   font-weight: bold;
   text-transform: uppercase;
   margin-bottom: 10px;
   font-size: 1.2em;
 }
-/* line 684, sass/_base.scss */
+/* line 695, sass/_base.scss */
 .product-view .cetelem-calc-btn.orange ol {
   list-style-type: decimal;
   margin: 0 0 0 10px;
 }
-/* line 688, sass/_base.scss */
+/* line 699, sass/_base.scss */
 .product-view .cetelem-calc-btn.orange ol li {
   margin: 4px 0;
 }
-/* line 693, sass/_base.scss */
+/* line 704, sass/_base.scss */
 .product-view .cetelem-calc-btn.orange:after {
   content: "";
   position: absolute;
@@ -2121,51 +2138,51 @@ header .logo .cimke {
   border-width: 10px;
   pointer-events: none;
 }
-/* line 708, sass/_base.scss */
+/* line 719, sass/_base.scss */
 .product-view #cart-msg {
   margin-bottom: 8px;
 }
-/* line 710, sass/_base.scss */
+/* line 721, sass/_base.scss */
 .product-view #cart-msg .error {
   background: #e7272f;
   color: white;
   padding: 5px;
   font-size: 0.8em;
 }
-/* line 716, sass/_base.scss */
+/* line 727, sass/_base.scss */
 .product-view #cart-msg .success {
   background: #00b300;
   color: white;
   padding: 5px;
   font-size: 0.8em;
 }
-/* line 723, sass/_base.scss */
+/* line 734, sass/_base.scss */
 .product-view .main-view {
   display: table;
   width: 100%;
 }
-/* line 726, sass/_base.scss */
+/* line 737, sass/_base.scss */
 .product-view .main-view .images, .product-view .main-view .data-view {
   display: table-cell;
   vertical-align: top;
 }
-/* line 731, sass/_base.scss */
+/* line 742, sass/_base.scss */
 .product-view .main-view .images {
   width: 40%;
 }
-/* line 735, sass/_base.scss */
+/* line 746, sass/_base.scss */
 .product-view .main-view .images .main-img img {
   width: 100%;
   max-width: 100%;
 }
-/* line 740, sass/_base.scss */
+/* line 751, sass/_base.scss */
 .product-view .main-view .images .main-img img.cetelem {
   position: absolute;
   width: auto;
   height: 60px;
   pointer-events: none;
 }
-/* line 747, sass/_base.scss */
+/* line 758, sass/_base.scss */
 .product-view .main-view .images .all {
   width: 350px;
   border: 25px solid rgba(0, 0, 0, 0);
@@ -2173,15 +2190,15 @@ header .logo .cimke {
   border-bottom: none;
   margin: 0 auto;
 }
-/* line 754, sass/_base.scss */
+/* line 765, sass/_base.scss */
 .product-view .main-view .images .all .slick-slide {
   padding: 5px !important;
 }
-/* line 758, sass/_base.scss */
+/* line 769, sass/_base.scss */
 .product-view .main-view .images .all img {
   border: 2px solid #f09f0f;
 }
-/* line 762, sass/_base.scss */
+/* line 773, sass/_base.scss */
 .product-view .main-view .images .all .slick-prev {
   background: url("//www.cp.tuzvedelmicentrum.web-pro.hu/src/images/arrow-left.png") no-repeat center;
   width: 20px;
@@ -2193,7 +2210,7 @@ header .logo .cimke {
   text-indent: -9999px;
   margin-top: -10px;
 }
-/* line 773, sass/_base.scss */
+/* line 784, sass/_base.scss */
 .product-view .main-view .images .all .slick-next {
   background: url("//www.cp.tuzvedelmicentrum.web-pro.hu/src/images/arrow-right.png") no-repeat center;
   width: 20px;
@@ -2205,23 +2222,23 @@ header .logo .cimke {
   text-indent: -9999px;
   margin-top: -10px;
 }
-/* line 787, sass/_base.scss */
+/* line 798, sass/_base.scss */
 .product-view .main-view .data-view {
   width: 60%;
 }
-/* line 792, sass/_base.scss */
+/* line 803, sass/_base.scss */
 .product-view .info {
   padding: 5px 0 0 5px;
 }
-/* line 795, sass/_base.scss */
+/* line 806, sass/_base.scss */
 .product-view .info table, .product-view .info table td {
   border: 1px solid #ddd;
 }
-/* line 798, sass/_base.scss */
+/* line 809, sass/_base.scss */
 .product-view .info table td {
   padding: 8px;
 }
-/* line 803, sass/_base.scss */
+/* line 814, sass/_base.scss */
 .product-view .free-transport {
   background: #f2ae35;
   padding: 10px;
@@ -2232,21 +2249,21 @@ header .logo .cimke {
   text-align: center;
   margin: 5px 0 5px 15px;
 }
-/* line 813, sass/_base.scss */
+/* line 824, sass/_base.scss */
 .product-view .free-transport img {
   margin-right: 8px;
   vertical-align: middle;
 }
-/* line 819, sass/_base.scss */
+/* line 830, sass/_base.scss */
 .product-view .links {
   padding: 0 0 0 15px;
 }
-/* line 822, sass/_base.scss */
+/* line 833, sass/_base.scss */
 .product-view .links ul li {
   float: left;
   margin: 0 3px;
 }
-/* line 826, sass/_base.scss */
+/* line 837, sass/_base.scss */
 .product-view .links ul li a {
   display: block;
   background: #f3b23f;
@@ -2259,96 +2276,96 @@ header .logo .cimke {
   -ms-border-radius: 8px;
   border-radius: 8px;
 }
-/* line 837, sass/_base.scss */
+/* line 848, sass/_base.scss */
 .product-view .links ul li a i {
   color: black;
 }
-/* line 844, sass/_base.scss */
+/* line 855, sass/_base.scss */
 .product-view .buy-basic-info {
   background: #f2ae35;
   padding: 15px;
   font-size: 0.9em;
   line-height: 120%;
 }
-/* line 850, sass/_base.scss */
+/* line 861, sass/_base.scss */
 .product-view .buy-basic-info h3 {
   margin: 8px 0 !important;
   display: block;
 }
-/* line 855, sass/_base.scss */
+/* line 866, sass/_base.scss */
 .product-view .buy-basic-info ul {
   margin-left: 10px;
 }
-/* line 859, sass/_base.scss */
+/* line 870, sass/_base.scss */
 .product-view .buy-basic-info li {
   list-style: disc;
   margin: 5px 0;
 }
-/* line 865, sass/_base.scss */
+/* line 876, sass/_base.scss */
 .product-view .switcherView {
   font-size: 0.8em;
   line-height: 135%;
 }
-/* line 869, sass/_base.scss */
+/* line 880, sass/_base.scss */
 .product-view .switcherView h1, .product-view .switcherView h2, .product-view .switcherView h3, .product-view .switcherView h4 {
   font-family: "Roboto", sans-serif;
   margin: 0 0 8px 0;
   font-weight: bold;
   color: black;
 }
-/* line 878, sass/_base.scss */
+/* line 889, sass/_base.scss */
 .product-view .data-view {
   padding-left: 15px;
 }
-/* line 881, sass/_base.scss */
+/* line 892, sass/_base.scss */
 .product-view .data-view .cimkek {
   float: right;
   margin: 10px 10px 0 0;
 }
-/* line 886, sass/_base.scss */
+/* line 897, sass/_base.scss */
 .product-view .data-view h1 {
   margin: 15px 0 8px 0;
   font-weight: bold;
   color: black;
   font-size: 2.8em;
 }
-/* line 892, sass/_base.scss */
+/* line 903, sass/_base.scss */
 .product-view .data-view .cat {
   color: #c5161d;
   font-weight: bold;
   font-size: 1.3em;
 }
-/* line 898, sass/_base.scss */
+/* line 909, sass/_base.scss */
 .product-view .data-view .rack {
   font-weight: bold;
   color: black;
   font-size: 1em;
 }
-/* line 902, sass/_base.scss */
+/* line 913, sass/_base.scss */
 .product-view .data-view .rack .title {
   font-size: 0.7em;
 }
-/* line 907, sass/_base.scss */
+/* line 918, sass/_base.scss */
 .product-view .data-view .rack .garancia img {
   float: left;
   margin-right: 5px;
   vertical-align: middle;
 }
-/* line 912, sass/_base.scss */
+/* line 923, sass/_base.scss */
 .product-view .data-view .rack .garancia .year {
   color: #c5161d;
 }
-/* line 917, sass/_base.scss */
+/* line 928, sass/_base.scss */
 .product-view .data-view .rack .status {
   font-size: 1.1em;
   line-height: 1.2;
 }
-/* line 922, sass/_base.scss */
+/* line 933, sass/_base.scss */
 .product-view .data-view .rack .in_stock {
   font-size: 0.8em;
   color: #000;
 }
-/* line 929, sass/_base.scss */
+/* line 940, sass/_base.scss */
 .product-view .data-view .action-bar a {
   display: block;
   color: #454545;
@@ -2357,52 +2374,52 @@ header .logo .cimke {
   font-size: 0.8em;
   text-decoration: underline;
 }
-/* line 939, sass/_base.scss */
+/* line 950, sass/_base.scss */
 .product-view .data-view .current-variation {
   font-weight: bold;
   color: black;
   font-size: 1.2em;
   margin-bottom: 20px;
 }
-/* line 945, sass/_base.scss */
+/* line 956, sass/_base.scss */
 .product-view .data-view .current-variation strong {
   font-family: "Roboto", sans-serif;
   color: black;
 }
-/* line 949, sass/_base.scss */
+/* line 960, sass/_base.scss */
 .product-view .data-view .current-variation .title {
   font-size: 0.7em;
 }
-/* line 954, sass/_base.scss */
+/* line 965, sass/_base.scss */
 .product-view .data-view .gift {
   margin-top: 15px;
   font-size: 1.3em;
   font-weight: bold;
   color: black;
 }
-/* line 960, sass/_base.scss */
+/* line 971, sass/_base.scss */
 .product-view .data-view .gift img {
   float: left;
   margin: 0 15px 15px 0;
   vertical-align: middle;
   height: 40px;
 }
-/* line 969, sass/_base.scss */
+/* line 980, sass/_base.scss */
 .product-view .data-view .prices .price-head {
   font-weight: bold;
   color: #c5161d;
 }
-/* line 974, sass/_base.scss */
+/* line 985, sass/_base.scss */
 .product-view .data-view .prices .old {
   line-height: 35px;
 }
-/* line 977, sass/_base.scss */
+/* line 988, sass/_base.scss */
 .product-view .data-view .prices .old .price {
   font-size: 0.9em;
   color: black;
   font-family: "Roboto", sans-serif;
 }
-/* line 983, sass/_base.scss */
+/* line 994, sass/_base.scss */
 .product-view .data-view .prices .old .discount_percent {
   float: right;
   text-decoration: none;
@@ -2428,27 +2445,27 @@ header .logo .cimke {
   -ms-border-radius: 3px;
   border-radius: 3px;
 }
-/* line 1003, sass/_base.scss */
+/* line 1014, sass/_base.scss */
 .product-view .data-view .prices .current {
   font-size: 2.4em;
   font-weight: bold;
   font-family: "Roboto", sans-serif;
   color: #c5161d;
 }
-/* line 1010, sass/_base.scss */
+/* line 1021, sass/_base.scss */
 .product-view .data-view .prices .partner-price {
   font-size: 1.4em;
   font-weight: bold;
   font-family: "Roboto", sans-serif;
   color: #604006;
 }
-/* line 1016, sass/_base.scss */
+/* line 1027, sass/_base.scss */
 .product-view .data-view .prices .partner-price strong {
   font-weight: 400;
   font-size: 0.7em;
   line-height: 1.4;
 }
-/* line 1024, sass/_base.scss */
+/* line 1035, sass/_base.scss */
 .product-view .data-view .add-to-card button {
   margin-top: 15px;
   background: #c5161d;
@@ -2461,19 +2478,19 @@ header .logo .cimke {
   font-size: 1.15em;
   font-weight: bold;
 }
-/* line 1036, sass/_base.scss */
+/* line 1047, sass/_base.scss */
 .product-view .data-view .add-to-card button img {
   vertical-align: middle;
 }
 
-/* line 1041, sass/_base.scss */
+/* line 1052, sass/_base.scss */
 .menu-widget {
   width: 100%;
   position: relative;
   background: #d88f0e;
   padding-bottom: 20px;
 }
-/* line 1047, sass/_base.scss */
+/* line 1058, sass/_base.scss */
 .menu-widget .head {
   text-align: center;
   color: black;
@@ -2482,26 +2499,26 @@ header .logo .cimke {
   line-height: 1;
   padding: 10px 0;
 }
-/* line 1056, sass/_base.scss */
+/* line 1067, sass/_base.scss */
 .menu-widget .slides {
   width: 209px;
   margin: 0;
 }
-/* line 1060, sass/_base.scss */
+/* line 1071, sass/_base.scss */
 .menu-widget .slides .slide {
   width: 100%;
   max-width: 100%;
 }
-/* line 1064, sass/_base.scss */
+/* line 1075, sass/_base.scss */
 .menu-widget .slides .slide a {
   padding: 0 !important;
 }
-/* line 1068, sass/_base.scss */
+/* line 1079, sass/_base.scss */
 .menu-widget .slides .slide img {
   width: 100%;
   max-width: 100%;
 }
-/* line 1075, sass/_base.scss */
+/* line 1086, sass/_base.scss */
 .menu-widget .slick-next {
   background: url("//www.cp.tuzvedelmicentrum.web-pro.hu/src/images/arrow-right-sm.png") no-repeat center;
   width: 12px;
@@ -2514,7 +2531,7 @@ header .logo .cimke {
   margin-top: -10px;
   z-index: 999;
 }
-/* line 1088, sass/_base.scss */
+/* line 1099, sass/_base.scss */
 .menu-widget .slick-prev {
   background: url("//www.cp.tuzvedelmicentrum.web-pro.hu/src/images/arrow-left-sm.png") no-repeat center;
   width: 12px;
@@ -2528,7 +2545,7 @@ header .logo .cimke {
   z-index: 999;
 }
 
-/* line 1103, sass/_base.scss */
+/* line 1114, sass/_base.scss */
 .menu-widget.siker-tortenetek .text {
   position: absolute;
   top: 0;
@@ -2543,36 +2560,36 @@ header .logo .cimke {
   filter: alpha(opacity=70);
 }
 
-/* line 1121, sass/_base.scss */
+/* line 1132, sass/_base.scss */
 .search .search-hashs {
   font-size: 1.2em;
   color: #c5161d;
 }
-/* line 1125, sass/_base.scss */
+/* line 1136, sass/_base.scss */
 .search .subtitles {
   padding: 0 15px 15px 15px;
   line-height: 150%;
 }
 
-/* line 1131, sass/_base.scss */
+/* line 1142, sass/_base.scss */
 .no-product-items {
   text-align: center;
   padding: 80px 0;
   color: #784f08;
   line-height: 1.5;
 }
-/* line 1137, sass/_base.scss */
+/* line 1148, sass/_base.scss */
 .no-product-items strong {
   font-size: 1.4em;
   color: #c5161d;
 }
-/* line 1142, sass/_base.scss */
+/* line 1153, sass/_base.scss */
 .no-product-items .icon {
   color: #c5161d;
   font-size: 56px;
 }
 
-/* line 1148, sass/_base.scss */
+/* line 1159, sass/_base.scss */
 .cart-float {
   position: absolute;
   right: -81px;
@@ -2582,11 +2599,11 @@ header .logo .cimke {
   line-height: 70px;
   padding: 0 15px;
 }
-/* line 1156, sass/_base.scss */
+/* line 1167, sass/_base.scss */
 .cart-float img {
   vertical-align: middle;
 }
-/* line 1160, sass/_base.scss */
+/* line 1171, sass/_base.scss */
 .cart-float .cart-item-num-v {
   background: #c5161d;
   position: absolute;
@@ -2600,31 +2617,31 @@ header .logo .cimke {
   border-radius: 16px;
 }
 
-/* line 1170, sass/_base.scss */
+/* line 1181, sass/_base.scss */
 .cart-float > div * {
   cursor: auto;
 }
 
-/* line 1174, sass/_base.scss */
+/* line 1185, sass/_base.scss */
 .cart-float .sub .tipus {
   color: #fff;
   font-size: 0.8em;
 }
 
-/* line 1178, sass/_base.scss */
+/* line 1189, sass/_base.scss */
 .cart-float .sub .tipus .val {
   color: #fff;
   font-weight: bold;
 }
 
-/* line 1182, sass/_base.scss */
+/* line 1193, sass/_base.scss */
 .cart-float .sub .ar {
   color: #fff;
   font-size: 0.95em;
   font-weight: bold;
 }
 
-/* line 1187, sass/_base.scss */
+/* line 1198, sass/_base.scss */
 .cart-float .floating {
   display: none;
   background: black;
@@ -2640,70 +2657,70 @@ header .logo .cimke {
   box-shadow: 0 0 10px -2px #888888;
 }
 
-/* line 1202, sass/_base.scss */
+/* line 1213, sass/_base.scss */
 .cart-float:hover .floating,
 .cart-float.opened .floating {
   display: block;
 }
 
-/* line 1206, sass/_base.scss */
+/* line 1217, sass/_base.scss */
 #cart-msg {
   padding: 0 0 8px 0;
 }
-/* line 1209, sass/_base.scss */
+/* line 1220, sass/_base.scss */
 #cart-msg .success {
   color: #79a04c;
   padding: 4px 8px;
   border: 1px solid #79a04c;
 }
-/* line 1214, sass/_base.scss */
+/* line 1225, sass/_base.scss */
 #cart-msg .error {
   color: #c04848;
   padding: 4px 8px;
   border: 1px solid #c04848;
 }
 
-/* line 1222, sass/_base.scss */
+/* line 1233, sass/_base.scss */
 #cartContent {
   max-height: 350px;
   overflow: auto;
 }
-/* line 1226, sass/_base.scss */
+/* line 1237, sass/_base.scss */
 #cartContent .noItem {
   text-align: center;
   padding: 40px 0 20px 0;
 }
-/* line 1230, sass/_base.scss */
+/* line 1241, sass/_base.scss */
 #cartContent .noItem:before {
   font-family: FontAwesome;
   content: "\f009";
   font-size: 48px;
   color: #d7d7d7;
 }
-/* line 1236, sass/_base.scss */
+/* line 1247, sass/_base.scss */
 #cartContent .noItem .inf {
   font-family: 'Din Cond', sans-serif;
   font-size: 1em;
 }
-/* line 1241, sass/_base.scss */
+/* line 1252, sass/_base.scss */
 #cartContent .item {
   position: relative;
   padding: 12px;
   border-bottom: 1px solid #eceff2;
 }
-/* line 1246, sass/_base.scss */
+/* line 1257, sass/_base.scss */
 #cartContent .item .img {
   float: left;
   margin: 0 8px 0 0;
   width: 75px;
   height: 75px;
 }
-/* line 1252, sass/_base.scss */
+/* line 1263, sass/_base.scss */
 #cartContent .item .img img {
   max-width: 68px;
   max-height: 68px;
 }
-/* line 1256, sass/_base.scss */
+/* line 1267, sass/_base.scss */
 #cartContent .item .info {
   z-index: 10;
   position: relative;
@@ -2711,42 +2728,42 @@ header .logo .cimke {
   line-height: 24px;
   font-size: 0.8em;
 }
-/* line 1263, sass/_base.scss */
+/* line 1274, sass/_base.scss */
 #cartContent .item .adder {
   position: absolute;
   bottom: 0;
   right: 0;
 }
-/* line 1268, sass/_base.scss */
+/* line 1279, sass/_base.scss */
 #cartContent .item .adder i {
   cursor: pointer;
   z-index: 100;
   margin-left: 4px;
 }
-/* line 1273, sass/_base.scss */
+/* line 1284, sass/_base.scss */
 #cartContent .item .info .name .in {
   font-weight: bold;
   font-size: 1.2em;
 }
-/* line 1277, sass/_base.scss */
+/* line 1288, sass/_base.scss */
 #cartContent .item .info .remove {
   cursor: pointer;
 }
-/* line 1280, sass/_base.scss */
+/* line 1291, sass/_base.scss */
 #cartContent .item .info .name a {
   font-size: 1.5em;
   color: #f09f0f;
   line-height: 18px;
   font-weight: bold;
 }
-/* line 1287, sass/_base.scss */
+/* line 1298, sass/_base.scss */
 #cartContent .item .info .name a {
   font-size: 1.5em;
   color: #f09f0f;
   line-height: 18px;
   font-weight: bold;
 }
-/* line 1293, sass/_base.scss */
+/* line 1304, sass/_base.scss */
 #cartContent .item .remove {
   position: absolute;
   top: -5px;
@@ -2755,28 +2772,28 @@ header .logo .cimke {
   color: #bdc0c2;
   font-size: 20px;
 }
-/* line 1301, sass/_base.scss */
+/* line 1312, sass/_base.scss */
 #cartContent .item .sub .ar {
   color: #c5161d;
   font-size: 1.3em;
   font-weight: bold;
 }
-/* line 1306, sass/_base.scss */
+/* line 1317, sass/_base.scss */
 #cartContent .item .info .remove :hover {
   cursor: pointer;
 }
-/* line 1310, sass/_base.scss */
+/* line 1321, sass/_base.scss */
 #cartContent .item:last-child {
   border-bottom: none;
 }
 
-/* line 1316, sass/_base.scss */
+/* line 1327, sass/_base.scss */
 .places-bar {
   display: table;
   width: 100%;
   line-height: 120%;
 }
-/* line 1324, sass/_base.scss */
+/* line 1335, sass/_base.scss */
 .places-bar .search-places,
 .places-bar .current-place,
 .places-bar .webshop-btn {
@@ -2784,7 +2801,7 @@ header .logo .cimke {
   vertical-align: middle;
   padding: 0px 8px;
 }
-/* line 1331, sass/_base.scss */
+/* line 1342, sass/_base.scss */
 .places-bar .search-places {
   width: 15%;
   color: white;
@@ -2792,37 +2809,37 @@ header .logo .cimke {
   background: #905f09;
   font-weight: bold;
 }
-/* line 1339, sass/_base.scss */
+/* line 1350, sass/_base.scss */
 .places-bar .current-place {
   color: white;
   background: #604006;
   padding: 4px 8px;
 }
-/* line 1344, sass/_base.scss */
+/* line 1355, sass/_base.scss */
 .places-bar .current-place .title {
   font-weight: bold;
   text-transform: uppercase;
   margin-bottom: 5px;
 }
-/* line 1350, sass/_base.scss */
+/* line 1361, sass/_base.scss */
 .places-bar .current-place .place-info {
   font-size: 0.95em;
 }
-/* line 1352, sass/_base.scss */
+/* line 1363, sass/_base.scss */
 .places-bar .current-place .place-info .place-name {
   font-weight: bold;
 }
-/* line 1356, sass/_base.scss */
+/* line 1367, sass/_base.scss */
 .places-bar .current-place .place-phone {
   float: left;
   width: 70%;
   text-align: left;
 }
-/* line 1360, sass/_base.scss */
+/* line 1371, sass/_base.scss */
 .places-bar .current-place .place-phone strong {
   color: white;
 }
-/* line 1364, sass/_base.scss */
+/* line 1375, sass/_base.scss */
 .places-bar .current-place .trackto {
   padding: 0 8px 0 0;
   float: right;
@@ -2843,7 +2860,7 @@ header .logo .cimke {
   -ms-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 1375, sass/_base.scss */
+/* line 1386, sass/_base.scss */
 .places-bar .current-place .trackto .ico {
   background: #545454;
   padding: 0 5px;
@@ -2851,12 +2868,12 @@ header .logo .cimke {
   -webkit-border-radius: 5px 0 0 5px;
   -moz-border-radius: 5px 0 0 5px;
 }
-/* line 1384, sass/_base.scss */
+/* line 1395, sass/_base.scss */
 .places-bar .current-place .trackto a {
   color: white;
   text-decoration: none;
 }
-/* line 1393, sass/_base.scss */
+/* line 1404, sass/_base.scss */
 .places-bar .webshop-btn {
   width: 25%;
   color: white;
@@ -2869,19 +2886,19 @@ header .logo .cimke {
   font-size: 22px;
   font-family: "Roboto", sans-serif;
 }
-/* line 1406, sass/_base.scss */
+/* line 1417, sass/_base.scss */
 .places-bar .webshop-btn img {
   margin-right: 8px;
 }
 
-/* line 1412, sass/_base.scss */
+/* line 1423, sass/_base.scss */
 .places-bar-inheader {
   display: table;
   width: 100%;
   line-height: 120%;
   font-size: 0.75em;
 }
-/* line 1421, sass/_base.scss */
+/* line 1432, sass/_base.scss */
 .places-bar-inheader .search-places,
 .places-bar-inheader .current-place,
 .places-bar-inheader .webshop-btn {
@@ -2889,42 +2906,42 @@ header .logo .cimke {
   vertical-align: middle;
   padding: 0px 8px;
 }
-/* line 1428, sass/_base.scss */
+/* line 1439, sass/_base.scss */
 .places-bar-inheader .search-places {
   width: 15%;
   color: white;
   text-align: center;
   font-weight: bold;
 }
-/* line 1435, sass/_base.scss */
+/* line 1446, sass/_base.scss */
 .places-bar-inheader .current-place {
   color: white;
   padding: 4px 8px;
 }
-/* line 1439, sass/_base.scss */
+/* line 1450, sass/_base.scss */
 .places-bar-inheader .current-place .title {
   font-weight: bold;
   text-transform: uppercase;
 }
-/* line 1444, sass/_base.scss */
+/* line 1455, sass/_base.scss */
 .places-bar-inheader .current-place .place-info {
   font-size: 0.95em;
 }
-/* line 1446, sass/_base.scss */
+/* line 1457, sass/_base.scss */
 .places-bar-inheader .current-place .place-info .place-name {
   font-weight: bold;
 }
-/* line 1450, sass/_base.scss */
+/* line 1461, sass/_base.scss */
 .places-bar-inheader .current-place .place-phone {
   float: left;
   width: 70%;
   text-align: left;
 }
-/* line 1454, sass/_base.scss */
+/* line 1465, sass/_base.scss */
 .places-bar-inheader .current-place .place-phone strong {
   color: white;
 }
-/* line 1458, sass/_base.scss */
+/* line 1469, sass/_base.scss */
 .places-bar-inheader .current-place .trackto {
   padding: 0 8px 0 0;
   float: right;
@@ -2945,7 +2962,7 @@ header .logo .cimke {
   -ms-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 1469, sass/_base.scss */
+/* line 1480, sass/_base.scss */
 .places-bar-inheader .current-place .trackto .ico {
   background: #545454;
   padding: 0 5px;
@@ -2953,12 +2970,12 @@ header .logo .cimke {
   -webkit-border-radius: 5px 0 0 5px;
   -moz-border-radius: 5px 0 0 5px;
 }
-/* line 1478, sass/_base.scss */
+/* line 1489, sass/_base.scss */
 .places-bar-inheader .current-place .trackto a {
   color: white;
   text-decoration: none;
 }
-/* line 1487, sass/_base.scss */
+/* line 1498, sass/_base.scss */
 .places-bar-inheader .webshop-btn {
   width: 25%;
   color: white;
@@ -2971,37 +2988,37 @@ header .logo .cimke {
   font-size: 22px;
   font-family: "Roboto", sans-serif;
 }
-/* line 1500, sass/_base.scss */
+/* line 1511, sass/_base.scss */
 .places-bar-inheader .webshop-btn img {
   margin-right: 8px;
 }
 
-/* line 1507, sass/_base.scss */
+/* line 1518, sass/_base.scss */
 .recall h3 {
   color: white;
   background: #c5161d;
   padding: 15px 10px;
 }
-/* line 1512, sass/_base.scss */
+/* line 1523, sass/_base.scss */
 .recall h3 small {
   color: white;
 }
-/* line 1517, sass/_base.scss */
+/* line 1528, sass/_base.scss */
 .recall .row {
   margin-bottom: 10px;
 }
-/* line 1521, sass/_base.scss */
+/* line 1532, sass/_base.scss */
 .recall h4 {
   line-height: 150%;
   font-size: 1.4em;
   font-weight: bold;
   margin-bottom: 8px;
 }
-/* line 1528, sass/_base.scss */
+/* line 1539, sass/_base.scss */
 .recall .cont {
   padding: 15px;
 }
-/* line 1531, sass/_base.scss */
+/* line 1542, sass/_base.scss */
 .recall .cont .termek {
   color: #c5161d;
   font-weight: bold;
@@ -3011,7 +3028,7 @@ header .logo .cimke {
 
 /* Dialog box */
 /* line 391, scss/_base.scss */
-/* line 1544, sass/_base.scss */
+/* line 1555, sass/_base.scss */
 .dialogBox {
   position: fixed;
   width: 100%;
@@ -3021,14 +3038,14 @@ header .logo .cimke {
 }
 
 /* line 400, scss/_base.scss */
-/* line 1553, sass/_base.scss */
+/* line 1564, sass/_base.scss */
 .dialogBox.overlayed {
-  background: rgba(74, 74, 74, 0);
+  background: rgba(74, 74, 74, 0.9);
   pointer-events: auto;
 }
 
 /* line 404, scss/_base.scss */
-/* line 1559, sass/_base.scss */
+/* line 1570, sass/_base.scss */
 .dialogBox > .content {
   font-size: 13px;
   position: fixed;
@@ -3051,7 +3068,7 @@ header .logo .cimke {
 }
 
 /* line 426, scss/_base.scss */
-/* line 1581, sass/_base.scss */
+/* line 1592, sass/_base.scss */
 .dialogBox > .content i[class*=fa-spin] {
   font-size: 56px;
   color: #272117;
@@ -3066,7 +3083,7 @@ header .logo .cimke {
 }
 
 /* line 438, scss/_base.scss */
-/* line 1595, sass/_base.scss */
+/* line 1606, sass/_base.scss */
 .dialogBox > .content > span.exit {
   content: "\f00d";
   font-family: FontAwesome;
@@ -3081,14 +3098,14 @@ header .logo .cimke {
 }
 
 /* line 450, scss/_base.scss */
-/* line 1609, sass/_base.scss */
+/* line 1620, sass/_base.scss */
 .dialogBox > .content > span.exit:hover {
   opacity: 1;
   filter: alpha(opacity=100);
 }
 
 /* line 454, scss/_base.scss */
-/* line 1615, sass/_base.scss */
+/* line 1626, sass/_base.scss */
 .dialogBox > .content i[class*=fa-spin].loaded {
   display: none;
 }
@@ -3096,16 +3113,16 @@ header .logo .cimke {
 /**
  * CART
  */
-/* line 1623, sass/_base.scss */
+/* line 1634, sass/_base.scss */
 .cart .mustReload {
   visibility: hidden;
 }
 
-/* line 1626, sass/_base.scss */
+/* line 1637, sass/_base.scss */
 .cartItems .cart-head {
   padding: 15px;
 }
-/* line 1629, sass/_base.scss */
+/* line 1640, sass/_base.scss */
 .cartItems .cart-head h1 {
   text-transform: uppercase;
   font-weight: bold;
@@ -3113,38 +3130,38 @@ header .logo .cimke {
   color: #302003;
 }
 
-/* line 1636, sass/_base.scss */
+/* line 1647, sass/_base.scss */
 .cartItems .item {
   padding: 0;
   border-top: 1px solid #eee;
 }
 
-/* line 1640, sass/_base.scss */
+/* line 1651, sass/_base.scss */
 .cartItems .item:last-child {
   border-bottom: 1px solid #eee;
 }
 
-/* line 1643, sass/_base.scss */
+/* line 1654, sass/_base.scss */
 .cartItems .item > div[class*=col-] {
   padding: 8px 0;
 }
 
-/* line 1646, sass/_base.scss */
+/* line 1657, sass/_base.scss */
 .cartItems .item > div[class*=col-] span {
   line-height: 85px;
 }
 
-/* line 1649, sass/_base.scss */
+/* line 1660, sass/_base.scss */
 .cartItems .item > div[class*=col-]:first-child span {
   line-height: 28px;
 }
 
-/* line 1652, sass/_base.scss */
+/* line 1663, sass/_base.scss */
 .cartItems .item > div[class*=col-]:nth-child(even) {
   background-color: #f6f6f6;
 }
 
-/* line 1656, sass/_base.scss */
+/* line 1667, sass/_base.scss */
 .cartItems .item .img {
   float: left;
   margin-right: 12px;
@@ -3152,45 +3169,45 @@ header .logo .cimke {
   height: 85px;
 }
 
-/* line 1663, sass/_base.scss */
+/* line 1674, sass/_base.scss */
 .cartItems .item .sel-types,
 .order .items .sel-types {
   color: #aaa;
   line-height: 28px;
 }
 
-/* line 1669, sass/_base.scss */
+/* line 1680, sass/_base.scss */
 .cartItems .item .sel-types em,
 .order .items .sel-types em {
   font-size: 0.85em;
 }
 
-/* line 1673, sass/_base.scss */
+/* line 1684, sass/_base.scss */
 .cartItems .item .sel-types strong,
 .order .items .sel-types strong {
   color: black;
   margin-right: 8px;
 }
 
-/* line 1677, sass/_base.scss */
+/* line 1688, sass/_base.scss */
 .cartItems .item .subLine {
   font-size: 0.8em;
   color: #888;
   line-height: 28px;
 }
 
-/* line 1683, sass/_base.scss */
+/* line 1694, sass/_base.scss */
 .cartItems .item > td {
   vertical-align: middle;
 }
 
-/* line 1686, sass/_base.scss */
+/* line 1697, sass/_base.scss */
 .cartItems .item .img img {
   max-width: 75px;
   max-height: 75px;
 }
 
-/* line 1690, sass/_base.scss */
+/* line 1701, sass/_base.scss */
 .cartItems .item .nev a {
   font-family: 'Din Comp', sans-serif;
   text-transform: uppercase;
@@ -3200,31 +3217,31 @@ header .logo .cimke {
   line-height: 28px;
 }
 
-/* line 1698, sass/_base.scss */
+/* line 1709, sass/_base.scss */
 .cartItems .item-header {
   color: #aaa;
   font-family: 'Din Comp', sans-serif;
   margin-bottom: 8px;
 }
 
-/* line 1704, sass/_base.scss */
+/* line 1715, sass/_base.scss */
 .nextOrded .steps {
   display: none;
   background-color: #fff;
   padding: 15px;
 }
-/* line 1710, sass/_base.scss */
+/* line 1721, sass/_base.scss */
 .nextOrded .steps .input-fields .row {
   margin-bottom: 8px;
 }
 
-/* line 1715, sass/_base.scss */
+/* line 1726, sass/_base.scss */
 .nextOrded .steps.on {
   display: block;
   color: black;
 }
 
-/* line 1719, sass/_base.scss */
+/* line 1730, sass/_base.scss */
 .nextOrded {
   background: #c5161d;
   color: white;
@@ -3232,15 +3249,15 @@ header .logo .cimke {
   margin-top: 10px;
 }
 
-/* line 1727, sass/_base.scss */
+/* line 1738, sass/_base.scss */
 .nextOrded .coupon-code button, .nextOrded .coupon-code input, .nextOrded .referer-code button, .nextOrded .referer-code input {
   font-size: 12px;
 }
-/* line 1731, sass/_base.scss */
+/* line 1742, sass/_base.scss */
 .nextOrded .coupon-code button, .nextOrded .referer-code button {
   line-height: 20px;
 }
-/* line 1736, sass/_base.scss */
+/* line 1747, sass/_base.scss */
 .nextOrded .info-msg {
   font-size: 11px;
   line-height: 150%;
@@ -3248,7 +3265,7 @@ header .logo .cimke {
   margin: 4px 0;
 }
 
-/* line 1743, sass/_base.scss */
+/* line 1754, sass/_base.scss */
 .nextOrded h2 {
   margin: 0 0 10px 0;
   font-family: 'Din Comp', sans-serif;
@@ -3256,7 +3273,7 @@ header .logo .cimke {
   font-weight: bold;
 }
 
-/* line 1749, sass/_base.scss */
+/* line 1760, sass/_base.scss */
 .nextOrded .errMsg {
   background-color: #f00;
   color: white;
@@ -3265,7 +3282,7 @@ header .logo .cimke {
   display: block;
 }
 
-/* line 1757, sass/_base.scss */
+/* line 1768, sass/_base.scss */
 .nextOrded .head {
   padding: 8px 0;
   background-color: #E6E6E6;
@@ -3276,11 +3293,11 @@ header .logo .cimke {
   margin-bottom: 8px;
 }
 
-/* line 1766, sass/_base.scss */
+/* line 1777, sass/_base.scss */
 .nextOrded .cash {
   margin-top: 8px;
 }
-/* line 1769, sass/_base.scss */
+/* line 1780, sass/_base.scss */
 .nextOrded .cash input[type=number] {
   border: none;
   border-bottom: 1px dashed #aaa;
@@ -3289,24 +3306,24 @@ header .logo .cimke {
   padding: 0 5px;
 }
 
-/* line 1777, sass/_base.scss */
+/* line 1788, sass/_base.scss */
 .nextOrded .head.orange {
   background-color: black;
   color: white;
   font-size: 1.3em;
 }
 
-/* line 1782, sass/_base.scss */
+/* line 1793, sass/_base.scss */
 .nextOrded .col1 {
   padding-right: 8px !important;
 }
 
-/* line 1785, sass/_base.scss */
+/* line 1796, sass/_base.scss */
 .nextOrded .col2 {
   padding-left: 8px !important;
 }
 
-/* line 1788, sass/_base.scss */
+/* line 1799, sass/_base.scss */
 .nextOrded .regInfo {
   text-align: center;
   padding: 8px 0 5px 0;
@@ -3314,22 +3331,22 @@ header .logo .cimke {
   color: #888;
 }
 
-/* line 1794, sass/_base.scss */
+/* line 1805, sass/_base.scss */
 .nextOrded .logIn {
   text-align: center;
 }
 
-/* line 1797, sass/_base.scss */
+/* line 1808, sass/_base.scss */
 .nextOrded .logIn .kedvezmeny i {
   color: #3dafd0;
 }
 
-/* line 1800, sass/_base.scss */
+/* line 1811, sass/_base.scss */
 .nextOrded .logIn .kedvezmeny {
   font-size: 0.9em;
 }
 
-/* line 1803, sass/_base.scss */
+/* line 1814, sass/_base.scss */
 .nextOrded .logIn .kedvezmeny h4 {
   font-size: 1.1em;
   text-transform: uppercase;
@@ -3338,30 +3355,30 @@ header .logo .cimke {
   font-weight: bold;
 }
 
-/* line 1810, sass/_base.scss */
+/* line 1821, sass/_base.scss */
 .nextOrded .logIn .kedvezmeny a {
   color: #aaa;
   font-size: 0.7em;
   line-height: 18px;
 }
 
-/* line 1815, sass/_base.scss */
+/* line 1826, sass/_base.scss */
 .nextOrded .logIn a.btn {
   font-family: 'Din Cond', sans-serif;
   text-transform: uppercase;
 }
 
-/* line 1819, sass/_base.scss */
+/* line 1830, sass/_base.scss */
 .nextOrded .discount-info {
   text-align: center;
 }
 
-/* line 1822, sass/_base.scss */
+/* line 1833, sass/_base.scss */
 .nextOrded .discount-info .list {
   color: #444;
 }
 
-/* line 1827, sass/_base.scss */
+/* line 1838, sass/_base.scss */
 .nextOrded .discount-info .dc-num,
 .nextOrded .discount-info .list .num {
   font-size: 1.3em;
@@ -3371,18 +3388,18 @@ header .logo .cimke {
   font-weight: bold;
 }
 
-/* line 1834, sass/_base.scss */
+/* line 1845, sass/_base.scss */
 .nextOrded .discount-info .list .num {
   font-size: 1em;
   color: black;
 }
 
-/* line 1838, sass/_base.scss */
+/* line 1849, sass/_base.scss */
 .nextOrded .discount-info .list {
   line-height: 28px;
 }
 
-/* line 1841, sass/_base.scss */
+/* line 1852, sass/_base.scss */
 .nextOrded .allStepView {
   background-color: #302003;
   margin: 0;
@@ -3392,19 +3409,19 @@ header .logo .cimke {
   box-shadow: inset 0 5px 15px -10px black;
 }
 
-/* line 1849, sass/_base.scss */
+/* line 1860, sass/_base.scss */
 .nextOrded .allStepView ul {
   margin: 0;
 }
 
-/* line 1852, sass/_base.scss */
+/* line 1863, sass/_base.scss */
 .nextOrded .allStepView ul li {
   position: relative;
   float: left;
   width: 25%;
 }
 
-/* line 1857, sass/_base.scss */
+/* line 1868, sass/_base.scss */
 .nextOrded .allStepView ul li.active {
   background-color: black;
   -webkit-box-shadow: inset 0 5px 15px -10px black;
@@ -3412,7 +3429,7 @@ header .logo .cimke {
   box-shadow: inset 0 5px 15px -10px black;
 }
 
-/* line 1863, sass/_base.scss */
+/* line 1874, sass/_base.scss */
 .nextOrded .allStepView ul li.active:after {
   content: "";
   position: absolute;
@@ -3430,7 +3447,7 @@ header .logo .cimke {
   pointer-events: none;
 }
 
-/* line 1879, sass/_base.scss */
+/* line 1890, sass/_base.scss */
 .nextOrded .allStepView ul li.done {
   background-color: #971116;
   -webkit-box-shadow: inset 0 5px 15px -10px black;
@@ -3438,7 +3455,7 @@ header .logo .cimke {
   box-shadow: inset 0 5px 15px -10px black;
 }
 
-/* line 1885, sass/_base.scss */
+/* line 1896, sass/_base.scss */
 .nextOrded .allStepView ul li.done:after {
   content: "\f00c";
   font-family: 'FontAwesome';
@@ -3458,7 +3475,7 @@ header .logo .cimke {
   border-radius: 15px;
 }
 
-/* line 1900, sass/_base.scss */
+/* line 1911, sass/_base.scss */
 .nextOrded .allStepView ul li a {
   display: block;
   color: white;
@@ -3466,23 +3483,23 @@ header .logo .cimke {
   padding: 10px 0;
 }
 
-/* line 1906, sass/_base.scss */
+/* line 1917, sass/_base.scss */
 .nextOrded .atvetel {
   margin: 0;
 }
 
-/* line 1909, sass/_base.scss */
+/* line 1920, sass/_base.scss */
 .nextOrded .atvetel em {
   font-size: 0.8em;
   font-weight: normal;
 }
 
-/* line 1913, sass/_base.scss */
+/* line 1924, sass/_base.scss */
 .nextOrded .atvetel > li > input[type=radio] {
   display: none;
 }
 
-/* line 1916, sass/_base.scss */
+/* line 1927, sass/_base.scss */
 .nextOrded .atvetel > li > input[type=radio] + label {
   position: relative;
   z-index: 1;
@@ -3497,35 +3514,35 @@ header .logo .cimke {
   border-top: 1px solid #fff;
 }
 
-/* line 1929, sass/_base.scss */
+/* line 1940, sass/_base.scss */
 .nextOrded .atvetel > li:last-child > input[type=radio] + label {
   border-bottom: none;
 }
 
-/* line 1932, sass/_base.scss */
+/* line 1943, sass/_base.scss */
 .nextOrded .atvetel > li:first-child > input[type=radio] + label {
   border-top: none;
 }
 
-/* line 1935, sass/_base.scss */
+/* line 1946, sass/_base.scss */
 .nextOrded .atvetel > li > input[type=radio] + label:hover {
   background: #e3e3e3;
 }
 
-/* line 1938, sass/_base.scss */
+/* line 1949, sass/_base.scss */
 .nextOrded .atvetel > li > input[type=radio]:checked + label {
   background: #ae131a;
   color: white;
 }
 
-/* line 1942, sass/_base.scss */
+/* line 1953, sass/_base.scss */
 .nextOrded .atvetel > li > input[type=radio]:disabled + label {
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAMElEQVQIW2P89eLVfwYk8PHBIwZGZEGQAL+CHEIQJgDSBFaJLAAWfH3izH+QFmQAAEBWHrC7yezWAAAAAElFTkSuQmCC) repeat center;
   color: #cc2236;
   padding: 10px 25px;
 }
 
-/* line 1948, sass/_base.scss */
+/* line 1959, sass/_base.scss */
 .nextOrded .atvetel > li > input[type=radio] + label:after {
   position: absolute;
   content: '\f14a';
@@ -3534,23 +3551,23 @@ header .logo .cimke {
   color: #ddd;
 }
 
-/* line 1955, sass/_base.scss */
+/* line 1966, sass/_base.scss */
 .nextOrded .atvetel > li > input[type=radio]:checked + label:after {
   color: #fff;
 }
 
-/* line 1958, sass/_base.scss */
+/* line 1969, sass/_base.scss */
 .nextOrded .atvetel > li > input[type=radio]:disabled + label:after {
   content: '\f057';
   color: #b82531;
 }
 
-/* line 1963, sass/_base.scss */
+/* line 1974, sass/_base.scss */
 .orderFooter {
   text-align: right;
 }
 
-/* line 1968, sass/_base.scss */
+/* line 1979, sass/_base.scss */
 .orderFooter .btn-back,
 .orderFooter .btn-next,
 .orderFooter .btn-order {
@@ -3568,18 +3585,18 @@ header .logo .cimke {
   box-shadow: inset 0 5px 10px -10px black;
 }
 
-/* line 1983, sass/_base.scss */
+/* line 1994, sass/_base.scss */
 .orderFooter .btn-order {
   background: black;
   color: #fff;
 }
 
-/* line 1987, sass/_base.scss */
+/* line 1998, sass/_base.scss */
 .order-contact-info .row {
   margin-bottom: 5px;
 }
 
-/* line 1990, sass/_base.scss */
+/* line 2001, sass/_base.scss */
 .nextOrded .topDiv h4 {
   background-color: #E6E6E6;
   font-family: 'Din Comp',sans-serif;
@@ -3590,12 +3607,12 @@ header .logo .cimke {
   font-size: 1em;
 }
 
-/* line 1999, sass/_base.scss */
+/* line 2010, sass/_base.scss */
 .nextOrded .topDiv h4 + div {
   padding: 8px 0;
 }
 
-/* line 2003, sass/_base.scss */
+/* line 2014, sass/_base.scss */
 .nextOrded .steps .price {
   margin-top: 20px;
   padding-top: 20px;
@@ -3606,62 +3623,62 @@ header .logo .cimke {
   line-height: 25px;
 }
 
-/* line 2012, sass/_base.scss */
+/* line 2023, sass/_base.scss */
 .nextOrded .steps .price .p {
   width: 100%;
   text-align: right;
   display: table;
 }
 
-/* line 2017, sass/_base.scss */
+/* line 2028, sass/_base.scss */
 .nextOrded .steps .price .p.inf {
   border-bottom: 1px dashed #bbb;
   font-size: 12px;
   font-style: italic;
 }
 
-/* line 2022, sass/_base.scss */
+/* line 2033, sass/_base.scss */
 .nextOrded .steps .price .p .n {
   display: table-cell;
 }
 
-/* line 2025, sass/_base.scss */
+/* line 2036, sass/_base.scss */
 .nextOrded .steps .price .p .a {
   display: table-cell;
   width: 150px;
 }
 
-/* line 2029, sass/_base.scss */
+/* line 2040, sass/_base.scss */
 .nextOrded .steps .price .p .a .kedv {
   color: #cb2929;
   font-style: italic;
   font-size: 13px;
 }
 
-/* line 2034, sass/_base.scss */
+/* line 2045, sass/_base.scss */
 .nextOrded .steps .price .p .a .ar {
   font-weight: bold;
   color: black;
 }
 
-/* line 2038, sass/_base.scss */
+/* line 2049, sass/_base.scss */
 .nextOrded .steps .price .p.end {
   font-weight: bold;
   font-size: 18px;
 }
 
-/* line 2042, sass/_base.scss */
+/* line 2053, sass/_base.scss */
 .nextOrded .steps .price .p.end .a {
   font-weight: normal;
   font-size: 16px;
 }
 
-/* line 2046, sass/_base.scss */
+/* line 2057, sass/_base.scss */
 .nextOrded .steps .price .p.end .ar {
   color: #c5161d;
 }
 
-/* line 2050, sass/_base.scss */
+/* line 2061, sass/_base.scss */
 .nextOrded .step4 .kedvezmeny > div {
   margin-top: 8px;
   background: #F4902A;
@@ -3670,39 +3687,39 @@ header .logo .cimke {
   padding: 8px;
 }
 
-/* line 2057, sass/_base.scss */
+/* line 2068, sass/_base.scss */
 .nextOrded .step4 .kedvezmeny > div a {
   color: white;
   font-size: 0.9em;
 }
 
-/* line 2061, sass/_base.scss */
+/* line 2072, sass/_base.scss */
 .nextOrded .step0 .col2 {
   display: table;
   text-align: center;
 }
 
-/* line 2065, sass/_base.scss */
+/* line 2076, sass/_base.scss */
 .nextOrded .step0 .col2 .col2In {
   vertical-align: middle;
   display: table-cell;
   font-family: 'Din Comp', sans-serif;
 }
-/* line 2070, sass/_base.scss */
+/* line 2081, sass/_base.scss */
 .nextOrded .step0 .col2 .col2In .cartInfo {
   line-height: 200%;
 }
-/* line 2074, sass/_base.scss */
+/* line 2085, sass/_base.scss */
 .nextOrded .step0 .col2 .col2In .megrendel {
   margin-top: 15px;
 }
 
-/* line 2079, sass/_base.scss */
+/* line 2090, sass/_base.scss */
 .nextOrded .step0 .col2 .cartInfo .totalPrice {
   font-size: 1.4em;
 }
 
-/* line 2082, sass/_base.scss */
+/* line 2093, sass/_base.scss */
 .nextOrded .step0 .col2 .megrendel button {
   font-size: 1.2em;
   text-transform: uppercase;
@@ -3710,25 +3727,25 @@ header .logo .cimke {
   border: 1px solid #971116;
 }
 
-/* line 2088, sass/_base.scss */
+/* line 2099, sass/_base.scss */
 .nextOrded .step0 .col2 .cartInfo .totalPrice strike {
   color: #a7a7a7;
 }
 
-/* line 2091, sass/_base.scss */
+/* line 2102, sass/_base.scss */
 .nextOrded .step0 .col2 .cartInfo .totalPrice .standardPrice {
   color: red;
   font-size: 0.9em;
   text-decoration: line-through;
 }
 
-/* line 2096, sass/_base.scss */
+/* line 2107, sass/_base.scss */
 .nextOrded .step0 .col2 .cartInfo .totalPrice .kedvPrice {
   color: #00b300;
   font-size: 1.1em;
 }
 
-/* line 2100, sass/_base.scss */
+/* line 2111, sass/_base.scss */
 .nextOrded .step0 .col2 .cartInfo .totalPrice .discountPrice span {
   background: #8C8C8C;
   color: white;
@@ -3740,34 +3757,34 @@ header .logo .cimke {
   border-radius: 5px;
 }
 
-/* line 2108, sass/_base.scss */
+/* line 2119, sass/_base.scss */
 .orderDone {
   text-align: center;
   margin: 10% 0;
 }
 
-/* line 2112, sass/_base.scss */
+/* line 2123, sass/_base.scss */
 .orderDone h1 {
   color: #c5161d;
   text-transform: uppercase;
   font-family: "Roboto", sans-serif;
 }
 
-/* line 2117, sass/_base.scss */
+/* line 2128, sass/_base.scss */
 .orderDone h1 i {
   font-size: 86px;
   margin-bottom: 12px;
   color: #c5161d;
 }
 
-/* line 2124, sass/_base.scss */
+/* line 2135, sass/_base.scss */
 .order .items .img {
   float: left;
   height: 75px;
   width: 75px;
   margin: 0 10px 0 0;
 }
-/* line 2130, sass/_base.scss */
+/* line 2141, sass/_base.scss */
 .order .items .name a {
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
@@ -3776,23 +3793,23 @@ header .logo .cimke {
   color: #c5161d;
   line-height: 28px;
 }
-/* line 2138, sass/_base.scss */
+/* line 2149, sass/_base.scss */
 .order .orderpage .head {
   position: relative;
   padding: 20px;
 }
-/* line 2142, sass/_base.scss */
+/* line 2153, sass/_base.scss */
 .order .serial {
   float: right;
   font-size: 1.4em;
   font-family: "Roboto", sans-serif;
 }
-/* line 2148, sass/_base.scss */
+/* line 2159, sass/_base.scss */
 .order .orderState {
   padding: 10px 20px;
   line-height: 200%;
 }
-/* line 2153, sass/_base.scss */
+/* line 2164, sass/_base.scss */
 .order h1 {
   text-transform: uppercase;
   font-weight: bold;
@@ -3800,11 +3817,11 @@ header .logo .cimke {
   font-family: "Roboto", sans-serif;
   color: #c5161d;
 }
-/* line 2161, sass/_base.scss */
+/* line 2172, sass/_base.scss */
 .order .orderStatus {
   font-size: 1.5em;
 }
-/* line 2165, sass/_base.scss */
+/* line 2176, sass/_base.scss */
 .order h4 {
   font-size: 1.8em;
   padding: 8px 15px;
@@ -3815,23 +3832,23 @@ header .logo .cimke {
   margin: 0;
   color: white;
 }
-/* line 2175, sass/_base.scss */
+/* line 2186, sass/_base.scss */
 .order .items-table {
   padding: 5px;
 }
-/* line 2178, sass/_base.scss */
+/* line 2189, sass/_base.scss */
 .order .items-table table {
   margin: 0;
 }
-/* line 2182, sass/_base.scss */
+/* line 2193, sass/_base.scss */
 .order .items td {
   vertical-align: middle;
 }
-/* line 2186, sass/_base.scss */
+/* line 2197, sass/_base.scss */
 .order .datas .data {
   padding: 0 8px;
 }
-/* line 2189, sass/_base.scss */
+/* line 2200, sass/_base.scss */
 .order .datas .data .payu-paid-done {
   background: green;
   color: white;
@@ -3839,7 +3856,7 @@ header .logo .cimke {
   padding: 2px 5px;
   line-height: 1.4;
 }
-/* line 2196, sass/_base.scss */
+/* line 2207, sass/_base.scss */
 .order .datas .data .payu-paidonly {
   background: orange;
   color: white;
@@ -3847,7 +3864,7 @@ header .logo .cimke {
   padding: 2px 5px;
   line-height: 1.4;
 }
-/* line 2205, sass/_base.scss */
+/* line 2216, sass/_base.scss */
 .order .datas .head {
   font-size: 1em;
   padding: 8px;
@@ -3855,18 +3872,18 @@ header .logo .cimke {
   font-family: "Roboto", sans-serif;
   margin-bottom: 8px;
 }
-/* line 2214, sass/_base.scss */
+/* line 2225, sass/_base.scss */
 .order .inforows div {
   margin-bottom: 5px;
   line-height: 20px;
 }
-/* line 2218, sass/_base.scss */
+/* line 2229, sass/_base.scss */
 .order .inforows div:nth-child(odd) {
   color: #aaa;
   font-size: 0.8em;
 }
 
-/* line 2226, sass/_base.scss */
+/* line 2237, sass/_base.scss */
 .mustSelect {
   color: white;
   background: #c83636;
@@ -3874,25 +3891,25 @@ header .logo .cimke {
   font-size: 0.9em;
 }
 
-/* line 2235, sass/_base.scss */
+/* line 2246, sass/_base.scss */
 .cartItems .action i {
   color: #d7d7d7;
   margin: 0 2px;
   cursor: pointer;
 }
 
-/* line 2240, sass/_base.scss */
+/* line 2251, sass/_base.scss */
 .cartItems .action i:hover {
   color: black;
 }
 
-/* line 2243, sass/_base.scss */
+/* line 2254, sass/_base.scss */
 .mustSelect a {
   text-decoration: underline;
   color: white;
 }
 
-/* line 2248, sass/_base.scss */
+/* line 2259, sass/_base.scss */
 .cart-float .totals {
   line-height: 30px;
   padding: 12px;
@@ -3900,7 +3917,7 @@ header .logo .cimke {
   box-shadow: 0 -5px 15px -8px #888888;
 }
 
-/* line 2254, sass/_base.scss */
+/* line 2265, sass/_base.scss */
 .cart-float .totals a {
   text-decoration: none;
   margin-top: 5px;
@@ -3913,7 +3930,7 @@ header .logo .cimke {
   font-family: "Roboto", sans-serif;
 }
 
-/* line 2267, sass/_base.scss */
+/* line 2278, sass/_base.scss */
 .account h1 {
   text-transform: uppercase;
   font-weight: bold;
@@ -3922,11 +3939,11 @@ header .logo .cimke {
   margin-bottom: 10px;
   color: #302003;
 }
-/* line 2276, sass/_base.scss */
+/* line 2287, sass/_base.scss */
 .account .stack {
   margin-bottom: 10px;
 }
-/* line 2278, sass/_base.scss */
+/* line 2289, sass/_base.scss */
 .account .stack h3 {
   font-family: "Roboto", sans-serif;
   color: #a9a9a9;
@@ -3937,55 +3954,55 @@ header .logo .cimke {
   text-transform: uppercase;
   font-weight: 100;
 }
-/* line 2289, sass/_base.scss */
+/* line 2300, sass/_base.scss */
 .account .stack h4 {
   margin: 5px 0 15px 0;
   text-align: center;
   font-style: italic;
 }
-/* line 2296, sass/_base.scss */
+/* line 2307, sass/_base.scss */
 .account .stack a {
   color: #c5161d;
 }
-/* line 2301, sass/_base.scss */
+/* line 2312, sass/_base.scss */
 .account .row > div[class*=col-] {
   margin-bottom: 8px;
 }
-/* line 2304, sass/_base.scss */
+/* line 2315, sass/_base.scss */
 .account .row > div[class*=col-] label {
   margin: 10px 0;
 }
-/* line 2310, sass/_base.scss */
+/* line 2321, sass/_base.scss */
 .account .settings h4 {
   font-family: "Roboto", sans-serif;
   line-height: 160%;
   margin: 15px 0 25px 0;
 }
-/* line 2316, sass/_base.scss */
+/* line 2327, sass/_base.scss */
 .account .settings .row {
   margin: 5px 0;
 }
-/* line 2322, sass/_base.scss */
+/* line 2333, sass/_base.scss */
 .account .orderpage h4 {
   font-family: "Roboto", sans-serif;
   line-height: 160%;
   margin-bottom: 8px;
   margin-top: 16px;
 }
-/* line 2329, sass/_base.scss */
+/* line 2340, sass/_base.scss */
 .account .orderpage table thead tr td {
   font-size: 0.8em;
   text-align: center;
   color: #905f09;
   font-weight: bold;
 }
-/* line 2335, sass/_base.scss */
+/* line 2346, sass/_base.scss */
 .account .orderpage table tbody tr td {
   font-size: 0.9em;
   vertical-align: middle;
   color: black;
 }
-/* line 2342, sass/_base.scss */
+/* line 2353, sass/_base.scss */
 .account .flatInfoBox {
   border: 2px solid #f09f0f;
   border-right: none;
@@ -3995,28 +4012,28 @@ header .logo .cimke {
   display: table;
   width: 100%;
 }
-/* line 2351, sass/_base.scss */
+/* line 2362, sass/_base.scss */
 .account .flatInfoBox > div {
   width: 33%;
   display: table-cell;
   padding: 15px 10px;
 }
-/* line 2357, sass/_base.scss */
+/* line 2368, sass/_base.scss */
 .account .login-form {
   width: 500px;
   margin: 20px auto;
 }
 
-/* line 2365, sass/_base.scss */
+/* line 2376, sass/_base.scss */
 .account .grid-layout > .grid-row-80 {
   padding: 0 20px 0 0 !important;
 }
-/* line 2368, sass/_base.scss */
+/* line 2379, sass/_base.scss */
 .account .grid-layout > .grid-row-20 {
   order: 2;
 }
 
-/* line 2374, sass/_base.scss */
+/* line 2385, sass/_base.scss */
 .side-menu ul li a {
   display: block;
   padding: 5px 10px;
@@ -4026,11 +4043,11 @@ header .logo .cimke {
   text-decoration: none;
   border-left: 5px solid #eceff2;
 }
-/* line 2383, sass/_base.scss */
+/* line 2394, sass/_base.scss */
 .side-menu ul li {
   margin: 5px 0;
 }
-/* line 2388, sass/_base.scss */
+/* line 2399, sass/_base.scss */
 .side-menu ul li.head a,
 .side-menu ul li.head {
   text-transform: uppercase;
@@ -4038,25 +4055,25 @@ header .logo .cimke {
   font-size: 1.1em;
   margin: 8px 0;
 }
-/* line 2394, sass/_base.scss */
+/* line 2405, sass/_base.scss */
 .side-menu ul li.active a {
   border-left: 5px solid #c5161d;
   font-weight: bold;
 }
 
-/* line 2400, sass/_base.scss */
+/* line 2411, sass/_base.scss */
 input[type=checkbox] {
   display: none;
 }
 
-/* line 2403, sass/_base.scss */
+/* line 2414, sass/_base.scss */
 input[type=checkbox] + label {
   margin-left: 30px !important;
   line-height: 24px !important;
   cursor: pointer;
 }
 
-/* line 2408, sass/_base.scss */
+/* line 2419, sass/_base.scss */
 input[type=checkbox] + label:before {
   position: absolute;
   content: "";
@@ -4073,7 +4090,7 @@ input[type=checkbox] + label:before {
   box-shadow: inset 0 2px 0 #a5a5a5,inset 0 0 2px #888;
 }
 
-/* line 2423, sass/_base.scss */
+/* line 2434, sass/_base.scss */
 input[type=checkbox]:checked + label:before {
   content: "\f00c";
   font-family: FontAwesome;
@@ -4083,12 +4100,12 @@ input[type=checkbox]:checked + label:before {
   line-height: 24px;
 }
 
-/* line 2432, sass/_base.scss */
+/* line 2443, sass/_base.scss */
 .viewSwitcher {
   padding: 0;
 }
 
-/* line 2436, sass/_base.scss */
+/* line 2447, sass/_base.scss */
 .viewSwitcher > div {
   color: #000;
   font-weight: bold;
@@ -4102,7 +4119,7 @@ input[type=checkbox]:checked + label:before {
   cursor: pointer;
 }
 
-/* line 2448, sass/_base.scss */
+/* line 2459, sass/_base.scss */
 .viewSwitcher > div.bluebg {
   background: #396D9A;
   color: #FFF;
@@ -4110,38 +4127,38 @@ input[type=checkbox]:checked + label:before {
   border-bottom: none;
 }
 
-/* line 2454, sass/_base.scss */
+/* line 2465, sass/_base.scss */
 .viewSwitcher > div.bluebg.active {
   color: #000;
 }
 
-/* line 2457, sass/_base.scss */
+/* line 2468, sass/_base.scss */
 .viewSwitcher > div.active {
   background: #f2ae35;
   border: 1px solid #f2ae35;
   border-bottom: none;
 }
 
-/* line 2463, sass/_base.scss */
+/* line 2474, sass/_base.scss */
 .switcherView {
   display: none;
   background: #f2ae35;
   padding: 10px;
 }
-/* line 2467, sass/_base.scss */
+/* line 2478, sass/_base.scss */
 .switcherView .inset {
   background: #fff;
   padding: 10px;
 }
 
-/* line 2474, sass/_base.scss */
+/* line 2485, sass/_base.scss */
 .switcherView.view-downloads a {
   line-height: 220%;
   color: #444;
   font-family: "Roboto", sans-serif;
   text-decoration: none;
 }
-/* line 2481, sass/_base.scss */
+/* line 2492, sass/_base.scss */
 .switcherView.view-downloads a:before {
   font-family: FontAwesome;
   content: "\f0c1";
@@ -4149,17 +4166,17 @@ input[type=checkbox]:checked + label:before {
   margin-right: 8px;
   text-decoration: none;
 }
-/* line 2489, sass/_base.scss */
+/* line 2500, sass/_base.scss */
 .switcherView.view-downloads a:hover {
   color: #c5161d;
 }
 
-/* line 2494, sass/_base.scss */
+/* line 2505, sass/_base.scss */
 .switcherView.switch-view-active {
   display: block;
 }
 
-/* line 2498, sass/_base.scss */
+/* line 2509, sass/_base.scss */
 .dropdown-list-container {
   background-color: #f1f1f3;
   padding: 13px;
@@ -4169,7 +4186,7 @@ input[type=checkbox]:checked + label:before {
   cursor: pointer;
 }
 
-/* line 2506, sass/_base.scss */
+/* line 2517, sass/_base.scss */
 .dropdown-list-container .dropdown-list-selecting {
   display: none;
   position: absolute;
@@ -4182,17 +4199,17 @@ input[type=checkbox]:checked + label:before {
   width: 100%;
 }
 
-/* line 2518, sass/_base.scss */
+/* line 2529, sass/_base.scss */
 .dropdown-list-container .dropdown-list-selecting > div {
   padding: 5px 0;
 }
 
-/* line 2521, sass/_base.scss */
+/* line 2532, sass/_base.scss */
 .dropdown-list-container .dropdown-list-selecting.showed {
   display: block;
 }
 
-/* line 2526, sass/_base.scss */
+/* line 2537, sass/_base.scss */
 .dropdown-list-container:hover {
   background-color: #e9e9e9;
 }
@@ -4201,34 +4218,34 @@ input[type=checkbox]:checked + label:before {
 	display: block;
 }
 */
-/* line 2533, sass/_base.scss */
+/* line 2544, sass/_base.scss */
 .dropdown-list-container .dropdown-list-selecting > div:hover {
   background-color: #c8c8c8;
   cursor: pointer;
 }
 
-/* line 2539, sass/_base.scss */
+/* line 2550, sass/_base.scss */
 .referring-view .kimelt-link {
   position: absolute;
   right: 15px;
   margin-top: 24px;
   font-size: 0.8em;
 }
-/* line 2546, sass/_base.scss */
+/* line 2557, sass/_base.scss */
 .referring-view .main-info {
   padding: 10px 0;
 }
-/* line 2549, sass/_base.scss */
+/* line 2560, sass/_base.scss */
 .referring-view .main-info .code-view {
   float: right;
   width: 33%;
   padding: 0 0 0 25px;
 }
-/* line 2554, sass/_base.scss */
+/* line 2565, sass/_base.scss */
 .referring-view .main-info .code-view .img {
   text-align: center;
 }
-/* line 2558, sass/_base.scss */
+/* line 2569, sass/_base.scss */
 .referring-view .main-info .code-view .code {
   background: #c5161d;
   color: white;
@@ -4239,14 +4256,14 @@ input[type=checkbox]:checked + label:before {
   text-align: center;
   box-shadow: 3px 3px 0 black;
 }
-/* line 2570, sass/_base.scss */
+/* line 2581, sass/_base.scss */
 .referring-view .main-info h2 {
   font-family: "Roboto", sans-serif;
   color: #c5161d;
   line-height: 1.3;
   font-size: 1em;
 }
-/* line 2577, sass/_base.scss */
+/* line 2588, sass/_base.scss */
 .referring-view .main-info .desc {
   float: left;
   width: 67%;
@@ -4256,49 +4273,49 @@ input[type=checkbox]:checked + label:before {
   text-align: justify;
   line-height: 135%;
 }
-/* line 2586, sass/_base.scss */
+/* line 2597, sass/_base.scss */
 .referring-view .main-info .desc strong {
   color: black;
 }
-/* line 2592, sass/_base.scss */
+/* line 2603, sass/_base.scss */
 .referring-view .partner-referer-orders h2 {
   font-weight: bold;
   line-height: 2.5;
 }
-/* line 2599, sass/_base.scss */
+/* line 2610, sass/_base.scss */
 .referring-view .partner-referer-orders .row {
   font-size: 0.9em;
   color: #8c8c8c;
   line-height: 1.2;
 }
-/* line 2605, sass/_base.scss */
+/* line 2616, sass/_base.scss */
 .referring-view .partner-referer-orders .row.head {
   color: black;
   line-height: 1.5;
   font-weight: bold;
 }
-/* line 2611, sass/_base.scss */
+/* line 2622, sass/_base.scss */
 .referring-view .partner-referer-orders .price {
   font-weight: bold;
   color: #c5161d;
 }
-/* line 2616, sass/_base.scss */
+/* line 2627, sass/_base.scss */
 .referring-view .partner-referer-orders .total {
   border: 1px solid #ECECEC;
   padding: 8px;
   font-size: 1.1em;
 }
-/* line 2622, sass/_base.scss */
+/* line 2633, sass/_base.scss */
 .referring-view .partner-referer-orders .total div {
   margin: 0;
   color: black;
 }
-/* line 2627, sass/_base.scss */
+/* line 2638, sass/_base.scss */
 .referring-view .partner-referer-orders .total strong {
   color: #c5161d;
 }
 
-/* line 2635, sass/_base.scss */
+/* line 2646, sass/_base.scss */
 .coupon-sale-view .coupon {
   background: #c5161d;
   padding: 8px;
@@ -4307,28 +4324,28 @@ input[type=checkbox]:checked + label:before {
   line-height: 1.2;
   margin: 10px 0 5px 0;
 }
-/* line 2643, sass/_base.scss */
+/* line 2654, sass/_base.scss */
 .coupon-sale-view .coupon strong {
   font-size: 1.15em;
   color: white;
 }
-/* line 2648, sass/_base.scss */
+/* line 2659, sass/_base.scss */
 .coupon-sale-view .coupon em {
   font-size: 0.8em;
 }
-/* line 2654, sass/_base.scss */
+/* line 2665, sass/_base.scss */
 .coupon-sale-view .orders .no-item {
   text-align: center;
   margin: 10px 0;
   color: #905f09;
 }
 
-/* line 2663, sass/_base.scss */
+/* line 2674, sass/_base.scss */
 .referer-code label, .coupon-code label {
   margin: 8px 0;
 }
 
-/* line 2668, sass/_base.scss */
+/* line 2679, sass/_base.scss */
 .info-for-register {
   background: #c5161d;
   color: white;
@@ -4336,18 +4353,18 @@ input[type=checkbox]:checked + label:before {
   font-size: 0.8em;
   margin-top: 10px;
 }
-/* line 2675, sass/_base.scss */
+/* line 2686, sass/_base.scss */
 .info-for-register strong {
   font-size: 1.1em;
 }
-/* line 2679, sass/_base.scss */
+/* line 2690, sass/_base.scss */
 .info-for-register a {
   color: white;
   margin: 8px 0;
   font-size: 0.9em;
 }
 
-/* line 2686, sass/_base.scss */
+/* line 2697, sass/_base.scss */
 .partner-box {
   font-size: 0.8em;
   color: white;
@@ -4358,27 +4375,27 @@ input[type=checkbox]:checked + label:before {
   -ms-border-radius: 8px;
   border-radius: 8px;
 }
-/* line 2694, sass/_base.scss */
+/* line 2705, sass/_base.scss */
 .partner-box .title {
   line-height: 1.5;
 }
-/* line 2698, sass/_base.scss */
+/* line 2709, sass/_base.scss */
 .partner-box .partner {
   font-size: 1.3em;
   line-height: 1.5;
 }
-/* line 2702, sass/_base.scss */
+/* line 2713, sass/_base.scss */
 .partner-box .msg {
   text-align: center;
   font-size: 0.8em;
   line-height: 1;
 }
-/* line 2707, sass/_base.scss */
+/* line 2718, sass/_base.scss */
 .partner-box .msg i {
   font-size: 28px;
   width: 30px;
 }
-/* line 2713, sass/_base.scss */
+/* line 2724, sass/_base.scss */
 .partner-box .ico i {
   font-size: 34px;
   width: 35px;
@@ -4387,7 +4404,7 @@ input[type=checkbox]:checked + label:before {
   margin: 0 15px 0 0;
 }
 
-/* line 2721, sass/_base.scss */
+/* line 2732, sass/_base.scss */
 .partner-box:before {
   position: absolute;
   content: "";
@@ -4399,108 +4416,108 @@ input[type=checkbox]:checked + label:before {
   border-width: 13px;
 }
 
-/* line 2733, sass/_base.scss */
+/* line 2744, sass/_base.scss */
 .partner-box.partner-valid {
   background: #00b300;
 }
-/* line 2736, sass/_base.scss */
+/* line 2747, sass/_base.scss */
 .partner-box.partner-valid .ico i {
   font-size: 38px;
   width: 38px;
 }
 
-/* line 2741, sass/_base.scss */
+/* line 2752, sass/_base.scss */
 .partner-box.partner-valid:before {
   border-color: transparent transparent #00b300 transparent;
 }
 
-/* line 2744, sass/_base.scss */
+/* line 2755, sass/_base.scss */
 .partner-box.partner-invalid {
   background: #c5161d;
   text-align: left;
   line-height: 18px;
 }
 
-/* line 2749, sass/_base.scss */
+/* line 2760, sass/_base.scss */
 .partner-box.partner-invalid:before {
   border-color: transparent transparent #c5161d transparent;
 }
 
-/* line 2753, sass/_base.scss */
+/* line 2764, sass/_base.scss */
 .partner-box.partner-info {
   background: #F78520;
   text-align: left;
   line-height: 18px;
 }
 
-/* line 2758, sass/_base.scss */
+/* line 2769, sass/_base.scss */
 .partner-box.partner-info:before {
   border-color: transparent transparent #F78520 transparent;
 }
 
-/* line 2764, sass/_base.scss */
+/* line 2775, sass/_base.scss */
 .coupon-code .partner-box {
   margin-top: 16px;
   text-align: left;
   line-height: 18px;
 }
 
-/* line 2770, sass/_base.scss */
+/* line 2781, sass/_base.scss */
 .divider {
   height: 5px;
   background: #f09f0f;
   display: block;
 }
 
-/* line 2776, sass/_base.scss */
+/* line 2787, sass/_base.scss */
 .a-up a {
   font-size: 10px;
   color: #8c8c8c;
 }
 
-/* line 2782, sass/_base.scss */
+/* line 2793, sass/_base.scss */
 .documents h2 {
   color: black;
 }
-/* line 2785, sass/_base.scss */
+/* line 2796, sass/_base.scss */
 .documents .item {
   background: #f3b23f;
   padding: 8px;
   margin: 8px 0;
   border-left: 5px solid transparent;
 }
-/* line 2791, sass/_base.scss */
+/* line 2802, sass/_base.scss */
 .documents .item .icon {
   margin: 0 5px;
 }
-/* line 2795, sass/_base.scss */
+/* line 2806, sass/_base.scss */
 .documents .item .extension {
   font-size: 0.8em;
   color: #905f09;
 }
-/* line 2801, sass/_base.scss */
+/* line 2812, sass/_base.scss */
 .documents .item.unwatched {
   border-left: 5px solid #971116;
   background: #c5161d;
 }
-/* line 2805, sass/_base.scss */
+/* line 2816, sass/_base.scss */
 .documents .item.unwatched a {
   color: white;
 }
-/* line 2809, sass/_base.scss */
+/* line 2820, sass/_base.scss */
 .documents .item.unwatched .icon {
   color: #f18387;
 }
-/* line 2813, sass/_base.scss */
+/* line 2824, sass/_base.scss */
 .documents .item.unwatched .extension {
   color: #ec555b;
 }
 
-/* line 2820, sass/_base.scss */
+/* line 2831, sass/_base.scss */
 .alert-view h2 {
   color: #00a1e3;
 }
-/* line 2824, sass/_base.scss */
+/* line 2835, sass/_base.scss */
 .alert-view .item {
   border: 1px solid #eaeaea;
   background: #f5f5f5;
@@ -4514,15 +4531,15 @@ input[type=checkbox]:checked + label:before {
   -ms-border-radius: 3px;
   border-radius: 3px;
 }
-/* line 2835, sass/_base.scss */
+/* line 2846, sass/_base.scss */
 .alert-view .item .text {
   font-weight: bold;
 }
-/* line 2840, sass/_base.scss */
+/* line 2851, sass/_base.scss */
 .alert-view .item.info {
   border-left: 5px solid #8DDEFF;
 }
-/* line 2843, sass/_base.scss */
+/* line 2854, sass/_base.scss */
 .alert-view .item.info:before {
   content: "\f05a";
   line-height: 1;
@@ -4532,11 +4549,11 @@ input[type=checkbox]:checked + label:before {
   font-size: 22px;
   color: #8DDEFF;
 }
-/* line 2854, sass/_base.scss */
+/* line 2865, sass/_base.scss */
 .alert-view .item.alert {
   border-left: 5px solid #FF7077;
 }
-/* line 2857, sass/_base.scss */
+/* line 2868, sass/_base.scss */
 .alert-view .item.alert:before {
   content: "\f071";
   line-height: 1;
@@ -4546,7 +4563,7 @@ input[type=checkbox]:checked + label:before {
   font-size: 22px;
   color: #FF9CA0;
 }
-/* line 2868, sass/_base.scss */
+/* line 2879, sass/_base.scss */
 .alert-view .url {
   float: right;
   text-decoration: none;
@@ -4561,45 +4578,45 @@ input[type=checkbox]:checked + label:before {
   border-radius: 3px;
 }
 
-/* line 2880, sass/_base.scss */
+/* line 2891, sass/_base.scss */
 .menu-thanks {
   background: #f2ae35;
   text-align: center;
 }
-/* line 2884, sass/_base.scss */
+/* line 2895, sass/_base.scss */
 .menu-thanks .head {
   background: #f2a927;
   border-bottom: 2px dashed #f09f0f;
   font-weight: bold;
   text-transform: uppercase;
 }
-/* line 2891, sass/_base.scss */
+/* line 2902, sass/_base.scss */
 .menu-thanks .cont {
   color: #c5161d;
   padding-top: 10px;
   line-height: 1.3;
 }
-/* line 2896, sass/_base.scss */
+/* line 2907, sass/_base.scss */
 .menu-thanks .cont .number {
   font-family: "Roboto", sans-serif;
   font-size: 1.8em;
   font-weight: bold;
 }
 
-/* line 2906, sass/_base.scss */
+/* line 2917, sass/_base.scss */
 .casada-pont .row {
   margin-left: -5px;
   margin-right: -5px;
   font-size: 0.9em;
   color: #a2a2a2;
 }
-/* line 2912, sass/_base.scss */
+/* line 2923, sass/_base.scss */
 .casada-pont .row div[class*=col-sm] {
   padding-left: 5px;
   padding-right: 5px;
   position: relative;
 }
-/* line 2922, sass/_base.scss */
+/* line 2933, sass/_base.scss */
 .casada-pont * input[type=text],
 .casada-pont * input[type=tel],
 .casada-pont * input[type=email],
@@ -4618,58 +4635,58 @@ input[type=checkbox]:checked + label:before {
   -moz-box-shadow: none;
   box-shadow: none;
 }
-/* line 2937, sass/_base.scss */
+/* line 2948, sass/_base.scss */
 .casada-pont textarea::-webkit-input-placeholder,
 .casada-pont * input[type=text]::-webkit-input-placeholder {
   /* WebKit, Blink, Edge */
   color: #b7b7b7;
 }
-/* line 2941, sass/_base.scss */
+/* line 2952, sass/_base.scss */
 .casada-pont textarea:-moz-placeholder,
 .casada-pont * input[type=text]:-moz-placeholder {
   /* Mozilla Firefox 4 to 18 */
   color: #b7b7b7;
   opacity: 1;
 }
-/* line 2946, sass/_base.scss */
+/* line 2957, sass/_base.scss */
 .casada-pont textarea::-moz-placeholder,
 .casada-pont * input[type=text]::-moz-placeholder {
   /* Mozilla Firefox 19+ */
   color: #b7b7b7;
   opacity: 1;
 }
-/* line 2951, sass/_base.scss */
+/* line 2962, sass/_base.scss */
 .casada-pont textarea:-ms-input-placeholder,
 .casada-pont * input[type=text]:-ms-input-placeholder {
   /* Internet Explorer 10-11 */
   color: #b7b7b7;
 }
-/* line 2955, sass/_base.scss */
+/* line 2966, sass/_base.scss */
 .casada-pont textarea:placeholder-shown,
 .casada-pont * input[type=text]:placeholder-shown {
   /* Standard (https://drafts.csswg.org/selectors-4/#placeholder) */
   color: #b7b7b7;
 }
-/* line 2959, sass/_base.scss */
+/* line 2970, sass/_base.scss */
 .casada-pont * input[type=text]:focus {
   border: 1px solid #d9d9d9 !important;
 }
-/* line 2964, sass/_base.scss */
+/* line 2975, sass/_base.scss */
 .casada-pont .img-select label {
   cursor: pointer;
   border: 1px solid #d7d7d7;
   padding: 2px;
 }
-/* line 2970, sass/_base.scss */
+/* line 2981, sass/_base.scss */
 .casada-pont .img-select .text {
   text-align: center;
   line-height: 24px;
 }
-/* line 2975, sass/_base.scss */
+/* line 2986, sass/_base.scss */
 .casada-pont .img-select input[type=file] {
   display: none;
 }
-/* line 2980, sass/_base.scss */
+/* line 2991, sass/_base.scss */
 .casada-pont .head-shower {
   background: #8a8a8a;
   color: white;
@@ -4677,7 +4694,7 @@ input[type=checkbox]:checked + label:before {
   font-size: 0.85em;
   line-height: 180%;
 }
-/* line 2987, sass/_base.scss */
+/* line 2998, sass/_base.scss */
 .casada-pont .head-shower .number {
   float: left;
   margin: 0 25px 0 10px;
@@ -4685,7 +4702,7 @@ input[type=checkbox]:checked + label:before {
   line-height: 1;
   font-weight: bold;
 }
-/* line 2996, sass/_base.scss */
+/* line 3007, sass/_base.scss */
 .casada-pont .input-group-addon:first-child {
   background: transparent;
   color: #b2b2b2;
@@ -4697,58 +4714,58 @@ input[type=checkbox]:checked + label:before {
   -ms-border-radius: 0;
   border-radius: 0;
 }
-/* line 3003, sass/_base.scss */
+/* line 3014, sass/_base.scss */
 .casada-pont .input-group-addon:first-child i {
   margin-right: 3px;
 }
-/* line 3010, sass/_base.scss */
+/* line 3021, sass/_base.scss */
 .casada-pont .opens-head {
   background: #b2b2b2;
   color: white;
   padding: 8px 5px;
   font-size: 1.2em;
 }
-/* line 3017, sass/_base.scss */
+/* line 3028, sass/_base.scss */
 .casada-pont .opens {
   margin-bottom: 5px;
 }
-/* line 3020, sass/_base.scss */
+/* line 3031, sass/_base.scss */
 .casada-pont .opens .when {
   color: white;
   width: 40%;
   padding-right: 10px;
 }
-/* line 3025, sass/_base.scss */
+/* line 3036, sass/_base.scss */
 .casada-pont .opens .when .text {
   padding: 0 5px;
   background: #c7c7c7;
 }
-/* line 3030, sass/_base.scss */
+/* line 3041, sass/_base.scss */
 .casada-pont .opens .from {
   width: 25%;
 }
-/* line 3033, sass/_base.scss */
+/* line 3044, sass/_base.scss */
 .casada-pont .opens .sep {
   width: 10%;
   text-align: center;
 }
-/* line 3037, sass/_base.scss */
+/* line 3048, sass/_base.scss */
 .casada-pont .opens .to {
   width: 25%;
 }
-/* line 3041, sass/_base.scss */
+/* line 3052, sass/_base.scss */
 .casada-pont .opens select {
   height: 26px;
   line-height: 26px;
   width: 100%;
   border: 1px solid #d9d9d9;
 }
-/* line 3049, sass/_base.scss */
+/* line 3060, sass/_base.scss */
 .casada-pont .opens > div {
   float: left;
   line-height: 26px;
 }
-/* line 3053, sass/_base.scss */
+/* line 3064, sass/_base.scss */
 .casada-pont .opens:after {
   content: "";
   position: relative;
@@ -4756,21 +4773,21 @@ input[type=checkbox]:checked + label:before {
   clear: both;
   display: block;
 }
-/* line 3063, sass/_base.scss */
+/* line 3074, sass/_base.scss */
 .casada-pont .input-group-addon:first-child + input[type=text],
 .casada-pont .input-group-addon:first-child + input[type=tel],
 .casada-pont .input-group-addon:first-child + input[type=email] {
   border-left: none !important;
 }
-/* line 3067, sass/_base.scss */
+/* line 3078, sass/_base.scss */
 .casada-pont h2 {
   font-size: 1.3em;
 }
-/* line 3071, sass/_base.scss */
+/* line 3082, sass/_base.scss */
 .casada-pont h3 {
   font-size: 1.1em;
 }
-/* line 3075, sass/_base.scss */
+/* line 3086, sass/_base.scss */
 .casada-pont h2, .casada-pont h3 {
   color: #b2b2b2;
   font-weight: bold;
@@ -4778,13 +4795,13 @@ input[type=checkbox]:checked + label:before {
   margin: 5px 0;
   display: block;
 }
-/* line 3082, sass/_base.scss */
+/* line 3093, sass/_base.scss */
 .casada-pont h2 i, .casada-pont h3 i {
   margin-right: 10px;
   color: #a1a1a1;
 }
 
-/* line 3093, sass/_base.scss */
+/* line 3104, sass/_base.scss */
 input[type=text][required].ng-invalid + span:before,
 input[type=tel][required].ng-invalid + span:before,
 input[type=email][required].ng-invalid + span:before {
@@ -4807,7 +4824,7 @@ input[type=email][required].ng-invalid + span:before {
   border-radius: 20px;
 }
 
-/* line 3114, sass/_base.scss */
+/* line 3125, sass/_base.scss */
 input[type=text][required].ng-touched.ng-valid + span:before,
 input[type=tel][required].ng-touched.ng-valid + span:before,
 input[type=email][required].ng-touched.ng-valid + span:before {
@@ -4830,18 +4847,18 @@ input[type=email][required].ng-touched.ng-valid + span:before {
   border-radius: 20px;
 }
 
-/* line 3132, sass/_base.scss */
+/* line 3143, sass/_base.scss */
 .need-fill-form {
   color: #c5161d;
   font-size: 0.8em;
 }
 
-/* line 3137, sass/_base.scss */
+/* line 3148, sass/_base.scss */
 .call-module-view * {
   color: black;
 }
 
-/* line 3141, sass/_base.scss */
+/* line 3152, sass/_base.scss */
 .call-module-view .holder-view {
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ebecec+100 */
   background: #ffffff;
@@ -4864,35 +4881,35 @@ input[type=email][required].ng-touched.ng-valid + span:before {
   -ms-border-radius: 10px;
   border-radius: 10px;
 }
-/* line 3158, sass/_base.scss */
+/* line 3169, sass/_base.scss */
 .call-module-view .holder-view .tanacsado {
   color: black;
   text-align: center;
   font-size: 0.9em;
   line-height: 1;
 }
-/* line 3164, sass/_base.scss */
+/* line 3175, sass/_base.scss */
 .call-module-view .holder-view .tanacsado .cap {
   font-size: 1.2em;
   line-height: 1.5;
 }
-/* line 3169, sass/_base.scss */
+/* line 3180, sass/_base.scss */
 .call-module-view .holder-view .tanacsado strong {
   font-size: 1.1em;
   line-height: 1.2;
 }
-/* line 3175, sass/_base.scss */
+/* line 3186, sass/_base.scss */
 .call-module-view .holder-view .form {
   margin-bottom: 5px;
 }
-/* line 3178, sass/_base.scss */
+/* line 3189, sass/_base.scss */
 .call-module-view .holder-view .form input[type=text] {
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
   -ms-border-radius: 8px;
   border-radius: 8px;
 }
-/* line 3183, sass/_base.scss */
+/* line 3194, sass/_base.scss */
 .call-module-view .holder-view .send button {
   background: #c5161d;
   color: white;
@@ -4909,79 +4926,79 @@ input[type=email][required].ng-touched.ng-valid + span:before {
   -ms-border-radius: 8px;
   border-radius: 8px;
 }
-/* line 3195, sass/_base.scss */
+/* line 3206, sass/_base.scss */
 .call-module-view .holder-view .send button i {
   color: white;
   font-size: 18px;
   line-height: 2;
 }
-/* line 3204, sass/_base.scss */
+/* line 3215, sass/_base.scss */
 .call-module-view .holder-view .send {
   margin-bottom: 10px;
 }
-/* line 3208, sass/_base.scss */
+/* line 3219, sass/_base.scss */
 .call-module-view .holder-view .phone, .call-module-view .holder-view .kie {
   color: #c5161d;
   font-weight: bold;
 }
-/* line 3213, sass/_base.scss */
+/* line 3224, sass/_base.scss */
 .call-module-view .holder-view .phone {
   text-align: center;
   font-size: 1.35em;
 }
-/* line 3219, sass/_base.scss */
+/* line 3230, sass/_base.scss */
 .call-module-view .holder-view .kie {
   line-height: 2;
   text-transform: uppercase;
 }
 
-/* line 3226, sass/_base.scss */
+/* line 3237, sass/_base.scss */
 .call-module-view.map-mod .holder-view {
   font-size: 0.8em !important;
 }
-/* line 3229, sass/_base.scss */
+/* line 3240, sass/_base.scss */
 .call-module-view.map-mod .holder-view h4 {
   font-weight: bold;
   font-family: "Roboto", sans-serif;
 }
-/* line 3234, sass/_base.scss */
+/* line 3245, sass/_base.scss */
 .call-module-view.map-mod .holder-view strong {
   color: black;
 }
-/* line 3238, sass/_base.scss */
+/* line 3249, sass/_base.scss */
 .call-module-view.map-mod .holder-view img {
   width: 100%;
 }
 
-/* line 3246, sass/_base.scss */
+/* line 3257, sass/_base.scss */
 .casada-pont-view .details .head {
   background: #b2b2b2;
   color: white;
   padding: 5px;
   margin-bottom: 8px;
 }
-/* line 3253, sass/_base.scss */
+/* line 3264, sass/_base.scss */
 .casada-pont-view .details .image {
   width: 50%;
   border: 1px solid #d7d7d7;
   padding: 2px;
 }
-/* line 3258, sass/_base.scss */
+/* line 3269, sass/_base.scss */
 .casada-pont-view .details .image img {
   width: 100%;
 }
-/* line 3263, sass/_base.scss */
+/* line 3274, sass/_base.scss */
 .casada-pont-view .details .key {
   color: #cbcbcb;
   line-height: 1;
 }
-/* line 3268, sass/_base.scss */
+/* line 3279, sass/_base.scss */
 .casada-pont-view .details .value {
   color: #444;
   font-weight: bold;
   line-height: 1;
 }
-/* line 3274, sass/_base.scss */
+/* line 3285, sass/_base.scss */
 .casada-pont-view .want-allow {
   margin: 8px 0;
   padding: 8px;
@@ -4993,19 +5010,19 @@ input[type=email][required].ng-touched.ng-valid + span:before {
   -ms-border-radius: 4px;
   border-radius: 4px;
 }
-/* line 3284, sass/_base.scss */
+/* line 3295, sass/_base.scss */
 .casada-pont-view .request-date {
   font-size: 0.7em;
   margin: 10px 0;
   color: #b7b7b7;
 }
-/* line 3289, sass/_base.scss */
+/* line 3300, sass/_base.scss */
 .casada-pont-view .request-date em {
   color: #8c8c8c;
 }
 
 /* Üzletkereső */
-/* line 3298, sass/_base.scss */
+/* line 3309, sass/_base.scss */
 .shop-search-view h1 {
   color: black;
   text-transform: uppercase;
@@ -5013,54 +5030,54 @@ input[type=email][required].ng-touched.ng-valid + span:before {
   margin: 10px 0 20px 0;
   font-weight: bold;
 }
-/* line 3306, sass/_base.scss */
+/* line 3317, sass/_base.scss */
 .shop-search-view #map {
   height: 350px;
   background: #eaeaea;
 }
-/* line 3311, sass/_base.scss */
+/* line 3322, sass/_base.scss */
 .shop-search-view .near-of-me {
   background: #c5161d;
   padding: 8px;
   color: white;
 }
-/* line 3316, sass/_base.scss */
+/* line 3327, sass/_base.scss */
 .shop-search-view .near-of-me .infos {
   font-size: 0.8em;
   line-height: 135%;
 }
-/* line 3322, sass/_base.scss */
+/* line 3333, sass/_base.scss */
 .shop-search-view .near-of-me .place-details .head {
   font-size: 0.85em;
 }
-/* line 3325, sass/_base.scss */
+/* line 3336, sass/_base.scss */
 .shop-search-view .near-of-me .place-details .name {
   font-family: "Roboto", sans-serif;
   font-size: 1.3em;
   line-height: 1.6;
 }
-/* line 3333, sass/_base.scss */
+/* line 3344, sass/_base.scss */
 .shop-search-view .shop-list {
   padding: 10px;
 }
-/* line 3336, sass/_base.scss */
+/* line 3347, sass/_base.scss */
 .shop-search-view .shop-list .shop {
   margin: 30px 0;
   line-height: 130%;
   color: #8a8a8a;
 }
-/* line 3341, sass/_base.scss */
+/* line 3352, sass/_base.scss */
 .shop-search-view .shop-list .shop .name {
   font-family: "Roboto", sans-serif;
   color: #c5161d;
   font-weight: bold;
   text-transform: uppercase;
 }
-/* line 3348, sass/_base.scss */
+/* line 3359, sass/_base.scss */
 .shop-search-view .shop-list .shop .address {
   color: #444;
 }
-/* line 3351, sass/_base.scss */
+/* line 3362, sass/_base.scss */
 .shop-search-view .shop-list .shop .address .map-route {
   background: #905f09;
   font-size: 0.8em;
@@ -5073,21 +5090,21 @@ input[type=email][required].ng-touched.ng-valid + span:before {
   -ms-border-radius: 4px;
   border-radius: 4px;
 }
-/* line 3362, sass/_base.scss */
+/* line 3373, sass/_base.scss */
 .shop-search-view .shop-list .shop .opens {
   font-size: 0.9em;
 }
-/* line 3366, sass/_base.scss */
+/* line 3377, sass/_base.scss */
 .shop-search-view .shop-list .shop .infos {
   font-size: 0.8em;
   line-height: 135%;
 }
-/* line 3370, sass/_base.scss */
+/* line 3381, sass/_base.scss */
 .shop-search-view .shop-list .shop .infos .distributor {
   color: black;
   font-size: 1.2em;
 }
-/* line 3378, sass/_base.scss */
+/* line 3389, sass/_base.scss */
 .shop-search-view .comment {
   color: #acacac;
   font-size: #dadada;
@@ -5095,29 +5112,29 @@ input[type=email][required].ng-touched.ng-valid + span:before {
   font-size: 0.8em;
 }
 
-/* line 3386, sass/_base.scss */
+/* line 3397, sass/_base.scss */
 .tanacsado-card {
   background: #ebedec;
   margin: 10px 0;
   color: #5b5b5b;
   font-size: 0.85em;
 }
-/* line 3392, sass/_base.scss */
+/* line 3403, sass/_base.scss */
 .tanacsado-card .pcode {
   background: #c5c7c6;
   color: #444;
   text-transform: uppercase;
 }
-/* line 3397, sass/_base.scss */
+/* line 3408, sass/_base.scss */
 .tanacsado-card .pcode .text, .tanacsado-card .pcode .code {
   padding: 5px;
 }
-/* line 3401, sass/_base.scss */
+/* line 3412, sass/_base.scss */
 .tanacsado-card .pcode .text {
   font-weight: bold;
   font-size: 1em;
 }
-/* line 3405, sass/_base.scss */
+/* line 3416, sass/_base.scss */
 .tanacsado-card .pcode .code {
   background: #c5161d;
   color: white;
@@ -5127,44 +5144,44 @@ input[type=email][required].ng-touched.ng-valid + span:before {
   padding: 15px 0;
   letter-spacing: 2px;
 }
-/* line 3416, sass/_base.scss */
+/* line 3427, sass/_base.scss */
 .tanacsado-card .dist {
   padding: 0;
   line-height: 130%;
 }
-/* line 3420, sass/_base.scss */
+/* line 3431, sass/_base.scss */
 .tanacsado-card .dist .name {
   font-weight: bold;
   font-size: 1.1em;
   color: black;
 }
-/* line 3426, sass/_base.scss */
+/* line 3437, sass/_base.scss */
 .tanacsado-card .dist .face {
   width: 101px;
   height: 101px;
   float: left;
   margin-right: 5px;
 }
-/* line 3433, sass/_base.scss */
+/* line 3444, sass/_base.scss */
 .tanacsado-card .dist .details {
   padding-top: 5px;
 }
-/* line 3437, sass/_base.scss */
+/* line 3448, sass/_base.scss */
 .tanacsado-card .dist .phone {
   font-weight: bold;
   color: #c5161d;
   margin-top: 5px;
 }
-/* line 3442, sass/_base.scss */
+/* line 3453, sass/_base.scss */
 .tanacsado-card .dist .phone strong {
   font-size: 1.3em;
   font-family: "Roboto", sans-serif;
 }
-/* line 3449, sass/_base.scss */
+/* line 3460, sass/_base.scss */
 .tanacsado-card .shop {
   color: black;
 }
-/* line 3453, sass/_base.scss */
+/* line 3464, sass/_base.scss */
 .tanacsado-card .who {
   background: #f5f5f5;
   border-top: 1px solid #d7d7d7;
@@ -5176,18 +5193,18 @@ input[type=email][required].ng-touched.ng-valid + span:before {
   box-shadow: inset 0 4px 8px -5px #888888;
 }
 
-/* line 3465, sass/_base.scss */
+/* line 3476, sass/_base.scss */
 .related-products {
   padding: 0 8px;
 }
-/* line 3468, sass/_base.scss */
+/* line 3479, sass/_base.scss */
 .related-products .image {
   -webkit-box-shadow: none !important;
   -moz-box-shadow: none !important;
   box-shadow: none !important;
 }
 
-/* line 3478, sass/_base.scss */
+/* line 3489, sass/_base.scss */
 .product-ajanlott h3,
 .related-products h3 {
   color: #73737b;
@@ -5195,13 +5212,13 @@ input[type=email][required].ng-touched.ng-valid + span:before {
   text-transform: uppercase;
   line-height: 2;
 }
-/* line 3485, sass/_base.scss */
+/* line 3496, sass/_base.scss */
 .product-ajanlott .items,
 .related-products .items {
   position: relative;
   width: 100%;
 }
-/* line 3489, sass/_base.scss */
+/* line 3500, sass/_base.scss */
 .product-ajanlott .items .item,
 .related-products .items .item {
   float: left;
@@ -5209,7 +5226,7 @@ input[type=email][required].ng-touched.ng-valid + span:before {
   background: #ebeded;
   position: relative;
 }
-/* line 3495, sass/_base.scss */
+/* line 3506, sass/_base.scss */
 .product-ajanlott .items .item .info-row-bottom,
 .related-products .items .item .info-row-bottom {
   display: table;
@@ -5217,7 +5234,7 @@ input[type=email][required].ng-touched.ng-valid + span:before {
   width: 100%;
   height: 50px;
 }
-/* line 3501, sass/_base.scss */
+/* line 3512, sass/_base.scss */
 .product-ajanlott .items .item .info-row-bottom .gift,
 .related-products .items .item .info-row-bottom .gift {
   font-family: "Roboto", sans-serif;
@@ -5227,13 +5244,13 @@ input[type=email][required].ng-touched.ng-valid + span:before {
   font-size: 0.75em;
   line-height: 1;
 }
-/* line 3509, sass/_base.scss */
+/* line 3520, sass/_base.scss */
 .product-ajanlott .items .item .info-row-bottom .gift img,
 .related-products .items .item .info-row-bottom .gift img {
   float: left;
   margin: 0 10px 5px 0;
 }
-/* line 3515, sass/_base.scss */
+/* line 3526, sass/_base.scss */
 .product-ajanlott .items .item .info-row-bottom .url a,
 .related-products .items .item .info-row-bottom .url a {
   background: #302003;
@@ -5244,13 +5261,13 @@ input[type=email][required].ng-touched.ng-valid + span:before {
   -ms-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 3522, sass/_base.scss */
+/* line 3533, sass/_base.scss */
 .product-ajanlott .items .item .info-row-bottom .price,
 .related-products .items .item .info-row-bottom .price {
   text-align: left;
   font-family: "Roboto", sans-serif;
 }
-/* line 3526, sass/_base.scss */
+/* line 3537, sass/_base.scss */
 .product-ajanlott .items .item .info-row-bottom .price .current,
 .related-products .items .item .info-row-bottom .price .current {
   font-weight: bold;
@@ -5258,7 +5275,7 @@ input[type=email][required].ng-touched.ng-valid + span:before {
   color: #c5161d;
   text-align: center;
 }
-/* line 3532, sass/_base.scss */
+/* line 3543, sass/_base.scss */
 .product-ajanlott .items .item .info-row-bottom .price .old,
 .related-products .items .item .info-row-bottom .price .old {
   color: black;
@@ -5267,7 +5284,7 @@ input[type=email][required].ng-touched.ng-valid + span:before {
   margin-bottom: 5px;
   margin-top: -5px;
 }
-/* line 3539, sass/_base.scss */
+/* line 3550, sass/_base.scss */
 .product-ajanlott .items .item .info-row-bottom .price .old .percents,
 .related-products .items .item .info-row-bottom .price .old .percents {
   text-decoration: none;
@@ -5291,7 +5308,7 @@ input[type=email][required].ng-touched.ng-valid + span:before {
   -ms-border-radius: 3px;
   border-radius: 3px;
 }
-/* line 3557, sass/_base.scss */
+/* line 3568, sass/_base.scss */
 .product-ajanlott .items .item .info-row-bottom > div:not(.clr),
 .related-products .items .item .info-row-bottom > div:not(.clr) {
   display: table-cell;
@@ -5300,16 +5317,16 @@ input[type=email][required].ng-touched.ng-valid + span:before {
   text-align: center;
   padding: 5px 10px;
 }
-/* line 3565, sass/_base.scss */
+/* line 3576, sass/_base.scss */
 .product-ajanlott .items .item .info-row-bottom > div:first-child,
 .related-products .items .item .info-row-bottom > div:first-child {
   border-right: 1px solid #905f09;
 }
-/* line 3569, sass/_base.scss */
+/* line 3580, sass/_base.scss */
 .product-ajanlott .items .item .free-item,
 .related-products .items .item .free-item {
   position: absolute;
-  background: rgba(124, 197, 30, 0);
+  background: rgba(124, 197, 30, 0.61);
   color: white;
   font-weight: bold;
   width: 100%;
@@ -5317,14 +5334,14 @@ input[type=email][required].ng-touched.ng-valid + span:before {
   padding: 8px 0;
   line-height: 1;
 }
-/* line 3580, sass/_base.scss */
+/* line 3591, sass/_base.scss */
 .product-ajanlott .items .item .title, .product-ajanlott .items .item .subtitle,
 .related-products .items .item .title,
 .related-products .items .item .subtitle {
   text-align: center;
   line-height: 1.4;
 }
-/* line 3585, sass/_base.scss */
+/* line 3596, sass/_base.scss */
 .product-ajanlott .items .item .title,
 .related-products .items .item .title {
   color: black;
@@ -5332,33 +5349,33 @@ input[type=email][required].ng-touched.ng-valid + span:before {
   font-size: 1.2em;
   line-height: 1.6;
 }
-/* line 3592, sass/_base.scss */
+/* line 3603, sass/_base.scss */
 .product-ajanlott .items .item .subtitle,
 .related-products .items .item .subtitle {
   color: #5c5c5c;
   font-size: 0.75em;
 }
-/* line 3597, sass/_base.scss */
+/* line 3608, sass/_base.scss */
 .product-ajanlott .items .item .prices > div:not(.clr),
 .related-products .items .item .prices > div:not(.clr) {
   float: left;
   width: 50%;
   padding: 0 4px;
 }
-/* line 3603, sass/_base.scss */
+/* line 3614, sass/_base.scss */
 .product-ajanlott .items .item .prices,
 .related-products .items .item .prices {
   margin: 8px 0;
   font-size: 0.8em;
   display: block;
 }
-/* line 3608, sass/_base.scss */
+/* line 3619, sass/_base.scss */
 .product-ajanlott .items .item .prices .dist_price,
 .related-products .items .item .prices .dist_price {
   color: #c5161d;
   border-left: 1px solid #aaa;
 }
-/* line 3613, sass/_base.scss */
+/* line 3624, sass/_base.scss */
 .product-ajanlott .items .item .prices .price-text,
 .related-products .items .item .prices .price-text {
   text-align: center;
@@ -5366,7 +5383,7 @@ input[type=email][required].ng-touched.ng-valid + span:before {
   font-weight: bold;
   margin-top: 8px;
 }
-/* line 3622, sass/_base.scss */
+/* line 3633, sass/_base.scss */
 .product-ajanlott .items .item .buttons a,
 .related-products .items .item .buttons a {
   color: white;
@@ -5377,33 +5394,33 @@ input[type=email][required].ng-touched.ng-valid + span:before {
   font-weight: bold;
   line-height: 2.2;
 }
-/* line 3631, sass/_base.scss */
+/* line 3642, sass/_base.scss */
 .product-ajanlott .items .item .buttons .watch,
 .related-products .items .item .buttons .watch {
   background: #418bc7;
 }
-/* line 3634, sass/_base.scss */
+/* line 3645, sass/_base.scss */
 .product-ajanlott .items .item .buttons .order,
 .related-products .items .item .buttons .order {
   background: #ff7760;
 }
-/* line 3640, sass/_base.scss */
+/* line 3651, sass/_base.scss */
 .product-ajanlott .items .item:nth-child(even),
 .related-products .items .item:nth-child(even) {
   background: #d9d9d9;
 }
 
-/* line 3646, sass/_base.scss */
+/* line 3657, sass/_base.scss */
 .share-box {
   position: absolute;
   right: -65px;
   top: 80px;
 }
-/* line 3651, sass/_base.scss */
+/* line 3662, sass/_base.scss */
 .share-box div {
   background: #738a8d;
 }
-/* line 3653, sass/_base.scss */
+/* line 3664, sass/_base.scss */
 .share-box div a {
   font-size: 24px;
   display: block;
@@ -5411,43 +5428,43 @@ input[type=email][required].ng-touched.ng-valid + span:before {
   color: white;
   text-align: center;
 }
-/* line 3661, sass/_base.scss */
+/* line 3672, sass/_base.scss */
 .share-box div.facebook {
   background: #305891;
 }
-/* line 3664, sass/_base.scss */
+/* line 3675, sass/_base.scss */
 .share-box div.googleplus {
   background: #DD5146;
 }
-/* line 3667, sass/_base.scss */
+/* line 3678, sass/_base.scss */
 .share-box div.twitter {
   background: #2ca8d2;
 }
-/* line 3670, sass/_base.scss */
+/* line 3681, sass/_base.scss */
 .share-box div.youtube {
   background: #df3930;
 }
 
-/* line 3675, sass/_base.scss */
+/* line 3686, sass/_base.scss */
 .searchResult {
   margin-top: 15px;
 }
-/* line 3678, sass/_base.scss */
+/* line 3689, sass/_base.scss */
 .searchResult .pagination {
   margin: 20px;
 }
-/* line 3683, sass/_base.scss */
+/* line 3694, sass/_base.scss */
 .searchResult .pagination > li > a, .searchResult .pagination > li > span {
   color: #c5161d;
 }
-/* line 3686, sass/_base.scss */
+/* line 3697, sass/_base.scss */
 .searchResult .pagination > .active > a, .searchResult .pagination > .active > span, .searchResult .pagination > .active > a:hover, .searchResult .pagination > .active > span:hover, .searchResult .pagination > .active > a:focus, .searchResult .pagination > .active > span:focus {
   background-color: #c5161d;
   border-color: #c5161d;
   color: white;
 }
 
-/* line 3693, sass/_base.scss */
+/* line 3704, sass/_base.scss */
 .not-enought-price-for-order {
   background: #EC4E4E;
   padding: 5px 10px;
@@ -5456,30 +5473,30 @@ input[type=email][required].ng-touched.ng-valid + span:before {
   margin-bottom: 10px;
 }
 
-/* line 3701, sass/_base.scss */
+/* line 3712, sass/_base.scss */
 .empty-cart {
   text-align: center;
   color: #c07f0c;
   font-size: 1.1em;
 }
-/* line 3706, sass/_base.scss */
+/* line 3717, sass/_base.scss */
 .empty-cart i.ico, .empty-cart strong {
   color: #c5161d;
 }
-/* line 3710, sass/_base.scss */
+/* line 3721, sass/_base.scss */
 .empty-cart i.ico {
   font-size: 64px;
 }
-/* line 3714, sass/_base.scss */
+/* line 3725, sass/_base.scss */
 .empty-cart strong {
   font-size: 1.4em;
   line-height: 1.5;
 }
-/* line 3719, sass/_base.scss */
+/* line 3730, sass/_base.scss */
 .empty-cart .srcform {
   margin: 25px 0;
 }
-/* line 3722, sass/_base.scss */
+/* line 3733, sass/_base.scss */
 .empty-cart .srcform input[type=text] {
   border: 1px solid #f09f0f;
   padding: 12px;
@@ -5489,7 +5506,7 @@ input[type=email][required].ng-touched.ng-valid + span:before {
   width: 50%;
   border-radius: 8px 0 0 8px;
 }
-/* line 3733, sass/_base.scss */
+/* line 3744, sass/_base.scss */
 .empty-cart .srcform button {
   height: 45px;
   border: none;
@@ -5498,21 +5515,21 @@ input[type=email][required].ng-touched.ng-valid + span:before {
   border-radius: 0 8px 8px 0;
 }
 
-/* line 3743, sass/_base.scss */
+/* line 3754, sass/_base.scss */
 .referring-promo {
   padding: 10px 20px;
   color: black;
 }
-/* line 3749, sass/_base.scss */
+/* line 3760, sass/_base.scss */
 .referring-promo p {
   text-align: justify;
 }
-/* line 3753, sass/_base.scss */
+/* line 3764, sass/_base.scss */
 .referring-promo .useit {
   color: #c5161d;
   text-transform: uppercase;
 }
-/* line 3758, sass/_base.scss */
+/* line 3769, sass/_base.scss */
 .referring-promo .own-code {
   border: 1px solid #f09f0f;
   padding: 15px;
@@ -5520,13 +5537,13 @@ input[type=email][required].ng-touched.ng-valid + span:before {
   font-size: 1.3em;
   font-weight: bold;
 }
-/* line 3765, sass/_base.scss */
+/* line 3776, sass/_base.scss */
 .referring-promo .own-code .code {
   color: #c5161d;
   text-transform: uppercase;
   font-family: "Roboto", sans-serif;
 }
-/* line 3772, sass/_base.scss */
+/* line 3783, sass/_base.scss */
 .referring-promo .own-code.bg {
   background: #c5161d;
   color: white;
@@ -5534,23 +5551,23 @@ input[type=email][required].ng-touched.ng-valid + span:before {
   font-weight: normal;
   font-family: "Roboto", sans-serif;
 }
-/* line 3779, sass/_base.scss */
+/* line 3790, sass/_base.scss */
 .referring-promo .own-code.bg a {
   color: white;
   text-decoration: underline;
 }
-/* line 3786, sass/_base.scss */
+/* line 3797, sass/_base.scss */
 .referring-promo .referer-user {
   font-size: 1.5em;
   font-family: "Roboto", sans-serif;
 }
-/* line 3790, sass/_base.scss */
+/* line 3801, sass/_base.scss */
 .referring-promo .referer-user .partner {
   color: #c5161d;
   font-size: 1.6em;
   text-transform: uppercase;
 }
-/* line 3796, sass/_base.scss */
+/* line 3807, sass/_base.scss */
 .referring-promo .referer-user .referer-code {
   margin-top: 35px;
   background: #d41c4f;
@@ -5562,7 +5579,7 @@ input[type=email][required].ng-touched.ng-valid + span:before {
   text-align: center;
   box-shadow: 3px 3px 0 #5a5a5a;
 }
-/* line 3809, sass/_base.scss */
+/* line 3820, sass/_base.scss */
 .referring-promo h1, .referring-promo h2 {
   color: #c5161d;
   font-weight: bold;
@@ -5570,44 +5587,44 @@ input[type=email][required].ng-touched.ng-valid + span:before {
   line-height: 2;
   font-size: 2.2em;
 }
-/* line 3817, sass/_base.scss */
+/* line 3828, sass/_base.scss */
 .referring-promo .step {
   font-family: "Roboto", sans-serif;
   line-height: 1.2;
   font-size: 1.1em;
 }
-/* line 3823, sass/_base.scss */
+/* line 3834, sass/_base.scss */
 .referring-promo .desc {
   font-size: 0.9em;
   letter-spacing: -0.3px;
   line-height: 1.3;
 }
-/* line 3831, sass/_base.scss */
+/* line 3842, sass/_base.scss */
 .referring-promo .shower > a > img {
   border: 1px solid #f09f0f;
 }
-/* line 3835, sass/_base.scss */
+/* line 3846, sass/_base.scss */
 .referring-promo .shower {
   position: relative;
 }
-/* line 3837, sass/_base.scss */
+/* line 3848, sass/_base.scss */
 .referring-promo .shower .flowing {
   position: absolute;
   bottom: 0;
   left: 0;
   pointer-events: none;
 }
-/* line 3845, sass/_base.scss */
+/* line 3856, sass/_base.scss */
 .referring-promo small {
   color: #696969;
   font-size: 0.8em;
   letter-spacing: 0;
 }
-/* line 3851, sass/_base.scss */
+/* line 3862, sass/_base.scss */
 .referring-promo .row {
   margin: 25px -15px;
 }
-/* line 3855, sass/_base.scss */
+/* line 3866, sass/_base.scss */
 .referring-promo .subhead {
   color: #c5161d;
   font-weight: bold;
@@ -5615,30 +5632,30 @@ input[type=email][required].ng-touched.ng-valid + span:before {
   font-size: 1.25em;
   margin: 12px 0;
 }
-/* line 3863, sass/_base.scss */
+/* line 3874, sass/_base.scss */
 .referring-promo .larger {
   font-size: 1.1em;
   font-family: "Roboto", sans-serif;
 }
-/* line 3868, sass/_base.scss */
+/* line 3879, sass/_base.scss */
 .referring-promo .divider {
   height: 1px;
   background: transparent;
   border-top: 1px dashed #f09f0f;
   margin: 10px 0;
 }
-/* line 3875, sass/_base.scss */
+/* line 3886, sass/_base.scss */
 .referring-promo .ajcode {
   background: #f3b23f;
   border: 5px dotted #E6E6E6;
   padding: 15px 0;
 }
-/* line 3880, sass/_base.scss */
+/* line 3891, sass/_base.scss */
 .referring-promo .ajcode > .row {
   margin: 0;
 }
 
-/* line 3885, sass/_base.scss */
+/* line 3896, sass/_base.scss */
 #PayUForm button {
   background: url(//www.cp.tuzvedelmicentrum.web-pro.hu/src/images/pay_btn.png);
   width: 196px;
@@ -5647,15 +5664,15 @@ input[type=email][required].ng-touched.ng-valid + span:before {
   cursor: pointer;
 }
 
-/* line 3893, sass/_base.scss */
+/* line 3904, sass/_base.scss */
 .simple-msg {
   padding: 15px;
 }
-/* line 3896, sass/_base.scss */
+/* line 3907, sass/_base.scss */
 .simple-msg .simple-information {
   border: 2px solid #f09f0f;
 }
-/* line 3899, sass/_base.scss */
+/* line 3910, sass/_base.scss */
 .simple-msg .simple-information .head {
   background: #f09f0f;
   padding: 10px;
@@ -5664,12 +5681,12 @@ input[type=email][required].ng-touched.ng-valid + span:before {
   font-weight: bold;
   font-size: 1.3em;
 }
-/* line 3907, sass/_base.scss */
+/* line 3918, sass/_base.scss */
 .simple-msg .simple-information .ft {
   padding: 8px 10px;
   font-weight: bold;
 }
-/* line 3911, sass/_base.scss */
+/* line 3922, sass/_base.scss */
 .simple-msg .simple-information .cth {
   background: #f3b23f;
   padding: 10px;
@@ -5677,38 +5694,38 @@ input[type=email][required].ng-touched.ng-valid + span:before {
   font-size: 0.85em;
   color: black;
 }
-/* line 3918, sass/_base.scss */
+/* line 3929, sass/_base.scss */
 .simple-msg .simple-information .in {
   padding: 10px;
   line-height: 1.6;
 }
-/* line 3922, sass/_base.scss */
+/* line 3933, sass/_base.scss */
 .simple-msg .simple-information .simple-info-footer {
   background: #f3b23f;
   padding: 4px 10px;
   font-size: 0.85em;
   line-height: 30px;
 }
-/* line 3928, sass/_base.scss */
+/* line 3939, sass/_base.scss */
 .simple-msg .simple-information .simple-info-footer img {
   height: 25px;
 }
-/* line 3932, sass/_base.scss */
+/* line 3943, sass/_base.scss */
 .simple-msg .simple-information .simple-info-footer a {
   color: #c5161d;
   font-size: 0.85em;
 }
-/* line 3938, sass/_base.scss */
+/* line 3949, sass/_base.scss */
 .simple-msg .simple-information.simple-back-success {
   border: 2px solid #6FAB42;
 }
-/* line 3940, sass/_base.scss */
+/* line 3951, sass/_base.scss */
 .simple-msg .simple-information.simple-back-success .head {
   background: #6FAB42;
   color: white;
 }
 
-/* line 3947, sass/_base.scss */
+/* line 3958, sass/_base.scss */
 .floating-box {
   position: fixed;
   right: 0;
@@ -5716,7 +5733,7 @@ input[type=email][required].ng-touched.ng-valid + span:before {
   z-index: 100;
 }
 
-/* line 3954, sass/_base.scss */
+/* line 3965, sass/_base.scss */
 .floating-box.contact-msg {
   top: 50%;
   padding: 8px;
@@ -5748,50 +5765,50 @@ input[type=email][required].ng-touched.ng-valid + span:before {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ebecec',GradientType=0 );
   /* IE6-9 */
 }
-/* line 3985, sass/_base.scss */
+/* line 3996, sass/_base.scss */
 .floating-box.contact-msg .contact {
   float: left;
   width: 40%;
   text-align: center;
   font-size: 0.95em;
 }
-/* line 3991, sass/_base.scss */
+/* line 4002, sass/_base.scss */
 .floating-box.contact-msg .contact .profil {
   margin-top: -40px;
   line-height: 1.3;
 }
-/* line 3995, sass/_base.scss */
+/* line 4006, sass/_base.scss */
 .floating-box.contact-msg .contact .profil .name {
   font-size: 1.1em;
   color: #222;
 }
-/* line 4001, sass/_base.scss */
+/* line 4012, sass/_base.scss */
 .floating-box.contact-msg .contact .hely {
   font-size: 1.1em;
   color: #222;
 }
-/* line 4006, sass/_base.scss */
+/* line 4017, sass/_base.scss */
 .floating-box.contact-msg .contact .opens {
   margin-top: 4px;
 }
-/* line 4011, sass/_base.scss */
+/* line 4022, sass/_base.scss */
 .floating-box.contact-msg .form {
   float: right;
   width: 60%;
   padding-left: 5px;
   line-height: 1.4;
 }
-/* line 4017, sass/_base.scss */
+/* line 4028, sass/_base.scss */
 .floating-box.contact-msg .form .welcome {
   font-size: 1.2em;
 }
-/* line 4021, sass/_base.scss */
+/* line 4032, sass/_base.scss */
 .floating-box.contact-msg .form .clt {
   text-transform: uppercase;
   color: #c5161d;
   font-weight: bold;
 }
-/* line 4028, sass/_base.scss */
+/* line 4039, sass/_base.scss */
 .floating-box.contact-msg .form form button {
   background: #c5161d;
   color: white;
@@ -5807,7 +5824,7 @@ input[type=email][required].ng-touched.ng-valid + span:before {
   -ms-border-radius: 8px;
   border-radius: 8px;
 }
-/* line 4042, sass/_base.scss */
+/* line 4053, sass/_base.scss */
 .floating-box.contact-msg .form form input[type=text], .floating-box.contact-msg .form form input[type=email], .floating-box.contact-msg .form form textarea {
   padding: 4px;
   font-size: 0.8em;
@@ -5822,17 +5839,17 @@ input[type=email][required].ng-touched.ng-valid + span:before {
   -ms-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 4053, sass/_base.scss */
+/* line 4064, sass/_base.scss */
 .floating-box.contact-msg .form form textarea {
   height: 50px;
 }
-/* line 4058, sass/_base.scss */
+/* line 4069, sass/_base.scss */
 .floating-box.contact-msg .form .phone {
   color: #c5161d;
   font-weight: bold;
   font-size: 1.45em;
 }
-/* line 4065, sass/_base.scss */
+/* line 4076, sass/_base.scss */
 .floating-box.contact-msg .exit {
   position: absolute;
   right: 5px;
@@ -5846,7 +5863,7 @@ input[type=email][required].ng-touched.ng-valid + span:before {
   border-radius: 3px;
   padding: 3px;
 }
-/* line 4076, sass/_base.scss */
+/* line 4087, sass/_base.scss */
 .floating-box.contact-msg .labtext {
   background: #eeeeee;
   position: absolute;
@@ -5862,12 +5879,12 @@ input[type=email][required].ng-touched.ng-valid + span:before {
   box-shadow: -5px -5px 15px -8px black;
   border-radius: 8px 8px 0 0;
 }
-/* line 4092, sass/_base.scss */
+/* line 4103, sass/_base.scss */
 .floating-box.contact-msg .labtext .text {
   font-weight: bold;
   color: #8a8a8a;
 }
-/* line 4096, sass/_base.scss */
+/* line 4107, sass/_base.scss */
 .floating-box.contact-msg .labtext .text .ico {
   padding: 5px 10px;
   background: #d9d9d9;
@@ -5876,32 +5893,32 @@ input[type=email][required].ng-touched.ng-valid + span:before {
   border-radius: 8px 0 0 0;
 }
 
-/* line 4106, sass/_base.scss */
+/* line 4117, sass/_base.scss */
 .floating-box.contact-msg.opened {
   right: -1px;
 }
 
-/* line 4110, sass/_base.scss */
+/* line 4121, sass/_base.scss */
 .ep404 {
   text-align: center;
 }
-/* line 4113, sass/_base.scss */
+/* line 4124, sass/_base.scss */
 .ep404 table {
   margin: 0 auto;
 }
-/* line 4117, sass/_base.scss */
+/* line 4128, sass/_base.scss */
 .ep404 .code {
   font-family: "Roboto", sans-serif;
   color: #c5161d;
   font-size: 20em;
 }
-/* line 4123, sass/_base.scss */
+/* line 4134, sass/_base.scss */
 .ep404 .light {
   color: #bdbdbd;
   margin: 10px 0;
 }
 
-/* line 4129, sass/_base.scss */
+/* line 4140, sass/_base.scss */
 .payu-paidonly {
   background: orange;
   padding: 2px 4px;
@@ -5910,7 +5927,7 @@ input[type=email][required].ng-touched.ng-valid + span:before {
   font-size: 0.9em;
 }
 
-/* line 4137, sass/_base.scss */
+/* line 4148, sass/_base.scss */
 .payu-paid-done {
   background: green;
   padding: 2px 4px;
@@ -5919,14 +5936,14 @@ input[type=email][required].ng-touched.ng-valid + span:before {
   font-size: 0.9em;
 }
 
-/* line 4146, sass/_base.scss */
+/* line 4157, sass/_base.scss */
 .popupview .overlay {
   position: fixed;
   width: 100%;
   height: 100%;
   z-index: 99999999;
 }
-/* line 4151, sass/_base.scss */
+/* line 4162, sass/_base.scss */
 .popupview .overlay .screen {
   margin: 0 auto;
   position: absolute;
@@ -5937,11 +5954,11 @@ input[type=email][required].ng-touched.ng-valid + span:before {
   transform: translate(-50%, -50%);
 }
 
-/* line 4163, sass/_base.scss */
+/* line 4174, sass/_base.scss */
 .online-hitel-view {
   padding: 15px;
 }
-/* line 4166, sass/_base.scss */
+/* line 4177, sass/_base.scss */
 .online-hitel-view .tab-content {
   display: none;
   border: 1px solid #ddd;
@@ -5949,33 +5966,33 @@ input[type=email][required].ng-touched.ng-valid + span:before {
   background: #fafafa;
   padding: 15px;
 }
-/* line 4176, sass/_base.scss */
+/* line 4187, sass/_base.scss */
 .online-hitel-view .tab-content.show {
   display: block;
 }
-/* line 4180, sass/_base.scss */
+/* line 4191, sass/_base.scss */
 .online-hitel-view .nav-tabs > li.active > a {
   background: #fafafa;
   color: #000;
   font-weight: bold;
 }
-/* line 4186, sass/_base.scss */
+/* line 4197, sass/_base.scss */
 .online-hitel-view .cetelem {
   max-width: 540px;
   margin: 0 auto;
 }
-/* line 4190, sass/_base.scss */
+/* line 4201, sass/_base.scss */
 .online-hitel-view .cetelem .links {
   display: block;
   margin: 20px 0;
 }
-/* line 4194, sass/_base.scss */
+/* line 4205, sass/_base.scss */
 .online-hitel-view .cetelem .links li {
   display: inline-block;
   *display: inline;
   zoom: 1;
 }
-/* line 4199, sass/_base.scss */
+/* line 4210, sass/_base.scss */
 .online-hitel-view .cetelem .links li a {
   background: #2e882d;
   font-size: 0.9em;
@@ -5989,7 +6006,7 @@ input[type=email][required].ng-touched.ng-valid + span:before {
   -ms-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 4213, sass/_base.scss */
+/* line 4224, sass/_base.scss */
 .online-hitel-view .cetelem .cbox {
   margin: 25px 0;
   background: #a8d27c;
@@ -6003,7 +6020,7 @@ input[type=email][required].ng-touched.ng-valid + span:before {
   -ms-border-radius: 10px;
   border-radius: 10px;
 }
-/* line 4222, sass/_base.scss */
+/* line 4233, sass/_base.scss */
 .online-hitel-view .cetelem .cbox .title {
   color: #2e882d;
   display: block;
@@ -6014,7 +6031,7 @@ input[type=email][required].ng-touched.ng-valid + span:before {
   -moz-text-shadow: -1px 1px 3px #dbf1c1;
   text-shadow: -1px 1px 3px #dbf1c1;
 }
-/* line 4233, sass/_base.scss */
+/* line 4244, sass/_base.scss */
 .online-hitel-view .cetelem .cbox .ic {
   background: #fff;
   padding: 20px;
@@ -6030,38 +6047,38 @@ input[type=email][required].ng-touched.ng-valid + span:before {
   -ms-border-radius: 10px;
   border-radius: 10px;
 }
-/* line 4244, sass/_base.scss */
+/* line 4255, sass/_base.scss */
 .online-hitel-view .cetelem .cbox .ic ul {
   margin: 5px 0 0 15px;
 }
-/* line 4247, sass/_base.scss */
+/* line 4258, sass/_base.scss */
 .online-hitel-view .cetelem .cbox .ic ul li {
   list-style: disc;
   margin: 4px 0;
 }
-/* line 4260, sass/_base.scss */
+/* line 4271, sass/_base.scss */
 .online-hitel-view .cetelem .hl-head .help {
   color: #418330;
   font-size: 0.8em;
   line-height: 1.4;
 }
-/* line 4265, sass/_base.scss */
+/* line 4276, sass/_base.scss */
 .online-hitel-view .cetelem .hl-head .help a {
   color: #2e5e22;
   text-decoration: underline;
 }
-/* line 4270, sass/_base.scss */
+/* line 4281, sass/_base.scss */
 .online-hitel-view .cetelem .hl-head .help img {
   float: left;
   margin-right: 15px;
 }
 
-/* line 4279, sass/_base.scss */
+/* line 4290, sass/_base.scss */
 .cetelemcalc {
   display: block;
   border: 10px solid #008000;
 }
-/* line 4283, sass/_base.scss */
+/* line 4294, sass/_base.scss */
 .cetelemcalc .head {
   color: white;
   text-shadow: none;
@@ -6071,7 +6088,7 @@ input[type=email][required].ng-touched.ng-valid + span:before {
   font-size: 1.45em;
   font-weight: bold;
 }
-/* line 4292, sass/_base.scss */
+/* line 4303, sass/_base.scss */
 .cetelemcalc .head em {
   font-weight: normal;
   font-size: 0.6em;
@@ -6081,11 +6098,11 @@ input[type=email][required].ng-touched.ng-valid + span:before {
   line-height: 1;
   margin-top: 8px;
 }
-/* line 4303, sass/_base.scss */
+/* line 4314, sass/_base.scss */
 .cetelemcalc .con {
   padding: 25px 0;
 }
-/* line 4306, sass/_base.scss */
+/* line 4317, sass/_base.scss */
 .cetelemcalc .con h2 {
   font-weight: bold;
   text-transform: uppercase;
@@ -6093,23 +6110,23 @@ input[type=email][required].ng-touched.ng-valid + span:before {
   color: #EA5C07;
   font-size: 2.2em;
 }
-/* line 4315, sass/_base.scss */
+/* line 4326, sass/_base.scss */
 .cetelemcalc .no-accept-items {
   padding-left: 20px;
 }
-/* line 4317, sass/_base.scss */
+/* line 4328, sass/_base.scss */
 .cetelemcalc .no-accept-items .head {
   background: #d02f2f;
   padding: 15px;
   font-size: 1.2em;
 }
-/* line 4323, sass/_base.scss */
+/* line 4334, sass/_base.scss */
 .cetelemcalc .no-accept-items .ci {
   font-weight: bold;
   color: black;
   padding: 10px 0;
 }
-/* line 4328, sass/_base.scss */
+/* line 4339, sass/_base.scss */
 .cetelemcalc .no-accept-items .ci .ceexc {
   background: #fd7c7c;
   color: white;
@@ -6118,13 +6135,13 @@ input[type=email][required].ng-touched.ng-valid + span:before {
   padding: 15px;
   margin: 10px;
 }
-/* line 4337, sass/_base.scss */
+/* line 4348, sass/_base.scss */
 .cetelemcalc .no-accept-items .ci .wo {
   font-size: 0.9em;
   font-weight: normal;
   font-style: italic;
 }
-/* line 4343, sass/_base.scss */
+/* line 4354, sass/_base.scss */
 .cetelemcalc .no-accept-items .ci h3.minprice {
   color: #008000;
   text-transform: uppercase;
@@ -6133,7 +6150,7 @@ input[type=email][required].ng-touched.ng-valid + span:before {
   margin: 4px 0;
 }
 
-/* line 4354, sass/_base.scss */
+/* line 4365, sass/_base.scss */
 a.cetelem-startrans {
   background: green;
   color: white;
@@ -6142,48 +6159,48 @@ a.cetelem-startrans {
   margin: 10px;
 }
 
-/* line 4362, sass/_base.scss */
+/* line 4373, sass/_base.scss */
 .cetelem-status {
   padding: 20px 10px;
   background: #B1D6B2;
   color: #1B751E;
 }
-/* line 4367, sass/_base.scss */
+/* line 4378, sass/_base.scss */
 .cetelem-status a {
   color: #1B751E;
   text-decoration: underline;
   font-style: italic;
 }
-/* line 4373, sass/_base.scss */
+/* line 4384, sass/_base.scss */
 .cetelem-status .status {
   padding: 5px;
   color: white;
 }
 
-/* line 4379, sass/_base.scss */
+/* line 4390, sass/_base.scss */
 .cetelem-transaction-view {
   background: #008000;
   color: #FFF;
 }
-/* line 4383, sass/_base.scss */
+/* line 4394, sass/_base.scss */
 .cetelem-transaction-view .head {
   background: #036303 !important;
   font-size: 1.8em !important;
   font-weight: bold;
   padding: 15px !important;
 }
-/* line 4389, sass/_base.scss */
+/* line 4400, sass/_base.scss */
 .cetelem-transaction-view .head .subline {
   font-size: 0.45em;
   margin-top: 8px;
   font-weight: normal;
 }
-/* line 4396, sass/_base.scss */
+/* line 4407, sass/_base.scss */
 .cetelem-transaction-view .con {
   padding: 15px;
   padding-top: 0;
 }
-/* line 4400, sass/_base.scss */
+/* line 4411, sass/_base.scss */
 .cetelem-transaction-view .con .whitebox {
   background: #fff;
   padding: 15px;
@@ -6194,7 +6211,7 @@ a.cetelem-startrans {
   -ms-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 4409, sass/_base.scss */
+/* line 4420, sass/_base.scss */
 .cetelem-transaction-view .con a.trans {
   background: orange;
   padding: 5px 10px;
@@ -6206,7 +6223,7 @@ a.cetelem-startrans {
   -ms-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 4420, sass/_base.scss */
+/* line 4431, sass/_base.scss */
 .cetelem-transaction-view .con .info {
   display: block;
   margin-top: 5px;
@@ -6215,7 +6232,7 @@ a.cetelem-startrans {
   color: #AABDAA;
   font-style: italic;
 }
-/* line 4430, sass/_base.scss */
+/* line 4441, sass/_base.scss */
 .cetelem-transaction-view .statusmsg {
   padding: 10px;
   margin-bottom: 15px;
@@ -6228,67 +6245,67 @@ a.cetelem-startrans {
   -ms-border-radius: 8px;
   border-radius: 8px;
 }
-/* line 4440, sass/_base.scss */
+/* line 4451, sass/_base.scss */
 .cetelem-transaction-view .statusmsg.stat-timeout {
   background: #545454;
   color: white;
 }
-/* line 4445, sass/_base.scss */
+/* line 4456, sass/_base.scss */
 .cetelem-transaction-view .statusmsg.stat-inprogress {
   background: orange;
   color: white;
 }
-/* line 4451, sass/_base.scss */
+/* line 4462, sass/_base.scss */
 .cetelem-transaction-view .statusmsg.stat-cancel {
   background: #E05A25;
   color: white;
 }
-/* line 4455, sass/_base.scss */
+/* line 4466, sass/_base.scss */
 .cetelem-transaction-view .statusmsg.stat-done {
   background: #31CE31;
   color: white;
 }
-/* line 4461, sass/_base.scss */
+/* line 4472, sass/_base.scss */
 .cetelem-transaction-view .statusdesc {
   color: black;
   line-height: 1.4;
 }
-/* line 4465, sass/_base.scss */
+/* line 4476, sass/_base.scss */
 .cetelem-transaction-view .statusdesc h3 {
   display: block;
   margin-bottom: 10px;
 }
-/* line 4471, sass/_base.scss */
+/* line 4482, sass/_base.scss */
 .cetelem-transaction-view .statusipns {
   margin-top: 10px;
 }
-/* line 4474, sass/_base.scss */
+/* line 4485, sass/_base.scss */
 .cetelem-transaction-view .statusipns .divider {
   background: #077307;
 }
-/* line 4478, sass/_base.scss */
+/* line 4489, sass/_base.scss */
 .cetelem-transaction-view .statusipns div.e {
   margin: 18px 0;
 }
-/* line 4481, sass/_base.scss */
+/* line 4492, sass/_base.scss */
 .cetelem-transaction-view .statusipns div.e .statlabel {
   padding: 4px;
 }
-/* line 4485, sass/_base.scss */
+/* line 4496, sass/_base.scss */
 .cetelem-transaction-view .statusipns div.e .time {
   color: #89AD8A;
   font-size: 0.7em;
 }
 
-/* line 4493, sass/_base.scss */
+/* line 4504, sass/_base.scss */
 .kollega-list {
   padding: 10px;
 }
-/* line 4496, sass/_base.scss */
+/* line 4507, sass/_base.scss */
 .kollega-list ul {
   margin: 0 -10px;
 }
-/* line 4499, sass/_base.scss */
+/* line 4510, sass/_base.scss */
 .kollega-list ul li {
   width: 20%;
   float: left;
@@ -6297,30 +6314,30 @@ a.cetelem-startrans {
   margin: 8px 0;
   font-size: 0.85em;
 }
-/* line 4508, sass/_base.scss */
+/* line 4519, sass/_base.scss */
 .kollega-list ul li .img img {
   width: 100%;
 }
-/* line 4513, sass/_base.scss */
+/* line 4524, sass/_base.scss */
 .kollega-list ul li .name, .kollega-list ul li .titulus, .kollega-list ul li .phone {
   text-align: center;
   line-height: 1;
   margin: 4px 0;
   color: #acacac;
 }
-/* line 4520, sass/_base.scss */
+/* line 4531, sass/_base.scss */
 .kollega-list ul li .name {
   font-weight: bold;
   color: #222;
   font-size: 1.2em;
 }
 
-/* line 4530, sass/_base.scss */
+/* line 4541, sass/_base.scss */
 .cetelem-credit {
   text-align: center;
 }
 
-/* line 4534, sass/_base.scss */
+/* line 4545, sass/_base.scss */
 .page {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -6328,56 +6345,56 @@ a.cetelem-startrans {
   flex-wrap: wrap;
   align-items: flex-start;
 }
-/* line 4541, sass/_base.scss */
+/* line 4552, sass/_base.scss */
 .page .side-menu {
   order: 2;
   flex-basis: 20%;
 }
-/* line 4545, sass/_base.scss */
+/* line 4556, sass/_base.scss */
 .page .responsive-view {
   order: 1;
   flex: 1;
   padding: 0 25px 0 0;
 }
-/* line 4552, sass/_base.scss */
+/* line 4563, sass/_base.scss */
 .page .page-view h1 {
   margin: 0 0 20px 0;
   font-weight: bold;
   font-size: 2.7em;
 }
-/* line 4558, sass/_base.scss */
+/* line 4569, sass/_base.scss */
 .page .page-view .content {
   line-height: 1.4;
 }
-/* line 4561, sass/_base.scss */
+/* line 4572, sass/_base.scss */
 .page .page-view .content p {
   margin: 10px 0 5px 0;
 }
 
-/* line 4568, sass/_base.scss */
+/* line 4579, sass/_base.scss */
 .cetelem-calc {
   font-size: 0.8em;
   padding: 5px;
   background: #F1F1F3;
   position: relative;
 }
-/* line 4574, sass/_base.scss */
+/* line 4585, sass/_base.scss */
 .cetelem-calc #preload {
   text-align: center;
   padding: 8px;
   color: black;
 }
-/* line 4579, sass/_base.scss */
+/* line 4590, sass/_base.scss */
 .cetelem-calc #preload i {
   font-size: 28px;
 }
-/* line 4584, sass/_base.scss */
+/* line 4595, sass/_base.scss */
 .cetelem-calc .error {
   text-align: center;
   color: red;
   padding: 10px;
 }
-/* line 4590, sass/_base.scss */
+/* line 4601, sass/_base.scss */
 .cetelem-calc #next, .cetelem-calc #prev {
   cursor: pointer;
   background: #85A774;
@@ -6388,27 +6405,27 @@ a.cetelem-startrans {
   bottom: 2px;
   z-index: 1;
 }
-/* line 4600, sass/_base.scss */
+/* line 4611, sass/_base.scss */
 .cetelem-calc #next:hover, .cetelem-calc #prev:hover {
   background: #3E9219;
 }
-/* line 4605, sass/_base.scss */
+/* line 4616, sass/_base.scss */
 .cetelem-calc #prev {
   left: 2px;
 }
-/* line 4609, sass/_base.scss */
+/* line 4620, sass/_base.scss */
 .cetelem-calc #next {
   right: 2px;
 }
-/* line 4614, sass/_base.scss */
+/* line 4625, sass/_base.scss */
 .cetelem-calc #results .result {
   display: none;
 }
-/* line 4618, sass/_base.scss */
+/* line 4629, sass/_base.scss */
 .cetelem-calc #results .result.active {
   display: block;
 }
-/* line 4622, sass/_base.scss */
+/* line 4633, sass/_base.scss */
 .cetelem-calc #results .constuction {
   float: right;
   font-weight: bold;
@@ -6418,40 +6435,40 @@ a.cetelem-startrans {
   margin-bottom: 5px;
   color: #309033;
 }
-/* line 4632, sass/_base.scss */
+/* line 4643, sass/_base.scss */
 .cetelem-calc #results .havi {
   font-style: italic;
   color: #727273;
   font-size: 0.8em;
 }
-/* line 4638, sass/_base.scss */
+/* line 4649, sass/_base.scss */
 .cetelem-calc #results .ownSharePrice {
   border-top: 1px solid #d7d7d7;
   padding-top: 5px;
   margin-top: 5px;
   font-size: 0.8em;
 }
-/* line 4644, sass/_base.scss */
+/* line 4655, sass/_base.scss */
 .cetelem-calc #results .ownSharePrice input {
   border: none;
   padding: 4px;
   width: 60px;
 }
-/* line 4650, sass/_base.scss */
+/* line 4661, sass/_base.scss */
 .cetelem-calc #results .ownSharePrice input + button {
   height: 21px;
   background: #DADADA;
   color: #848484;
   border: none;
 }
-/* line 4658, sass/_base.scss */
+/* line 4669, sass/_base.scss */
 .cetelem-calc #results .futamidok {
   text-align: center;
   margin-top: 8px;
   display: block;
   position: relative;
 }
-/* line 4667, sass/_base.scss */
+/* line 4678, sass/_base.scss */
 .cetelem-calc #results:after {
   content: "";
   background: url("//www.cp.tuzvedelmicentrum.web-pro.hu/src/images/cetelem_babu.png") no-repeat center;
