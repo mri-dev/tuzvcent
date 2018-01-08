@@ -23,9 +23,9 @@
 					<div class="infos">
 						<div class="cimkek">
 							<? if($ujdonsag): ?>
-                            <img src="<?=IMG?>new_icon.png" title="Újdonság!" alt="Újdonság">
-                            <? endif; ?>
-                        </div>
+                <img src="<?=IMG?>new_icon.png" title="Újdonság!" alt="Újdonság">
+                <? endif; ?>
+            </div>
 						<div class="title">
 							<h3><a href="<?=$link?>"><?=$product_nev?></a></h3>
 						</div>

@@ -595,15 +595,25 @@ header {
 			  display: flex;
 				flex-wrap: wrap;
 				align-items: center;
+				height: 38px;
 
 				& > li {
+					height: 38px;
 					 & > a{
 						 text-transform: uppercase;
 						 font-weight: bold;
 						 font-size: 1em;
-					   padding: 10px 15px;
+					   padding: 0 15px;
 					   text-decoration: none;
 					   display: block;
+		 				 height: 38px;
+						 line-height: 38px;
+
+						 i {
+							 font-size: 17px;
+						   vertical-align: middle;
+						   margin-left: 5px;
+						 }
 					 }
 					&:hover{
 						background: #eceff2;
