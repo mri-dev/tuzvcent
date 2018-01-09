@@ -18,13 +18,6 @@ class termekek extends Controller {
 			$cat = new Category(Product::getTermekIDFromUrl(), array( 'db' => $this->db ));
 			$this->out( 'category', $cat );
 
-			// Szülő kategória
-			if($cat->getParentId())
-			{
-				$parent_cat = new Category($cat->getParentId(), array( 'db' => $this->db ));
-				$this->out( 'parent_category', $parent_cat );
-			}
-
 			// Kategória szülő almenüi
 			$categories = new Categories( array( 'db' => $this->db ) );
 
@@ -35,6 +28,12 @@ class termekek extends Controller {
 			if ($parent_list) {
 				$parent_row = array_reverse($categories->getCategoryParentRow( $cat->getId(), 'neve'));
 				$this->out( 'parent_row', $parent_row );
+			}
+
+			// Kategória nav
+			if( $parent_id )
+			{
+				$this->out( 'cat_nav', array_reverse($categories->getCategoryParentRow( $parent_id, false )) );
 			}
 
 			if (  $cat->getId() ) {

@@ -31,6 +31,15 @@
 
                   <div class="category-title head">
                       <h1><?=$this->category->getName()?></h1>
+                      <?php $navh = '/termekek/'; ?>
+                      <ul class="cat-nav">
+                        <li><a href="/"><i class="fa fa-home"></i></a></li>
+                        <li><a href="<?=$navh?>">Webshop</a></li>
+                        <?php
+                        foreach ( $this->cat_nav as $nav ): $navh = \Helper::makeSafeUrl($nav['neve'],'_-'.$nav['ID']); ?>
+                        <li><a href="<?=$navh?>"><?php echo $nav['neve']; ?></a></li>
+                        <?php endforeach; ?>
+                      </ul>
                   </div>
 
                   <? if( !$this->products->hasItems()): ?>
@@ -57,7 +66,7 @@
                           </div>
                       </div>
                       <div class="clr"></div>
-                      <? /*$this->navigator*/ ?>
+                      <? echo $this->navigator; ?>
                   <br>
                   <? endif; ?>
               </div>

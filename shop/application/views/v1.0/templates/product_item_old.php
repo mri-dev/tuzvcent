@@ -33,23 +33,23 @@
 						<div class="params">
 							<? if( false ): ?>
 								<? if( $parameters ): ?>
-				                <table>
-			                        <? $pi = 0; foreach( $parameters as $param ): if( $pi >= 3 ) break; ?>
-			                        <tr>
-			                            <td><?=__($param['neve'])?></td>
-			                            <td><strong><?=__($param['ertek'])?> <?=__($param['me'])?></strong></td>
-			                        </tr>
-			                        <?  $pi++; endforeach; ?>
-				                </table>
-				            	<? else: ?>
-				            	<div style="display:block; line-height: 51px; text-align:center;">&mdash;<em> <?=__('nincsennek termék jellemzők')?> </em>&mdash;</div>
-				                <? endif; ?>
-				            <? endif; ?>
-				            <? if( true ): ?>
-				            	<div class="short-desc">
+	                <table>
+                        <? $pi = 0; foreach( $parameters as $param ): if( $pi >= 3 ) break; ?>
+                        <tr>
+                            <td><?=__($param['neve'])?></td>
+                            <td><strong><?=__($param['ertek'])?> <?=__($param['me'])?></strong></td>
+                        </tr>
+                        <?  $pi++; endforeach; ?>
+	                </table>
+	            	<? else: ?>
+	            	<div style="display:block; line-height: 51px; text-align:center;">&mdash;<em> <?=__('nincsennek termék jellemzők')?> </em>&mdash;</div>
+	                <? endif; ?>
+	            <? endif; ?>
+	            <? if( true ): ?>
+	            	<div class="short-desc">
 									<?=$marketing_leiras?>
-				            	</div>
-				            <? endif; ?>
+	            	</div>
+	            <? endif; ?>
 						</div>
 					</div>
 				</div>
