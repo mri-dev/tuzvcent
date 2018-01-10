@@ -4,7 +4,38 @@
         <div class="list-view webshop-product-top">
           <div class="grid-layout">
             <div class="grid-row filter-sidebar">
-              sidebar
+              <div class="filters side-group">
+                <div class="head">
+                  Keresés tulajdonságok szerint
+                </div>
+                <div class="section-group">
+                  Rendezés
+                </div>
+                <div class="section-wrapper">
+                  asd
+                </div>
+                <div class="action-group">
+                  asd
+                </div>
+              </div>
+              <div class="lastviewed side-group">
+                <div class="head">
+                  Legutoljára megnézett termékek
+                </div>
+              </div>
+              <div class="topproducts side-group">
+                <div class="head">
+                  Top termékek
+                </div>
+                <div class="wrapper">
+                  lista
+                </div>
+              </div>
+              <div class="liveproducts side-group">
+                <div class="head">
+                  Mások ezeket nézik
+                </div>
+              </div>
             </div>
             <div class="grid-row products">
               <div>
@@ -37,7 +68,7 @@
                         <li><a href="<?=$navh?>">Webshop</a></li>
                         <?php
                         foreach ( $this->cat_nav as $nav ): $navh = \Helper::makeSafeUrl($nav['neve'],'_-'.$nav['ID']); ?>
-                        <li><a href="<?=$navh?>"><?php echo $nav['neve']; ?></a></li>
+                        <li><a href="/termekek/<?=$navh?>"><?php echo $nav['neve']; ?></a></li>
                         <?php endforeach; ?>
                       </ul>
                   </div>
