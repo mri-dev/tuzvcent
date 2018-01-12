@@ -4,38 +4,100 @@
         <div class="list-view webshop-product-top">
           <div class="grid-layout">
             <div class="grid-row filter-sidebar">
-              <div class="filters side-group">
-                <div class="head">
-                  Keresés tulajdonságok szerint
+              <form class="" action="" method="get">
+                <div class="filters side-group">
+                  <div class="head">
+                    Keresés tulajdonságok szerint
+                  </div>
+                  <div class="section-group">
+                    Rendezés
+                  </div>
+                  <div class="section-wrapper">
+                    <select name="order" class="form-control">
+			                <option value="ar_asc" selected="selected">Ár: növekvő</option>
+                      <option value="ar_desc">Ár: csökkenő</option>
+                      <option value="nev_asc">Név: A-Z</option>
+                      <option value="nev_desc">Név: Z-A</option>
+                    </select>
+                  </div>
+                  <div class="action-group">
+                    <button type="submit">Szűrés <i class="fa fa-refresh"></i></button>
+                  </div>
                 </div>
-                <div class="section-group">
-                  Rendezés
-                </div>
-                <div class="section-wrapper">
-                  asd
-                </div>
-                <div class="action-group">
-                  asd
-                </div>
-              </div>
+              </form>
+
+              <? if( $this->viewed_products->hasItems() ): ?>
               <div class="lastviewed side-group">
                 <div class="head">
                   Legutoljára megnézett termékek
                 </div>
+                <div class="wrapper">
+                  <div class="product-side-items imaged-style">
+                    <? foreach ( $this->viewed_products_list as $viewed ) { ?>
+                    <div class="item">
+                      <div class="img">
+                        <a href="<?php echo $viewed['link']; ?>"><img src="<?php echo $viewed['profil_kep']; ?>" alt="<?php echo $viewed['product_nev']; ?>"></a>
+                      </div>
+                      <div class="name">
+                        <a href="<?php echo $viewed['link']; ?>"><?php echo $viewed['product_nev']; ?></a>
+                      </div>
+                      <div class="desc">
+                        <?php echo $viewed['csoport_kategoria']; ?>
+                      </div>
+                    </div>
+                    <? } ?>
+                  </div>
+                </div>
               </div>
+              <? endif; ?>
+
+              <? if( $this->top_products->hasItems() ): ?>
               <div class="topproducts side-group">
                 <div class="head">
                   Top termékek
                 </div>
                 <div class="wrapper">
-                  lista
+                  <div class="product-side-items simple-style">
+                    <? foreach ( $this->top_products_list as $topp ) { ?>
+                    <div class="item">
+                      <div class="name">
+                        <a href="<?php echo $topp['link']; ?>"><?php echo $topp['product_nev']; ?></a>
+                      </div>
+                      <div class="desc">
+                        <?php echo $topp['csoport_kategoria']; ?>
+                      </div>
+                    </div>
+                    <? } ?>
+                  </div>
                 </div>
               </div>
+              <? endif; ?>
+
+              <? if( $this->live_products->hasItems() ): ?>
               <div class="liveproducts side-group">
                 <div class="head">
                   Mások ezeket nézik
                 </div>
+                <div class="wrapper">
+                  <div class="product-side-items imaged-style">
+                    <? foreach ( $this->live_products_list as $livep ) { ?>
+                    <div class="item">
+                      <div class="img">
+                        <a href="<?php echo $livep['link']; ?>"><img src="<?php echo $livep['profil_kep']; ?>" alt="<?php echo $livep['product_nev']; ?>"></a>
+                      </div>
+                      <div class="name">
+                        <a href="<?php echo $livep['link']; ?>"><?php echo $livep['product_nev']; ?></a>
+                      </div>
+                      <div class="desc">
+                        <?php echo $livep['csoport_kategoria']; ?>
+                      </div>
+                    </div>
+                    <? } ?>
+                  </div>
+                </div>
               </div>
+              <? endif; ?>
+
             </div>
             <div class="grid-row products">
               <div>

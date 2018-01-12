@@ -56,7 +56,9 @@ class termekek extends Controller {
 				}
 			}
 
-			// Termékek
+			/****
+			* Termékek
+			*****/
 			$filters = array();
 			$order = array();
 
@@ -80,6 +82,45 @@ class termekek extends Controller {
 			) ))->prepareList( $arg );
 			$this->out( 'products', $products );
 			$this->out( 'product_list', $products->getList() );
+
+			/****
+			* TOP TERMÉKEK
+			*****/
+			$arg = array(
+				'limit' 	=> 5
+			);
+			$top_products = (new Products( array(
+				'db' => $this->db,
+				'user' => $this->User->get()
+			) ))->prepareList( $arg );
+			$this->out( 'top_products', $top_products );
+			$this->out( 'top_products_list', $top_products->getList() );
+
+			/****
+			* MEGNÉZETT TERMÉKEK
+			*****/
+			$arg = array(
+				'limit' 	=> 5
+			);
+			$viewed_products = (new Products( array(
+				'db' => $this->db,
+				'user' => $this->User->get()
+			) ))->prepareList( $arg );
+			$this->out( 'viewed_products', $viewed_products );
+			$this->out( 'viewed_products_list', $viewed_products->getList() );
+
+			/****
+			* Live TERMÉKEK
+			*****/
+			$arg = array(
+				'limit' 	=> 5
+			);
+			$live_products = (new Products( array(
+				'db' => $this->db,
+				'user' => $this->User->get()
+			) ))->prepareList( $arg );
+			$this->out( 'live_products', $live_products );
+			$this->out( 'live_products_list', $live_products->getList() );
 
 
 			$get = $_GET;

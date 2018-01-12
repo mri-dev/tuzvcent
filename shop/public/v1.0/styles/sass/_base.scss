@@ -569,6 +569,17 @@
 			background: #eceff2;
 			text-align: center;
 			border-top: 0.4px solid #e0e0e0;
+
+			button {
+				background: $color-yellow;
+				padding: 8px 10px;
+				border: none;
+				border-radius: 5px;
+				color: #4d4d4d;
+				text-transform: uppercase;
+				font-size: 0.9em;
+				font-weight: bold;
+			}
 		}
 
 		&.filters{
@@ -582,6 +593,9 @@
 			.head{
 				background: #747272;
 				color: white;
+			}
+			.wrapper{
+				padding: 10px;
 			}
 		}
 		&.topproducts{
@@ -599,8 +613,62 @@
 			.head{
 				background: #e0e0e0;
 			}
+			.wrapper{
+				padding: 10px;
+			}
 		}
 
+	}
+	.product-side-items{
+		margin: -5px 0;
+		.item {
+			border-bottom: 1px solid #f1f1f1;
+			padding: 10px 0;
+			color: #404040;
+
+			a{
+				color: #404040;
+				text-transform: uppercase;
+				text-decoration: none;
+				font-weight: bold;
+				font-size: 1.05em;
+
+				&:hover{
+					color: $color-orange;
+				}
+			}
+
+			.desc {
+				margin-top: 5px;
+				font-size: 0.9em;
+			}
+
+			&:last-child{
+				border-bottom: none;
+			}
+		}
+
+		&.imaged-style{
+			.item{
+				&:after{
+					clear: both;
+					height: 1px;
+					display: block;
+					content: "";
+				}
+			}
+			.img{
+				height: 50px;
+				width: 50px;
+				float:left;
+				margin-right:10px;
+
+				img {
+					max-width: 100%;
+					width: 100%;
+				}
+			}
+		}
 	}
 }
 
