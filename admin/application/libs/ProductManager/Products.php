@@ -442,7 +442,74 @@ class Products
 		$this->db->query("DELETE FROM shop_termek_ajanlo_xref WHERE (base_id = $id1 and target_id = $id2)");
 	}
 
+	public function getLiveviewedList( $mID, $limit = 5, $arg = array() )
+	{
+		$data = array();
 
+		$q = "SELECT
+			v.*,
+			t.nev as product_nev,
+			t.ID as product_id,
+			t.profil_kep,
+			t.csoport_kategoria
+		FROM `shop_utoljaraLatottTermek` as v
+		LEFT OUTER JOIN shop_termekek as t ON t.ID = v.termekID
+		LEFT OUTER JOIN shop_markak as m ON m.ID = t.marka
+		WHERE v.mID != '$mID' and t.ID IS NOT NULL and t.lathato = 1
+		GROUP BY t.ID
+		ORDER BY v.idopont DESC
+		LIMIT 0,$limit";
+
+		$arg[multi] = '1';
+		extract($this->db->q($q,$arg));
+
+		$bdata = array();
+
+		foreach($data as $d){
+			$kep = $d['profil_kep'];
+			$d['profil_kep'] 		=  \PortalManager\Formater::productImage( $kep, false, self::TAG_IMG_NOPRODUCT );
+			$d['profil_kep_small'] 	=  \PortalManager\Formater::productImage( $kep, 75, self::TAG_IMG_NOPRODUCT );
+			$d['link'] = DOMAIN.'termek/'.\PortalManager\Formater::makeSafeUrl( $d['product_nev'], '_-'.$d['product_id'] );
+
+			$bdata[]	 			= $d;
+		}
+
+		return $bdata;
+	}
+
+	public function getLastviewedList( $mID, $limit = 5, $arg = array() )
+	{
+		$data = array();
+
+		$q = "SELECT
+			v.*,
+			t.nev as product_nev,
+			t.ID as product_id,
+			t.profil_kep,
+			t.csoport_kategoria
+		FROM `shop_utoljaraLatottTermek` as v
+		LEFT OUTER JOIN shop_termekek as t ON t.ID = v.termekID
+		LEFT OUTER JOIN shop_markak as m ON m.ID = t.marka
+		WHERE v.mID = '$mID' and t.ID IS NOT NULL and t.lathato = 1
+		ORDER BY v.idopont DESC
+		LIMIT 0,$limit";
+
+		$arg[multi] = '1';
+		extract($this->db->q($q,$arg));
+
+		$bdata = array();
+
+		foreach($data as $d){
+			$kep = $d['profil_kep'];
+			$d['profil_kep'] 		=  \PortalManager\Formater::productImage( $kep, false, self::TAG_IMG_NOPRODUCT );
+			$d['profil_kep_small'] 	=  \PortalManager\Formater::productImage( $kep, 75, self::TAG_IMG_NOPRODUCT );
+			$d['link'] = DOMAIN.'termek/'.\PortalManager\Formater::makeSafeUrl( $d['product_nev'], '_-'.$d['product_id'] );
+
+			$bdata[]	 			= $d;
+		}
+
+		return $bdata;
+	}
 
 	public function prepareList( $arg = array() )
 	{
@@ -461,45 +528,53 @@ class Products
 
 		/*==========  Lekérdezés  ==========*/
 		$qry = "
-		SELECT					SQL_CALC_FOUND_ROWS
-								p.ID as product_id,
-								p.nev as product_nev,
-								p.cikkszam,
-								p.kulcsszavak,
-								p.pickpackszallitas,
-								p.no_cetelem,
-								p.akcios,
-								p.ujdonsag,
-								p.netto_ar,
-								p.marketing_leiras,
-								p.brutto_ar,
-								p.akcios_netto_ar,
-								p.akcios_brutto_ar,
-								p.egyedi_ar,
-								p.marka as marka_id,
-								p.szallitasID,
-								p.keszletID,
-								p.raktar_keszlet,
-								p.raktar_articleid,
-								p.profil_kep,
-								p.kep_mappa,
-								p.lathato,
-								p.kiemelt,
-								p.szin,
-								p.csoport_kategoria,
-								p.meret,
-								p.garancia_honap,
-								p.termek_site_url,
-								p.ajandek,
-								IF(p.egyedi_ar IS NOT NULL,
-									p.egyedi_ar,
-									getTermekAr(p.marka, IF(p.akcios,p.akcios_brutto_ar,p.brutto_ar))
-								) as ar,
+		SELECT SQL_CALC_FOUND_ROWS
+			p.ID as product_id,
+			p.nev as product_nev,
+			p.cikkszam,
+			p.kulcsszavak,
+			p.pickpackszallitas,
+			p.no_cetelem,
+			p.akcios,
+			p.ujdonsag,
+			p.netto_ar,
+			p.marketing_leiras,
+			p.brutto_ar,
+			p.akcios_netto_ar,
+			p.akcios_brutto_ar,
+			p.egyedi_ar,
+			p.marka as marka_id,
+			p.szallitasID,
+			p.keszletID,
+			p.raktar_keszlet,
+			p.raktar_articleid,
+			p.profil_kep,
+			p.kep_mappa,
+			p.lathato,
+			p.kiemelt,
+			p.without_price,
+			p.szin,
+			p.csoport_kategoria,
+			p.ajanlatunk,
+			p.meret,
+			p.garancia_honap,
+			p.termek_site_url,
+			p.ajandek,
+			p.rovid_leiras,
+			IF(p.egyedi_ar IS NOT NULL,
+				p.egyedi_ar,
+				getTermekAr(p.marka, IF(p.akcios,p.akcios_brutto_ar,p.brutto_ar))
+			) as ar,
+			p.fotermek,
+			(SELECT GROUP_CONCAT(kategoria_id) FROM shop_termek_in_kategoria WHERE termekID = p.ID ) as in_cat,
+			(SELECT neve FROM shop_termek_kategoriak WHERE ID = p.alapertelmezett_kategoria ) as alap_kategoria";
 
-								p.fotermek,
-								(SELECT GROUP_CONCAT(kategoria_id) FROM shop_termek_in_kategoria WHERE termekID = p.ID ) as in_cat,
-								(SELECT neve FROM shop_termek_kategoriak WHERE ID = p.alapertelmezett_kategoria ) as alap_kategoria
-		FROM					shop_termekek as p
+		if ( isset($arg['collectby']) && $arg['collectby'] == 'top' ) {
+			$qry .= " ,(SELECT sum(me) FROM `stat_nezettseg_termek` WHERE termekID = p.ID and datediff(now(),datum) < 60) as v";
+		}
+
+		$qry .= " FROM
+		shop_termekek as p
 		WHERE 					1 = 1
 		";
 
@@ -675,20 +750,26 @@ class Products
 		}
 
 		// ORDER
-
-		if ( isset($arg['customorder']))
-		{
-			switch ($arg['customorder']['by']) {
-				case 'popular':
-				 $qry .= " ORDER BY (SELECT SUM(me) as total FROM `stat_nezettseg_termek` WHERE termekID = p.ID GROUP BY termekID) ".$arg['customorder']['how'];
-				break;
+		// ORDER if collect
+		if ( isset($arg['collectby'])) {
+			if ( $arg['collectby'] == 'top' ) {
+				$qry .= " ORDER BY v DESC ";
 			}
-		} else
-		{
-			if( $arg['order'] ) {
-				$qry .= " ORDER BY ".$arg['order']['by']." ".$arg['order']['how'];
-			} else {
-				$qry .= " ORDER BY ar ASC, fotermek DESC, ID DESC ";
+		} else {
+			if ( isset($arg['customorder']))
+			{
+				switch ($arg['customorder']['by']) {
+					case 'popular':
+					 $qry .= " ORDER BY (SELECT SUM(me) as total FROM `stat_nezettseg_termek` WHERE termekID = p.ID GROUP BY termekID) ".$arg['customorder']['how'];
+					break;
+				}
+			} else
+			{
+				if( $arg['order'] ) {
+					$qry .= " ORDER BY ".$arg['order']['by']." ".$arg['order']['how'];
+				} else {
+					$qry .= " ORDER BY ar ASC, fotermek DESC, ID DESC ";
+				}
 			}
 		}
 

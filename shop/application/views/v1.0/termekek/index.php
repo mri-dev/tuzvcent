@@ -25,8 +25,7 @@
                   </div>
                 </div>
               </form>
-
-              <? if( $this->viewed_products->hasItems() ): ?>
+              <? if( $this->viewed_products_list ): ?>
               <div class="lastviewed side-group">
                 <div class="head">
                   Legutoljára megnézett termékek
@@ -73,7 +72,7 @@
               </div>
               <? endif; ?>
 
-              <? if( $this->live_products->hasItems() ): ?>
+              <? if( $this->live_products_list ): ?>
               <div class="liveproducts side-group">
                 <div class="head">
                   Mások ezeket nézik

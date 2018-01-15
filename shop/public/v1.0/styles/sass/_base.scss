@@ -371,6 +371,19 @@
 			& > .wrapper {
 				padding: 0px;
 				position: relative;
+
+				.ajanlott{
+					position: absolute;
+					background: #404040;
+					padding: 10px 12px;
+					left:0;
+					top:0;
+					pointer-events: none;
+
+					img{
+						width: 10px;
+					}
+				}
 			}
 
 			a {
@@ -382,21 +395,44 @@
 				right: 5px;
 				top: 5px;
 				pointer-events: none;
+				z-index: 1;
 			}
 
 			.image {
 				text-align: center;
     		padding: 5px;
+				position: relative;
+				overflow: hidden;
 				img {
 					width: 80%;
 					max-width: 80%;
 					margin: 0 auto;
+				}
+				.short-desc {
+					z-index: 2;
+					background:rgba(240, 240, 240, 0.8);
+					padding: 5px;
+					font-size: 0.8em;
+					text-align: left;
+					line-height: 1.3;
+					color: #404040;
+					position: absolute;
+					bottom: -160px;
+					left: 1px;
+					right: 1px;
+					width: 100%;
+					max-height: 160px;
+					overflow: hidden;
+					pointer-events: none;
+					-webkit-transition:all .4s;
+  				transition:all .4s;
 				}
 			}
 
 			.prices{
 				padding: 0 10px;
 				position: relative;
+
 				& > .wrapper {
 					border: 1px solid #e4e4e4;
 					border-left: none;
@@ -408,7 +444,8 @@
 						.current{
 							font-weight: bold;
 							color: #747272;
-							font-size: 1.2em;
+					    font-size: 1.4em;
+					    line-height: 28px;
 						}
 
 						.old {
@@ -447,6 +484,19 @@
 						&.akcios{
 							.current{
 								color: lighten($color-red, 10%);
+							}
+						}
+					}
+					&.wo-price{
+						.ar{
+							font-size: 0.85em;
+							font-weight: 100;
+							color: black;
+							line-height: 1;
+
+							strong {
+								color: #747272;
+								font-size: 1.64em;
 							}
 						}
 					}
@@ -522,6 +572,17 @@
 					&:hover{
 						background: darken(#e0e0e0, 5%);
 					}
+
+					&.req-price {
+						cursor: pointer;
+					}
+				}
+			}
+			&:hover{
+				border: .4px solid #ff434b;
+
+				.short-desc{
+					bottom: 0;
 				}
 			}
 		}
@@ -719,6 +780,12 @@
 			a{
 				color: #4a4a4a;
 				font-size: 1.1em;
+			}
+
+			&:last-child{
+				&:after{
+					display: none;
+				}
 			}
 		}
 	}
