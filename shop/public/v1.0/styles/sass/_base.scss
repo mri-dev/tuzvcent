@@ -826,416 +826,62 @@
 
 
 .product-view {
-	.divider {
-		height: 2px;
-		margin: 10px 0;
+	display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+
+	& > .sidebar {
+		flex-basis: $size-sidebar;
+		order: 1;
 	}
+	& > .product-data {
+		flex: 1;
+		order: 2;
+		padding-left: 25px;
 
-	.cetelem-calc-btn {
-		position: relative;
-		background: #71C54E;
-	    text-align: center;
-	    color: #FFF;
-	    padding: 7px;
-	    cursor: help;
-	    font-size: 0.75em;
-	    margin-top: 20px;
+		.nav{
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			flex-wrap: wrap;
+			align-items: flex-start;
+			border-bottom: 1px solid #f1f1f1;
+			margin: 0 0 10px 0;
+			padding: 0 0 10px 0;
 
-	    .cetelem-calc-box {
-			position: absolute;
-		    background: rgba(42,117,45,0.90);
-		    bottom: 0;
-		    right: 100%;
-		    width: 300px;
-		    text-align: left;
-		    font-size: 0.8em;
-		    padding: 10px;
-		    display: none;
-		    z-index: 1000;
-
-		    -webkit-box-shadow: 0 3px 5px -3px #0B2F0C;
-		    -moz-box-shadow: 0 3px 5px -3px #0B2F0C;
-		    box-shadow: 0 3px 5px -3px #0B2F0C;
-
-		    p {
-		    	margin: 0 0 10px 0;
-		    }
-		}
-
-	    &:hover .cetelem-calc-box {
-	    	display: block;
-	    }
-	}
-
-	.cetelem-calc-btn.orange {
-		background: #EF891E;
- 		margin-top: 0;
-
-		.cetelem-calc-box {
-			background: rgba(228, 127, 21, 0.94);
-			font-size: 1em;
-
-			h3 {
-				font-weight: bold;
-				text-transform: uppercase;
-				margin-bottom: 10px;
-				font-size: 1.2em;
+			& > .pagi{
+				flex-basis: 70%;
+				text-align: left;
+			}
+			& > .back{
+				flex-basis: 30%;
+				text-align: right;
 			}
 		}
 
-		ol {
-		    list-style-type: decimal;
-		    margin: 0 0 0 10px;
+		.top-datas{
+			display: -webkit-box;
+		  display: -ms-flexbox;
+		  display: flex;
+			flex-wrap: wrap;
+			align-items: flex-start;
 
-		    li {
-		    	margin: 4px 0;
-		    }
-		}
-
-		&:after {
-			content: "";
-			position: absolute;
-			background: transparent;
-			width: 15px;
-			height: 15px;
-			top:-15px;
-			right: 0;
-			border-style: solid;
-			border-color: transparent #EF891E #EF891E transparent;
-			border-width: 10px;
-			pointer-events:none;
-		}
-	}
-
-	#cart-msg {
-		margin-bottom: 8px;
-		.error {
-			background: lighten($color-pr, 10%);
-			color:white;
-			padding: 5px;
-			font-size: 0.8em;
-		}
-		.success {
-			background: lighten(green, 10%);
-			color: white;
-			padding: 5px;
-			font-size: 0.8em;
-		}
-	}
-	.main-view {
-		display: table;
-		width: 100%;
-		.images, .data-view {
-			display: table-cell;
-			vertical-align: top;
-		}
-
-		.images {
-			width: 40%;
-
-			.main-img {
-				img {
-					width: 100%;
-					max-width: 100%;
-				}
-
-				img.cetelem {
-					position: absolute;
-					width: auto;
-					height: 60px;
-					pointer-events: none;
-				}
-			}
-			.all {
-				width: 350px;
-				border: 25px solid rgba(0, 0, 0, 0);
-				border-top: none;;
-				border-bottom: none;
-				margin: 0 auto;
-
-				.slick-slide {
-					padding: 5px !important;
-				}
-
-				img {
-					border: 2px solid $color-sec;
-				}
-
-				.slick-prev {
-					background: url("#{$imgroot}src/images/arrow-left.png") no-repeat center;
-					width: 20px;
-					height: 20px;
-					border: none;
-					position: absolute;
-					left: -20px;
-					top: 50%;
-   					text-indent: -9999px;
-   					margin-top: -10px;
-				}
-				.slick-next {
-					background: url("#{$imgroot}src/images/arrow-right.png") no-repeat center;
-					width: 20px;
-					height: 20px;
-					border: none;
-					position: absolute;
-					right: -20px;
-					top: 50%;
-   					text-indent: -9999px;
-   					margin-top: -10px;
-				}
+			& > div{
+				flex-basis: 50%;
 			}
 		}
+		.more-datas{
+			display: -webkit-box;
+		  display: -ms-flexbox;
+		  display: flex;
+			flex-wrap: wrap;
+			align-items: flex-start;
 
-		.data-view {
-			width: 60%;
-		}
-	}
-
-	.info {
-		padding: 5px 0 0 5px;
-
-		table, table td {
-			border: 1px solid #ddd;
-		}
-		table td {
-			padding: 8px;
-		}
-	}
-
-	.free-transport {
-		background: lighten( $color-sec, 8% );
-		padding: 10px;
-		color: darken( $color-sec, 50% );
-		line-height: 25px;
-		font-weight: bold;
-		font-size: 1em;
-		text-align: center;
-		margin: 5px 0 5px 15px;
-
-		img {
-			margin-right: 8px;
-			vertical-align:middle;
-		}
-	}
-
-	.links {
-		padding: 0 0 0 15px;
-
-		ul li {
-			float: left;
-			margin: 0 3px;
-
-			a {
-				display:block;
-				background: lighten( $color-sec, 10% );
-				padding: 5px 10px;
-
-				color: $color-pr;
-				font-size: 0.80em;
-				font-family: $font-cond;
-
-				@include border-radius(8px);
-
-				i {
-					color: black;
-				}
+			& > div{
+				flex-basis: 50%;
 			}
-		}
-	}
-
-	.buy-basic-info {
-		background: lighten( $color-sec, 8% );
-		padding: 15px;
-		font-size: 0.9em;
-    	line-height: 120%;
-
-		h3 {
-			margin: 8px 0 !important;
-			display: block;
-		}
-
-		ul {
-			margin-left: 10px;
-		}
-
-		li {
-			list-style: disc;
-			margin: 5px 0;
-		}
-	}
-
-	.switcherView {
-		font-size: 0.8em;
-		line-height: 135%;
-
-		h1, h2, h3, h4 {
-			font-family: $font-cond;
-			margin: 0 0 8px 0;
-			font-weight: bold;
-			color:black;
-		}
-
-	}
-
-	.data-view {
-		padding-left: 15px;
-
-		.cimkek {
-			float: right;
-			margin: 10px 10px 0 0;
-		}
-
-		h1 {
-			margin: 15px 0 8px 0;
-			font-weight: bold;
-			color: black;
-			font-size: 2.8em;
-		}
-		.cat {
-			color: $color-pr;
-			font-weight: bold;
-			font-size: 1.3em;
-		}
-
-		.rack {
-			font-weight: bold;
-			color: darken($color-sec, 50%);
-			font-size:1em;
-			.title {
-				font-size: 0.7em;
-			}
-
-			.garancia {
-				img {
-					float:left;
-					margin-right: 5px;
-					vertical-align: middle;
-				}
-				.year {
-					color: $color-pr;
-				}
-			}
-
-			.status {
-				font-size: 1.1em;
-				line-height: 1.2;
-			}
-
-			.in_stock {
-				font-size: 0.8em;
-			    color: #000;
-			}
-		}
-
-		.action-bar {
-			a {
-				display: block;
-				color: #454545;
-				font-family: $font-cond;
-				line-height: 180%;
-				font-size:0.8em;
-				text-decoration: underline;
-			}
-		}
-
-		.current-variation {
-			font-weight: bold;
-			color: darken($color-sec, 50%);
-			font-size:1.2em;
-			margin-bottom: 20px;
-
-			strong {
-				font-family: $font-cond;
-				color:black;
-			}
-			.title {
-				font-size: 0.7em;
-			}
-		}
-
-		.gift {
-			margin-top: 15px;
-			font-size: 1.3em;
-			font-weight: bold;
-			color:black;
-
-			img {
-				float: left;
-			    margin: 0 15px 15px 0;
-			    vertical-align: middle;
-			    height: 40px;
-			}
-		}
-
-		.prices {
-			.price-head {
-				font-weight: bold;
-				color: $color-pr;
-			}
-
-			.old {
-				line-height: 35px;
-
-				.price {
-					font-size: 0.9em;
-					color:black;
-					font-family: $font-cond;
-				}
-
-				.discount_percent{
-					float: right;
-					text-decoration: none;
-					color: white;
-					float: right;
-					line-height: 1;
-					font-weight: bold;
-					margin-top:5px;
-					padding: 3px;
-					/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#d41c4f+0,a50818+100 */
-					background: #d41c4f; /* Old browsers */
-					background: -moz-linear-gradient(top,  #d41c4f 0%, #a50818 100%); /* FF3.6-15 */
-					background: -webkit-linear-gradient(top,  #d41c4f 0%,#a50818 100%); /* Chrome10-25,Safari5.1-6 */
-					background: linear-gradient(to bottom,  #d41c4f 0%,#a50818 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-					filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d41c4f', endColorstr='#a50818',GradientType=0 ); /* IE6-9 */
-
-					@include border-radius(3px);
-				}
-			}
-
-			.current {
-				font-size: 2.4em;
-				font-weight:bold;
-				font-family: $font-cond;
-				color: $color-pr;
-			}
-
-			.partner-price {
-				font-size: 1.4em;
-				font-weight:bold;
-				font-family: $font-cond;
-				color: darken($color-sec,30%);
-
-				strong {
-					font-weight: 400;
-					font-size: 0.7em;
-					line-height: 1.4;
-				}
-			}
-		}
-
-		.add-to-card button {
-			margin-top: 15px;
-			background: $color-pr;
-			border: none;
-			color: white;
-			text-align: center;
-			line-height: 75px;
-			display: block;
-			width: 100%;
-			font-size: 1.15em;
-			font-weight: bold;
-
-			img { vertical-align: middle; }
 		}
 	}
 }

@@ -1,24 +1,24 @@
-<? 
+<?
 use ProductManager\Products;
 use PortalManager\Template;
 
 class termek extends Controller{
-		function __construct(){	
+		function __construct(){
 			parent::__construct();
 			$title = '';
 
-			$products = new Products( array( 
+			$products = new Products( array(
 				'db' => $this->db,
-				'user' => $this->User->get()  
+				'user' => $this->User->get()
 			) );
 
 			$product =  $products->get( Product::getTermekIDFromUrl() );
 			$product['links'] = $products->getProductLinksFromStr($product['linkek']);
-			
+
 			$this->out( 'product', $product );
 			$this->out( 'slideshow', $this->Portal->getSlideshow( $product['nev'] ) );
 
-			
+
 			// Nincs kép a termékről - átirányítás
 			if( strpos( $product['profil_kep'] , 'no-product-img' ) !== false ) {
 				Helper::reload('/');
@@ -30,9 +30,44 @@ class termek extends Controller{
 					$this->view->msg 	= Helper::makeAlertMsg('pSuccess',$this->shop->requestReCall($_POST));
 				}catch(Exception $e){
 					$this->view->err 	= true;
-					$this->view->msg 	= Helper::makeAlertMsg('pError',$e->getMessage(), 'Telefonos szaktanácsadás &mdash; hiba:');	
+					$this->view->msg 	= Helper::makeAlertMsg('pError',$e->getMessage(), 'Telefonos szaktanácsadás &mdash; hiba:');
 				}
 			}
+
+			/****
+			* TOP TERMÉKEK
+			*****/
+			$arg = array(
+				'limit' 	=> 5,
+				'collectby' => 'top'
+			);
+			$top_products = (new Products( array(
+				'db' => $this->db,
+				'user' => $this->User->get()
+			) ))->prepareList( $arg );
+			$this->out( 'top_products', $top_products );
+			$this->out( 'top_products_list', $top_products->getList() );
+
+			/****
+			* MEGNÉZETT TERMÉKEK
+			*****/
+			$arg = array();
+			$viewed_products = (new Products( array(
+				'db' => $this->db,
+				'user' => $this->User->get()
+			) ))->getLastviewedList( \Helper::getMachineID(), 5, $arg );
+			$this->out( 'viewed_products_list', $viewed_products );
+
+			/****
+			* Live TERMÉKEK
+			*****/
+			$arg = array();
+			$live_products = (new Products( array(
+				'db' => $this->db,
+				'user' => $this->User->get()
+			) ))->getLiveviewedList( \Helper::getMachineID(), 5, $arg );
+			$this->out( 'live_products_list', $live_products );
+
 
 			// További ajánlott termékek
 			if ( $product['related_products_ids'] ) {
@@ -50,7 +85,7 @@ class termek extends Controller{
 				);
 
 				$related = $products->prepareList( $arg );
-				
+
 				$this->out( 'related', $related );
 				$this->out( 'related_list', $related->getList() );
 			}
@@ -59,7 +94,7 @@ class termek extends Controller{
 
 			$this->shop->logTermekView(Product::getTermekIDFromUrl());
 			$this->shop->logLastViewedTermek(Product::getTermekIDFromUrl());
-									
+
 			// SEO Információk
 			$SEO = null;
 			// Site info
@@ -69,7 +104,7 @@ class termek extends Controller{
 			$keyw .= " ".$this->view->product['csoport_kategoria'];
 			$SEO .= $this->view->addMeta('keywords',addslashes($keyw));
 			$SEO .= $this->view->addMeta('revisit-after','3 days');
-			
+
 			// FB info
 			$SEO .= $this->view->addOG('title',addslashes($title));
 			$SEO .= $this->view->addOG('description',addslashes($desc));
@@ -91,11 +126,11 @@ class termek extends Controller{
 			}
 
 			$this->view->SEOSERVICE = $SEO;
-			
-			
+
+
 			parent::$pageTitle = $title;
 		}
-		
+
 		function __destruct(){
 			// RENDER OUTPUT
 				parent::bodyHead();					# HEADER

@@ -25,6 +25,7 @@
                   </div>
                 </div>
               </form>
+
               <? if( $this->viewed_products_list ): ?>
               <div class="lastviewed side-group">
                 <div class="head">
