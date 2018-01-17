@@ -14,7 +14,6 @@
     <? endif; ?>
     <div class="main-view">
         <div class="images">
-
             <div class="main-img">
                 <? if( $ar >= $this->settings['cetelem_min_product_price'] && $ar <= $this->settings['cetelem_max_product_price'] && $this->product['no_cetelem'] != 1 ): ?>
                     <img class="cetelem" src="<?=IMG?>cetelem_badge.png" alt="Cetelem Online Hitel">
@@ -44,7 +43,7 @@
                 </ul>
                 <div class="clr"></div>
             </div>
-         <? endif; ?>
+          <? endif; ?>
         </div>
         <div class="data-view">
             <div class="cimkek">
