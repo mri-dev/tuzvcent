@@ -70,8 +70,8 @@ class termek extends Controller{
 
 
 			// További ajánlott termékek
-			if ( $product['related_products_ids'] ) {
-
+			if ( $product['related_products_ids'] )
+			{
 				// Template
 				$temp = new Template( VIEW . 'templates/' );
 				$this->out( 'template', $temp );

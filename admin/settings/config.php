@@ -39,6 +39,8 @@
 
 		define('IMG','https://cp.'.DM.'/src/images/');
 
+		define('WATERMARK_IMG','src/images/watermark.png');
+
 		define( 'FILE_BROWSER_IMAGE', JS.'tinymce/plugins/filemanager/dialog.php?type=1&lang=hu_HU');
 
 	// Környezeti beállítások //

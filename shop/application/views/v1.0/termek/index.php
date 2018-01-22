@@ -18,22 +18,23 @@
     </div>
     <div class="top-datas">
       <div class="images">
-        <?php if (false): ?>
-        <div class="main-img">
-            <? if( $ar >= $this->settings['cetelem_min_product_price'] && $ar <= $this->settings['cetelem_max_product_price'] && $this->product['no_cetelem'] != 1 ): ?>
-                <img class="cetelem" src="<?=IMG?>cetelem_badge.png" alt="Cetelem Online Hitel">
-            <? endif; ?>
-            <div class="img-thb">
-                <span class="helper"></span>
-                <a href="<?=$this->product['profil_kep']?>" class="zoom"><img di="<?=$this->product['profil_kep']?>" src="<?=$this->product['profil_kep']?>" alt="<?=$this->product['nev']?>"></a>
-            </div>
+        <?php if (true): ?>
+        <div class="main-img img-auto-cuberatio">
+          <? if( $ar >= $this->settings['cetelem_min_product_price'] && $ar <= $this->settings['cetelem_max_product_price'] && $this->product['no_cetelem'] != 1 ): ?>
+              <img class="cetelem" src="<?=IMG?>cetelem_badge.png" alt="Cetelem Online Hitel">
+          <? endif; ?>
+          <div class="img-thb">
+              <a href="<?=$this->product['profil_kep']?>" class="zoom"><img di="<?=$this->product['profil_kep']?>" src="<?=$this->product['profil_kep']?>" alt="<?=$this->product['nev']?>"></a>
+          </div>
         </div>
         <div class="all">
-            <?  foreach ( $this->product['images'] as $img ) { ?>
-            <div class="img-auto-cuberatio__">
-                <img class="aw" i="<?=\PortalManager\Formater::productImage($img)?>" src="<?=\PortalManager\Formater::productImage($img, 150)?>" alt="<?=$this->product['nev']?>">
+          <?  foreach ( $this->product['images'] as $img ) { ?>
+          <div class="imgslide img-auto-cuberatio__">
+            <div class="wrp">
+              <img class="aw" i="<?=\PortalManager\Formater::productImage($img)?>" src="<?=\PortalManager\Formater::productImage($img, 150)?>" alt="<?=$this->product['nev']?>">
             </div>
-            <? } ?>
+          </div>
+          <? } ?>
         </div>
         <?php endif; ?>
       </div>
@@ -143,6 +144,7 @@
           <div class="head">
             <h3>Termék leírás</h3>
           </div>
+          <div class="clr"></div>
           <div class="c">
             <?=$this->product['leiras']?>
           </div>
@@ -151,6 +153,7 @@
           <div class="head">
             <h3>Dokumentáció</h3>
           </div>
+          <div class="clr"></div>
           <div class="c">
             Dokumentumok
           </div>
@@ -159,6 +162,17 @@
       <div class="related-products">
         <div class="head">
           <h3>Ajánljuk még</h3>
+        </div>
+        <div class="c">
+          <div class="items">
+          <?php if ( $this->related_list ): ?>
+            <? foreach ( $this->related_list as $p ) {
+                $p['itemhash'] = hash( 'crc32', microtime() );
+                $p = array_merge( $p, (array)$this );
+                echo $this->template->get( 'product_item', $p );
+            } ?>
+          <?php endif; ?>
+          </div>
         </div>
       </div>
     </div>
@@ -287,8 +301,10 @@
 
         $('.images .all').slick({
           infinite: true,
-          slidesToShow: 3,
-          slidesToScroll: 3
+          slidesToShow: 5,
+          slidesToScroll: 1,
+          speed: 400,
+          autoplay: true
         });
     })
 

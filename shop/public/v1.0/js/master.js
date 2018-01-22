@@ -54,12 +54,12 @@ $(function(){
 	});
 
 	// Auto Resizer
-	//autoresizeImages();
+	autoresizeImages();
 
 	var width = $(window).width();
 	$(window).resize(function(){
 	   if($(this).width() != width){
-	      //autoresizeImages();
+	      autoresizeImages();
 	   }
 	});
 
