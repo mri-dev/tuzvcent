@@ -1,6 +1,7 @@
 <?
 namespace ProductManager;
 
+use ShopManager\Categories;
 /**
 * class Products
 * @package ProductManager
@@ -834,6 +835,7 @@ class Products
 
 		$bdata = array();
 
+
 		foreach($data as $d){
 			$brutto_ar 			= $d['brutto_ar'];
 			$akcios_brutto_ar 	= $d['akcios_brutto_ar'];
@@ -1268,6 +1270,8 @@ class Products
 	public function get( $product_id, array $opt = array() ) {
 		if( $product_id === '' || !isset( $product_id ) ) return false;
 
+		$categories = new Categories( array( 'db' => $this->db ) );
+
 		$row = "t.*";
 
 		if (isset($opt['rows'])) {
@@ -1277,10 +1281,12 @@ class Products
 		$q = $this->db->query("
 			SELECT 			$row,
 							k.neve as kategoriaNev,
-							ta.elnevezes as keszletNev
+							ta.elnevezes as keszletNev,
+							sza.elnevezes as szallitasNev
 			FROM 			shop_termekek as t
 			LEFT OUTER JOIN shop_termek_kategoriak as k ON k.ID = t.alapertelmezett_kategoria
 			LEFT OUTER JOIN shop_termek_allapotok as ta ON ta.ID = t.keszletID
+			LEFT OUTER JOIN shop_szallitasi_ido as sza ON sza.ID = t.szallitasID
 			WHERE 			t.ID = $product_id
 
 		");
@@ -1318,6 +1324,7 @@ class Products
 		$data['images'] 			= $this->getProductImages( $product_id );
 		$data['parameters']			= $this->getParameters( $product_id, $data['alapertelmezett_kategoria'] );
 		$data['related_products_ids']	= $this->getRelatedIDS( $product_id );
+		$data['nav'] = array_reverse($categories->getCategoryParentRow((int)$data['alapertelmezett_kategoria'], false));
 
 		$keszlet_info = 			$data['keszletNev'];
 		switch( $keszlet_info ) {
@@ -1334,6 +1341,9 @@ class Products
 			break;
 		}
 		$data['keszlet_info'] 		= $keszlet_info;
+
+		$szallitas_info = $data['szallitasNev'];
+		$data['szallitas_info'] = $szallitas_info;
 
 
 		// Linkek

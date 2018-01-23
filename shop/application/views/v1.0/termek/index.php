@@ -10,10 +10,21 @@
   <div class="product-data">
     <div class="nav">
       <div class="pagi">
-        NAV
+        <?php
+          $navh = '/termekek/';
+          $lastcat = end($this->product['nav']);
+        ?>
+        <ul class="cat-nav">
+          <li><a href="/"><i class="fa fa-home"></i></a></li>
+          <li><a href="<?=$navh?>">Webshop</a></li>
+          <?php
+          foreach ( $this->product['nav'] as $nav ): $navh = \Helper::makeSafeUrl($nav['neve'],'_-'.$nav['ID']); ?>
+          <li><a href="/termekek/<?=$navh?>"><?php echo $nav['neve']; ?></a></li>
+          <?php endforeach; ?>
+        </ul>
       </div>
       <div class="back">
-        <a href="#"><< vissza a kategóriába</a>
+        <a href="/termekek/<?=\Helper::makeSafeUrl($lastcat['neve'],'_-'.$lastcat['ID'])?>"><< vissza a kategóriába</a>
       </div>
     </div>
     <div class="top-datas">
@@ -92,7 +103,7 @@
             </div>
             <div class="transport-status">
               <div class="h">
-                Szállítás:
+                Várható kiszállítás:
               </div>
               <div class="v">
                 <?=$this->product['szallitas_info']?>
@@ -135,6 +146,43 @@
               <button id="addtocart" cart-data="<?=$this->product['ID']?>" cart-remsg="cart-msg" title="Kosárba" class="tocart cart-btn"><?=__('kosárba')?></i></button>
             </div>
           </div>
+          <div class="group helpdesk-actions">
+              <div class="tudastar">
+                <div class="wrapper icoed">
+                  <div class="ico">
+                    <div class="wrap">
+                        <i class="fa fa-lightbulb-o"></i>
+                    </div>
+                  </div>
+                  <div class="text">
+                    <a href="/tudastar" target="_blank">
+                      TUDÁSTÁR
+                      <div class="t">
+                        Olvassa el!
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="callhelp">
+                <div class="wrapper icoed">
+                  <div class="ico">
+                    <i class="fa fa-phone"></i>
+                  </div>
+                  <div class="text">
+                    Segíthetünk?
+                    <div class="phone">
+                      <a href="tel:<?=$this->settings['page_author_phone']?>"><?=$this->settings['page_author_phone']?></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="fav">
+                <div class="wrapper" title="Kedvencekhez adás">
+                  <i class="fa fa-heart"></i>
+                </div>
+              </div>
+          </div>
         </div>
       </div>
     </div>
@@ -149,16 +197,25 @@
             <?=$this->product['leiras']?>
           </div>
         </div>
+        <?php if ($this->product['links']): ?>
         <div class="documents">
           <div class="head">
-            <h3>Dokumentáció</h3>
+            <h3>Dokumentumok</h3>
           </div>
           <div class="clr"></div>
           <div class="c">
-            Dokumentumok
+            <div class="docs">
+              <?php foreach ( (array)$this->product['links'] as $doc ): ?>
+              <div class="doc">
+                <a target="_blank" href="<?=$doc['link']?>"><img src="<?=IMG?>icons/docst-doc.svg" alt=""><?=$doc['title']?></a>
+              </div>
+              <?php endforeach; ?>
+            </div>
           </div>
         </div>
+        <?php endif; ?>
       </div>
+      <?php if ( $this->related_list ): ?>
       <div class="related-products">
         <div class="head">
           <h3>Ajánljuk még</h3>
@@ -175,6 +232,7 @@
           </div>
         </div>
       </div>
+      <?php endif; ?>
     </div>
   </div>
   <div class="sidebar filter-sidebar">
@@ -252,6 +310,7 @@
     <? endif; ?>
   </div>
 </div>
+<pre><?php //print_r($this->product); ?></pre>
 <script type="text/javascript">
     $(function() {
         <? if( $_GET['buy'] == 'now'): ?>
