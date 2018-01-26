@@ -17,7 +17,7 @@
 	define('AJAX_POST','/ajax/post/');
 	define('AJAX_BOX','/ajax/box/');
 
-    define('POPUP_RECEIVER_URL', $protocol.'www.tuzvedelmicentrum.web-pro.hu');
+  define('POPUP_RECEIVER_URL', $protocol.'www.tuzvedelmicentrum.web-pro.hu');
 	define('POPUP_IMG_ROOT', $protocol.'www.cp.tuzvedelmicentrum.web-pro.hu');
 	define('CETELEM_SANDBOX_MODE', false);
 	//define('CETELEM_HAS_ERROR', true);

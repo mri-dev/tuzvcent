@@ -1,24 +1,26 @@
-var tc = angular.module('tuzvedelmicentrum', ['ngMaterial']);
+var tc = angular.module('tuzvedelmicentrum', ['ngMaterial', 'ngMessages']);
 
 tc.controller('ActionButtons', ['$scope', '$http', '$mdDialog', function($scope, $http, $mdDialog){
+
+  $scope.showHints = true;
+  $scope.recall = {};
 
   $scope.requestRecall = function(){
 		var confirm = $mdDialog.confirm({
 			controller: ConfirmPackageOrder,
-			templateUrl: '/api/template/confirm_package_order',
+			templateUrl: '/app/templates/recall',
 			parent: angular.element(document.body),
 			locals: {
+        showHints: $scope.showHints,
+        recall: $scope.recall
 			}
 		});
 
-		function ConfirmPackageOrder( $scope, $mdDialog, csomag, me) {
-			$scope.csomag = csomag;
-			$scope.me = me;
+		function ConfirmPackageOrder( $scope, $mdDialog, showHints, recall) {
+      $scope.showHints = showHints;
+      $scope.recall = recall;
 			$scope.closeDialog = function(){
 				$mdDialog.hide();
-			}
-			$scope.topup = function(){
-				$window.location.href = '/egyenleg';
 			}
 		}
 

@@ -1556,6 +1556,27 @@
 	}
 }
 
+.ajaxdialog{
+	min-width: 350px;
+	md-toolbar{
+		text-align: center;
+	}
+	md-input-container{
+		margin: 0 !important;
+
+		.hint {
+			font-size: 0.7em !important;
+			color: #7c7c7c;
+	    display: block;
+	    margin: 35px 0 0 0;
+		}
+	}
+	&.recall{
+		md-toolbar{
+			background: $color-red !important;
+		}
+	}
+}
 
 #cartContent {
 	max-height: 350px;
