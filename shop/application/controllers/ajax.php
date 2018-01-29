@@ -267,6 +267,9 @@ class ajax extends Controller{
 						break;
 					}
 				break;
+				case 'modalMessage':
+					$ret['pass'] = $_POST;
+				break;
 			}
 			echo json_encode($ret);
 		}

@@ -1576,6 +1576,50 @@
 			background: $color-red !important;
 		}
 	}
+	&.ajanlatkeres{
+		md-toolbar{
+			background: $color-orange !important;
+		}
+	}
+	.sending-progress{
+		.message{
+			font-size: 1.2em;
+	    padding: 10px 20px;
+	    text-align: center;
+	    color: #70a353;
+		}
+	}
+	.validate-text{
+		font-size: 0.9em;
+    color: #df5c61;
+    line-height: 1.3;
+	}
+}
+
+md-toast{
+	left: 50%;
+	transform: translateX(-50%)
+}
+
+.alert-toast{
+	&.mode-simple{
+		.md-toast-content{
+			background: #f1f1f1;
+			color: black;
+		}
+	}
+	&.mode-alert{
+		.md-toast-content{
+			background: #ffab00;
+			color: white;
+		}
+	}
+	&.mode-success{
+		.md-toast-content{
+			background: #24b62a;
+			color: #ffffff;
+		}
+	}
 }
 
 #cartContent {
