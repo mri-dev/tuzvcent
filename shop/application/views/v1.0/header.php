@@ -9,7 +9,7 @@
     <meta property="fb:app_id" content="<?=$this->settings['FB_APP_ID']?>" />
     <? $this->render('meta'); ?>
 </head>
-<body>
+<body ng-controller="App" ng-init="init()">
 <? if(!empty($this->settings[google_analitics])): ?>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -156,7 +156,7 @@
             <div class="favorite">
               <a href="/kedvencek" class="holder">
                 <div class="ico">
-                  <span class="badge">99</span>
+                  <span class="badge">{{fav_num}}</span>
                   <i class="fa fa-heart"></i>
                 </div>
                 Kedvencek

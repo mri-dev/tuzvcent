@@ -9,7 +9,6 @@ class ajax extends Controller{
 		function __construct()
 		{
 			header("Access-Control-Allow-Origin: *");
-
 			parent::__construct();
 		}
 
@@ -269,6 +268,67 @@ class ajax extends Controller{
 				break;
 				case 'modalMessage':
 					$ret['pass'] = $_POST;
+				break;
+				case 'productFavorite':
+					$mid = Helper::getMachineID();
+					$ret['pass'] = $_POST;
+					$err = false;
+					$tid = (int)$_POST['tid'];
+
+					if( $_POST['action'] == 'add' || $_POST['action'] == 'remove' )
+					{
+						if (!$tid || empty($tid)) {
+							$err = $this->escape( 'Hiba történt! Hiányzik a termék ID-ja a kedvencekhez adásához.', $ret );
+						}
+
+						$cat = $this->db->query( $cq = "SELECT
+							c.ID
+						FROM shop_termek_favorite as c
+						WHERE
+							c.mid ='{$mid}' and
+							c.termekID = $tid" )->fetch(\PDO::FETCH_ASSOC);
+						$catn = $this->db->query("SELECT nev FROM shop_termekek WHERE ID = {$tid}")->fetchColumn();
+					}
+
+					switch ( $_POST['action'] )
+					{
+						case 'add':
+							if ( (int)$cat['ID'] != 0 ) {
+								$err = $this->escape( 'A(z) '.$catn.' termék már a kedvenceihez lett adva korábban.', $ret );
+							}
+
+							if (!$err) {
+								$this->db->insert(
+									'shop_termek_favorite',
+									array(
+										'mid' => $mid,
+										'termekID' => (int)$tid
+									)
+								);
+								$this->setSuccess('Sikeresen hozzáadta a(z) '.$catn.' terméket a kedvenc termékeihez!',$ret);
+							}
+						break;
+						case 'remove':
+							if ( (int)$cat['ID'] == 0 ) {
+								$err = $this->escape( 'A(z) '.$catn.' termék nem szerepel már a kedvencei között.', $ret );
+							}
+
+							if (!$err) {
+								$this->db->query( "DELETE FROM shop_termek_favorite WHERE ID = {$cat['ID']}" );
+								$this->setSuccess('Sikeresen törölte a(z) '.$catn.' terméket a kedvenc termékeiből!',$ret);
+							}
+						break;
+						case 'get':
+							$num = 0;
+							$own = ($_POST['own'] == '1') ? true : false;
+
+							$getn = (int)$this->db->query("SELECT count(ID) FROM shop_termek_favorite WHERE mid = '{$mid}'")->fetchColumn();
+
+							$num = $getn;
+
+							$ret['num'] = $num;
+						break;
+					}
 				break;
 			}
 			echo json_encode($ret);

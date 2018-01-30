@@ -1,5 +1,93 @@
 var tc = angular.module('tuzvedelmicentrum', ['ngMaterial', 'ngMessages']);
 
+tc.controller('App', ['$scope', '$http', '$mdToast', function($scope, $http, $mdToast)
+{
+  $scope.fav_num = 0;
+
+  $scope.productAddToFav = function( id ){
+    console.log('fav add '+id);
+    $scope.doFavAction('add', id, function(){
+      $scope.syncFavs(function(err, n){
+        $scope.fav_num = n;
+      });
+    });
+  }
+
+  $scope.init = function(){
+    $scope.syncFavs(function(err, n){
+      $scope.fav_num = n;
+    });
+  }
+
+  $scope.productRemoveFromFav = function( id ){
+
+  }
+
+  $scope.requestPrice = function( id ){
+
+  }
+
+  $scope.doFavAction = function( type, id, callback ){
+    $http({
+      method: 'POST',
+      url: '/ajax/post',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      data: $.param({
+        type: "productFavorite",
+        action: type,
+        tid: id
+      })
+    }).success(function(r){
+      console.log(r);
+
+      if (r.error == 1) {
+        $scope.toast(r.msg, 'alert', 10000);
+      } else {
+        $mdToast.hide();
+        $scope.toast(r.msg, 'success', 5000);
+      }
+
+      if (typeof callback === 'function') {
+        callback(r.error, r.msg, r);
+      }
+    });
+  }
+
+  $scope.syncFavs = function( callback ){
+    $http({
+      method: 'POST',
+      url: '/ajax/post',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      data: $.param({
+        type: "productFavorite",
+        action: 'get',
+        own: 1
+      })
+    }).success(function(r){
+      console.log(r);
+      if (typeof callback === 'function') {
+        callback(r.error, r.num);
+      }
+    });
+  }
+
+  $scope.toast = function( text, mode, delay ){
+    mode = (typeof mode === 'undefined') ? 'simple' : mode;
+    delay = (typeof delay === 'undefined') ? 5000 : delay;
+
+    if (typeof text !== 'undefined') {
+      $mdToast.show(
+        $mdToast.simple()
+        .textContent(text)
+        .position('top')
+        .toastClass('alert-toast mode-'+mode)
+        .hideDelay(delay)
+      );
+    }
+  }
+
+}]);
+
 tc.controller('ActionButtons', ['$scope', '$http', '$mdDialog', '$mdToast', function($scope, $http, $mdDialog, $mdToast){
 
   $scope.showHints = true;

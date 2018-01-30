@@ -52,21 +52,21 @@
         <?php endif; ?>
       </div>
     </div>
-
+ 
     <div class="title">
       <h3><a href="<?=$link?>"><?=$product_nev?></a></h3>
     </div>
     <div class="subtitle"><?=__($csoport_kategoria)?></div>
 
     <div class="buttons">
-      <div class="fav" title="Kedvencekhez adom">
+      <div class="fav" title="Kedvencekhez adom" ng-click="productAddToFav(<?=$product_id?>)">
         <i class="fa fa-heart"></i>
       </div>
       <div class="link">
         <a href="<?=$link?>">Megnézem</a>
       </div>
       <?php if ( $wo_price ): ?>
-      <div class="order req-price">
+      <div class="order req-price" ng-click="requestPrice(<?=$product_id?>)">
         Árat kérek
       </div>
       <?php else: ?>
