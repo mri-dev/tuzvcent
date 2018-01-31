@@ -52,15 +52,16 @@
         <?php endif; ?>
       </div>
     </div>
- 
+
     <div class="title">
       <h3><a href="<?=$link?>"><?=$product_nev?></a></h3>
     </div>
     <div class="subtitle"><?=__($csoport_kategoria)?></div>
 
     <div class="buttons">
-      <div class="fav" title="Kedvencekhez adom" ng-click="productAddToFav(<?=$product_id?>)">
-        <i class="fa fa-heart"></i>
+      <div class="fav" ng-class="(fav_ids.indexOf(<?=$product_id?>) !== -1)?'selected':''" title="Kedvencekhez adom" ng-click="productAddToFav(<?=$product_id?>)">
+        <i class="fa fa-heart" ng-show="fav_ids.indexOf(<?=$product_id?>) !== -1"></i>
+        <i class="fa fa-heart-o" ng-show="fav_ids.indexOf(<?=$product_id?>) === -1"></i>
       </div>
       <div class="link">
         <a href="<?=$link?>">Megnézem</a>

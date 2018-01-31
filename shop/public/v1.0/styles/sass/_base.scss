@@ -564,6 +564,10 @@
 					&:hover{
 						background: $color-orange;
 					}
+
+					&.selected{
+						background: #e6585e;
+					}
 				}
 
 				.order {
@@ -1195,6 +1199,12 @@
 								}
 							}
 						}
+
+						&.selected{
+							.wrapper{
+								background: #e6585e;
+							}							
+						}
 					}
 
 					& > div:first-child{
@@ -1610,7 +1620,7 @@ md-toast{
 		}
 	}
 	&.mode-alert{
-		.md-toast-content{ 
+		.md-toast-content{
 			background: #ffab00;
 			color: white;
 		}

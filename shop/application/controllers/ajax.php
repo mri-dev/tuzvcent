@@ -322,11 +322,22 @@ class ajax extends Controller{
 							$num = 0;
 							$own = ($_POST['own'] == '1') ? true : false;
 
-							$getn = (int)$this->db->query("SELECT count(ID) FROM shop_termek_favorite WHERE mid = '{$mid}'")->fetchColumn();
+							if ($own) {
+								$getn = (int)$this->db->query("SELECT count(ID) FROM shop_termek_favorite WHERE mid = '{$mid}'")->fetchColumn();
 
-							$num = $getn;
+								$num = $getn;
+								$ret['num'] = $num;
 
-							$ret['num'] = $num;
+								$getids = $this->db->query("SELECT termekID FROM shop_termek_favorite WHERE mid = '{$mid}'")->fetchAll(\PDO::FETCH_ASSOC);
+
+								$favids = array();
+								foreach ((array)$getids as $fid) {
+									$favids[] = (int)$fid['termekID'];
+								}
+
+								$ret['ids'] = $favids;
+							}
+
 						break;
 					}
 				break;

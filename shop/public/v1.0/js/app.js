@@ -3,12 +3,17 @@ var tc = angular.module('tuzvedelmicentrum', ['ngMaterial', 'ngMessages']);
 tc.controller('App', ['$scope', '$http', '$mdToast', function($scope, $http, $mdToast)
 {
   $scope.fav_num = 0;
+  $scope.fav_ids = [];
+  $scope.in_progress_favid = false;
 
   $scope.productAddToFav = function( id ){
     console.log('fav add '+id);
+    $scope.in_progress_favid = id;
+    
     $scope.doFavAction('add', id, function(){
       $scope.syncFavs(function(err, n){
         $scope.fav_num = n;
+        $scope.in_progress_favid = false;
       });
     });
   }
@@ -24,7 +29,14 @@ tc.controller('App', ['$scope', '$http', '$mdToast', function($scope, $http, $md
   }
 
   $scope.requestPrice = function( id ){
+    var confirm = $mdDialog.confirm({
+			controller: RequestPriceController,
+			templateUrl: '/app/templates/ProductItemPriceRequest',
+			parent: angular.element(document.body),
+			locals: {
 
+			}
+		});
   }
 
   $scope.doFavAction = function( type, id, callback ){
@@ -65,6 +77,13 @@ tc.controller('App', ['$scope', '$http', '$mdToast', function($scope, $http, $md
       })
     }).success(function(r){
       console.log(r);
+      if (r.ids) {
+        $scope.fav_ids = [];
+        angular.forEach(r.ids, function(v,i){
+          $scope.fav_ids.push(v);
+        });
+      }
+      console.log($scope.fav_ids);
       if (typeof callback === 'function') {
         callback(r.error, r.num);
       }

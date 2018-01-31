@@ -177,9 +177,10 @@
                   </div>
                 </div>
               </div>
-              <div class="fav">
+              <div class="fav" ng-class="(fav_ids.indexOf(<?=$this->product['ID']?>) !== -1)?'selected':''" title="Kedvencekhez adom" ng-click="productAddToFav(<?=$this->product['ID']?>)">
                 <div class="wrapper" title="Kedvencekhez adás">
-                  <i class="fa fa-heart"></i>
+                  <i class="fa fa-heart" ng-show="fav_ids.indexOf(<?=$this->product['ID']?>) !== -1"></i>
+                  <i class="fa fa-heart-o" ng-show="fav_ids.indexOf(<?=$this->product['ID']?>) === -1"></i>
                 </div>
               </div>
           </div>
