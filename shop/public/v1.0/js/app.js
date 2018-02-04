@@ -1,15 +1,15 @@
 var tc = angular.module('tuzvedelmicentrum', ['ngMaterial', 'ngMessages']);
 
-tc.controller('App', ['$scope', '$http', '$mdToast', function($scope, $http, $mdToast)
+tc.controller('App', ['$scope', '$sce', '$http', '$mdToast', '$mdDialog', function($scope, $sce, $http, $mdToast, $mdDialog)
 {
   $scope.fav_num = 0;
   $scope.fav_ids = [];
   $scope.in_progress_favid = false;
+  $scope.requesttermprice = {};
 
   $scope.productAddToFav = function( id ){
-    console.log('fav add '+id);
     $scope.in_progress_favid = id;
-    
+
     $scope.doFavAction('add', id, function(){
       $scope.syncFavs(function(err, n){
         $scope.fav_num = n;
@@ -34,9 +34,104 @@ tc.controller('App', ['$scope', '$http', '$mdToast', function($scope, $http, $md
 			templateUrl: '/app/templates/ProductItemPriceRequest',
 			parent: angular.element(document.body),
 			locals: {
-
+        termid: id,
+        requesttermprice: $scope.requesttermprice
 			}
 		});
+
+    function RequestPriceController( $scope, $mdDialog, termid, requesttermprice) {
+      $scope.sending = false;
+      $scope.termid = termid;
+      $scope.requesttermprice = requesttermprice;
+
+			$scope.closeDialog = function(){
+				$mdDialog.hide();
+			}
+
+      $scope.validateForm = function(){
+        var state = false;
+        var phone_test = ''
+
+        if (
+          (typeof $scope.requesttermprice.name !== 'undefined' && $scope.requesttermprice.name.length >= 5) &&
+          (typeof $scope.requesttermprice.phone !== 'undefined' && !$scope.requesttermprice.phone.$error) &&
+          (typeof $scope.requesttermprice.email !== 'undefined' && !$scope.requesttermprice.email.$error)
+        ) {
+          state = true;
+        }
+
+        return state;
+      }
+
+      $scope.sendModalMessage = function( type ){
+        if (!$scope.sending) {
+          $scope.sending = true;
+
+          $http({
+      			method: 'POST',
+      			url: '/ajax/post',
+      			headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      			data: $.param({
+      				type: "modalMessage",
+              modalby: type,
+              datas: {
+                termid: $scope.termid
+              }
+      			})
+      		}).success(function(r){
+      			console.log(r);
+      			$scope.sending = false;
+
+      			if (r.error == 1) {
+      				$scope.toast(r.msg, 'alert', 10000);
+      			} else {
+      				$mdToast.hide();
+              $scope.closeDialog();
+      				$scope.toast('Köszönjük érdeklődését! Ingyenes visszahívás kérés igénylés elküldve. Hamarosan jelentkezünk!', 'success', 10000);
+      			}
+      		});
+        }
+      }
+
+      $scope.toast = function( text, mode, delay ){
+    		mode = (typeof mode === 'undefined') ? 'simple' : mode;
+        delay = (typeof delay === 'undefined') ? 5000 : delay;
+
+    		if (typeof text !== 'undefined') {
+    			$mdToast.show(
+    				$mdToast.simple()
+    				.textContent(text)
+    				.position('top')
+    				.toastClass('alert-toast mode-'+mode)
+    				.hideDelay(delay)
+    			);
+    		}
+    	}
+		}
+
+    $http({
+      method: 'POST',
+      url: '/ajax/post',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      data: $.param({
+        type: "getTermItem",
+        id: id
+      })
+    }).success(function(r){
+      console.log(r);
+      if (r.error == 1) {
+        $scope.toast(r.msg, 'alert', 10000);
+      } else {
+        $scope.requesttermprice.product = r.product;
+        $mdDialog.show(confirm)
+    		.then(function() {
+          $scope.status = 'You decided to get rid of your debt.';
+        }, function() {
+          $scope.status = 'You decided to keep your debt.';
+        });
+      }
+    });
+
   }
 
   $scope.doFavAction = function( type, id, callback ){
@@ -50,8 +145,6 @@ tc.controller('App', ['$scope', '$http', '$mdToast', function($scope, $http, $md
         tid: id
       })
     }).success(function(r){
-      console.log(r);
-
       if (r.error == 1) {
         $scope.toast(r.msg, 'alert', 10000);
       } else {
@@ -76,14 +169,12 @@ tc.controller('App', ['$scope', '$http', '$mdToast', function($scope, $http, $md
         own: 1
       })
     }).success(function(r){
-      console.log(r);
       if (r.ids) {
         $scope.fav_ids = [];
         angular.forEach(r.ids, function(v,i){
           $scope.fav_ids.push(v);
         });
       }
-      console.log($scope.fav_ids);
       if (typeof callback === 'function') {
         callback(r.error, r.num);
       }
@@ -166,7 +257,6 @@ tc.controller('ActionButtons', ['$scope', '$http', '$mdDialog', '$mdToast', func
               datas: $scope[type]
       			})
       		}).success(function(r){
-      			console.log(r);
       			$scope.sending = false;
       			$scope.recall = {};
 
@@ -256,7 +346,6 @@ tc.controller('ActionButtons', ['$scope', '$http', '$mdDialog', '$mdToast', func
               datas: $scope[type]
       			})
       		}).success(function(r){
-      			console.log(r);
       			$scope.sending = false;
       			$scope.ajanlat = {};
 
@@ -296,3 +385,5 @@ tc.controller('ActionButtons', ['$scope', '$http', '$mdDialog', '$mdToast', func
 
 
 }]);
+
+tc.filter('unsafe', function($sce){ return $sce.trustAsHtml; });

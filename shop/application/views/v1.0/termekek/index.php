@@ -123,11 +123,18 @@
                   <? endif; ?>
 
                   <div class="category-title head">
-                      <h1><?=$this->category->getName()?></h1>
+                      <?php if ($this->myfavorite): ?>
+                        <h1>Kedvencnek jelölt termékek</h1>
+                      <?php else: ?>
+                        <h1><?=$this->category->getName()?></h1>
+                      <?php endif; ?>
                       <?php $navh = '/termekek/'; ?>
                       <ul class="cat-nav">
                         <li><a href="/"><i class="fa fa-home"></i></a></li>
                         <li><a href="<?=$navh?>">Webshop</a></li>
+                        <?php if ($this->myfavorite): ?>
+                        <li>Kedvencek</li>
+                        <?php endif; ?>
                         <?php
                         foreach ( $this->cat_nav as $nav ): $navh = \Helper::makeSafeUrl($nav['neve'],'_-'.$nav['ID']); ?>
                         <li><a href="/termekek/<?=$navh?>"><?php echo $nav['neve']; ?></a></li>

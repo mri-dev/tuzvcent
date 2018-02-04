@@ -4,6 +4,7 @@ use Applications\Cetelem;
 use PortalManager\CasadaShop;
 use PopupManager\Creative;
 use PopupManager\CreativeScreens;
+use ProductManager\Products;
 
 class ajax extends Controller{
 		function __construct()
@@ -265,6 +266,19 @@ class ajax extends Controller{
 							return;
 						break;
 					}
+				break;
+				case 'getTermItem':
+					$ret['pass'] = $_POST;
+					$id = (int)$_POST['id'];
+
+					$products = new Products( array(
+						'db' => $this->db,
+						'user' => $this->User->get()
+					) );
+
+					$product = $products->get( $id );
+					$ret['product'] = $product;
+
 				break;
 				case 'modalMessage':
 					$ret['pass'] = $_POST;

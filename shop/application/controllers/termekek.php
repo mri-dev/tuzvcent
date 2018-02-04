@@ -9,6 +9,15 @@ class termekek extends Controller {
 		function __construct(){
 			parent::__construct();
 			$title = 'Termékek';
+			$myfavorite = false;
+
+			// Kedvenc termékeim
+			if ( isset($_GET['myfavorite']) && $_GET['myfavorite'] == '1' )
+			{
+				$myfavorite = true;
+				$title = 'Kedvenc termékeim';
+				$this->out( 'myfavorite', $myfavorite );
+			}
 
 			// Template
 			$temp = new Template( VIEW . 'templates/' );

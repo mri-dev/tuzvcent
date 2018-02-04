@@ -1203,7 +1203,7 @@
 						&.selected{
 							.wrapper{
 								background: #e6585e;
-							}							
+							}
 						}
 					}
 
@@ -1568,6 +1568,8 @@
 
 .ajaxdialog{
 	min-width: 350px;
+	max-width: 750px;
+
 	md-toolbar{
 		text-align: center;
 	}
@@ -1589,6 +1591,83 @@
 	&.ajanlatkeres{
 		md-toolbar{
 			background: $color-orange !important;
+		}
+	}
+	&.requestprice{
+		h1 {
+			font-weight: bold !important;
+		}
+
+		.csoport {
+			margin: 5px 0 10px 0;
+			color: #b3b3b3;
+
+			.keszlet-info{
+				color: black;
+				margin-right: 10px;
+				span {
+					font-weight: bold;
+					color: $color-red;
+				}
+			}
+		}
+
+		.dialog-content-wrapper{
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			flex-wrap: wrap;
+			align-items: flex-start;
+			width: 100%;
+			border-top: 1px solid #f1f1f1;
+			margin: 10px 0 0 0;
+			padding: 10px 0 0 0;
+
+			.product-info{
+				flex-basis: 300px;
+
+				.rack-infos{
+					display: -webkit-box;
+					display: -ms-flexbox;
+					display: flex;
+					flex-wrap: wrap;
+					align-items: flex-start;
+
+					& > div {
+						flex: 1;
+					}
+				}
+
+				img{
+					max-width: 100%;
+				}
+			}
+			.form {
+				flex: 1;
+    		padding: 10px 0 0 20px;
+			}
+
+			.keszlet-info,
+			.szallitas-info{
+				margin: 5px 0;
+				text-align: center;
+				font-weight: bold;
+				font-size: 1.1em;
+				.title{
+					text-align: center;
+					margin: 0 0 10px 0;
+					font-weight: normal;
+					font-size: 0.9em;
+				}
+			}
+			.short-desc{
+				border-top: 1px solid #f1f1f1;
+				margin: 5px 0 0 0;
+				padding: 5px 0 0 0;
+		    color: #949494;
+		    font-size: 0.85em;
+		    line-height: 1.2;
+			}
 		}
 	}
 	.sending-progress{
