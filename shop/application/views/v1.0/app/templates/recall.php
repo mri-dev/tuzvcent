@@ -53,7 +53,7 @@
        Mégse
       </md-button>
       <span flex></span>
-      <md-button ng-click="sendModalMessage('recall')">
+      <md-button class="md-primary md-raised" ng-click="sendModalMessage('recall')">
         Visszahívás kérése
       </md-button>
     </md-dialog-actions>

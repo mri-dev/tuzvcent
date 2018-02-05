@@ -83,8 +83,10 @@ class termekek extends Controller {
 				'meret' 	=> $_GET['meret'],
 				'order' 	=> $order,
 				'limit' 	=> 40,
-				'page' 		=> Helper::currentPageNum()
+				'page' 		=> Helper::currentPageNum(),
+				'favorite' => $myfavorite
 			);
+
 			$products = (new Products( array(
 				'db' => $this->db,
 				'user' => $this->User->get()

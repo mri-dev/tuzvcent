@@ -7,15 +7,37 @@ tc.controller('App', ['$scope', '$sce', '$http', '$mdToast', '$mdDialog', functi
   $scope.in_progress_favid = false;
   $scope.requesttermprice = {};
 
-  $scope.productAddToFav = function( id ){
-    $scope.in_progress_favid = id;
+  $scope.productAddToFav = function( id, ev ){
+    var infav = $scope.fav_ids.indexOf(id);
 
-    $scope.doFavAction('add', id, function(){
-      $scope.syncFavs(function(err, n){
-        $scope.fav_num = n;
-        $scope.in_progress_favid = false;
+    if ( infav !== -1 ) {
+      var confirmRemoveFav = $mdDialog.confirm()
+          .title('Biztos, hogy eltávolítja a kedvencekből?')
+          .textContent('Ez a termék jelenleg a kedvencei közt szerepel.')
+          .ariaLabel('Eltávolítás a kedvencek közül')
+          .targetEvent(ev)
+          .ok('Eltávolítás')
+          .cancel('Mégse');
+
+      $mdDialog.show(confirmRemoveFav).then(function() {
+        $scope.doFavAction('remove', id, function(){
+          $scope.syncFavs(function(err, n){
+            $scope.fav_num = n;
+            $scope.in_progress_favid = false;
+          });
+        });
+      }, function() {
+
       });
-    });
+    } else {
+      $scope.in_progress_favid = id;
+      $scope.doFavAction('add', id, function(){
+        $scope.syncFavs(function(err, n){
+          $scope.fav_num = n;
+          $scope.in_progress_favid = false;
+        });
+      });
+    }
   }
 
   $scope.init = function(){

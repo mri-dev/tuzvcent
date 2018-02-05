@@ -59,7 +59,7 @@
        Mégse
       </md-button>
       <span flex></span>
-      <md-button ng-click="sendModalMessage('ajanlat')">
+      <md-button class="md-primary md-raised" ng-click="sendModalMessage('ajanlat')">
         Ajánlatotkérés elküldése
       </md-button>
     </md-dialog-actions>

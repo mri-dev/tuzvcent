@@ -576,13 +576,12 @@ class Products
 
 		$qry .= " FROM
 		shop_termekek as p
-		WHERE 					1 = 1
+		WHERE 1 = 1
 		";
 
 		$whr = '';
 		$size_whr = '';
 		$add = '';
-
 
 		if (!$admin_listing) {
 			$add = " and p.lathato = 1 and p.profil_kep IS NOT NULL ";
@@ -599,7 +598,29 @@ class Products
 
 		}
 
-		// WHERE
+		/**
+		* WHERE
+		**/
+		// Favorite
+		if ( isset($arg['favorite']) && $arg['favorite'] === true )
+		{
+			$mid = \Helper::getMachineID();
+			$getfavids = $this->db->query("SELECT termekID FROM shop_termek_favorite WHERE mid = '{$mid}'")->fetchAll(\PDO::FETCH_ASSOC);
+
+			$favids = array();
+			foreach ((array)$getfavids as $fid) {
+				$favids[] = (int)$fid['termekID'];
+			}
+
+			if (empty($favids)) {
+				$favids[] = 0;
+			}
+
+			$add = " and p.ID IN (".implode(",",$favids).") ";
+			$whr .= $add;
+			$size_whr .= $add;
+		}
+
 		if ( $arg['in_ID'] ) {
 			$add = " and p.ID IN (".implode(",",$arg['in_ID']).") ";
 			$whr .= $add;

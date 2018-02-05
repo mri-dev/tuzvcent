@@ -68,7 +68,6 @@
               <input type="email" required ng-model="requesttermprice.email">
               <div class="hint" ng-show="showHints">Formátum: email@example.com</div>
             </md-input-container>
-            <br>
             <md-input-container class="md-block">
               <label>Megjegyzés</label>
               <textarea ng-model="requesttermprice.message" md-maxlength="1000" rows="6" md-select-on-focus></textarea>
@@ -92,7 +91,7 @@
        Mégse
       </md-button>
       <span flex></span>
-      <md-button ng-click="sendModalMessage('requesttermprice')">
+      <md-button class="md-primary md-raised" ng-click="sendModalMessage('requesttermprice')">
         Árkérő elküldése
       </md-button>
     </md-dialog-actions>
