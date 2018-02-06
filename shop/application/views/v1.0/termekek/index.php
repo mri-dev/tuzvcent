@@ -125,8 +125,10 @@
                   <div class="category-title head">
                       <?php if ($this->myfavorite): ?>
                         <h1>Kedvencnek jelölt termékek</h1>
-                      <?php else: ?>
+                      <?php elseif($this->category->getName() != ''): ?>
                         <h1><?=$this->category->getName()?></h1>
+                      <?php else: ?>
+                        <h1>Termékek</h1>
                       <?php endif; ?>
                       <?php $navh = '/termekek/'; ?>
                       <ul class="cat-nav">
@@ -144,9 +146,15 @@
 
                   <? if( !$this->products->hasItems()): ?>
                   <div class="no-product-items">
-                      <div class="icon"><i class="fa fa-frown-o"></i></div>
-                      <strong>Nincsenek termékek ebben a kategóriában!</strong><br>
-                      Böngésszen további termékeink között.
+                      <?php if ($this->myfavorite): ?>
+                        <div class="icon"><i class="fa fa-fire"></i></div>
+                        <strong>Nincsenek kedvencnek jelölt termékei!</strong><br>
+                        Kedvencnek jelölhet bármilyen terméket, hogy később gyorsan és könnyedén megtalálja.
+                      <?php else: ?>
+                        <div class="icon"><i class="fa fa-fire"></i></div>
+                        <strong>Nincsenek termékek ebben a kategóriában!</strong><br>
+                        A szűrőfeltételek alapján nincs megfelelő termék, amit ajánlani tudunk. Böngésszen további termékeink között.
+                      <?php endif; ?>
                   </div>
                   <? else: ?>
                       <div class="grid-container">
@@ -160,6 +168,7 @@
                               <? foreach ( $this->product_list as $p ) {
                                   $p['itemhash'] = hash( 'crc32', microtime() );
                                   $p['sizefilter'] = ( count($this->products->getSelectedSizes()) > 0 ) ? true : false;
+                                  $p['show_variation'] = ($this->myfavorite) ? true : false;
                                   $p = array_merge( $p, (array)$this );
                                   echo $this->template->get( 'product_item', $p );
                               } ?>

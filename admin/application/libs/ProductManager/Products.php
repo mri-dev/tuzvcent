@@ -763,11 +763,15 @@ class Products
 		$qry .= $whr;
 
 		// GROUP BY
-		if (!$admin_listing ) {
-			if( !empty($arg['meret']) ) {
-				$qry .= "GROUP BY p.raktar_articleid";
+		if ( !$admin_listing ) {
+			if( isset($arg['favorite']) && $arg['favorite'] === true ) {
+
 			} else {
-				$qry .= "GROUP BY p.raktar_articleid";
+				if( !empty($arg['meret']) ) {
+					$qry .= "GROUP BY p.raktar_articleid";
+				} else {
+					$qry .= "GROUP BY p.raktar_articleid";
+				}
 			}
 		}
 

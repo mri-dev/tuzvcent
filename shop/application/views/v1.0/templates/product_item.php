@@ -56,6 +56,11 @@
     <div class="title">
       <h3><a href="<?=$link?>"><?=$product_nev?></a></h3>
     </div>
+    <?php if ($show_variation): ?>
+    <div class="variation">
+      <strong title="Termék variáció"><?=$szin?></strong>
+    </div>
+    <?php endif; ?>
     <div class="subtitle"><?=__($csoport_kategoria)?></div>
 
     <div class="buttons">

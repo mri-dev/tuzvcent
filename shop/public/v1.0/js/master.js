@@ -85,8 +85,6 @@ $(function(){
 
 	} );
 
-
-
 	$('.social-fb-box').bind({
 		mouseenter: function(){
 			$(this).animate({
@@ -381,7 +379,7 @@ function Cart(){
 			'</div>'+
 			'<div class="remove"><i class="fa fa-times "  onclick="Cart.remove('+i.termekID+');" title="Eltávolítás"></i></div>'+
 			'<div class="name"><a href="'+i.url+'">'+i.termekNev+'</a> <span class="in">x '+i.me+'</span></div>'+
-			'<div class="sub"><div class="tipus">Szín: <span class="val">'+((i.szin) ? i.szin+'</span>' : '')+''+( (i.meret)?', Méret: <span class="val">'+i.meret+'</span>':'')+'</div><span class="ar">'+( (i.ar != '-1')? i.ar+' Ft / db' : 'Ár: érdeklődjön' )+'</span></div>'+
+			'<div class="sub"><div class="tipus">Variáció: <span class="val">'+((i.szin) ? i.szin+'</span>' : '')+''+( (i.meret)?', Kiszerelés: <span class="val">'+i.meret+'</span>':'')+'</div><span class="ar">'+( (i.ar != '-1')? i.ar+' Ft / db' : 'Ár: érdeklődjön' )+'</span></div>'+
 		'</div>'+
 		'<div class="clr"></div></div>';
 		if(oi.length == 0){
@@ -621,8 +619,10 @@ function refreshCart(p){
 
 	if( p.itemNum > 0 ){
 		$('.cart-box').show(0);
+		$('.cart .whattodo').addClass('active');
 	}else{
 		$('.cart-box').hide(0);
+		$('.cart .whattodo').removeClass('active');
 	}
 }
 function addToCart(termekID, me, callback){

@@ -154,7 +154,7 @@ class ajax extends Controller{
 							}
 
 							if(!$err)
-							$this->setSuccess('A terméket sikeresen a kosárba helyezte!',$ret);
+							$this->setSuccess('A terméket sikeresen a kosárba helyezte! <a href="/kosar">Tovább a kosárhoz >></a>',$ret);
 
 							echo json_encode($ret);
 							return;

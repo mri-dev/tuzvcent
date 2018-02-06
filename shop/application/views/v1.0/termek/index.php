@@ -56,6 +56,12 @@
         </div>
         <div class="prices">
             <div class="base">
+              <?php if ($this->product['without_price']): ?>
+                <div class="price-head"><?=__('ÁR')?>:</div>
+                <div class="current">
+                  ÉRDEKLŐDJÖN!
+                </div>
+              <?php else: ?>
                 <div class="price-head"><?=__('ÁR')?>:</div>
                 <?  if( $this->product['akcios'] == '1' && $this->product['akcios_fogy_ar'] > 0):
                     $ar = $this->product['akcios_fogy_ar'];
@@ -68,6 +74,7 @@
                 <div class="current">
                     <?=\PortalManager\Formater::cashFormat($ar)?> <?=$this->valuta?>
                 </div>
+              <?php endif; ?>
             </div>
             <div class="cimkek">
             <? if($this->product['akcios'] == '1'): ?>
@@ -142,8 +149,15 @@
                   </div>
               </div>
             </div>
-            <div class="order">
-              <button id="addtocart" cart-data="<?=$this->product['ID']?>" cart-remsg="cart-msg" title="Kosárba" class="tocart cart-btn"><?=__('kosárba')?></i></button>
+            <div class="order <?=($this->product['without_price'])?'requestprice':''?>">
+              <?php if ( !$this->product['without_price'] ): ?>
+                <button id="addtocart" cart-data="<?=$this->product['ID']?>" cart-remsg="cart-msg" title="Kosárba" class="tocart cart-btn"><?=__('kosárba')?></i></button>
+              <?php else: ?>
+                <md-tooltip md-direction="top">
+                  Erre a gombra kattintva árajánlatot kérhet erre a termékre.
+                </md-tooltip>
+                <button aria-label="Erre a gombra kattintva árajánlatot kérhet erre a termékre." class="tocart cart-btn" ng-click="requestPrice(<?=$this->product['ID']?>)"><?=__('Ajánlatot kérek')?></i></button>
+              <?php endif; ?>
             </div>
           </div>
           <div class="group helpdesk-actions">
@@ -177,11 +191,14 @@
                   </div>
                 </div>
               </div>
-              <div class="fav" ng-class="(fav_ids.indexOf(<?=$this->product['ID']?>) !== -1)?'selected':''" title="Kedvencekhez adom" ng-click="productAddToFav(<?=$this->product['ID']?>)">
+              <div aria-label="Hozzáadás a kedvencekhez." class="fav" ng-class="(fav_ids.indexOf(<?=$this->product['ID']?>) !== -1)?'selected':''" ng-click="productAddToFav(<?=$this->product['ID']?>)">
                 <div class="wrapper" title="Kedvencekhez adás">
                   <i class="fa fa-heart" ng-show="fav_ids.indexOf(<?=$this->product['ID']?>) !== -1"></i>
                   <i class="fa fa-heart-o" ng-show="fav_ids.indexOf(<?=$this->product['ID']?>) === -1"></i>
                 </div>
+                <md-tooltip md-direction="bottom">
+                  Hozzáadás a kedvencekhez.                  
+                </md-tooltip>
               </div>
           </div>
         </div>
@@ -235,6 +252,7 @@
       </div>
       <?php endif; ?>
     </div>
+    <pre><?php //print_r($this->product); ?></pre>
   </div>
   <div class="sidebar filter-sidebar">
 
