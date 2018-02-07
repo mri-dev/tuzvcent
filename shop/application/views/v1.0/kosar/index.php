@@ -249,8 +249,8 @@
 	                        <div class="logIn">
 	                        	<fieldset>
                                 <div>
-                                    <a href="/user/regisztracio?return=<?=$_SERVER['REQUEST_URI']?>" class="btn btn-default btn-sm" style="color:#666; font-size:0.8em;">regisztráció</a> &nbsp;
-                                    <a href="/user/belepes?return=<?=$_SERVER['REQUEST_URI']?>" class="btn btn-default btn-sm">Bejelentkezés</a>
+                                    <a href="/user/regisztracio?return=<?=$_SERVER['REQUEST_URI']?>" class="reg">Nincs fiókom, regisztrálok</a>
+                                    <a href="/user/belepes?return=<?=$_SERVER['REQUEST_URI']?>" class="login">Bejelentkezés</a>
                                 </div>
 	                            </fieldset>
 															<?php if (false): ?>
@@ -368,15 +368,15 @@
 														<? if($this->kosar[kedvezmeny] > 0 || (is_numeric($vcash) && $vcash != "0" && isset($vcash))): ?>
 															<?
 																if((is_numeric($vcash) && $vcash != "0" && isset($vcash))) {
-																	$this->kosar[totalPrice_before_discount] 	= $this->kosar['totalPrice'];
-																	$calc_final_total 							= $this->kosar['totalPrice'] - (int)$vcash;
-																	$this->kosar[kedvezmeny] 					= $vcash;
+																	$this->kosar[totalPrice_before_discount]= $this->kosar['totalPrice'];
+																	$calc_final_total = $this->kosar['totalPrice'] - (int)$vcash;
+																	$this->kosar[kedvezmeny] = $vcash;
 																}
 
 															?>
-															<div class="standardPrice">Eredeti ár: <strong><?=Helper::cashFormat($this->kosar[totalPrice_before_discount])?> Ft</strong></div>
-																<div class="kedvPrice">kedvezményesen <strong><?=Helper::cashFormat($calc_final_total)?> Ft</strong></div>
-																<div class="discountPrice"><span>-<?=Helper::cashFormat($this->kosar[kedvezmeny])?> Ft</span></div>
+															<span class="standardPrice">Eredeti ár: <strong><?=Helper::cashFormat($this->kosar[totalPrice_before_discount])?> Ft</strong></span>
+																<span class="kedvPrice">kedvezményesen <strong><?=Helper::cashFormat($calc_final_total)?> Ft</strong></span>
+																<span class="discountPrice"><span>(-<?=Helper::cashFormat($this->kosar[kedvezmeny])?> Ft)</span></span>
 															<? else: ?>
 																bruttó <strong><?=Helper::cashFormat($calc_final_total)?></strong> Ft
 															<? endif;?>
@@ -618,14 +618,6 @@
 	                                    </div>
 	                                    <div class="col-sm-7 right">
 	                                    	<?=$this->storedString[1][szam_irsz]?>
-	                                    </div>
-	                                </div>
-	                                <div class="row np">
-	                                	<div class="col-sm-5">
-	                                    	<strong>&nbsp;</strong>
-	                                    </div>
-	                                    <div class="col-sm-7 right">
-
 	                                    </div>
 	                                </div>
 	                            </div>
@@ -887,7 +879,7 @@
 	                    	<a href="/kosar/<?=((int)$this->gets[1] - 1)?>" class="btn-back"><i class="fa fa-arrow-circle-left"></i> Vissza</a>
 	                        <? if($this->canOrder): ?>
 	                        <input type="hidden" name="orderUserID" value="<?=$this->user[data][ID]?>" />
-	                    	<button name="orderState" value="end" class="btn-order">MEGRENDELÉS <i class="fa fa-arrow-circle-right"></i></button>
+	                    		<button name="orderState" ng-show="order_accepted" value="end" class="btn-order">MEGRENDELÉS LEADÁSA <i class="fa fa-arrow-circle-right"></i></button>
 	                        <? endif; ?>
 	                    <? endif;?>
 	                  <? endif;?>
@@ -896,7 +888,7 @@
 	            <div class="clr"></div>
 	        </div>
 
-	        <?php if ($this->gets[1] == '3'): ?>
+	        <?php if ($this->gets[1] == '3' && false ): ?>
 	        <div class="cetelemcalc" style="">
             	<div class="head">
             		Nincs meg a teljes vételár?<br>

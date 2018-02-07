@@ -1,11 +1,13 @@
-var tc = angular.module('tuzvedelmicentrum', ['ngMaterial', 'ngMessages']);
+var tc = angular.module('tuzvedelmicentrum', ['ngMaterial', 'ngMessages', 'ngCookies']);
 
-tc.controller('App', ['$scope', '$sce', '$http', '$mdToast', '$mdDialog', function($scope, $sce, $http, $mdToast, $mdDialog)
+tc.controller('App', ['$scope', '$sce', '$http', '$mdToast', '$mdDialog', '$location','$cookies', '$cookieStore', function($scope, $sce, $http, $mdToast, $mdDialog, $location, $cookies, $cookieStore)
 {
   $scope.fav_num = 0;
   $scope.fav_ids = [];
   $scope.in_progress_favid = false;
   $scope.requesttermprice = {};
+  $scope.order_accepted = false;
+  $scope.accept_order_key = 'acceptedOrder';
 
   $scope.productAddToFav = function( id, ev ){
     var infav = $scope.fav_ids.indexOf(id);
@@ -40,14 +42,54 @@ tc.controller('App', ['$scope', '$sce', '$http', '$mdToast', '$mdDialog', functi
     }
   }
 
-  $scope.init = function(){
+  $scope.init = function( ordernow ){
     $scope.syncFavs(function(err, n){
       $scope.fav_num = n;
     });
+
+    if (typeof ordernow !== 'undefined' && ordernow === true ) {
+      $scope.acceptBeforeDoneOrder();
+    }
   }
 
   $scope.productRemoveFromFav = function( id ){
 
+  }
+
+  $scope.acceptBeforeDoneOrder = function(){
+    var accepted = $cookieStore.get( $scope.accept_order_key );
+
+    if ( typeof accepted === 'undefined' )
+    {
+      var confirm = $mdDialog.confirm({
+  			controller: acceptBeforeDoneOrderController,
+  			templateUrl: '/app/templates/acceptBeforeDoneOrder',
+        scope: $scope,
+        preserveScope: true,
+  			parent: angular.element(document.body),
+        locals: {
+          order_accepted: $scope.order_accepted,
+          accept_order_key: $scope.accept_order_key
+        }
+  		});
+
+      function acceptBeforeDoneOrderController( $scope, $mdDialog, order_accepted, accept_order_key) {
+        $scope.order_accepted = order_accepted;
+        $scope.accept_order_key = accept_order_key;
+
+  			$scope.closeDialog = function(){
+  				$mdDialog.hide();
+  			}
+        $scope.acceptOrder = function(){
+          $cookies.put($scope.accept_order_key, 1);
+          $scope.order_accepted = true;
+          $mdDialog.hide();
+  			}
+  		}
+      $mdDialog.show(confirm);
+    } else {
+      $scope.order_accepted = true;
+    }
   }
 
   $scope.requestPrice = function( id ){
