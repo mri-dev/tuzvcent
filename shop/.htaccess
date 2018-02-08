@@ -12,7 +12,13 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 
-RewriteRule ^kedvencek(/)?$ index.php?tag=termekek&myfavorite=1 [QSA,L] 
+RewriteRule ^kedvencek(/)?$ index.php?tag=termekek&myfavorite=1 [QSA,L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+
+RewriteRule ^kapcsolat(/)?$ index.php?tag=p/kapcsolat [QSA,L] 
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d

@@ -390,6 +390,24 @@ class ajax extends Controller{
 			extract($_POST);
 
 			switch($type){
+				case 'settings':
+					$_POST['key'] = ($_POST['key'] != '') ? (array)$_POST['key'] : array();
+
+					if ( empty($_POST['key']) ) {
+						$ret['data'] = $this->view->settings;
+					} else {
+						$settings = array();
+
+						foreach ( $_POST['key'] as $key ) {
+							$settings[$key] = $this->view->settings[$key];
+						}
+
+						$ret['data'] = $settings;
+					}
+
+					$ret['pass'] = $_POST;
+					echo json_encode($ret);
+				break;
 				case 'cartInfo':
 					$mid 	= Helper::getMachineID();
 					$cart 	= new Cart($mid, array( 'db' => $this->db, 'user' => $this->User->get(), 'settings' => $this->view->settings ));

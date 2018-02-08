@@ -8,6 +8,8 @@ tc.controller('App', ['$scope', '$sce', '$http', '$mdToast', '$mdDialog', '$loca
   $scope.requesttermprice = {};
   $scope.order_accepted = false;
   $scope.accept_order_key = 'acceptedOrder';
+  $scope.accept_order_text = null;
+  $scope.accept_order_title = 'Szerződési feltételek elfogadása';
 
   $scope.productAddToFav = function( id, ev ){
     var infav = $scope.fav_ids.indexOf(id);
@@ -48,8 +50,30 @@ tc.controller('App', ['$scope', '$sce', '$http', '$mdToast', '$mdDialog', '$loca
     });
 
     if (typeof ordernow !== 'undefined' && ordernow === true ) {
-      $scope.acceptBeforeDoneOrder();
+      $scope.loadSettings( ['tuzvedo_order_pretext','tuzvedo_order_pretext_wanted','tuzvedo_order_pretext_title'], function(settings){
+        if (settings.tuzvedo_order_pretext_wanted == '1') {
+          $scope.accept_order_title = (settings.tuzvedo_order_pretext_title != '') ? settings.tuzvedo_order_pretext_title : $scope.accept_order_title ;
+          $scope.accept_order_text = settings.tuzvedo_order_pretext;
+          $scope.acceptBeforeDoneOrder();
+        } else {
+          $scope.order_accepted = true;
+        }
+      });
     }
+  }
+
+  $scope.loadSettings = function( key, callback ){
+    $http({
+      method: 'POST',
+      url: '/ajax/get',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      data: $.param({
+        type: "settings",
+        key: key
+      })
+    }).success(function(r){
+      callback(r.data);
+    });
   }
 
   $scope.productRemoveFromFav = function( id ){
