@@ -27,14 +27,14 @@
                 <div class="">
                     <div class="flatInfoBox">
                         <div class="" align="center">
-                            <div style="color:#d41c4f;; font-size:1.5em;"><?=count($this->orders[progress])?> db</div>
+                            <div style="color:#d41c4f;; font-size:1.8em;"><?=count($this->orders[progress])?> db</div>
                             <div>folyamatban</div>
                         </div>
                         <div class="" align="center">
-                            <div style="color:#444;; font-size:1.5em;"><?=count($this->orders[done])?> db</div>
+                            <div style="color:#444;; font-size:1.8em;"><?=count($this->orders[done])?> db</div>
                             <div>lezárt megrendelés</div>
                         </div>
-                        <? if(true): ?>
+                        <? if(false): ?>
                         <div class="" align="center">
                             <div style="color:#7CC359; font-size:1.5em;"><?=$this->user[data][cash]?></div>
                             <div>virtuális egyenleg</div>

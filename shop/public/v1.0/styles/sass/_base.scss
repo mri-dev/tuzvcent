@@ -412,7 +412,7 @@
 				}
 				.short-desc {
 					z-index: 2;
-					background:rgba(240, 240, 240, 0.8);
+					background:rgba(240, 240, 240, 0.81);
 					padding: 5px;
 					font-size: 0.8em;
 					text-align: left;
@@ -655,10 +655,69 @@
 				-webkit-transform: translateY(-50%);
           transform: translateY(-50%);
 			}
+
+			&.filter-row{
+				background: #f5f5f5;
+				font-size: 0.9em;
+			}
 		}
 
 		.section-wrapper{
 			padding: 10px;
+
+			.selectors{
+				.selector{
+					color: #f09f0f;
+					cursor: pointer;
+    			padding: 8px 10px;
+					border: 1px solid #f1f1f1;
+					&.filtered{
+						color: $color-red;
+						border: 1px solid #fbc3c6;
+					}
+				}
+				.selectorHint {
+					background: #f5f5f5;
+					ul li {
+						label {
+							cursor: pointer;
+							display: block;
+							padding: 5px;
+							border-bottom: 1px solid #e0e0e0;
+
+							input[type=checkbox]{
+								display: inline-block;
+						    vertical-align: middle;
+						    margin: 0;
+							}
+
+							&:hover{
+								background: #e3e3e3;
+							}
+						}
+					}
+					ul li:last-child label {
+						border-bottom: none;
+					}
+				}
+			}
+
+			&.type-szam{
+				padding: 10px 10px 25px 10px;
+
+				.rangeInfo{
+					margin: 5px -15px 0 -15px;
+					font-size: 0.9em;
+					.def {
+						color: #7c7c7c;
+					}
+					.sel {
+						color: #e0131c;
+						font-size: 1.1em;
+						font-weight: bold;
+					}
+				}
+			}
 		}
 
 		.action-group {
@@ -2971,8 +3030,9 @@ md-toast{
 	.settings {
 		h4 {
 			font-family: $font-cond;
-			line-height: 160%;
+			line-height: 1.5;
 			margin: 15px 0 25px 0;
+			font-size: 1.8em;
 		}
 
 		.row {
@@ -2981,17 +3041,25 @@ md-toast{
 	}
 
 	.orderpage {
+		.noItem {
+			text-align: center;
+			padding: 25px;
+	    color: #a7a6a6;
+	    font-size: 1.1em;
+		}
 		h4 {
 			font-family: $font-cond;
-			line-height: 160%;
-			margin-bottom: 8px;
-			margin-top: 16px;
+			line-height: 1.5;
+			font-size: 1.8em;
+			margin: 10px 0 25px 0;
+			text-align: center;
 		}
 
 		table thead tr td {
 			font-size: 0.8em;
 			text-align: center;
-			color: darken( $color-sec, 20%);
+			color: black;
+			background: #f7f7f7;
 			font-weight: bold;
 		}
 		table tbody tr td {
@@ -3002,18 +3070,24 @@ md-toast{
 	}
 
 	.flatInfoBox {
-		border: 2px solid $color-sec;
-		border-right: none;
-		border-left: none;
+		background: #eceff2;
+    border: 1px solid #d2d2d2;
 		margin: 20px 0;
 		padding: 10px 0;
 		display: table;
 		width: 100%;
 	}
 	.flatInfoBox > div {
-		width: 33%;
+		width: 50%;
 		display:table-cell;
-		padding: 15px 10px;
+		padding: 25px 10px;
+		font-size: 1.2em;
+	}
+	.flatInfoBox > div:first-child {
+		box-shadow: inset -1px 0 0 #d2d2d2;
+	}
+	.flatInfoBox > div:last-child {
+		box-shadow: inset 1px 0 0 #ffffff;
 	}
 
 	.login-form{
@@ -3035,15 +3109,26 @@ md-toast{
 .side-menu {
 	ul li a {
 		display: block;
-		padding: 5px 10px;
+		padding: 10px;
 		color: black;
 		font-family: $font-cond;
-		font-size: 0.9em;
+		font-size: 1.1em;
 		text-decoration: none;
-		border-left: 5px solid #eceff2;
+		border-right: 5px solid #eceff2;
+		&:hover{
+			background-color: #eceff2;
+		}
 	}
 	ul li {
 		margin: 5px 0;
+	}
+
+	ul li.logout a {
+		text-align: center;
+		color: $color-red;
+		font-size: 0.9em;
+		border: none !important;
+		border-top: 1px solid #f7f7f7 !important;
 	}
 
 	ul li.head a,
@@ -3054,7 +3139,7 @@ md-toast{
 		margin: 8px 0;
 	}
 	ul li.active a {
-		border-left: 5px solid $color-pr;
+		border-right: 5px solid $color-pr;
 		font-weight: bold;
 	}
 }

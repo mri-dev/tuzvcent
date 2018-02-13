@@ -82,7 +82,7 @@ class termekek extends Controller {
 				'in_cat' 	=> $cat->getId(),
 				'meret' 	=> $_GET['meret'],
 				'order' 	=> $order,
-				'limit' 	=> 40,
+				'limit' 	=> 30,
 				'page' 		=> Helper::currentPageNum(),
 				'favorite' => $myfavorite
 			);
@@ -93,6 +93,8 @@ class termekek extends Controller {
 			) ))->prepareList( $arg );
 			$this->out( 'products', $products );
 			$this->out( 'product_list', $products->getList() );
+			$this->out( 'productFilters', $products->productFilters( (array)$products->getLoadedIDS() ) );
+			$this->out( 'filters', $products->getFilters($_GET,'fil'));
 
 			/****
 			* TOP TERMÉKEK

@@ -21,6 +21,7 @@ class Products
 	private $avaiable_sizes = array();
 	private $qry_str = null;
 	private $selected_sizes = array();
+	public $item_ids = array();
 
 	public function __construct( $arg = array() ) {
 		$this->db = $arg[db];
@@ -424,6 +425,15 @@ class Products
 		return $product;
 	}
 
+	public function getLoadedIDS()
+	{
+		if ( !$this->products ) {
+			return array();
+		}
+
+		return $this->item_ids;
+	}
+
 	public function connectProducts( $id1, $id2 )
 	{
 		$c1 = $this->db->query("SELECT 1 FROM shop_termek_ajanlo_xref WHERE base_id = $id1 and target_id = $id2;");
@@ -768,9 +778,13 @@ class Products
 
 			} else {
 				if( !empty($arg['meret']) ) {
-					$qry .= "GROUP BY p.raktar_articleid";
+					$add = "GROUP BY p.raktar_articleid";
+					$whr .= $add;
+					$qry .= $add;
 				} else {
-					$qry .= "GROUP BY p.raktar_articleid";
+					$add = "GROUP BY p.raktar_articleid";
+					$whr .= $add;
+					$qry .= $add;
 				}
 			}
 		}
@@ -779,23 +793,38 @@ class Products
 		// ORDER if collect
 		if ( isset($arg['collectby'])) {
 			if ( $arg['collectby'] == 'top' ) {
-				$qry .= " ORDER BY v DESC ";
+				$add = " ORDER BY v DESC ";
+				$qry .= $add;
 			}
 		} else {
 			if ( isset($arg['customorder']))
 			{
 				switch ($arg['customorder']['by']) {
 					case 'popular':
-					 $qry .= " ORDER BY (SELECT SUM(me) as total FROM `stat_nezettseg_termek` WHERE termekID = p.ID GROUP BY termekID) ".$arg['customorder']['how'];
+					 $add =  " ORDER BY (SELECT SUM(me) as total FROM `stat_nezettseg_termek` WHERE termekID = p.ID GROUP BY termekID) ".$arg['customorder']['how'];
+					 $qry .= $add;
 					break;
 				}
 			} else
 			{
 				if( $arg['order'] ) {
-					$qry .= " ORDER BY ".$arg['order']['by']." ".$arg['order']['how'];
+					$add =  " ORDER BY ".$arg['order']['by']." ".$arg['order']['how'];
+					$qry .= $add;
 				} else {
-					$qry .= " ORDER BY ar ASC, fotermek DESC, ID DESC ";
+					$add =  " ORDER BY ar ASC, fotermek DESC, ID DESC ";
+					$qry .= $add;
 				}
+			}
+		}
+
+		// Összes kategórián belüli termék ID összegyűjtése
+		$ids_query = $this->db->query( "SELECT p.ID FROM shop_termekek as p WHERE 1=1 ".$whr );
+
+		if ( $ids_query->rowCount() != 0 ) {
+			$ids_gets = $ids_query->fetchAll(\PDO::FETCH_ASSOC);
+			$this->item_ids = array();
+			foreach ( (array)$ids_gets as $aid ) {
+				$this->item_ids[] = (int)$aid['ID'];
 			}
 		}
 
@@ -897,6 +926,198 @@ class Products
 
 		return $this;
 	}
+
+	public function getFilters( $get, $prefix )
+	{
+		$re = array();
+
+			foreach ($get as $gk => $gv) {
+					if (strpos($gk, $prefix . '_') === 0) {
+							/*if(strpos($gv,',') !== false){
+							$x = false;
+							if($gv != ''){
+							$x = explode(',',rtrim($gv,','));
+							}
+							$g = $x;
+							}else{
+							$g = $gv;
+							}*/
+							$x = false;
+							if ($gv != '') {
+									$x = explode(',', rtrim($gv, ','));
+							}
+							$g = $x;
+							if ($g == '') {
+									$g = false;
+							}
+
+							$re[$gk] = $g;
+					}
+			}
+
+			return $re;
+	}
+
+	public function productFilters( $ids = array() )
+	{
+		$back = array();
+
+			if (empty($ids)) {
+				return $back;
+			}
+
+			$q = "SELECT
+				tp.parameterID as paramID,
+				tp.ertek as value,
+				tk.parameter,
+				tk.mertekegyseg,
+				tk.priority as sorrend,
+				tk.is_range,
+				tk.kulcs
+			FROM shop_termek_parameter as tp
+			LEFT OUTER JOIN shop_termek_kategoria_parameter as tk ON tk.ID = tp.parameterID
+			WHERE 1=1 and tp.termekID IN (".implode(",", $ids).")
+			ORDER BY tk.priority ASC
+			";
+
+			//echo $q;
+
+			$qry = $this->db->query($q);
+
+			if ($qry->rowCount() == 0) {
+				return $back;
+			}
+
+			$data = $qry->fetchAll(\PDO::FETCH_ASSOC);
+			foreach ($data as $d)
+			{
+				$v = $d['value'];
+				if($v == '') continue;
+
+				if (!isset($back[$d['paramID']]['ID'])) {
+					$back[$d['paramID']]['parameter'] = $d['parameter'];
+					$back[$d['paramID']]['sort'] = $d['sorrend'];
+					$back[$d['paramID']]['ID'] = $d['paramID'];
+					$back[$d['paramID']]['me'] = $d['mertekegyseg'];
+				}
+
+				preg_match_all('/^([0-9+]) (db)$/i', $v, $fn);
+
+				if (isset($fn) && isset($fn[1][0])) {
+					$v = $fn[1][0];
+					$back[$d['paramID']]['is_range'] = true;
+				}
+
+				if (isset($fn) && isset($fn[2][0])) {
+					$back[$d['paramID']]['mertekegyseg'] = trim($fn[2][0]);
+				}
+
+				if (!in_array($v, $back[$d['paramID']]['hints'])) {
+					if (is_numeric($v)) {
+						$back[$d['paramID']]['is_range'] = true;
+					}
+					$back[$d['paramID']]['hints'][] = $v;
+				}
+			}
+
+			unset($qry);
+			unset($data);
+
+			$temp = $back;
+			$back = array();
+			foreach ($temp as $t) {
+				asort($t['hints']);
+				$t['type'] = $this->getParameterType($t, $t['hints']);
+				$t['minmax'] = $this->getParameterMinMax($t[type], $t['hints']);
+				$back[] = $t;
+			}
+
+			//$back = $ids;
+
+			return $back;
+	}
+
+	private function getParameterMinMax($type, $hints)
+  {
+      $re  = array();
+      $min = 0;
+      $max = 0;
+
+      if ($type == 'szam' || $type == 'tartomany') {
+
+          foreach ($hints as $h) {
+              if ($type == 'szam') {
+                  if ($min == 0) {
+                      $min = $h;
+                  }
+
+                  if ($max == 0) {
+                      $max = $h;
+                  }
+
+                  if ($h < $min) {
+                      $min = $h;
+                  }
+
+                  if ($h > $max) {
+                      $max = $h;
+                  }
+
+              } else if ($type == 'tartomany') {
+                  $xn   = explode('-', $h);
+                  $xmin = (int) $xn[0];
+                  $xmax = (int) $xn[1];
+
+                  if ($min == 0) {
+                      $min = $xmin;
+                  }
+
+                  if ($max == 0) {
+                      $max = $xmax;
+                  }
+
+                  if ($xmin < $min) {
+                      $min = $xmin;
+                  }
+
+                  if ($xmax > $max) {
+                      $max = $xmax;
+                  }
+
+              }
+          }
+      }
+
+      $re[min] = $min;
+      $re[max] = $max;
+
+      return $re;
+  }
+
+	private function getParameterType($parameter, $hints)
+  {
+      $re = false;
+
+      if ($parameter[me] == '') {
+          $re = 'szoveg';
+      } else {
+          $re = 'szoveg';
+          foreach ($hints as $h) {
+              if (is_numeric($h)) {
+                  $re = 'szoveg';
+                  if ($parameter[is_range] == 1) {
+                      $re = 'szam';
+                  }
+              } else {
+                  if (strpos($h, '-') !== false) {
+                      $re = 'tartomany';
+                  }
+              }
+          }
+      }
+
+      return $re;
+  }
 
 	public function getList()
 	{
