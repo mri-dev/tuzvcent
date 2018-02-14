@@ -361,6 +361,10 @@ function initRanges(){
 	});
 }
 
+function postFilterForm() {
+
+}
+
 function Cart(){
 	this.content = "#cartContent";
 	this.push = function(i){
@@ -571,7 +575,7 @@ function searchFilters(){
 
 		var key = $(this).attr('cart-data');
 		var rem = $(this).attr('cart-remsg');
-		var me 	= $('input[type=text][cart-count='+key+']').val();
+		var me 	= $('input[type=number][cart-count='+key+']').val();
 
 		//if(typeof me === 'undefined'){ me = 0; }
 

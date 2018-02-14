@@ -10,7 +10,12 @@
                     Keresés tulajdonságok szerint
                   </div>
                   <?php if ( !empty($this->productFilters) ): ?>
-                    <?php foreach ( $this->productFilters as $pf ): if(count($pf[hints]) == 0): continue; endif;  ?>
+                    <?php foreach ( $this->productFilters as $pf ):
+
+                      if(count($pf[hints]) == 0): continue; endif;
+                      if( ($pf[type] != 'tartomany' && $pf[type] != 'szam') &&  count($pf[hints]) <= 1) continue;
+                      if( ($pf[type] == 'tartomany' || $pf[type] == 'szam') &&  count($pf[hints]) <= 1) continue;
+                    ?>
                     <div class="section-group filter-row">
                       <strong><?php echo $pf['parameter']; ?></strong> <?=($pf['me'] != '')?'('.$pf['me'].')':''?>
                     </div>
@@ -39,6 +44,11 @@
                            </div>
                            <? else: ?>
                            <div class="selectors">
+                              <?php if (count($pf[hints]) > 0): ?>
+                              <div class="sel-item-n">
+                                <?=count($pf[hints])?>
+                              </div>
+                              <?php endif; ?>
                               <div class="selector" key="p_<?=$pf[ID]?>" id="p_<?=$pf[ID]?>">összes</div>
                               <div class="selectorHint p_<?=$pf[ID]?>" style="display:none;">
                                  <ul>
@@ -220,7 +230,6 @@
                       </div>
                       <div class="clr"></div>
                       <? echo $this->navigator; ?>
-                      <pre><?php print_r($this->productFilters); ?></pre>
                   <br>
                   <? endif; ?>
               </div>

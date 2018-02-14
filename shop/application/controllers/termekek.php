@@ -69,7 +69,10 @@ class termekek extends Controller {
 			* Termékek
 			*****/
 			$filters = array();
+			$paramfilters = array();
 			$order = array();
+
+			$paramfilters = \Helper::getFilters($_GET,'fil');
 
 			if( $_GET['order']) {
 				$xord = explode("_",$_GET['order']);
@@ -79,6 +82,7 @@ class termekek extends Controller {
 
 			$arg = array(
 				'filters' 	=> $filters,
+				'paramfilters' 	=> $paramfilters,
 				'in_cat' 	=> $cat->getId(),
 				'meret' 	=> $_GET['meret'],
 				'order' 	=> $order,

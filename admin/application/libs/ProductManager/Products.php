@@ -572,6 +572,7 @@ class Products
 			p.termek_site_url,
 			p.ajandek,
 			p.rovid_leiras,
+			GROUP_CONCAT(CONCAT('p_',pa.parameterID,':',pa.ertek)) as paramErtek,
 			IF(p.egyedi_ar IS NOT NULL,
 				p.egyedi_ar,
 				getTermekAr(p.marka, IF(p.akcios,p.akcios_brutto_ar,p.brutto_ar))
@@ -586,6 +587,7 @@ class Products
 
 		$qry .= " FROM
 		shop_termekek as p
+		LEFT OUTER JOIN shop_termek_parameter as pa ON pa.termekID = p.ID
 		WHERE 1 = 1
 		";
 
@@ -772,6 +774,48 @@ class Products
 		}
 		$qry .= $whr;
 
+		// Paraméter filters
+		/* */
+		$paramFilter = array();
+    foreach ((array)$arg[paramfilters] as $fk => $fv) {
+        if ($fv) {
+            $filtered = true;
+        }
+
+        if (strpos($fk, 'fil_p_') === 0) {
+            if ($fv) {
+                $paramFilter[$fk] = $fv;
+            }
+
+        }
+    }
+
+		$having = '';
+    if (count($paramFilter) > 0) {
+        $fkq = '';
+        foreach ($paramFilter as $pmfk => $pmfv) {
+            $key = str_replace('fil_p_', '', $pmfk);
+            if (strpos($key, 'min') === false && strpos($key, 'max') === false) {
+                $fkq .= " (";
+                foreach ($pmfv as $pv) {
+                    $fkq .= "FIND_IN_SET('p_" . $key . ":" . $pv . "',GROUP_CONCAT(CONCAT('p_',pa.parameterID,':',pa.ertek))) or ";
+                }
+                $fkq = rtrim($fkq, ' or ');
+                $fkq .= ") and ";
+            } else {
+                $v = $pmfv[0];
+                $fkq .= "isInMinMax(p.ID,'" . $key . "'," . $v . ") and ";
+            }
+        }
+        $fkq = rtrim($fkq, ' and ');
+        if ($fkq != '') {
+            $having .= " HAVING ";
+            $having .= $fkq;
+        }
+    }
+		//echo $having;
+		/* */
+
 		// GROUP BY
 		if ( !$admin_listing ) {
 			if( isset($arg['favorite']) && $arg['favorite'] === true ) {
@@ -787,7 +831,13 @@ class Products
 					$qry .= $add;
 				}
 			}
+		} else {
+			$add = "GROUP BY p.ID";
+			$whr .= $add;
+			$qry .= $add;
 		}
+
+		$qry .= $having;
 
 		// ORDER
 		// ORDER if collect
@@ -808,14 +858,15 @@ class Products
 			} else
 			{
 				if( $arg['order'] ) {
-					$add =  " ORDER BY ".$arg['order']['by']." ".$arg['order']['how'];
+					$add =  " ORDER BY p.".$arg['order']['by']." ".$arg['order']['how'];
 					$qry .= $add;
 				} else {
-					$add =  " ORDER BY ar ASC, fotermek DESC, ID DESC ";
+					$add =  " ORDER BY ar ASC, fotermek DESC, p.ID DESC ";
 					$qry .= $add;
 				}
 			}
 		}
+
 
 		// Összes kategórián belüli termék ID összegyűjtése
 		$ids_query = $this->db->query( "SELECT p.ID FROM shop_termekek as p WHERE 1=1 ".$whr );
@@ -1486,6 +1537,7 @@ class Products
 					$color_set[$id['szin']] = array(
 						'img' 	=> \PortalManager\Formater::productImage($id['profil_kep'],false, self::TAG_IMG_NOPRODUCT),
 						'sizes' => 1,
+						'ID' => $id['termek_to'],
 						'link' 	=> DOMAIN.'termek/'.\PortalManager\Formater::makeSafeUrl($id['nev'],'_-'.$id['termek_to'])
 					);
 				} else {

@@ -89,6 +89,21 @@
         <div class="short-desc">
           <?=$this->product['rovid_leiras']?>
         </div>
+
+        <?
+        if( count($this->product['hasonlo_termek_ids']['colors']) > 1 ):
+            $colorset = $this->product['hasonlo_termek_ids']['colors'];
+        ?>
+        <div class="divider"></div>
+        <div class="variation-header">
+          Elérhető variációk:
+        </div>
+        <div class="variation-list">
+        <? foreach ($colorset as $szin => $adat ) : ?>
+          <div class="variation<?=($adat['ID'] == $this->product['ID'] )?' actual':''?>"><a href="<?=$adat['link']?>"><?=$szin?></a></div>
+        <? endforeach; ?>
+        </div>
+        <? endif; ?>
         <div class="divider"></div>
         <div class="cart-info">
           <div class="group">
@@ -120,36 +135,22 @@
           <div id="cart-msg"></div>
           <div class="group" style="margin: 10px -10px 0 0;">
             <?
-            if( count($this->product['hasonlo_termek_ids']['colors']) > 1 ):
-                $colorset = $this->product['hasonlo_termek_ids']['colors'];
-                unset($colorset[$this->product['szin']]);
+            if( count($this->product['hasonlo_termek_ids']['colors'][$this->product['szin']]['size_set']) > 1 ):
+                $colorset = $this->product['hasonlo_termek_ids']['colors'][$this->product['szin']]['size_set'];
+                //unset($colorset[$this->product['szin']]);
             ?>
             <div class="size-selector cart-btn dropdown-list-container">
-                <div class="dropdown-list-title"><span id=""><?=__('Variációk')?>: <strong><?=$this->product['meret']?></strong></span> <? if( count( $this->product['hasonlo_termek_ids']['colors'][$this->product['szin']]['size_set'] ) > 0): ?> <i class="fa fa-angle-down"></i><? endif; ?></div>
+                <div class="dropdown-list-title"><span id=""><?=__('Kiszerelés')?>: <strong><?=$this->product['meret']?></strong></span> <? if( count( $this->product['hasonlo_termek_ids']['colors'][$this->product['szin']]['size_set'] ) > 0): ?> <i class="fa fa-angle-down"></i><? endif; ?></div>
 
                 <div class="number-select dropdown-list-selecting overflowed">
                 <? foreach ($colorset as $szin => $adat ) : ?>
-                    <div link="<?=$adat['link']?>"><?=$szin?></div>
+                    <div link="<?=$adat['link']?>"><?=$adat['size']?></div>
                 <? endforeach; ?>
                 </div>
             </div>
             <? endif; ?>
-            <div class="item-num">
-              <input type="text" id="add_cart_num" style="display:none;" value="0" cart-count="<?=$this->product['ID']?>" />
-              <div class="item-count cart-btn dropdown-list-container">
-                  <div class="dropdown-list-title"><span id="item-count-num">Mennyiség</span> <i class="fa fa-angle-down"></i></div>
-                  <div class="number-select dropdown-list-selecting overflowed">
-                      <?
-                      $maxi = 10;
-                      if( $this->product[raktar_keszlet] < $maxi ) $maxi = (int)$this->product[raktar_keszlet];
-
-                      for ( $n = 1; $n <= $maxi; $n++ ) { if($n > 10) break; ?>
-                      <div num="<?=$n?>"><?=$n?></div>
-                      <? } ?>
-                  </div>
-              </div>
-            </div>
             <div class="order <?=($this->product['without_price'])?'requestprice':''?>">
+              <input type="number" name="" id="add_cart_num" cart-count="<?=$this->product['ID']?>" value="1" min="1">
               <?php if ( !$this->product['without_price'] ): ?>
                 <button id="addtocart" cart-data="<?=$this->product['ID']?>" cart-remsg="cart-msg" title="Kosárba" class="tocart cart-btn"><?=__('kosárba')?></i></button>
               <?php else: ?>
@@ -197,7 +198,7 @@
                   <i class="fa fa-heart-o" ng-show="fav_ids.indexOf(<?=$this->product['ID']?>) === -1"></i>
                 </div>
                 <md-tooltip md-direction="bottom">
-                  Hozzáadás a kedvencekhez.                  
+                  Hozzáadás a kedvencekhez.
                 </md-tooltip>
               </div>
           </div>
@@ -206,6 +207,28 @@
     </div>
     <div class="more-datas">
       <div class="info-texts">
+        <?php if ($this->product['parameters'] && !empty($this->product['parameters'])): ?>
+          <div class="parameters">
+            <div class="head">
+              <h3>Termék paraméterei</h3>
+            </div>
+            <div class="clr"></div>
+            <div class="c">
+              <div class="params">
+                <?php foreach ( $this->product['parameters'] as $p ): ?>
+                <div class="param">
+                  <div class="key">
+                    <?php echo $p['neve']; ?>
+                  </div>
+                  <div class="val">
+                    <strong><?php echo $p['ertek']; ?></strong> <span class="me"><?php echo $p['me']; ?></span>
+                  </div>
+                </div>
+                <?php endforeach; ?>
+              </div>
+            </div>
+          </div>
+        <?php endif; ?>
         <div class="description">
           <div class="head">
             <h3>Termék leírás</h3>
