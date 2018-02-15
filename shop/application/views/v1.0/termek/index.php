@@ -100,7 +100,7 @@
         </div>
         <div class="variation-list">
         <? foreach ($colorset as $szin => $adat ) : ?>
-          <div class="variation<?=($adat['ID'] == $this->product['ID'] )?' actual':''?>"><a href="<?=$adat['link']?>"><?=$szin?></a></div>
+          <div class="variation<?=($szin == $this->product['szin'] )?' actual':''?>"><a href="<?=$adat['link']?>"><?=$szin?></a></div>
         <? endforeach; ?>
         </div>
         <? endif; ?>
@@ -150,14 +150,22 @@
             </div>
             <? endif; ?>
             <div class="order <?=($this->product['without_price'])?'requestprice':''?>">
-              <input type="number" name="" id="add_cart_num" cart-count="<?=$this->product['ID']?>" value="1" min="1">
               <?php if ( !$this->product['without_price'] ): ?>
-                <button id="addtocart" cart-data="<?=$this->product['ID']?>" cart-remsg="cart-msg" title="Kosárba" class="tocart cart-btn"><?=__('kosárba')?></i></button>
+              <div class="men">
+                <input type="number" name="" id="add_cart_num" cart-count="<?=$this->product['ID']?>" value="1" min="1">
+              </div>
+              <?php endif; ?>
+              <?php if ( !$this->product['without_price'] ): ?>
+                <div class="buttonorder">
+                  <button id="addtocart" cart-data="<?=$this->product['ID']?>" cart-remsg="cart-msg" title="Kosárba" class="tocart cart-btn"><?=__('kosárba')?></i></button>
+                </div>
               <?php else: ?>
-                <md-tooltip md-direction="top">
-                  Erre a gombra kattintva árajánlatot kérhet erre a termékre.
-                </md-tooltip>
-                <button aria-label="Erre a gombra kattintva árajánlatot kérhet erre a termékre." class="tocart cart-btn" ng-click="requestPrice(<?=$this->product['ID']?>)"><?=__('Ajánlatot kérek')?></i></button>
+                <div class="requestbutton">
+                  <md-tooltip md-direction="top">
+                    Erre a gombra kattintva árajánlatot kérhet erre a termékre.
+                  </md-tooltip>
+                  <button aria-label="Erre a gombra kattintva árajánlatot kérhet erre a termékre." class="tocart cart-btn" ng-click="requestPrice(<?=$this->product['ID']?>)"><?=__('Ajánlatot kérek')?></i></button>
+                </div>
               <?php endif; ?>
             </div>
           </div>
