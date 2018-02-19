@@ -1362,6 +1362,9 @@ div.np{
 .create-product .con{
 	position:relative;
 }
+.create-product .con .docs-list{
+	padding: 0 15px;
+}
 .create-product .modkat{
 	position:absolute;
 	top:10px;

@@ -17,6 +17,11 @@
 			<br>
 			<label for="cim">Megjelenő név</label>
 			<input type="text" id="cim" class="form-control" name="data[cim]" placeholder="A feltöltött fájl megjelenő neve..." value="<?=$this->file['cim']?>">
+			<br>
+			<label for="keywords">Kulcsszavak</label>
+			<input type="text" id="keywords" class="form-control" name="data[keywords]" placeholder="kulcsszavak megadása..." value="<?=$this->file['keywords']?>">
+			<small>Vesszővel válassza le a kulcsszavakat. A későbbi keresés szempontjából fontos.</small>
+			<br>
 			<div style="display: block;" id="link_url">
 				<br>
 				<label for="filepath">Hivatkozás (URL)</label>

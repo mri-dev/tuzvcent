@@ -2830,6 +2830,33 @@ class Shop
 		return $docs;
 	}
 
+	public function getDocumentList( $termid = 0 )
+	{
+		$data = array();
+
+		$qry = "SELECT
+			dx.ID,
+			dx.doc_id,
+			dx.termek_id
+		FROM shop_documents_termek_xref as dx
+		WHERE 1=1";
+
+		$qry .= sprintf(" and dx.termek_id = %d", $termid );
+		$qry .= " ORDER BY dx.sort ASC";
+
+		$list = $this->db->query( $qry );
+
+		if ( $list->rowCount() != 0 ) {
+			$lista = $list->fetchAll(\PDO::FETCH_ASSOC);
+			foreach ( $lista as $doc ) {
+				$data[] = $doc;
+			}
+			return $data;
+		} else {
+			return $data;
+		}
+	}
+
 	public function registerFileDocument( $post )
 	{
 		extract($post);
@@ -2840,11 +2867,12 @@ class Shop
 			'shop_documents',
 			array(
 				'hashname' 	=> md5($filename),
-				'cim' 		=> addslashes(trim($name)),
+				'cim' 		  => addslashes(trim($name)),
+				'keywords'  => addslashes(trim($keywords)),
 				'filepath' 	=> $filepath
 			)
 		);
-	}
+	} 
 
 	public function __destruct()
 	{

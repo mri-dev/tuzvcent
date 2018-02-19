@@ -287,42 +287,28 @@
 					</div>
 
 				</div>
-				<div class="con">
-					<h3>Termék külső hivatkozása (SITE URL)</h3>
-					<input type="text" class="form-control" name="termek_site_url" id="termek_site_url" value="<?=$this->termek['termek_site_url']?>">
-
-					<h3>Csatolt hivatkozások</h3>
-					<div class="row">
-						<div class="col-md-12">
-							<div class="alink">
-								<? $linkek = Product::attackedLink($this->termek[linkek]); ?>
-								<? $k = 0; foreach($linkek as $lk): $k++; ?>
-								<div class="row np link">
-									<div class="col-md-1"><?=$k?>#</div>
-									<div class="col-md-4"><input type="text" name="linkNev[]" class="form-control" value="<?=$lk[nev]?>" placeholder="Felirat" /></div>
-									<div class="col-md-7"><input type="text" name="linkUrl[]" class="form-control" value="<?=$lk[url]?>" placeholder="URL"/></div>
-								</div>
-								<br />
-								<? endforeach; ?>
-								<div class="row np link">
-									<div class="col-md-1">új</div>
-									<div class="col-md-4"><input type="text" name="linkNev[]" class="form-control" value="" placeholder="Felirat" /></div>
-									<div class="col-md-7"><input type="text" name="linkUrl[]" class="form-control" value="" placeholder="URL"/></div>
-								</div>
-								<div class="row np" style="margin-top:8px;">
-									<div class="col-md-6">
-										<a href="javascript:void(0);" id="addMoreLink"><i class="fa fa-plus"></i> új hivatkozás hozzáadása</a>
-									</div>
-									<div class="col-md-6 right">
-										<a href="javascript:void(0);" onclick="$('#linksetstr').slideToggle(400);" style="font-size:0.85em; color:red;" id="addMoreLink">hivatkozás nyers adat mutatása/másolás <i class="fa fa-question"></i></a>
-									</div>
-								</div>
-								<div class="row np" id="linksetstr" style="display:none;">
-									<input type="text" onclick="$(this).select();" class="form-control" value="<?=$this->termek[linkek]?>">
-								</div>
-							</div>
-						</div>
+				<div class="con" ng-app="Documents" ng-controller="List" ng-init="init(<?=$this->termek['ID']?>)">
+				<h3>Csatolt dokumentumok, hivatkozások<em class="info">Csatolja hozzá ehhez a termékhez azokat a dokumentumokat, amelyek érdekesek vagy szükségesek lehetnek a vásárló részére.</em></h3>
+				<div class="row">
+					<div class="col-md-12">
+						<input type="text" class="form-control" placeholder="Dokumentum keresése..." ng-model="searher">
 					</div>
+				</div>
+				<h3>Csatolt dokumentumok listája</h3>
+				<div class="docs-list">
+					<div class="loading-text" ng-show="loading">
+						Becsatolt dokumentumok listájának betöltése folyamatban... <i class="fa fa-spin fa-spinner"></i>
+					</div>
+					<div class="empty-list-text" ng-show="!error && docs.length===0">
+						Nincs csatolt dokumentum ehhez a termékhez.
+					</div>
+					<div class="alert alert-danger" ng-show="error">
+						{{error}}
+					</div>
+					<div class="" ng-repeat="doc in docs" ng-show="!loading">
+
+					</div>
+				</div>
 				</div>
 	    </div>
 
