@@ -1,11 +1,13 @@
 /**
 * Dokumentumok
 **/
-var docs = angular.module('Documents', []);
+var docs = angular.module('Documents', ['ngMaterial']);
 
 docs.controller("List", ['$scope', '$http', function($scope, $http)
 {
 	$scope.docs = [];
+	$scope.searchdocs = [];
+	$scope.selectedItem = null;
 	$scope.searcher = null;
 	$scope.loading = false;
 	$scope.termid = 0;
@@ -15,6 +17,10 @@ docs.controller("List", ['$scope', '$http', function($scope, $http)
 		$scope.termid = id;
 		$scope.loadList();
 	}
+
+	$scope.searchTextChange = function(text) {
+    $log.info('Text changed to ' + text);
+  }
 
 	$scope.loadList = function()
 	{
@@ -33,7 +39,7 @@ docs.controller("List", ['$scope', '$http', function($scope, $http)
 			console.log(r);
 			if (r.error == 0) {
 				$scope.error = false;
- 
+
 			} else {
 				$scope.error = r.msg;
 			}

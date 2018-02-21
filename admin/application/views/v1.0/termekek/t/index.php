@@ -291,7 +291,30 @@
 				<h3>Csatolt dokumentumok, hivatkozások<em class="info">Csatolja hozzá ehhez a termékhez azokat a dokumentumokat, amelyek érdekesek vagy szükségesek lehetnek a vásárló részére.</em></h3>
 				<div class="row">
 					<div class="col-md-12">
-						<input type="text" class="form-control" placeholder="Dokumentum keresése..." ng-model="searher">
+						<md-autocomplete
+			          md-selected-item="selectedItem"
+			          md-search-text-change="searchTextChange(searher)"
+			          md-search-text="searher"
+			          md-selected-item-change=""
+			          md-items="d in searchdocs"
+			          md-item-text="d.name"
+			          md-min-length="0"
+			          placeholder="Dokumentum keresése...">
+			        <md-item-template>
+			          <span class="item-title">
+			            <md-icon md-svg-icon="img/icons/octicon-repo.svg"></md-icon>
+			            <span> {{item.name}} </span>
+			          </span>
+			          <span class="item-metadata">
+			            <span>
+			              <strong>{{item.watchers}}</strong> watchers
+			            </span>
+			            <span>
+			              <strong>{{item.forks}}</strong> forks
+			            </span>
+			          </span>
+			        </md-item-template>
+			      </md-autocomplete>
 					</div>
 				</div>
 				<h3>Csatolt dokumentumok listája</h3>
