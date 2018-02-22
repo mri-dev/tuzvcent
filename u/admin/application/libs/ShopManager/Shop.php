@@ -2742,6 +2742,9 @@ class Shop
 						continue;
 					}
 				}
+
+
+
 				if ($d['tipus'] == 'local')
 				{
 					$row = array_merge($row, $temp[$d['hashname']]);
@@ -2799,6 +2802,7 @@ class Shop
 			}
 		}
 
+
 		// Stacking by group
 		if ( isset($arg['stacked']) )
 		{
@@ -2822,33 +2826,8 @@ class Shop
 			unset($stack);
 		}
 
+
 		return $docs;
-	}
-
-	public function getDocuments()
-	{
-		$data = array();
-
-		$qry = "SELECT
-			d.*
-		FROM shop_documents as d
-		WHERE 1=1 and d.lathato = 1 ";
-		
-		$qry .= " ORDER BY d.sorrend ASC, d.cim ASC";
-		$list = $this->db->query( $qry );
-
-		if ( $list->rowCount() != 0 ) {
-			$lista = $list->fetchAll(\PDO::FETCH_ASSOC);
-			foreach ( $lista as $doc ) {
-				$xcim = explode(".", $doc['filepath']);
-				$ext = ($doc['tipus'] == 'external') ? false : end($xcim);
-				$doc['ext'] = $ext;
-				$data[] = $doc;
-			}
-			return $data;
-		} else {
-			return $data;
-		}
 	}
 
 	public function getDocumentList( $termid = 0 )
@@ -2893,7 +2872,7 @@ class Shop
 				'filepath' 	=> $filepath
 			)
 		);
-	}
+	} 
 
 	public function __destruct()
 	{

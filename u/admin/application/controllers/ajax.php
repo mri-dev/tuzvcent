@@ -439,12 +439,9 @@ class ajax extends Controller{
 								$re['error'] = 1;
 								$re['msg'] = 'Hiányzik a termék ID-ja a dokumentum lista betöltéséhez.';
 							}
+
 						break;
-						case 'DocsList':
-							$docs = $this->shop->getDocuments();
-							$re['data'] = $docs;
-						break;
-					}
+					} 
 					echo json_encode( $re );
 				break;
 				/* END: ANGULAR ACTIONS */

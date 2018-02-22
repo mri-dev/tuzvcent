@@ -293,23 +293,26 @@
 					<div class="col-md-12">
 						<md-autocomplete
 			          md-selected-item="selectedItem"
-			          md-search-text-change="searchTextChange(searcher)"
-								md-selected-item-change="selectedItemChange(d)"
-			          md-search-text="searcher"
+			          md-search-text-change="searchTextChange(searher)"
+			          md-search-text="searher"
 			          md-selected-item-change=""
-			          md-items="d in findSearchDocs(searcher)"
-			          md-item-text="d.cim"
-			          md-min-length="3"
+			          md-items="d in searchdocs"
+			          md-item-text="d.name"
+			          md-min-length="0"
 			          placeholder="Dokumentum keresése...">
 			        <md-item-template>
-			          <div class="item-title">
-			            <span> {{d.cim}} </span>
-			          </div>
-			          <div class="item-metadata">
+			          <span class="item-title">
+			            <md-icon md-svg-icon="img/icons/octicon-repo.svg"></md-icon>
+			            <span> {{item.name}} </span>
+			          </span>
+			          <span class="item-metadata">
 			            <span>
-			              <em>{{d.keywords}}</em>
+			              <strong>{{item.watchers}}</strong> watchers
 			            </span>
-			          </div>
+			            <span>
+			              <strong>{{item.forks}}</strong> forks
+			            </span>
+			          </span>
 			        </md-item-template>
 			      </md-autocomplete>
 					</div>
@@ -326,12 +329,7 @@
 						{{error}}
 					</div>
 					<div class="" ng-repeat="doc in docs" ng-show="!loading">
-						<div class="title">
-							<strong>{{doc.cim}}</strong>
-						</div>
-						<div class="keywords">
-							<em>{{doc.keywords}}</em>
-						</div>
+
 					</div>
 				</div>
 				</div>
