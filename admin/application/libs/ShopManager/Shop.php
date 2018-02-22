@@ -2830,10 +2830,11 @@ class Shop
 		$data = array();
 
 		$qry = "SELECT
-			d.*
+			d.*,
+			d.ID as doc_id
 		FROM shop_documents as d
 		WHERE 1=1 and d.lathato = 1 ";
-		
+
 		$qry .= " ORDER BY d.sorrend ASC, d.cim ASC";
 		$list = $this->db->query( $qry );
 
@@ -2851,25 +2852,56 @@ class Shop
 		}
 	}
 
+	public function saveTermDocuments( $termid = 0, $docsids = array() )
+	{
+		$synced = 0;
+		if ( !empty( $docsids ) ) {
+			foreach ( $docsids as $docid ) {
+				$check = $this->db->query("SELECT ID FROM shop_documents_termek_xref WHERE termek_id = {$termid} and doc_id = {$docid}");
+
+				if ( $check->rowCount() == 0 ) {
+					$synced++;
+					$this->db->insert(
+						'shop_documents_termek_xref',
+						array(
+							'termek_id' => $termid,
+							'doc_id' => $docid
+						)
+					);
+				}
+			}
+		}
+
+		return $synced;
+	}
+
+	public function removeDocumentFromTerm( $termid = 0, $docid = 0)
+	{
+		$this->db->query("DELETE FROM shop_documents_termek_xref WHERE termek_id = {$termid} and doc_id = {$docid}");
+	}
+
 	public function getDocumentList( $termid = 0 )
 	{
 		$data = array();
 
 		$qry = "SELECT
-			dx.ID,
-			dx.doc_id,
-			dx.termek_id
+			d.*,
+			dx.doc_id
 		FROM shop_documents_termek_xref as dx
-		WHERE 1=1";
+		LEFT OUTER JOIN shop_documents as d ON d.ID = dx.doc_id
+		WHERE 1=1 and d.lathato = 1 ";
 
 		$qry .= sprintf(" and dx.termek_id = %d", $termid );
-		$qry .= " ORDER BY dx.sort ASC";
+		$qry .= " ORDER BY dx.sort ASC, d.cim ASC";
 
 		$list = $this->db->query( $qry );
 
 		if ( $list->rowCount() != 0 ) {
 			$lista = $list->fetchAll(\PDO::FETCH_ASSOC);
 			foreach ( $lista as $doc ) {
+				$xcim = explode(".", $doc['filepath']);
+				$ext = ($doc['tipus'] == 'external') ? false : end($xcim);
+				$doc['ext'] = $ext;
 				$data[] = $doc;
 			}
 			return $data;

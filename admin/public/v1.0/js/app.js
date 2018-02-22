@@ -3,7 +3,7 @@
 **/
 var docs = angular.module('Documents', ['ngMaterial']);
 
-docs.controller("List", ['$scope', '$http', function($scope, $http)
+docs.controller("List", ['$scope', '$http', '$mdToast', function($scope, $http, $mdToast)
 {
 	$scope.docs = [];
 	$scope.docs_inserted_ids = [];
@@ -13,6 +13,7 @@ docs.controller("List", ['$scope', '$http', function($scope, $http)
 	$scope.loading = false;
 	$scope.termid = 0;
 	$scope.error = false;
+	$scope.docs_in_sync = false;
 
 	$scope.init = function( id ){
 		$scope.termid = id;
@@ -50,6 +51,10 @@ docs.controller("List", ['$scope', '$http', function($scope, $http)
 		if (typeof item !== 'undefined') {
 			if ( checkin === -1 ) $scope.docs.push(item);
 		}
+
+		$scope.syncDocuments(function(){
+
+		});
 	}
 
 	$scope.loadDocsList = function( callback )
@@ -63,13 +68,57 @@ docs.controller("List", ['$scope', '$http', function($scope, $http)
         key: 'DocsList'
       })
     }).success(function( r ){
-			console.log(r);
 			if (typeof callback !== 'undefined') {
-
 				callback( r.data.map(function(doc){
 					doc.value = doc.cim.toLowerCase();
 					return doc;
 				}) );
+			}
+    });
+	}
+
+	$scope.removeDocument = function(docid){
+		$scope.docs_in_sync = true;
+		$http({
+      method: 'POST',
+      url: '/ajax/get',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      data: $.param({
+        type: "Documents",
+        key: 'RemoveItemFromList',
+				id: $scope.termid,
+				docid: docid
+      })
+    }).success(function( r ){
+			$scope.docs_in_sync = false;
+			$scope.toast('Dokumentum eltávolítva. Lista mentve.', 'success', 5000);
+			$scope.loadList();
+    });
+	}
+
+	$scope.syncDocuments = function( callback )
+	{
+		$scope.docs_in_sync = true;
+		$http({
+      method: 'POST',
+      url: '/ajax/get',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      data: $.param({
+        type: "Documents",
+        key: 'SaveList',
+				id: $scope.termid,
+				list: $scope.docs
+      })
+    }).success(function( r ){
+			console.log(r);
+			$scope.docs_in_sync = false;
+			if ( r.synced == 0 ) {
+				$scope.toast('Dokumentum lista mentve. Nem történt új dokumentumfelvétel.', 'warning', 5000);
+			} else {
+				$scope.toast(r.synced + 'db új dokumentum hozzáadva a termékhez.', 'success', 8000);
+			}
+			if (typeof callback !== 'undefined') {
+				callback();
 			}
     });
 	}
@@ -88,13 +137,33 @@ docs.controller("List", ['$scope', '$http', function($scope, $http)
       })
     }).success(function(r){
 			$scope.loading = false;
-			console.log(r);
 			if (r.error == 0) {
 				$scope.error = false;
-
+				if ( r.data.length != 0) {
+					$scope.docs = r.data;
+					angular.forEach( $scope.docs, function(v,k) {
+						$scope.docs_inserted_ids.push(parseInt(v.doc_id));
+					});
+				}
 			} else {
 				$scope.error = r.msg;
 			}
     });
 	}
+
+	$scope.toast = function( text, mode, delay ){
+		mode = (typeof mode === 'undefined') ? 'simple' : mode;
+		delay = (typeof delay === 'undefined') ? 5000 : delay;
+
+		if (typeof text !== 'undefined') {
+			$mdToast.show(
+				$mdToast.simple()
+				.textContent(text)
+				.position('top')
+				.toastClass('alert-toast mode-'+mode)
+				.hideDelay(delay)
+			);
+		}
+	}
+
 }]);

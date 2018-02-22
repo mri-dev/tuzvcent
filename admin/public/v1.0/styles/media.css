@@ -1319,8 +1319,9 @@ div.np{
 	font-size:13px;
 }
 .create-product .con{
-	border-top:2px solid #0ac8ff;
-	margin-bottom:10px;
+	border-top: 5px solid #e9e9e9;
+	margin-bottom: 25px;
+  border-radius: 4px;
 }
 .create-product .con.nb{
 	border-top:1px solid #ddd;
@@ -3007,4 +3008,49 @@ fieldset.block {
 
 .popup-view .con .row div[class*=col-] {
 	padding: 0 15px;
+}
+
+.docsautocomplist i[class*=link]{
+  color: #d56969;
+  margin-right: 5px;
+}
+.docsautocomplist i[class*=file]{
+  color: #13a8f1;
+  margin-right: 5px;
+}
+.docsautocomplist .keywords{
+  font-size: 0.85em;
+  color: #acacac;
+}
+.docsautocomplist .ext{
+  font-size: 0.9em;
+  color: #13a8f1;
+  margin: 0 5px;
+}
+.docsautocomplist.docs-inserted .item {
+  padding: 10px;
+  background: #f5f5f5;
+  border-radius: 4px;
+  margin: 5px 0;
+  position: relative;
+}
+.docsautocomplist.docs-inserted .item .del {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  color: #c0c0c0;
+  -webkit-transform:translateY(-50%);
+          transform:translateY(-50%);
+}
+.docsautocomplist.docs-inserted .item .del i{ cursor: pointer; }
+.docsautocomplist.docs-inserted .item .del:hover{ color:#f57777; }
+
+md-toast.mode-alert .md-toast-content{
+  background-color: #d54646;
+}
+md-toast.mode-warning .md-toast-content{
+  background-color: #f59916;
+}
+md-toast.mode-success .md-toast-content{
+  background-color: #29bc40;
 }

@@ -299,38 +299,45 @@
 			          md-selected-item-change=""
 			          md-items="d in findSearchDocs(searcher)"
 			          md-item-text="d.cim"
-			          md-min-length="3"
+			          md-min-length="0"
+								md-menu-class="docsautocomplist"
 			          placeholder="Dokumentum keresése...">
 			        <md-item-template>
-			          <div class="item-title">
-			            <span> {{d.cim}} </span>
-			          </div>
-			          <div class="item-metadata">
-			            <span>
-			              <em>{{d.keywords}}</em>
-			            </span>
+			          <div class="item">
+									<i class="fa fa-link" title="Hivatkozás" ng-show="(d.tipus == 'external')"></i><i title="Feltöltött dokumentum" class="fa fa-file-o" ng-show="(d.tipus == 'local')"></i> <strong>{{d.cim}}</strong> <span class="ext" ng-show="(d.tipus == 'local')" title="Fájlkiterjesztés">({{d.ext}})</span> <span class="keywords"><em>{{d.keywords}}</em></span>
 			          </div>
 			        </md-item-template>
 			      </md-autocomplete>
 					</div>
 				</div>
 				<h3>Csatolt dokumentumok listája</h3>
+
+				<div class="row" ng-show="docs_in_sync">
+					<div class="col-md-12">
+						<div class="alert alert-success">
+							Dokumentumok szinkronizálása folyamatban...<i class="fa fa-spin fa-spinner"></i>
+						</div>
+					</div>
+				</div>
+
 				<div class="docs-list">
 					<div class="loading-text" ng-show="loading">
-						Becsatolt dokumentumok listájának betöltése folyamatban... <i class="fa fa-spin fa-spinner"></i>
+						<div class="alert alert-warning">
+							Becsatolt dokumentumok listájának betöltése folyamatban... <i class="fa fa-spin fa-spinner"></i>
+						</div>
 					</div>
-					<div class="empty-list-text" ng-show="!error && docs.length===0">
+					<div class="empty-list-text" ng-show="!error && docs.length===0 && !loading">
 						Nincs csatolt dokumentum ehhez a termékhez.
 					</div>
 					<div class="alert alert-danger" ng-show="error">
 						{{error}}
 					</div>
-					<div class="" ng-repeat="doc in docs" ng-show="!loading">
-						<div class="title">
-							<strong>{{doc.cim}}</strong>
-						</div>
-						<div class="keywords">
-							<em>{{doc.keywords}}</em>
+					<div class="docsautocomplist docs-inserted" ng-repeat="doc in docs" ng-show="!loading">
+						<div class="item">
+							<div class="del" title="Dokumentum eltávolítása">
+								<i class="fa fa-times" ng-click="removeDocument(doc.doc_id)"></i>
+							</div>
+							<i class="fa fa-link" title="Hivatkozás" ng-show="(doc.tipus == 'external')"></i><i title="Feltöltött dokumentum" class="fa fa-file-o" ng-show="(doc.tipus == 'local')"></i> <strong>{{doc.cim}}</strong> <span class="ext" ng-show="(doc.tipus == 'local')" title="Fájlkiterjesztés">({{doc.ext}})</span> <span class="keywords"><em>{{doc.keywords}}</em></span>
 						</div>
 					</div>
 				</div>

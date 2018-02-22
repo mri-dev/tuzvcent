@@ -434,7 +434,7 @@ class ajax extends Controller{
 							if ( $termid != 0 )
 							{
 								$docs = $this->shop->getDocumentList( $termid );
-								$ret['data'] = $docs;
+								$re['data'] = $docs;
 							} else {
 								$re['error'] = 1;
 								$re['msg'] = 'Hiányzik a termék ID-ja a dokumentum lista betöltéséhez.';
@@ -443,6 +443,31 @@ class ajax extends Controller{
 						case 'DocsList':
 							$docs = $this->shop->getDocuments();
 							$re['data'] = $docs;
+						break;
+						case 'SaveList':
+							$termid = (int)$_POST['id'];
+							$list = (array)$_POST['list'];
+							$re['list'] = $list;
+
+							if ( $termid != 0 )
+							{
+								$docsids = array();
+								if ( !empty($list) ) {
+								 foreach ( $list as $d ) {
+								 	$docsids[] = (int)$d['doc_id'];
+								 }
+								}
+								$synced = $this->shop->saveTermDocuments( $termid, $docsids );
+								$re['synced'] = (int)$synced;
+							} else {
+								$re['error'] = 1;
+								$re['msg'] = 'Hiányzik a termék ID-ja a dokumentum lista mentéséhez.';
+							}
+						break;
+						case 'RemoveItemFromList':
+							$termid = (int)$_POST['id'];
+							$docid = (int)$_POST['docid'];
+							$this->shop->removeDocumentFromTerm( $termid, $docid );
 						break;
 					}
 					echo json_encode( $re );
