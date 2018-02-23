@@ -2661,9 +2661,22 @@ class Shop
 			$file['hashname'] = md5( $file['name'] );
 
 			// Check
-			$cq = "SELECT d.ID, d.cim, d.feltoltve, d.lathato, d.szaktanacsado_only, d.groupkey, d.user_group_in, d.user_container_in, (SELECT count(ID) FROM shop_documents_click WHERE doc_id = d.ID) as clicks FROM shop_documents as d WHERE 1=1 ";
+			$cq = "SELECT
+			d.ID,
+			d.cim,
+			d.feltoltve,
+			d.lathato,
+			d.szaktanacsado_only,
+			d.groupkey,
+			d.user_group_in,
+			d.user_container_in,
+			(SELECT SUM(clicked) FROM shop_documents_click WHERE doc_id = d.ID) as clicks
+			FROM shop_documents as d
+			WHERE 1=1 ";
 
-			if( !$arg['showHided'] ) {
+			if( $arg['showHided'] === true ) {
+
+			} else {
 				$cq .= " and d.lathato = 1 ";
 			}
 
@@ -2694,7 +2707,7 @@ class Shop
 				$temp[$file['hashname']] = $file;
 
 			}
-			elseif( $arg['showOffline'] )
+			elseif( $arg['showOffline'] === true )
 			{
 				$temp[$file['hashname']] = $file;
 			}
@@ -2702,10 +2715,10 @@ class Shop
 
 		// External links
 
-		$eq = "SELECT d.*, (SELECT count(ID) FROM shop_documents_click WHERE doc_id = d.ID) as clicks FROM shop_documents as d WHERE 1=1 ";
+		$eq = "SELECT d.*, (SELECT SUM(clicked) FROM shop_documents_click WHERE doc_id = d.ID) as clicks FROM shop_documents as d WHERE 1=1 ";
 
 		if( isset($arg['showOffline']) ) {
-			$eq .= " and d.lathato = 1";
+
 		}
 
 		if( isset($arg['user_group_in']) ) {

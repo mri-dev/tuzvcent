@@ -5,6 +5,7 @@ use PortalManager\CasadaShop;
 use PopupManager\Creative;
 use PopupManager\CreativeScreens;
 use ProductManager\Products;
+use PortalManager\Helpdesk;
 
 class ajax extends Controller{
 		function __construct()
@@ -21,9 +22,21 @@ class ajax extends Controller{
 			);
 			switch($type)
 			{
+				case 'Helpdesk':
+					$helpdesk = new Helpdesk(array( 'db' => $this->db ));
+					switch ( $action ) {
+						case 'getCategories':
+							$data = $helpdesk->getCategories( true );
+							$ret['data'] = $data['data'];
+							$ret['count'] = $data['count'];
 
+							$this->setSuccess(false, $ret);
+						break;
+					}
+					echo json_encode($ret);
+					return;
+				break;
 				case 'cetelemCalculator':
-
 					$ret['data'] 	= false;
 					$ret['show'] 	= false;
 					$data 			= array();
@@ -37,17 +50,9 @@ class ajax extends Controller{
 						$this->view->settings['cetelem_barem'],
 						array( 'db' => $this->db )
 					);
-
-
 					$cetelem->sandboxMode( CETELEM_SANDBOX_MODE );
-
-
 					$data = $cetelem->calc($price, $ownPrice);
-
-
 					$ret[data] = $data;
-
-
 				break;
 
 				case 'logPopupClick':

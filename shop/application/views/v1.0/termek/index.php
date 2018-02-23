@@ -246,7 +246,7 @@
             <?=$this->product['leiras']?>
           </div>
         </div>
-        <?php if ($this->product['links']): ?>
+        <?php if ($this->product['documents']): ?>
         <div class="documents">
           <div class="head">
             <h3>Dokumentumok</h3>
@@ -254,9 +254,9 @@
           <div class="clr"></div>
           <div class="c">
             <div class="docs">
-              <?php foreach ( (array)$this->product['links'] as $doc ): ?>
+              <?php foreach ( (array)$this->product['documents'] as $doc ): ?>
               <div class="doc">
-                <a target="_blank" href="<?=$doc['link']?>"><img src="<?=IMG?>icons/docst-doc.svg" alt=""><?=$doc['title']?></a>
+                <a target="_blank" title="Kiterjesztés: <?=strtoupper($doc['ext'])?>" href="/app/dcl/<?=$doc['hashname']?>"><img src="<?=IMG?>icons/<?=$doc['icon']?>.svg" alt=""><?=$doc['cim']?><?=($doc[filesize])?' <span class="size">&bull; '.strtoupper($doc['ext']).' &bull; '.$doc[filesize].'</span>':''?></a>
               </div>
               <?php endforeach; ?>
             </div>
@@ -283,7 +283,7 @@
       </div>
       <?php endif; ?>
     </div>
-    <pre><?php //print_r($this->product); ?></pre>
+    <pre><?php //print_r($this->product['documents']); ?></pre>
   </div>
   <div class="sidebar filter-sidebar">
 

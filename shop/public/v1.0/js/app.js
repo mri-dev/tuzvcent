@@ -474,4 +474,101 @@ tc.controller('ActionButtons', ['$scope', '$http', '$mdDialog', '$mdToast', func
 
 }]);
 
+tc.controller('Tudastar',['$scope', '$http', '$mdToast', function($scope, $http, $mdToast)
+{
+  $scope.found_items = 0;
+  $scope.loading = false;
+  $scope.loaded = false;
+  $scope.categories = [];
+  $scope.searchKeys = [];
+  $scope.validitems = [];
+  $scope.selected_article = 0;
+
+  $scope.init = function( picked_article_id, tags )
+  {
+    $scope.selected_article = picked_article_id;
+
+    if (tags != '') {
+      var xtags = tags.split(',');
+      if (typeof xtags !== 'undefined') {
+        angular.forEach(xtags, function(tag,i){
+          $scope.putTagToSearch(tag);
+        });
+      }
+    }
+
+    $scope.loadCategories(function( success ){
+      $scope.loaded = true;
+      $scope.loading = false;
+      $scope.doSearch();
+    });
+  }
+
+  $scope.doSearch = function(){
+
+  }
+
+  $scope.putTagToSearch = function( tag ){
+    if ( $scope.searchKeys.indexOf(tag) === -1) {
+      $scope.searchKeys.push(tag);
+    }
+  }
+
+  $scope.inSearchTag = function(tag){
+    if ( $scope.searchKeys.indexOf(tag) === -1) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  $scope.pickArticle = function( articleid ){
+    $scope.selected_article = articleid;
+  }
+
+  $scope.loadCategories = function( callback ){
+    $scope.loading = false;
+    $scope.loaded = false;
+
+    $http({
+      method: 'POST',
+      url: '/ajax/post',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      data: $.param({
+        type: "Helpdesk",
+        action: 'getCategories'
+      })
+    }).success(function(r){
+      console.log(r);
+
+      if (r.success == 1) {
+        $scope.categories = r.data;
+        $scope.found_items = r.count;
+      } else {
+        $scope.toast( r.msg , 'alert', 10000);
+      }
+
+      if (typeof callback !== 'undefined') {
+        callback(r.success);
+      }
+
+    });
+  }
+
+  $scope.toast = function( text, mode, delay ){
+    mode = (typeof mode === 'undefined') ? 'simple' : mode;
+    delay = (typeof delay === 'undefined') ? 5000 : delay;
+
+    if (typeof text !== 'undefined') {
+      $mdToast.show(
+        $mdToast.simple()
+        .textContent(text)
+        .position('top')
+        .toastClass('alert-toast mode-'+mode)
+        .hideDelay(delay)
+      );
+    }
+  }
+}]);
+
 tc.filter('unsafe', function($sce){ return $sce.trustAsHtml; });

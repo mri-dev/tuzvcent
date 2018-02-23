@@ -1643,13 +1643,61 @@ class Products
 		$szallitas_info = $data['szallitasNev'];
 		$data['szallitas_info'] = $szallitas_info;
 
-
+		// Csatolt dokumentumokat
+		$data['documents'] = $this->getTermDocuments( $product_id );
 		// Linkek
-		$data['link_lista']			= $this->getProductLinksFromStr( $data['linkek'] );
+		$data['link_lista']	= $this->getProductLinksFromStr( $data['linkek'] );
 		// Csatolt link hivatkozások
 		$this->getProductLinksFromCategoryHashkeys( $data['in_cat_page_hashkeys'], $data['link_lista'] );
 
 		return $data;
+	}
+
+	public function getTermDocuments( $termid = 0 )
+	{
+		$data = array();
+
+		$qry = "SELECT
+			d.*
+		FROM shop_documents_termek_xref as dx
+		LEFT OUTER JOIN shop_documents as d ON d.ID = dx.doc_id
+		WHERE 1=1 and d.lathato = 1 and dx.termek_id = {$termid}";
+
+		$qry .= " ORDER BY d.sorrend ASC, d.cim ASC";
+		$list = $this->db->query( $qry );
+
+		if ( $list->rowCount() != 0 ) {
+			$lista = $list->fetchAll(\PDO::FETCH_ASSOC);
+			foreach ( $lista as $doc ) {
+				$xcim = explode(".", $doc['filepath']);
+				$ext = ($doc['tipus'] == 'external') ? 'url' : end($xcim);
+				$doc['ext'] = $ext;
+				$doc['icon'] = $this->getTermDocumentExtensionIcon( $ext );
+				$doc['filesize'] = $this->getTermDocumentFilesize( $ext, $doc['filepath'] );
+				$data[] = $doc;
+			}
+			return $data;
+		} else {
+			return $data;
+		}
+	}
+
+	protected function getTermDocumentFilesize( $ext = false, $filepath )
+	{
+		if ($ext == 'url' ) {
+			return false;
+		} else {
+			return \Helper::formatSizeUnits(filesize('../admin/'.$filepath));
+		}
+	}
+
+	protected function getTermDocumentExtensionIcon( $ext = false )
+	{
+		if ( $ext == '' || !$ext || $ext == 'url' ) {
+			return 'docst-url';
+		} else {
+			return 'docst-'.$ext;
+		}
 	}
 
 	public function getRelatedIDS( $product_id )

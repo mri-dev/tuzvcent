@@ -27,11 +27,9 @@ class app extends Controller{
 		 * */
 		public function dcl()
 		{
-			$key 	= $this->view->gets[2];
-			$xkey 	= explode(".",$key);
+			$hashkey 	= $this->view->gets[2];
+			$uid 		= \Helper::getMachineID();
 
-			$hashkey 	= trim($xkey[0]);
-			$uid 		= trim($xkey[1]);
 			// Get doc
 			$doc = $this->db->squery("SELECT ID, filepath, tipus FROM shop_documents WHERE hashname = :hash;", array('hash'=> $hashkey));
 
@@ -39,15 +37,31 @@ class app extends Controller{
 			{
 				$data = $doc->fetch(\PDO::FETCH_ASSOC);
 
+				$cc = $this->db->squery("SELECT ID, clicked FROM shop_documents_click WHERE felh_id = :f and doc_id = :d;", array('f'=> $uid, 'd' => $data['ID']));
+
 				// Log
 				if ( true ) {
-					$this->db->insert(
-						'shop_documents_click',
-						array(
-							'felh_id' => $uid,
-							'doc_id' => $data['ID']
-						)
-					);
+					if ($cc->rowCount() == 0 ) {
+						$this->db->insert(
+							'shop_documents_click',
+							array(
+								'felh_id' => $uid,
+								'doc_id' => $data['ID'],
+								'clicked' => 1
+							)
+						);
+					} else {
+						$ccd = $cc->fetch(\PDO::FETCH_ASSOC);
+						$click = (int)$ccd['clicked'] + 1;
+						$this->db->update(
+							'shop_documents_click',
+							array(
+								'clicked' => $click,
+								'last_visited' => NOW
+							),
+							sprintf('ID = %d', (int)$ccd['ID'])
+						);
+					}
 				}
 
 				$link = '/';

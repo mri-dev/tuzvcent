@@ -41,7 +41,6 @@
 	    	<th width="120">Fájlméret</th>
 	    	<th width="120">Állapot</th>
 	    	<th width="100">Megtekintés</th>
-	    	<th width="50">Sorrend</th>
 	    	<th width="50">Látható</th>
 	    	<th width="80">
 	    		<i class="fa fa-gear"></i>
@@ -53,7 +52,7 @@
     	<tr class="color-schame">
 	    	<td>
 					<div style="font-weight: bold;">
-						<? if( !isset($d['doc_title'])): ?><i class="fa fa-info-circle"></i> <em><?=$d['name']?></em><? else: ?><?=$d['doc_title']?><? endif; ?>
+						<? if( !isset($d['doc_title'])): ?><i class="fa fa-info-circle"></i> <em><?=$d['name']?></em><? else: ?><?=$d['doc_title']?><? endif; ?> <a href="<?=($d['tipus'] == 'external')?$d['filepath']:DOMAIN.$d['filepath']?>" target="_blank">[megtekint]</a>
 					</div>
 					<div class="keywords" title="Kulcsszavak">
 						<?php echo $d['keywords']; ?>
@@ -77,9 +76,6 @@
 	    	</td>
 	    	<td class="center">
 	    		<?=$d['click']?>
-	    	</td>
-	    	<td class="center">
-	    		<?=$d['sorrend']?>
 	    	</td>
 	    	<td class="center">
 	    		<? if( isset($d['doc_title']) ): ?>
