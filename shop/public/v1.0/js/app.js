@@ -482,11 +482,14 @@ tc.controller('Tudastar',['$scope', '$http', '$mdToast', function($scope, $http,
   $scope.categories = [];
   $scope.searchKeys = [];
   $scope.validitems = [];
+  $scope.catFilters = {};
   $scope.selected_article = 0;
+  $scope.precats = false;
 
-  $scope.init = function( picked_article_id, tags )
+  $scope.init = function( picked_article_id, tags, cats )
   {
     $scope.selected_article = picked_article_id;
+    $scope.precats = cats;
 
     if (tags != '') {
       var xtags = tags.split(',');
@@ -500,17 +503,79 @@ tc.controller('Tudastar',['$scope', '$http', '$mdToast', function($scope, $http,
     $scope.loadCategories(function( success ){
       $scope.loaded = true;
       $scope.loading = false;
-      $scope.doSearch();
+      var cats = $scope.precats;
+
+      if (cats != '') {
+        var cats = cats.split(',');
+        if (typeof cats !== 'undefined') {
+          angular.forEach(cats, function(cat,i){
+            if( !$scope.catInFilter(parseInt(cat)) ) {
+              $scope.filterCategory(cat);
+            }
+          });
+        }
+      }
     });
   }
 
   $scope.doSearch = function(){
+    $scope.loadCategories(function( success ){
+      $scope.loaded = true;
+      $scope.loading = false;
+    });
+  }
 
+  $scope.catInFilter = function( catid ){
+    var isin = false;
+    if ( $scope.catFilters.length != 0 ) {
+      angular.forEach( $scope.catFilters, function(cf, i){
+        if( cf.ID == catid){
+          isin = true;
+        }
+      });
+    }
+
+    return isin;
+  }
+
+  $scope.emptyCatFilters = function(){
+    if ( angular.equals({}, $scope.catFilters)) {
+      return true;
+    }else {
+      return false;
+    }
+  }
+
+  $scope.getCatData = function(catid) {
+    var obj;
+
+    if ( $scope.categories.length != 0 ) {
+        angular.forEach( $scope.categories, function(cat, i){
+          if( cat.ID == catid ) {
+            obj = cat;
+          }
+        });
+    }
+
+    return obj;
+  }
+
+  $scope.filterCategory = function( catid )
+  {
+    var key = 'cat' + catid;
+    if ( typeof $scope.catFilters[key] === 'undefined') {
+      $scope.catFilters[key] = {};
+      $scope.catFilters[key] = $scope.getCatData( catid );
+    } else {
+      delete $scope.catFilters[key];
+    }
+
+    $scope.doSearch();
   }
 
   $scope.putTagToSearch = function( tag ){
     if ( $scope.searchKeys.indexOf(tag) === -1) {
-      $scope.searchKeys.push(tag);
+      $scope.searchKeys.push(angular.lowercase(tag));
     }
   }
 
@@ -527,7 +592,7 @@ tc.controller('Tudastar',['$scope', '$http', '$mdToast', function($scope, $http,
   }
 
   $scope.loadCategories = function( callback ){
-    $scope.loading = false;
+    $scope.loading = true;
     $scope.loaded = false;
 
     $http({
@@ -536,11 +601,11 @@ tc.controller('Tudastar',['$scope', '$http', '$mdToast', function($scope, $http,
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       data: $.param({
         type: "Helpdesk",
-        action: 'getCategories'
+        action: 'getCategories',
+        search: $scope.searchKeys,
+        cats: $scope.catFilters
       })
     }).success(function(r){
-      console.log(r);
-
       if (r.success == 1) {
         $scope.categories = r.data;
         $scope.found_items = r.count;

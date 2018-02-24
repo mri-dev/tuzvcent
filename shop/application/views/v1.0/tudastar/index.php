@@ -1,17 +1,27 @@
-<div class="tudastar-page" ng-controller="Tudastar" ng-init="init(<?=(isset($_GET['pick'])?$_GET['pick']:'0')?>,'<?=(isset($_GET['tags'])?$_GET['tags']:'')?>')">
+<div class="tudastar-page" ng-controller="Tudastar" ng-init="init(<?=(isset($_GET['pick'])?$_GET['pick']:'0')?>,'<?=(isset($_GET['tags'])?$_GET['tags']:'')?>','<?=(isset($_GET['cat'])?$_GET['cat']:'')?>')">
   <div class="header">
     <i class="fa fa-lightbulb-o"></i>
     <h1>Keresés a tudástárban</h1>
   </div>
   <div class="searcher">
     <div class="insider">
-      <md-chips
-        ng-model="searchKeys"
-        md-removable="true"
-        placeholder="Kulcsszavak megadása"
-        delete-button-label="kulcsó törlése"
-        delete-hint="Nyomjon törlést a kulcsszó törléséhez"
-        secondary-placeholder="+kulcsszó"></md-chips>
+      <div layout="row">
+        <div flex="90">
+          <md-chips
+            ng-model="searchKeys"
+            md-removable="true"
+            placeholder="Kulcsszavak megadása"
+            delete-button-label="kulcsó törlése"
+            delete-hint="Nyomjon törlést a kulcsszó törléséhez"
+            secondary-placeholder="+kulcsszó"></md-chips>
+        </div>
+        <div flex>
+          <md-button class="md-raised md-warn md-hue-5" ng-click="doSearch()">Keresés <i class="fa fa-search"></i></md-button>
+        </div>
+      </div>
+      <div class="filtered-categories" ng-hide="emptyCatFilters()">
+        <strong>Témakörre szűrve:</strong> <span ng-repeat="ct in catFilters">{{ct.cim}}</span>
+      </div>
     </div>
   </div>
   <div class="loading-screen" ng-show="loading">
@@ -21,7 +31,7 @@
     <div class="col-md-3">
       <div class="categories" ng-show="loaded && !loading">
         <h2>Témakörök</h2>
-        <div class="cat" ng-repeat="c in categories">
+        <div class="cat" ng-repeat="c in categories" ng-click="filterCategory(c.ID)" ng-class="(catInFilter(c.ID))?'infilter':''">
           {{c.cim}} <span class="badge">{{c.articles.length}}</span>
         </div>
       </div>

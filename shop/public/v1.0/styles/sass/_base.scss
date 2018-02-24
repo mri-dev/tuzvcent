@@ -2086,6 +2086,19 @@ md-toast{
 	}
 	.searcher{
 		margin: 10px 0 40px 0;
+
+		.filtered-categories{
+			margin-top: 10px;
+			font-size: 0.9em;
+			& > span {
+				margin-right: 5px;
+			background: $color-orange;
+			padding: 3px 6px;
+			border-radius: 11px;
+			font-size: 0.8em;
+			color: white;
+			}
+		}
 	}
 	.loading-screen{
 		padding: 40px;
@@ -2124,12 +2137,16 @@ md-toast{
 			font-weight: bold;
 			position: relative;
 			border-bottom: 1px solid #ececec;
+			cursor: pointer;
 
 			.badge{
 				position: absolute;
 				right: 0;
 				top: 50%;
 				transform:translateY(-50%);
+			}
+			&.infilter{
+				color: $color-red;
 			}
 		}
 		.cat:last-child{

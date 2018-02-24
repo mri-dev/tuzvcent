@@ -18,7 +18,7 @@ class Helpdesk
 		$this->db = $arg[db];
 	}
 
-  public function getCategories( $get_articles = false )
+  public function getCategories( $get_articles = false, $arg = array() )
   {
     $data = array();
     $count = 0;
@@ -27,8 +27,9 @@ class Helpdesk
       c.ID,
       c.cim
     FROM ".self::DB_CATEGORIES." as c
-    WHERE 1=1
-    ORDER BY c.sorrend ASC";
+    WHERE 1=1";
+
+    $q .= " ORDER BY c.sorrend ASC";
 
     $get = $this->db->query($q);
 
@@ -37,7 +38,16 @@ class Helpdesk
       foreach ($get as $d) {
         $d['ID'] = (int)$d['ID'];
         if ($get_articles) {
-          $d['articles'] = $this->getArticles( $d['ID'] );
+          if ( isset($arg['in_cat']) && !empty($arg['in_cat']) ) {
+            if( in_array($d['ID'], $arg['in_cat'])){
+              $d['articles'] = $this->getArticles( $d['ID'], $arg );
+            } else {
+              $d['articles'] = array();
+            }
+          } else {
+            $d['articles'] = $this->getArticles( $d['ID'], $arg );
+          }
+
           $count += count($d['articles']);
         }
         $data[] = $d;
@@ -47,7 +57,7 @@ class Helpdesk
     return array( 'data' => $data, 'count' => $count );
   }
 
-  public function getArticles( $by_category = false )
+  public function getArticles( $by_category = false, $arg = array() )
   {
     $data = array();
     $q = "SELECT
@@ -59,6 +69,14 @@ class Helpdesk
       c.idopont
     FROM ".self::DB_LIST." as c
     WHERE 1=1";
+
+    if ( isset($arg['kiemelt']) ) {
+      if ($arg['kiemelt'] === true) {
+        $q .= " and c.kiemelt = 1";
+      } elseif( $arg['kiemelt'] === false ){
+        $q .= " and c.kiemelt = 1";
+      }
+    }
 
     if ( $by_category ) {
       $q .= " and katID = ".$by_category;
@@ -73,11 +91,37 @@ class Helpdesk
       foreach ($get as $d) {
         $d['ID'] = (int)$d['ID'];
         $d['kulcsszavak'] = $this->keywordTrimmer( $d['kulcsszavak'] );
+
+        // Kulcsszó keresések
+        if ( isset($arg['search']) ) {
+          if ( !$this->searchByKeywords( $d, $arg['search'] ) ) {
+            continue;
+          }
+        }
+
         $data[] = $d;
       }
     }
 
     return $data;
+  }
+
+  public function searchByKeywords( $data, $search )
+  {
+    $valid = false;
+
+    foreach ( (array)$search as $src ) {
+      $src = strtolower($src);
+      if (
+        in_array($src,$data['kulcsszavak']) ||
+        strpos($data['cim'], $src) !== false ||
+        strpos($data['szoveg'], $src) !== false
+      ) {
+        $valid[] = $src;
+      }
+    }
+
+    return $valid;
   }
 
   private function keywordTrimmer( $keywords = '', $separator = ',' )

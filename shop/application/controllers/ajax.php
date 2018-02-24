@@ -26,7 +26,18 @@ class ajax extends Controller{
 					$helpdesk = new Helpdesk(array( 'db' => $this->db ));
 					switch ( $action ) {
 						case 'getCategories':
-							$data = $helpdesk->getCategories( true );
+							$catfilters = array();
+							if (!empty($cats)) {
+								foreach ((array)$cats as $key => $c) {
+									$catfilters[] = (int)$c['ID'];
+								}
+							}
+							$data = $helpdesk->getCategories(true, array(
+								'search' => $_POST['search'],
+								'in_cat' => $catfilters
+							));
+							$ret['search'] = $_POST['search'];
+							$ret['cats'] = $catfilters;
 							$ret['data'] = $data['data'];
 							$ret['count'] = $data['count'];
 
