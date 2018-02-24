@@ -25,7 +25,8 @@ class Helpdesk
 
     $q = "SELECT
       c.ID,
-      c.cim
+      c.cim,
+      (SELECT count(l.ID) FROM ".self::DB_LIST." as l WHERE l.katID = c.ID) as itemcount
     FROM ".self::DB_CATEGORIES." as c
     WHERE 1=1";
 

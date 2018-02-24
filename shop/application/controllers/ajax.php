@@ -5,7 +5,6 @@ use PortalManager\CasadaShop;
 use PopupManager\Creative;
 use PopupManager\CreativeScreens;
 use ProductManager\Products;
-use PortalManager\Helpdesk;
 
 class ajax extends Controller{
 		function __construct()
@@ -23,7 +22,7 @@ class ajax extends Controller{
 			switch($type)
 			{
 				case 'Helpdesk':
-					$helpdesk = new Helpdesk(array( 'db' => $this->db ));
+					$helpdesk = $this->Helpdesk;
 					switch ( $action ) {
 						case 'getCategories':
 							$catfilters = array();

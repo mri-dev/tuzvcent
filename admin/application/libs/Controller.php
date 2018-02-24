@@ -8,12 +8,10 @@ use PortalManager\Users;
 use ShopManager\Shop;
 use PortalManager\News;
 use PortalManager\Portal;
-use PortalManager\CasadaShops;
+use PortalManager\Helpdesk;
 use Applications\Captcha;
 use FileManager\FileLister;
 use ProductManager\Products;
-use Wordpress\WPMigrator;
-use Wordpress\GalleryHelper;
 
 
 class Controller {
@@ -40,7 +38,7 @@ class Controller {
         //$this->memory_usage();
 
         // CORE
-       // $this->model 		= new Model();
+        // $this->model 		= new Model();
         $this->view = new View();
         $this->db = new Database();
         //////////////////////////////////////////////////////
@@ -49,7 +47,6 @@ class Controller {
         $this->view->gets = $this->gets;
 
         $this->AdminUser = new AdminUser( array( 'db' => $this->db, 'view' => $this->view, 'settings' => $this->view->settings )  );
-        $this->wp = new WPMigrator( array( 'db' => $this->db) );
         $this->User = new Users(array(
           'db' => $this->db,
           'view' => $this->view,
@@ -63,30 +60,22 @@ class Controller {
         ));
 
         $this->Portal = new Portal( array( 'db' => $this->db, 'view' => $this->view )  );
+        $this->Helpdesk = new Helpdesk( array( 'db' => $this->db )  );
         $this->captcha = (new Captcha)
         ->init(
             $this->view->settings['recaptcha_public_key'],
             $this->view->settings['recaptcha_private_key']
         );
 
-        $this->casadashops  = new CasadaShops( array( 'db' => $this->db ) );
-        if( isset($_COOKIE['geo_latlng']) )
-        {
-            if($_GET['xx'] == 1)
-            setcookie('geo_latlng','45.999136,18.642936',time()+3600,'/');
-
-            $myPos = explode(",",$_COOKIE['geo_latlng']);
-            $this->casadashops->setMyPosition($myPos);
-        }
-
         $this->out( 'db',   $this->db );
         $this->out( 'user', $this->User->get( self::$user_opt ) );
-        //$this->out( 'wp',   $this->wp );
 
         $templates = new Template( VIEW . 'templates/' );
         $this->out( 'templates', $templates );
         $this->out( 'highlight_text', $this->Portal->getHighlightItems() );
         $this->out( 'slideshow', $this->Portal->getSlideshow() );
+        $this->out( 'helpdesk_categories', $this->Helpdesk->getCategories(false));
+        $this->out( 'top_helpdesk_articles', $this->Helpdesk->getArticles(false, array('kiemelt'=> true)));
 
         // Menük
         $tree = null;

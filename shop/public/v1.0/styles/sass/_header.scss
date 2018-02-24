@@ -125,6 +125,7 @@ header {
 			}
 			.dropmenu{
 				.dropmenu-container{
+					position: relative;
 					cursor: pointer;
 					background-color: white;
 					color: $color-grey;
@@ -143,6 +144,53 @@ header {
 						color: $color-red;
 						font-size: 14px;
 						background-color: lighten($color-grey, 70%);
+					}
+					.dropdown-content{
+						position: absolute;
+						background: white;
+						z-index: 1000;
+						display: none;
+					}
+
+					&:hover{
+						.dropdown-content{
+							display: block;
+						}
+					}
+				}
+			}
+
+			.cat-list-holder{
+				min-width: 250px;
+				max-width: 320px;
+				right: 0;
+				max-height: 400px;
+				overflow: auto;
+				.helpdesk-search{
+					input[type=text]{
+						width: 100%;
+						color: $color-orange;
+						font-weight: bold;
+						padding: 4px 8px;
+						font-size: 1.15em;
+						border: none;
+						border-bottom: 1px solid #e4e4e4;
+						border-top: 1px solid #e4e4e4;
+					}
+				}
+				ul{
+					li{
+						a{
+							line-height: 1.2;
+							display: block;
+							padding: 10px;
+							color: $color-grey;
+
+							&:hover{
+								background: #f1f1f1;
+								color: black;
+							}
+						}
 					}
 				}
 			}

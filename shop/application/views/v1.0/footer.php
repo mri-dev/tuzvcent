@@ -59,14 +59,19 @@
 				                  <i class="fa fa-lightbulb-o"></i>
 				              </div>
 				            </div>
+										<?php
+											$top_tudastar = $this->top_helpdesk_articles;
+										?>
+										<?php if ($top_tudastar): ?>
 										<h3>Tudástár</h3>
-										<ul>
-											<li><a href="#">Cikk címe</a></li>
-											<li><a href="#">Cikk címe</a></li>
-											<li><a href="#">Cikk címe</a></li>
-											<li><a href="#">Cikk címe</a></li>
-											<li><a href="#">Cikk címe</a></li>
-										</ul>
+										<div class="article-holder">
+											<ul>
+												<?php foreach ($top_tudastar as $tud): ?>
+												<li><a href="#"><?php echo $tud['cim']; ?></a></li>
+												<?php endforeach; ?>
+											</ul>
+										</div>										
+										<?php endif; ?>
 									</div>
 								</div>
 							</div>
