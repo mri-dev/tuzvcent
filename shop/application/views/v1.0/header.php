@@ -127,7 +127,7 @@
                 <div class="cat-list-holder dropdown-content">
                   <div class="helpdesk-search">
                     <form class="" action="/tudastar" method="get">
-                      <input type="text" name="tags" value="" placeholder="Keresés a bejegyzésekben..." autocomplete="off">
+                      <input type="text" name="tags" value="" placeholder="Keresés a tudástárban..." autocomplete="off">
                     </form>
                   </div>
                   <?php if ( $this->helpdesk_categories['data'] ): ?>
