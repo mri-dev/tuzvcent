@@ -192,7 +192,7 @@
                 <?php endif; ?>
                 <li class="<?=($this->gets[0] == 'kuponok')?'on':''?>"><a href="/kuponok" title="Kuponok"><span class="ni">2</span><i class="fa fa-star"></i> Kuponok</a></li>
                 <!-- <li class="<?=($this->gets[0] == 'watercard')?'on':''?>"><a href="/watercard" title="Arena Water Card"><span class="ni">2</span><i class="fa fa-gift"></i>Jövő Bajnokai</a></li>-->
-                <!-- <li class="<?=($this->gets[0] == 'feliratkozok')?'on':''?>"><a href="/feliratkozok" title="Feliratkozók"><span class="ni">2</span><i class="fa fa-check-square-o"></i> Feliratkozók</a></li>-->
+                <li class="<?=($this->gets[0] == 'feliratkozok')?'on':''?>"><a href="/feliratkozok" title="Feliratkozók"><span class="ni">2</span><i class="fa fa-check-square-o"></i> Feliratkozók</a></li>
 		            <li class="<?=($this->gets[0] == 'uzenetek')?'on':''?>"><a href="/uzenetek" title="Üzenetek"><span class="ni">8</span><i class="fa fa-envelope-o"></i> Üzenetek</a></li>
                 <!-- <li class="<?=($this->gets[0] == 'reklamfal')?'on':''?>"><a href="/reklamfal" title="Slideshow"><span class="ni">3</span><i class="fa fa-th-large"></i> Slideshow</a></li>-->
                 <li class="<?=($this->gets[0] == 'menu')?'on':''?>"><a href="/menu" title="Menü"><span class="ni">4</span><i class="fa fa-ellipsis-h"></i> Menü</a></li>

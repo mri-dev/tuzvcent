@@ -13,7 +13,7 @@ use PortalManager\Request;
 class Portal
 {
 	private $db = null;
-	
+
 	function __construct( $arg = array() )
 	{
 		$this->db = $arg['db'];
@@ -25,7 +25,7 @@ class Portal
 		$files 		= new FileLister( 'src/products' );
 		$products 	= new Products( array( 'db' => $this->db ) );
 
-		$file_list = $files->getFolderItems( array( 
+		$file_list = $files->getFolderItems( array(
 			'recursive' => true,
 			'hideThumbnailImg' => true,
 			'allowedExtension' => 'jpg|gif|png|jpeg'
@@ -57,16 +57,16 @@ class Portal
 		$post_form = array();
 
 		if (empty($form['name'])) {
-			throw new \Exception("Az üzenet küldéséhez adja meg a saját nevét!");			
+			throw new \Exception("Az üzenet küldéséhez adja meg a saját nevét!");
 		}
 		if (empty($form['email'])) {
-			throw new \Exception("Az üzenet küldéséhez adja meg a saját e-mail címét!");			
+			throw new \Exception("Az üzenet küldéséhez adja meg a saját e-mail címét!");
 		}
 
 		if (empty($form['msg'])) {
-			throw new \Exception("Az üzenet küldéséhez adja meg az üzenet tartalmát!");			
+			throw new \Exception("Az üzenet küldéséhez adja meg az üzenet tartalmát!");
 		}
-		
+
 		// Captcha validate
 		$cparam = array(
 			'secret' => $this->settings['recaptcha_private_key'],
@@ -78,29 +78,29 @@ class Portal
 			$cparam
 		)->setPort(443)->send();
 		$captcha_request = json_decode($captcha_request->getResult(), true);
-		 
+
 		if ( $captcha_request['success'] === false ) {
-			throw new \Exception("Az üzenet küldéséhez azonosítsa magát, hogy nem robot (Nem vagyok robot-ra kattintva)!");			
+			throw new \Exception("Az üzenet küldéséhez azonosítsa magát, hogy nem robot (Nem vagyok robot-ra kattintva)!");
 		}
-		
+
 		foreach ($form as $key => $value) {
 			$post_form['form_'.$key] = $value;
 		}
-		
+
 		$dist = $this->db->squery("
 			SELECT email as partner_email, nev as partner_nev FROM felhasznalok WHERE md5(ID) = :id
 		", array(
 			'id' => $md5_user_id
 		))->fetch(\PDO::FETCH_ASSOC);
 
-		$mail = new Mailer( 
-			$this->settings['page_title'], 
-			SMTP_USER, 
-			$this->settings['mail_sender_mode'] 
-		);		
+		$mail = new Mailer(
+			$this->settings['page_title'],
+			SMTP_USER,
+			$this->settings['mail_sender_mode']
+		);
 
 		$mail->setReplyTo( $post_form['form_email'], $post_form['form_name']  );
-		$mail->add($dist['partner_email']);			
+		$mail->add($dist['partner_email']);
 
 		$arg = array(
 			'settings' 		=> $this->settings
@@ -111,9 +111,9 @@ class Portal
 		$arg['content'] = (new MailTemplates(array('db'=>$this->db)))->get('side_contact_msg', $arg);
 
 		$mail->setSubject( 'Üzenete érkezett - Tanácsadás: '.$post_form['form_name'] );
-		$mail->setMsg( (new Template( VIEW . 'templates/mail/' ))->get( 'clearmail', $arg ) );			
+		$mail->setMsg( (new Template( VIEW . 'templates/mail/' ))->get( 'clearmail', $arg ) );
 		$re = $mail->sendMail();
-		
+
 	}
 
 	public function sendContactMsg()
@@ -137,11 +137,6 @@ class Portal
 			throw new \Exception("Kérjük, hogy írja be üzenetét a kapcsolat üzenet elküldéséhez!");
 		}
 
-		// Feliratkozás
-		if ( $_POST['contact_subscribe'] ) {
-			$this->feliratkozas( $_POST['contact_name'], $_POST['contact_email'], 'kapcsolat' );
-		}
-
 		$this->db->insert( "uzenetek",
 		array(
 			'felado_email' 	=> $_POST['contact_email'],
@@ -153,8 +148,8 @@ class Portal
 		$msgid = $this->db->lastInsertId();
 
 		// Értesítő e-mail az adminisztrátornak
-		$mail = new Mailer( $this->settings['page_title'], SMTP_USER, $this->settings['mail_sender_mode'] );				
-		$mail->add( $this->settings['alert_email'] );	
+		$mail = new Mailer( $this->settings['page_title'], SMTP_USER, $this->settings['mail_sender_mode'] );
+		$mail->add( $this->settings['alert_email'] );
 		$arg = array(
 			'settings' 		=> $this->settings,
 			'infoMsg' 		=> 'Ezt az üzenetet a rendszer küldte. Kérjük, hogy ne válaszoljon rá!',
@@ -163,23 +158,23 @@ class Portal
 			'msgid' 		=> $msgid
 		);
 		$mail->setSubject( 'Értesítő: Új kapcsolat üzenet érkezett' );
-		$mail->setMsg( (new Template( VIEW . 'templates/mail/' ))->get( 'admin_contact_msg', $arg ) );			
+		$mail->setMsg( (new Template( VIEW . 'templates/mail/' ))->get( 'admin_contact_msg', $arg ) );
 		$re = $mail->sendMail();
-		
+
 	}
 
 	public function getHighlightItems( $arg = array() )
 	{
 		$q = "SELECT * FROM kiemelt_ajanlo WHERE ID IS NOT NULL ";
 		if (!$arg['admin']) {
-			$q .= " and lathato = 1 "; 
+			$q .= " and lathato = 1 ";
 		}
 		$q .= " ORDER BY sorrend ASC;";
 
 		$arg['multi'] = 1;
 		extract( $this->db->q( $q, $arg ) );
 
-		return $ret;		
+		return $ret;
 	}
 
 	public function getHighlightItem( $id )
@@ -188,7 +183,7 @@ class Portal
 
 		$q = "SELECT * FROM kiemelt_ajanlo WHERE ID = ".$id;
 
-		return $this->db->query($q)->fetch(\PDO::FETCH_ASSOC);		
+		return $this->db->query($q)->fetch(\PDO::FETCH_ASSOC);
 	}
 
 	public function addHighlight( $post )
@@ -196,7 +191,7 @@ class Portal
 		unset($post[__FUNCTION__]);
 
 		if ( $post['tartalom'] == '') {
-			throw new \Exception("Ajánló tartalmi szövegét megadni kötelező!");			
+			throw new \Exception("Ajánló tartalmi szövegét megadni kötelező!");
 		}
 
 		$post['lathato'] = ($post['lathato'] == 'on') ? 1 : 0;
@@ -215,7 +210,7 @@ class Portal
 		unset($post[__FUNCTION__]);
 
 		if ( $post['tartalom'] == '') {
-			throw new \Exception("Ajánló tartalmi szövegét megadni kötelező!");			
+			throw new \Exception("Ajánló tartalmi szövegét megadni kötelező!");
 		}
 
 		$post['lathato'] = ($post['lathato'] == 'on') ? 1 : 0;
@@ -252,7 +247,7 @@ class Portal
 	}
 
 	public function getFeliratkozok( $arg )
-	{	
+	{
 		$list = array();
 
 		$sql = "
@@ -271,12 +266,12 @@ class Portal
 					case 'nev': case 'email':
 						$sql .= " and ".$key." LIKE '%".$v."%' ";
 					break;
-					default: 
+					default:
 						$sql .= " and ".$key." = '".$v."' ";
-					break;	
+					break;
 				}
-				
-			}	
+
+			}
 		}
 
 		$sql .= " ORDER BY f.idopont DESC ";
@@ -299,7 +294,7 @@ class Portal
 		}
 	}
 
-	public function feliratkozas( $name, $email, $hol = 'page', $captcha = false )
+	public function feliratkozas( $name, $email, $phone, $hol = 'page', $captcha = false )
 	{
 		if ( !\Applications\Captcha::verify() && $captcha ) {
 			throw new \Exception("Igazolja, hogy maga nem egy robot!");
@@ -309,10 +304,14 @@ class Portal
 			throw new \Exception("Kérjük, hogy adja meg a nevét a feliratkozáshoz!");
 		}
 
+		if ( $phone == '' ) {
+			throw new \Exception("Kérjük, hogy adja meg a saját telefonszámát!");
+		}
+
 		if ( $hol == 'feliratkozás' &&  $email == '' ) {
 			throw new \Exception("Kérjük, hogy adja meg az e-mail címét a feliratkozáshoz!");
 		}
-		
+
 		$check = $this->db->query( sprintf("SELECT leiratkozott FROM feliratkozok WHERE email ='%s'", $email) );
 
 		if ( $check->rowCount() == 0 ) {
@@ -320,8 +319,9 @@ class Portal
 				"feliratkozok",
 				array(
 					'nev' => $name,
-					'email' => $email,	
-					'hely' => $hol				
+					'email' => $email,
+					'phone' => $phone,
+					'hely' => $hol
 				)
 			);
 		} else {
@@ -335,7 +335,7 @@ class Portal
 				),
 				sprintf("email = '%s'", $email) );
 			} else {
-				
+
 				if( $hol != 'feliratkozás' ) return true;
 
 				throw new \Exception("Ezzel az e-mail címmel (".$email.") már feliratkoztak korábban!");

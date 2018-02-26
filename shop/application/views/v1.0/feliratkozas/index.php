@@ -3,28 +3,33 @@
 		<form action="" method="post">
 		<? if( $_GET['leave'] ): ?>
 		<h1>Leiratkozás hírlevélről</h1>
+		<br>
 		<?=$this->msg?>
-		<div class="row np">
-			<div class="col-md-6">
-				<label for="subs_name">Az Ön e-mail címe:*</label>
-				<input type="text" name="email" id="subs_name" value="<?=($_GET['email'] ? $_GET['email'] : '')?>" class="form-control">
-			</div>
-		</div>
 		<br>
-		<div class="row np">
-			<div class="col-md-6">
-				<?=\Applications\Captcha::show()?>
+		<div class="subs-form">
+			<div class="row np">
+				<div class="col-md-12">
+					<label for="subs_name">Az Ön e-mail címe:*</label>
+					<input type="text" name="email" id="subs_name" value="<?=($_GET['email'] ? $_GET['email'] : '')?>" class="form-control">
+				</div>
 			</div>
-		</div>
-		<br>
-		<div class="row np">
-			<div class="col-md-6">
-				<button class="btn btn-danger" name="unsubscribe" value="1">Leiratkozás</button>
+			<br>
+			<div class="row np">
+				<div class="col-md-12">
+					<?=\Applications\Captcha::show()?>
+				</div>
+			</div>
+			<br>
+			<div class="row np">
+				<div class="col-md-12">
+					<button class="btn btn-danger" name="unsubscribe" value="1">Leiratkozás</button>
+				</div>
 			</div>
 		</div>
 		<? else: ?>
 		<h1>Feliratkozás</h1>
 		<p class="subtitle">Iratkozzon fel a(z) <?=$this->settings['page_title']?> hírleveleire, hogy mindig értesüljön az újdonságokról és naprakész legyen!</p>
+		<br>
 		<?=$this->msg?>
 		<br>
 		<div class="subs-form">

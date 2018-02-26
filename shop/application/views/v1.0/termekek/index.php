@@ -75,6 +75,7 @@
                     </select>
                   </div>
                   <div class="action-group">
+                    <input type="hidden" name="src" value="<?=(isset($_GET['src'])?$_GET['src']:'')?>">
                     <button type="submit">Szűrés <i class="fa fa-refresh"></i></button>
                   </div>
                 </div>
@@ -183,6 +184,13 @@
                         <h1><?=$this->category->getName()?></h1>
                       <?php else: ?>
                         <h1>Termékek</h1>
+                        <?php if (isset($this->searched_by)): ?>
+                          <div class="search-for">
+                           <i class="fa fa-search"></i> Keresés, mint: <?php foreach ($this->searched_by as $s): ?>
+                              <span><?=$s?></span>
+                            <?php endforeach; ?>
+                          </div>
+                        <?php endif; ?>
                       <?php endif; ?>
                       <?php $navh = '/termekek/'; ?>
                       <ul class="cat-nav">

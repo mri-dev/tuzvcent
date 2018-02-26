@@ -91,10 +91,19 @@ class termekek extends Controller {
 				'favorite' => $myfavorite
 			);
 
+			if (isset($_GET['src']) && $_GET['src'] != '') {
+				$search = explode(" ", trim($_GET['src']));
+				if (!empty($search)) {
+					$arg['search'] = $search;
+					$this->out( 'searched_by', $search );
+				}
+			}
+
 			$products = (new Products( array(
 				'db' => $this->db,
 				'user' => $this->User->get()
 			) ))->prepareList( $arg );
+
 			$this->out( 'products', $products );
 			$this->out( 'product_list', $products->getList() );
 			$this->out( 'productFilters', $products->productFilters( (array)$products->getLoadedIDS() ) );

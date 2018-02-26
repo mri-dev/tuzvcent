@@ -32,7 +32,6 @@ class Products
 
 	public function create(Product $product)
 	{
-
 		$uploadedProductId = 0;
 
 		$szallitasID 	= $product->getTransportTimeId();
@@ -912,22 +911,7 @@ class Products
 				-3
 			), -10) ASC,
 		CAST(p.meret as unsigned) ASC ";*/
-		$sqry .= " ORDER BY
-		(CASE
-			WHEN p.meret RLIKE '^[0-9]{1,3}$' THEN 0
-			WHEN p.meret RLIKE '^XXS$' THEN 1
-			WHEN p.meret RLIKE '^XS$' THEN 2
-			WHEN p.meret RLIKE '^S$' THEN 3
-			WHEN p.meret RLIKE '^M$' THEN 4
-			WHEN p.meret RLIKE '^L$' THEN 5
-			WHEN p.meret RLIKE '^XL$' THEN 6
-			WHEN p.meret RLIKE '^XXL$' THEN 7
-			WHEN p.meret RLIKE '^3XL$' THEN 8
-			WHEN p.meret RLIKE '^4XL$' THEN 9
-			WHEN p.meret RLIKE '^5XL$' THEN 10
-			ELSE 100
-		END) ASC,
-		CAST(p.meret as unsigned) ASC";
+		$sqry .= " ORDER BY CAST(p.meret as unsigned) ASC";
 
 		$s_qry_data = $this->db->query( $sqry )->fetchAll(\PDO::FETCH_ASSOC);
 
@@ -1186,8 +1170,13 @@ class Products
 		$re[arres] = 0;
 		$re[ar]   =  $bruttoAr;
 
+		if (!$markaID) {
+			return $re;
+		}
+
 		// Márka adatok
-		$marka = $this->db->query("SELECT fix_arres FROM shop_markak WHERE ID = $markaID")->fetch(\PDO::FETCH_ASSOC);
+		$mq = "SELECT fix_arres FROM shop_markak WHERE ID = $markaID";
+		$marka = $this->db->query($mq)->fetch(\PDO::FETCH_ASSOC);
 
 		if( !is_null($marka['fix_arres']) ) {
 			// Fix árrés
@@ -1226,6 +1215,9 @@ class Products
 	}
 
 	public function getParameters($termekID, $katID = false){
+		if (!$termekID) {
+			return false;
+		}
 		$q = "SELECT
 			p.* ,
 			pm.parameter as neve,
@@ -1479,6 +1471,10 @@ class Products
 	{
 		$set = array();
 
+		if (!$product_id) {
+			return $set;
+		}
+
 		/*$data = $this->db->query("
 			SELECT			r.termek_to,
 
@@ -1504,22 +1500,7 @@ class Products
 		WHERE 			t.lathato = 1 and profil_kep IS NOT NULL and t.raktar_articleid = (SELECT raktar_articleid FROM shop_termekek WHERE ID = $product_id)
 		";
 
-		$q .= " ORDER BY
-		(CASE
-			WHEN t.meret RLIKE '^[0-9]{1,3}$' THEN 0
-			WHEN t.meret RLIKE '^XXS$' THEN 1
-			WHEN t.meret RLIKE '^XS$' THEN 2
-			WHEN t.meret RLIKE '^S$' THEN 3
-			WHEN t.meret RLIKE '^M$' THEN 4
-			WHEN t.meret RLIKE '^L$' THEN 5
-			WHEN t.meret RLIKE '^XL$' THEN 6
-			WHEN t.meret RLIKE '^XXL$' THEN 7
-			WHEN t.meret RLIKE '^3XL$' THEN 8
-			WHEN t.meret RLIKE '^4XL$' THEN 9
-			WHEN t.meret RLIKE '^5XL$' THEN 10
-			ELSE 100
-		END) ASC,
-		CAST(t.meret as unsigned) ASC";
+		$q .= " ORDER BY CAST(t.meret as unsigned) ASC";
 
 		$data = $this->db->query( $q )->fetchAll(\PDO::FETCH_ASSOC);
 

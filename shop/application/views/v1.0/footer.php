@@ -67,7 +67,7 @@
 										<div class="article-holder">
 											<ul>
 												<?php foreach ($top_tudastar as $tud): ?>
-												<li><a href="#"><?php echo $tud['cim']; ?></a></li>
+												<li><a href="/tudastar/?pick=<?=$tud['ID']?>"><?php echo $tud['cim']; ?></a></li>
 												<?php endforeach; ?>
 											</ul>
 										</div>

@@ -38,6 +38,16 @@
     </div>
     <div class="col-md-9">
       <div ng-show="loaded && !loading">
+        <div class="picked-article" ng-show="picked_article">
+          <span class="pick-label"><i class="fa fa-thumb-tack"></i> Kiválasztott bejegyzés</span>
+          <h3 class="title">{{picked_article.cim}}</h3>
+          <div class="description">
+            {{picked_article.szoveg}}
+            <div class="metas">
+              <span class="date" title="Cikk utolsó frissítésének ideje"><i class="fa fa-clock-o"></i> {{picked_article.idopont}}</span> <span class="keywords"><i class="fa fa-tags"></i> <span class="tag" ng-class="(inSearchTag(k))?'filtered':''" ng-click="putTagToSearch(k)" ng-repeat="k in picked_article.kulcsszavak">{{k}}</span></span>
+            </div>
+          </div>
+        </div>
         <h2>Találatok</h2>
         <div class="found-articles">
           Összesen {{found_items}} darab bejegyzést találtunk
@@ -49,7 +59,7 @@
               <strong>{{c.articles.length}} db</strong> bejegyzés:
             </div>
             <div class="articles">
-              <article class="" ng-class="(selected_article == a.ID)?'picked':''" ng-show="(c.articles.length != 0)" ng-repeat="a in c.articles">
+              <article id="tudastar{{a.ID}}" ng-class="(selected_article == a.ID)?'picked':''" ng-show="(c.articles.length != 0)" ng-repeat="a in c.articles">
                 <div class="question" ng-click="pickArticle(a.ID)">
                   <i class="fa fa-plus" ng-hide="selected_article == a.ID"></i><i class="fa fa-minus" ng-show="selected_article == a.ID"></i> <strong>{{a.cim}}</strong>
                 </div>

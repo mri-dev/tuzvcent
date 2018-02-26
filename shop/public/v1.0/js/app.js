@@ -474,7 +474,7 @@ tc.controller('ActionButtons', ['$scope', '$http', '$mdDialog', '$mdToast', func
 
 }]);
 
-tc.controller('Tudastar',['$scope', '$http', '$mdToast', function($scope, $http, $mdToast)
+tc.controller('Tudastar',['$scope', '$http', '$mdToast', '$element', function($scope, $http, $mdToast, $element)
 {
   $scope.found_items = 0;
   $scope.loading = false;
@@ -485,6 +485,7 @@ tc.controller('Tudastar',['$scope', '$http', '$mdToast', function($scope, $http,
   $scope.catFilters = {};
   $scope.selected_article = 0;
   $scope.precats = false;
+  $scope.picked_article = false;
 
   $scope.init = function( picked_article_id, tags, cats )
   {
@@ -503,8 +504,8 @@ tc.controller('Tudastar',['$scope', '$http', '$mdToast', function($scope, $http,
     $scope.loadCategories(function( success ){
       $scope.loaded = true;
       $scope.loading = false;
-      var cats = $scope.precats;
 
+      var cats = $scope.precats;
       if (cats != '') {
         var cats = cats.split(',');
         if (typeof cats !== 'undefined') {
@@ -515,7 +516,33 @@ tc.controller('Tudastar',['$scope', '$http', '$mdToast', function($scope, $http,
           });
         }
       }
+
+      if ( $scope.selected_article != '0' ) {
+        $scope.picked_article = $scope.findArticle( $scope.selected_article );
+        console.log($scope.picked_article);
+      }
+
     });
+
+  }
+
+  $scope.findArticle = function( article )
+  {
+    var obj;
+
+    if ( $scope.categories.length != 0 ) {
+        angular.forEach( $scope.categories, function(cat, i){
+          if (cat.articles.length != 0) {
+            angular.forEach( cat.articles, function(art, i){
+              if (art.ID == article) {
+                obj = art;
+              }
+            });
+          }
+        });
+    }
+
+    return obj;
   }
 
   $scope.doSearch = function(){

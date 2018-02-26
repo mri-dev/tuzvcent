@@ -7,7 +7,7 @@ class feliratkozas extends Controller{
 
 			// Leiratkozás
 			if ( Post::on('unsubscribe') ) {
-				try { 
+				try {
 					$this->Portal->leiratkozas( $_POST['email'] );
 					Helper::reload('/feliratkozas/?leave=1&msgkey=msg&msg=Sikeresen leiratkozott hírlevelünkről!');
 				} catch (Exception $e) {
@@ -18,13 +18,16 @@ class feliratkozas extends Controller{
 			// Feliratkozás
 			if ( Post::on('subscribe') ) {
 				try {
-					$this->Portal->feliratkozas(  $_POST['name'],  $_POST['email'], 'feliratkozás', true );
-					Helper::reload('/feliratkozas/?msgkey=msg&msg=Sikeresen feliratkozott hírlevelünkre!');
+					if ( !isset($_POST['aszf']) ) {
+						$this->out( 'msg', Helper::makeAlertMsg( 'pError', 'ÁSZF és Adatvédelmi tájékoztató elfogadása kötelező!' ) );
+					} else {
+						$this->Portal->feliratkozas(  $_POST['name'],  $_POST['email'], $_POST['phone'], 'feliratkozás', true );
+						Helper::reload('/feliratkozas/?msgkey=msg&msg=Sikeresen feliratkozott hírlevelünkre!');
+					}
 				} catch (Exception $e) {
 					$this->out( 'msg', Helper::makeAlertMsg( 'pError', $e->getMessage() ) );
 				}
 			}
-
 
 			parent::$pageTitle = $title;
 		}

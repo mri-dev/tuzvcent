@@ -132,7 +132,7 @@ class termekek extends Controller
 				'limit' => 50,
 				'page' => Helper::currentPageNum(),
 				'order' => array(
-					'by' => 'ID',
+					'by' => 'p.ID',
 					'how' => 'DESC'
 				)
 			);

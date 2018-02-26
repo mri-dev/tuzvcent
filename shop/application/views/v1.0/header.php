@@ -156,7 +156,7 @@
             <form class="" action="/termekek/" method="get">
             <div class="flex flexmob-exc-resp">
               <div class="input">
-                <input type="text" name="src" value="" placeholder="Keresési kifejezés megadása">
+                <input type="text" name="src" value="<?=$_GET['src']?>" placeholder="Keresési kifejezés megadása">
               </div>
               <div class="button">
                 <button type="submit"><i class="fa fa-search"></i> Keresés</button>

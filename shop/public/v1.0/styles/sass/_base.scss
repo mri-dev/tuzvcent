@@ -948,6 +948,20 @@ h1{
 				line-height: 25px;
 			}
 		}
+		.search-for{
+			font-size: 1.2em;
+			color: #5ec25d;
+			margin: 0 0 15px 0;
+
+			span {
+				background: #edecec;
+		    padding: 3px 10px;
+		    color: #8a8a8a;
+		    margin-right: 4px;
+		    border-radius: 20px;
+		    font-size: 0.8em;
+			}
+		}
 	}
 }
 
@@ -2118,6 +2132,59 @@ md-toast{
 		margin: 0 0 10px 0;
 		font-size: 1.5em;
 		color: #888888;
+	}
+	.picked-article{
+		margin: 0 0 25px 0;
+		background: #f7f7f7;
+		padding: 15px;
+    border-left: 5px solid $color-red;
+
+		.pick-label{
+			background: $color-red;
+			padding: 3px 5px;
+    	font-size: 0.6em;
+			color: white;
+			text-transform: uppercase;
+			i{
+				margin-right: 3px;
+			}
+		}
+
+		h3 {
+			color: $color-red;
+			font-weight: bold;
+			font-size: 1.8em;
+			margin: 10px 0 15px 0;
+		}
+		.description{
+			color: #000000;
+			line-height: 1.53;
+			font-size: 1.1em;
+		}
+		.metas{
+			margin-top: 10px;
+			font-size: 0.8em;
+			color: $color-grey;
+			& > span {
+				margin-right: 10px;
+			}
+
+			.keywords{
+				.tag{
+					background: #eaeaea;
+					padding: 0 5px;
+					border-radius: 3px;
+					margin-right: 4px;
+					line-height: 1;
+					cursor: pointer;
+					&.filtered{
+						cursor: default;
+						background: #59a359;
+						color: white;
+					}
+				}
+			}
+		}
 	}
 	.found-articles{
 		font-size: 1.2em;
