@@ -70,7 +70,7 @@
 												<li><a href="#"><?php echo $tud['cim']; ?></a></li>
 												<?php endforeach; ?>
 											</ul>
-										</div>										
+										</div>
 										<?php endif; ?>
 									</div>
 								</div>
@@ -83,7 +83,7 @@
 										<h3>Feliratkozás</h3>
 									</div>
 									<div class="form">
-										<form class="" action="" method="post">
+										<form class="" action="/feliratkozas" method="get">
 											<div class="name">
 												<div class="flex flexmob-exc-resp">
 													<div class="ico">

@@ -858,7 +858,7 @@ class Products
 			} else
 			{
 				if( $arg['order'] ) {
-					$add =  " ORDER BY p.".$arg['order']['by']." ".$arg['order']['how'];
+					$add =  " ORDER BY ".$arg['order']['by']." ".$arg['order']['how'];
 					$qry .= $add;
 				} else {
 					$add =  " ORDER BY ar ASC, fotermek DESC, p.ID DESC ";
