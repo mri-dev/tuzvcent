@@ -3,6 +3,7 @@ namespace ShopManager;
 
 use ShopManager\OrderException;
 use MailManager\Mailer;
+use MailManager\MailTemplates;
 use PortalManager\Template;
 use PortalManager\PartnerReferrer;
 use PortalManager\Portal;
@@ -1678,57 +1679,72 @@ class Shop
 		return 'Köszönjük megkeresését. Hamarosan felvesszük Önnel a kapcsolatot!';
 	}
 
-	public function requestReCall($post){
+	public function requestReCall($post)
+	{
 		extract($post);
 		$msg = '';
 
-		if($nev 	== '') throw new \Exception('Kérjük, ne felejtse megadni saját nevét!');
-		if($phone 	== '') throw new \Exception('Kérjük, ne felejtse megadni saját telefonszámát!');
+		if($nev == '') throw new \Exception('Kérjük, ne felejtse megadni saját nevét!');
+		if($phone == '') throw new \Exception('Kérjük, ne felejtse megadni saját telefonszámát!');
 
-		$t = $this->getTermekAdat($tid);
+		// Admin értesítése beérkezésről
 
-		$msg .= '<h1>Telefonos szaktanácsadást kértek</h1>';
-
-		if($tid != ''){
-			$msg .= '<div>Kapcsolódó termék: <strong><a href="'.$t[data][url].'">'.$t[data][markaNev]." ".$t[data][nev].'</a></strong> ('.$t[data][url].')</div>';
-		}else{
-			$msg .= "<strong>Kapcsolat > Visszahívás kérése</strong>";
-		}
-
-		$msg .= '<div>---</div>';
-		$msg .= '<div>Név: <strong>'.$nev.'</strong></div>';
-		$msg .= '<div>Telefonszám: <strong>'.$phone.'</strong></div>';
-		$msg .= '<div>Kiválasztott időszak visszahíváshoz: <strong>'.(($idoszak == 'egesz_nap')?'9-17 óráig hívható':($idoszak == 'delelott')?'9-12 óráig hívható':'12-17 óráig hívható').'</strong></div>';
-		$msg .= '<div>Megjegyzés</div>';
-		$msg .= '<div><strong>'.(($comment == '')?'-':$comment).'</strong></div>';
-
-
-		$mail = new Mailer(
-			$this->settings['page_title'],
-			SMTP_USER,
-			$this->settings['mail_sender_mode']
-		);
-		$mail->add( $this->settings['alert_email'] );
+		// Felhasználó értesítés kézbesítésről
+		$mail = new Mailer( $this->settings['page_title'], SMTP_USER, $this->settings['mail_sender_mode'] );
+		$mail->add( $email );
 
 		$arg = array(
-			'settings' 		=> $this->settings
+			'settings' => $this->settings
 		);
+		$arg['mailtemplate'] = (new MailTemplates(array('db'=>$this->db)))->get('request_call', $arg);
 
-		$arg['content'] = $msg;
-
-		$mail->setSubject( 'Telefonos szaktanácsadás kérése: '.$nev.' ('.$phone.')' );
-		$mail->setMsg( (new Template( VIEW . 'templates/mail/' ))->get( 'clearmail', $arg ) );
+		$mail->setSubject( 'Ingyenes visszahívás: kérését fogadtuk.' );
+		$mail->setMsg( (new Template( VIEW . 'templates/mail/' ))->get( 'mailtemplateholder', $arg ) );
 		$re = $mail->sendMail();
 
+		// Üzenet mentése
 		$this->logMessage(array(
-			'felado_nev' 	=> $nev,
-			'felado_email' 	=> $email,
-			'item_id' 		=> $tid,
-			'tipus' 		=> 'recall',
-			'uzenet_targy' 	=> 'Telefonos szaktanácsadás kérés',
-			'uzenet' 		=> $msg
+			'felado_nev' => $nev,
+			'felado_telefon'=> $phone,
+			'tipus' => 'recall',
+			'uzenet_targy' => 'Ingyenes visszahívás',
+			'uzenet' => $msg
 		));
 
+		return 'Köszönjük megkeresését. Hamarosan felvesszük Önnel a kapcsolatot!';
+	}
+
+	public function requestReCall($post)
+	{
+		extract($post);
+		$msg = '';
+
+		if($nev == '') throw new \Exception('Kérjük, ne felejtse megadni saját nevét!');
+		if($phone == '') throw new \Exception('Kérjük, ne felejtse megadni saját telefonszámát!');
+
+		// Admin értesítése beérkezésről
+
+		// Felhasználó értesítés kézbesítésről
+		$mail = new Mailer( $this->settings['page_title'], SMTP_USER, $this->settings['mail_sender_mode'] );
+		$mail->add( $email );
+
+		$arg = array(
+			'settings' => $this->settings
+		);
+		$arg['mailtemplate'] = (new MailTemplates(array('db'=>$this->db)))->get('request_call', $arg);
+
+		$mail->setSubject( 'Ingyenes visszahívás: kérését fogadtuk.' );
+		$mail->setMsg( (new Template( VIEW . 'templates/mail/' ))->get( 'mailtemplateholder', $arg ) );
+		$re = $mail->sendMail();
+
+		// Üzenet mentése
+		$this->logMessage(array(
+			'felado_nev' => $nev,
+			'felado_telefon'=> $phone,
+			'tipus' => 'recall',
+			'uzenet_targy' => 'Ingyenes visszahívás',
+			'uzenet' => $msg
+		));
 
 		return 'Köszönjük megkeresését. Hamarosan felvesszük Önnel a kapcsolatot!';
 	}

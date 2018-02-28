@@ -45,7 +45,7 @@
                                     <div class="row">
                                         <div class="col-md-4 form-text"><strong>Név</strong></div>
                                         <div class="col-md-8"><input required="required" type="text" id="szam_nev" name="szam_nev" class="form-control"/></div>
-                                    </div>  
+                                    </div>
                                     <div class="divider-sm"></div>
                                     <div class="row">
                                         <div class="col-md-4 form-text"><strong>Utca, házszám</strong></div>
@@ -77,16 +77,16 @@
                                     <div class="divider-sm"></div>
                                     <div class="row">
                                         <div class="col-md-12 form-text right" style="font-size:0.85em;"><a href="javascript:void(0);" id="copySzamToSzall">számlázási adatok másolása szállítási adatokhoz <i class="fa fa-arrow-right"></i> </a></div>
-                                        
+
                                     </div>
-                                    
+
                                 </div>
                                 <div class="col-md-6 col-pleft">
                                     <h4>Szállítási adatok</h4>
                                     <div class="row">
                                         <div class="col-md-4 form-text"><strong>Név</strong></div>
                                         <div class="col-md-8"><input required="required" type="text" id="szall_nev" name="szall_nev" class="form-control"/></div>
-                                    </div>  
+                                    </div>
                                     <div class="divider-sm"></div>
                                     <div class="row">
                                         <div class="col-md-4 form-text"><strong>Utca, házszám</strong></div>
@@ -101,7 +101,7 @@
                                     <div class="row">
                                         <div class="col-md-4 form-text"><strong>Irányítószám</strong></div>
                                         <div class="col-md-8"><input required="required" type="text" id="szall_irsz" name="szall_irsz" class="form-control"/></div>
-                                    </div>                                
+                                    </div>
                                     <div class="divider-sm"></div>
                                     <div class="row">
                                         <div class="col-md-4 form-text"><strong>Megye</strong></div>
@@ -125,9 +125,9 @@
                         </div>
                     </div>
 
-                    <div class="stack">                    
+                    <div class="stack">
                         <div class="row">
-                            <div class="col-md-8 form-btn" style="line-height:42px;font-size: 0.8em;"><input required="required" type="checkbox" id="aszfOk" name="aszfOk" /> <label for="aszfOk">Elolvastam és tudomásul vettem az <a href="<?=$this->settings['ASZF_URL']?>" target="_blank">ÁSZF</a>-ben foglaltakat!</label></div>
+                            <div class="col-md-8 form-btn" style="line-height:42px;font-size: 0.8em;"><input required="required" type="checkbox" id="aszfOk" name="aszfOk" /> <label for="aszfOk">Elolvastam és tudomásul vettem az <a href="<?=$this->settings['ASZF_URL']?>" target="_blank">ÁSZF</a>-ben és az <a href="/p/adatvedelmi-tajekoztato">Adatvédelmi tájékoztató</a>ban foglaltakat!</label></div>
                             <div class="col-md-4" align="right">
                                 <button name="registerUser" value="1" class="btn btn-pr">Regisztráció <i class="fa fa-arrow-circle-right"></i></button>
                             </div>
@@ -135,20 +135,18 @@
                     </div>
                 </div>
                 </form>
-            </div>  
+            </div>
         </div>
     </div>
 </div>
 <script type="text/javascript">
-    $(function(){        
+    $(function(){
         $('#copySzamToSzall').click(function(){
             $('#register input[name^=szam_]').each(function(){
                 var e = $(this).attr('name');
-                 $('#register input[name=szall_'+e.replace('szam_','')+']').val($(this).val()); 
-            }); 
+                 $('#register input[name=szall_'+e.replace('szam_','')+']').val($(this).val());
+            });
             $('#register select#szall_state option[value="'+$('#register select#szam_state').val()+'"]').prop('selected', true);
         });
     })
 </script>
-
-
