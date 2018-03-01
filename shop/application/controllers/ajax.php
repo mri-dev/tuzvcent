@@ -296,7 +296,33 @@ class ajax extends Controller{
 
 				break;
 				case 'modalMessage':
+					$err = false;
 					$ret['pass'] = $_POST;
+					$datas = $_POST['datas'];
+
+					switch ($_POST['modalby'])
+					{
+						// Ingyenes visszahívás
+						case 'recall':
+							try {
+								$remsg = $this->shop->requestReCall( $datas );
+							} catch (\Exception $e) {
+								$err = $this->escape( $e->getMessage(), $ret );
+							}
+						break;
+						// Ingyenes ajánlatkérés
+						case 'ajanlat':
+							try {
+								$remsg = $this->shop->requestOffer( $datas );
+							} catch (\Exception $e) {
+								$err = $this->escape( $e->getMessage(), $ret );
+							}
+							
+						break;
+					}
+
+					if(!$err) $this->setSuccess( $remsg ,$ret );
+
 				break;
 				case 'productFavorite':
 					$mid = Helper::getMachineID();

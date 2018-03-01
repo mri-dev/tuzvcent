@@ -353,7 +353,7 @@ tc.controller('ActionButtons', ['$scope', '$http', '$mdDialog', '$mdToast', func
       			} else {
       				$mdToast.hide();
               $scope.closeDialog();
-      				$scope.toast('Köszönjük érdeklődését! Ingyenes visszahívás kérés igénylés elküldve. Hamarosan jelentkezünk!', 'success', 10000);
+      				$scope.toast(r.msg, 'success', 10000);
       			}
       		});
         }
@@ -437,13 +437,15 @@ tc.controller('ActionButtons', ['$scope', '$http', '$mdDialog', '$mdToast', func
       			$scope.sending = false;
       			$scope.ajanlat = {};
 
-      			if (r.error == 1) {
-      				$scope.toast(r.msg, 'alert', 10000);
-      			} else {
-      				$mdToast.hide();
+            console.log(r);
+
+            if (r.error == 1) {
+              $scope.toast(r.msg, 'alert', 10000);
+            } else {
+              $mdToast.hide();
               $scope.closeDialog();
-      				$scope.toast('Köszönjük érdeklődését! Hamarosan jelentkezünk személyre szabott ajánlatunkkal!', 'success', 10000);
-      			}
+              $scope.toast(r.msg, 'success', 10000);
+            }
       		});
         }
       }

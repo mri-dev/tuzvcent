@@ -1679,74 +1679,97 @@ class Shop
 		return 'Köszönjük megkeresését. Hamarosan felvesszük Önnel a kapcsolatot!';
 	}
 
-	public function requestReCall($post)
+	public function requestReCall( $post )
 	{
 		extract($post);
-		$msg = '';
 
-		if($nev == '') throw new \Exception('Kérjük, ne felejtse megadni saját nevét!');
+		if($name == '') throw new \Exception('Kérjük, ne felejtse megadni saját nevét!');
 		if($phone == '') throw new \Exception('Kérjük, ne felejtse megadni saját telefonszámát!');
+		if($subject == '') throw new \Exception('Kérjük, ne felejtse beírni, hogy milyen ügyben keres minket!');
 
 		// Admin értesítése beérkezésről
-
-		// Felhasználó értesítés kézbesítésről
 		$mail = new Mailer( $this->settings['page_title'], SMTP_USER, $this->settings['mail_sender_mode'] );
-		$mail->add( $email );
+		$mail->add( $this->settings['alert_email'] );
 
 		$arg = array(
-			'settings' => $this->settings
+			'settings' => $this->settings,
+			'name' => $name,
+			'phone' => $phone,
+			'subject' => $subject,
+			'targy' => 'Ingyenes visszahívás'
 		);
-		$arg['mailtemplate'] = (new MailTemplates(array('db'=>$this->db)))->get('request_call', $arg);
 
-		$mail->setSubject( 'Ingyenes visszahívás: kérését fogadtuk.' );
-		$mail->setMsg( (new Template( VIEW . 'templates/mail/' ))->get( 'mailtemplateholder', $arg ) );
+		$mail->setSubject( 'Értesítő: Ingyenes visszahívás kérés érkezet.' );
+		$mail->setMsg( (new Template( VIEW . 'templates/mail/' ))->get( 'admin_requestrecall', $arg ) );
 		$re = $mail->sendMail();
 
 		// Üzenet mentése
 		$this->logMessage(array(
-			'felado_nev' => $nev,
+			'felado_nev' => $name,
 			'felado_telefon'=> $phone,
 			'tipus' => 'recall',
 			'uzenet_targy' => 'Ingyenes visszahívás',
-			'uzenet' => $msg
+			'uzenet' => $subject
 		));
 
-		return 'Köszönjük megkeresését. Hamarosan felvesszük Önnel a kapcsolatot!';
+		return 'Köszönjük érdeklődését! Ingyenes visszahívás kérés igénylés elküldve. Hamarosan jelentkezünk!';
 	}
 
-	public function requestReCall($post)
+	public function requestOffer($post)
 	{
 		extract($post);
-		$msg = '';
 
-		if($nev == '') throw new \Exception('Kérjük, ne felejtse megadni saját nevét!');
+		if($name == '') throw new \Exception('Kérjük, ne felejtse megadni saját nevét!');
 		if($phone == '') throw new \Exception('Kérjük, ne felejtse megadni saját telefonszámát!');
+		if($email == '') throw new \Exception('Kérjük, ne felejtse megadni saját e-mail címét!');
+		if($message == '') throw new \Exception('Kérjük, ne felejtse részletezni, hogy mire szeretne ajánlatot kérni!');
 
 		// Admin értesítése beérkezésről
+		$mail = new Mailer( $this->settings['page_title'], SMTP_USER, $this->settings['mail_sender_mode'] );
+		$mail->add( $this->settings['alert_email'] );
+
+		$arg = array(
+			'settings' => $this->settings,
+			'name' => $name,
+			'phone' => $phone,
+			'email' => $email,
+			'message' => $message,
+			'targy' => 'Ingyenes ajánlatkérés'
+		);
+
+		$mail->setSubject( 'Értesítő: Ingyenes ajánlatkérés érkezet.' );
+		$mail->setMsg( (new Template( VIEW . 'templates/mail/' ))->get( 'admin_requestoffer', $arg ) );
+		$re = $mail->sendMail();
 
 		// Felhasználó értesítés kézbesítésről
 		$mail = new Mailer( $this->settings['page_title'], SMTP_USER, $this->settings['mail_sender_mode'] );
 		$mail->add( $email );
 
 		$arg = array(
-			'settings' => $this->settings
+			'settings' => $this->settings,
+			'name' => $name,
+			'phone' => $phone,
+			'email' => $email,
+			'message' => $message,
+			'targy' => 'Ingyenes ajánlatkérését fogadtuk'
 		);
-		$arg['mailtemplate'] = (new MailTemplates(array('db'=>$this->db)))->get('request_call', $arg);
+		$arg['mailtemplate'] = (new MailTemplates(array('db'=>$this->db)))->get('request_offer', $arg);
 
-		$mail->setSubject( 'Ingyenes visszahívás: kérését fogadtuk.' );
+		$mail->setSubject( 'Visszaigazolás: Ingyenes ajánlatkérését fogadtuk.' );
 		$mail->setMsg( (new Template( VIEW . 'templates/mail/' ))->get( 'mailtemplateholder', $arg ) );
 		$re = $mail->sendMail();
 
 		// Üzenet mentése
 		$this->logMessage(array(
-			'felado_nev' => $nev,
+			'felado_nev' => $name,
 			'felado_telefon'=> $phone,
-			'tipus' => 'recall',
-			'uzenet_targy' => 'Ingyenes visszahívás',
-			'uzenet' => $msg
+			'felado_email'=> $email,
+			'tipus' => 'ajanlat',
+			'uzenet_targy' => 'Ingyenes ajánlatkérés',
+			'uzenet' => $message
 		));
 
-		return 'Köszönjük megkeresését. Hamarosan felvesszük Önnel a kapcsolatot!';
+		return 'Köszönjük megkeresését. Hamarosan felvesszük Önnel a kapcsolatot a személyre szabott ajánlatunkkal!';
 	}
 
 	const ORDER_COOKIE_KEY_STEP = 'orderStep';
@@ -2595,7 +2618,8 @@ class Shop
 		));
 	}
 
-	public $messageType = array('requestAsk','recall','contactMsg','contactRecall');
+	public $messageType = array( 'ajanlat', 'recall', 'requesttermprice' );
+
 	function logMessage($opts = array()){
 		$item_id 		= 'NULL';
 
@@ -2609,6 +2633,7 @@ class Shop
 			array(
 				'item_id' => $item_id,
 				'felado_email' => $felado_email,
+				'felado_telefon' => $felado_telefon,
 				'felado_nev' => $felado_nev,
 				'uzenet_targy' => $uzenet_targy,
 				'uzenet' => $uzenet,

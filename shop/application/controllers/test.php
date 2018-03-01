@@ -19,7 +19,7 @@ class test extends Controller
 					"smtp"
 				);
 				$mail->setReplyTo( $this->settings['page_title'], $this->settings['email_noreply_address'] );
-				$mail->add( 'molnar.istvan@web-pro.hu' );	
+				$mail->add( 'molnar.istvan@web-pro.hu' );
 
 				$arg = array(
 					'settings' 		=> $this->settings,
@@ -42,6 +42,16 @@ class test extends Controller
 			}
 
 
+		}
+
+		function mailtemplate()
+		{
+			$arg = array(
+				'settings' => $this->view->settings
+			);
+			$template = (new Template( VIEW . 'templates/mail/' ))->get( 'admin_requestrecall', $arg );
+
+			echo $template;
 		}
 
 		function __destruct(){
