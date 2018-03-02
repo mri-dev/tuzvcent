@@ -317,7 +317,14 @@ class ajax extends Controller{
 							} catch (\Exception $e) {
 								$err = $this->escape( $e->getMessage(), $ret );
 							}
-							
+						break;
+						// Termék ár kérés
+						case 'requesttermprice':
+							try {
+								$remsg = $this->shop->requestTermprice( $datas );
+							} catch (\Exception $e) {
+								$err = $this->escape( $e->getMessage(), $ret );
+							}
 						break;
 					}
 

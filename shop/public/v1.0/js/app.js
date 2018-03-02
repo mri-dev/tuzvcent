@@ -155,6 +155,8 @@ tc.controller('App', ['$scope', '$sce', '$http', '$mdToast', '$mdDialog', '$loca
         if (!$scope.sending) {
           $scope.sending = true;
 
+          $scope.requesttermprice.termid = parseInt($scope.termid);
+
           $http({
       			method: 'POST',
       			url: '/ajax/post',
@@ -162,20 +164,19 @@ tc.controller('App', ['$scope', '$sce', '$http', '$mdToast', '$mdDialog', '$loca
       			data: $.param({
       				type: "modalMessage",
               modalby: type,
-              datas: {
-                termid: $scope.termid
-              }
+              datas: $scope.requesttermprice
       			})
-      		}).success(function(r){
-      			console.log(r);
+      		}).success(function(r) {
       			$scope.sending = false;
+            scope.requesttermprice = {};
+            console.log(r);
 
       			if (r.error == 1) {
       				$scope.toast(r.msg, 'alert', 10000);
       			} else {
       				$mdToast.hide();
               $scope.closeDialog();
-      				$scope.toast('Köszönjük érdeklődését! Ingyenes visszahívás kérés igénylés elküldve. Hamarosan jelentkezünk!', 'success', 10000);
+      				$scope.toast(r.msg, 'success', 10000);
       			}
       		});
         }

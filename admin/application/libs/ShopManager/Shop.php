@@ -1772,6 +1772,62 @@ class Shop
 		return 'Köszönjük megkeresését. Hamarosan felvesszük Önnel a kapcsolatot a személyre szabott ajánlatunkkal!';
 	}
 
+	public function requestTermprice($post)
+	{
+		extract($post);
+
+		if($name == '') throw new \Exception('Kérjük, ne felejtse megadni saját nevét!');
+		if($phone == '') throw new \Exception('Kérjük, ne felejtse megadni saját telefonszámát!');
+		if($email == '') throw new \Exception('Kérjük, ne felejtse megadni saját e-mail címét!');
+
+		// Admin értesítése beérkezésről
+		$mail = new Mailer( $this->settings['page_title'], SMTP_USER, $this->settings['mail_sender_mode'] );
+		$mail->add( $this->settings['alert_email'] );
+
+		$arg = array(
+			'settings' => $this->settings,
+			'name' => $name,
+			'phone' => $phone,
+			'email' => $email,
+			'message' => $message,
+			'targy' => 'Termék ár kérés'
+		);
+
+		$mail->setSubject( 'Értesítő: Termék ár kérés érkezet.' );
+		$mail->setMsg( (new Template( VIEW . 'templates/mail/' ))->get( 'admin_requesttermprice', $arg ) );
+		$re = $mail->sendMail();
+
+		// Felhasználó értesítés kézbesítésről
+		$mail = new Mailer( $this->settings['page_title'], SMTP_USER, $this->settings['mail_sender_mode'] );
+		$mail->add( $email );
+
+		$arg = array(
+			'settings' => $this->settings,
+			'name' => $name,
+			'phone' => $phone,
+			'email' => $email,
+			'message' => $message,
+			'targy' => 'Termék ár kérését fogadtuk'
+		);
+		$arg['mailtemplate'] = (new MailTemplates(array('db'=>$this->db)))->get('request_product_price', $arg);
+
+		$mail->setSubject( 'Visszaigazolás: Termék ár kérését fogadtuk.' );
+		$mail->setMsg( (new Template( VIEW . 'templates/mail/' ))->get( 'mailtemplateholder', $arg ) );
+		$re = $mail->sendMail();
+
+		// Üzenet mentése
+		$this->logMessage(array(
+			'felado_nev' => $name,
+			'felado_telefon'=> $phone,
+			'felado_email'=> $email,
+			'tipus' => 'requesttermprice',
+			'uzenet_targy' => 'Termék ár kérés',
+			'uzenet' => $message
+		));
+
+		return 'Köszönjük megkeresését. Hamarosan felvesszük Önnel a kapcsolatot a termékkel kapcsolatban!';
+	}
+
 	const ORDER_COOKIE_KEY_STEP = 'orderStep';
 
 	public function doOrder($post, $arg = array()) {
