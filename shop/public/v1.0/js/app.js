@@ -168,7 +168,7 @@ tc.controller('App', ['$scope', '$sce', '$http', '$mdToast', '$mdDialog', '$loca
       			})
       		}).success(function(r) {
       			$scope.sending = false;
-            scope.requesttermprice = {};
+            $scope.requesttermprice = {};
             console.log(r);
 
       			if (r.error == 1) {

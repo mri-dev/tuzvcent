@@ -1801,12 +1801,22 @@ class Shop
 		$mail = new Mailer( $this->settings['page_title'], SMTP_USER, $this->settings['mail_sender_mode'] );
 		$mail->add( $email );
 
+		$termek = '<div class="mail-termek-row">
+			<div class="img"><img src="'.$product['profil_kep'].'" alt="'.$product['nev'].'"/></div>
+			<div class="data">
+				<div class="name"><a href="'.$this->settings['page_url'].'/'.\Helper::makeSafeUrl($product['nev'],'_-'.$product['ID']).'">'.$product['nev'].'</a></div>
+				<div class="cat">'.$product['csoport_kategoria'].'</div>
+			</div>
+		</div>';
+
 		$arg = array(
 			'settings' => $this->settings,
 			'name' => $name,
 			'phone' => $phone,
 			'email' => $email,
 			'message' => $message,
+			'termek' => $termek,
+			'termek_nev' => $product['nev'],
 			'targy' => 'Termék ár kérését fogadtuk'
 		);
 		$arg['mailtemplate'] = (new MailTemplates(array('db'=>$this->db)))->get('request_product_price', $arg);
@@ -1817,6 +1827,7 @@ class Shop
 
 		// Üzenet mentése
 		$this->logMessage(array(
+			'item_id' => $product['ID'],
 			'felado_nev' => $name,
 			'felado_telefon'=> $phone,
 			'felado_email'=> $email,
