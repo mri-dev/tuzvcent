@@ -477,7 +477,7 @@ tc.controller('ActionButtons', ['$scope', '$http', '$mdDialog', '$mdToast', func
 
 }]);
 
-tc.controller('Tudastar',['$scope', '$http', '$mdToast', '$element', function($scope, $http, $mdToast, $element)
+tc.controller('Tudastar',['$scope', '$http', '$mdToast', '$element', '$location', function($scope, $http, $mdToast, $element, $location)
 {
   $scope.found_items = 0;
   $scope.loading = false;
@@ -486,14 +486,50 @@ tc.controller('Tudastar',['$scope', '$http', '$mdToast', '$element', function($s
   $scope.searchKeys = [];
   $scope.validitems = [];
   $scope.catFilters = {};
-  $scope.selected_article = 0;
+  $scope.selected_article = false;
   $scope.precats = false;
   $scope.picked_article = false;
 
-  $scope.init = function( picked_article_id, tags, cats )
+  $scope.init = function()
   {
-    $scope.selected_article = picked_article_id;
-    $scope.precats = cats;
+    $scope.doSearch( true );
+  }
+
+  $scope.rebuildPath = function()
+  {
+    // TAGS
+    var src = $location.search();
+    var tags = $scope.implodeObj($scope.searchKeys, ',');
+    src.tags = tags;
+
+    // PICKED ARTICLE
+    if ( $scope.selected_article && typeof src.pick === 'undefined' ) {
+      src.pick = $scope.selected_article;
+    } else if( $scope.selected_article && src.pick != $scope.selected_article ) {
+      src.pick = $scope.selected_article;
+    } else if( $scope.selected_article === false ){
+      src.pick = null;
+      $scope.picked_article = false;
+    }
+
+    // CATS
+    var tempcat = [];
+    if ( $scope.catFilters.length != 0 ) {
+      angular.forEach( $scope.catFilters, function(e,i){
+        tempcat.push( e.ID );
+      });
+      src.cat = $scope.implodeObj(tempcat, ',');
+    }
+
+    $location.path('?', false).search(src);
+
+    console.log(src);
+  }
+
+  $scope.prepareFilters = function(){
+    $scope.selected_article = $scope.getURLParam('pick');
+    var tags = $scope.getURLParam('tags');
+    $scope.precats = $scope.getURLParam('cat');
 
     if (tags != '') {
       var xtags = tags.split(',');
@@ -503,30 +539,20 @@ tc.controller('Tudastar',['$scope', '$http', '$mdToast', '$element', function($s
         });
       }
     }
+  }
 
-    $scope.loadCategories(function( success ){
-      $scope.loaded = true;
-      $scope.loading = false;
-
-      var cats = $scope.precats;
-      if (cats != '') {
-        var cats = cats.split(',');
-        if (typeof cats !== 'undefined') {
-          angular.forEach(cats, function(cat,i){
-            if( !$scope.catInFilter(parseInt(cat)) ) {
-              $scope.filterCategory(cat);
-            }
-          });
-        }
-      }
-
-      if ( $scope.selected_article != '0' ) {
-        $scope.picked_article = $scope.findArticle( $scope.selected_article );
-        console.log($scope.picked_article);
-      }
-
+  $scope.implodeObj = function( list, sep )
+  {
+    var l = '';
+    angular.forEach(list, function(e,i){
+      l += e + sep;
     });
 
+    l = l.slice(0, -1);
+
+    console.log(l);
+
+    return l;
   }
 
   $scope.findArticle = function( article )
@@ -548,10 +574,43 @@ tc.controller('Tudastar',['$scope', '$http', '$mdToast', '$element', function($s
     return obj;
   }
 
-  $scope.doSearch = function(){
+  $scope.getURLParam = function( key ){
+    var src = $location.search();
+
+    if ( typeof src[key] !== 'undefined' ) {
+      return src[key];
+    }
+
+    return false;
+  }
+
+  $scope.doSearch = function( loader )
+  {
+    if ( !loader ) {
+      $scope.rebuildPath();
+    }
+
+    $scope.prepareFilters();
     $scope.loadCategories(function( success ){
       $scope.loaded = true;
       $scope.loading = false;
+
+      var cats = $scope.precats;
+      if (cats != '') {
+        var cats = cats.split(',');
+        if (typeof cats !== 'undefined') {
+          angular.forEach(cats, function(cat,i){
+            if( !$scope.catInFilter(parseInt(cat)) ) {
+              $scope.filterCategory(cat);
+            }
+          });
+        }
+      }
+
+      if ( $scope.selected_article ) {
+        $scope.picked_article = $scope.findArticle( $scope.selected_article );
+      }
+
     });
   }
 
@@ -600,7 +659,7 @@ tc.controller('Tudastar',['$scope', '$http', '$mdToast', '$element', function($s
       delete $scope.catFilters[key];
     }
 
-    $scope.doSearch();
+    $scope.doSearch( false );
   }
 
   $scope.putTagToSearch = function( tag ){
@@ -617,8 +676,23 @@ tc.controller('Tudastar',['$scope', '$http', '$mdToast', '$element', function($s
     }
   }
 
-  $scope.pickArticle = function( articleid ){
+  $scope.highlightArticle = function( articleid ){
+    $scope.pickArticle(articleid, function(){
+      $scope.doSearch( false );
+    });
+  }
+
+  $scope.removeHighlightArticle = function(){
+    $scope.selected_article = false;
+    $scope.doSearch( false );
+  }
+
+  $scope.pickArticle = function( articleid, callback ){
     $scope.selected_article = articleid;
+
+    if ( typeof callback !== 'undefined' ) {
+      callback(articleid);
+    }
   }
 
   $scope.loadCategories = function( callback ){

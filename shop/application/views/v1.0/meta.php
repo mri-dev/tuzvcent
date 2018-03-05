@@ -62,4 +62,8 @@
 			document.location.href='/kereses/'+srcString;
 		},"html");
 	}
+	function prepareHelpdeskHeaderSearch( form ) {
+		var src= $(form).find('input').val();
+		document.location.href='/tudastar#?tags='+src;
+	}
 </script>

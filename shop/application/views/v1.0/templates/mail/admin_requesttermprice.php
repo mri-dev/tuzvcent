@@ -23,6 +23,9 @@
   </tr>
   <?php endif; ?>
 </table>
+
+<?=$termek?>
+
 <p>A kérés <strong><?=NOW?></strong> időponttal lett rögzítve a rendszerbe.</p>
 
 <p style="color: red;">

@@ -1780,6 +1780,69 @@ class Shop
 		if($phone == '') throw new \Exception('Kérjük, ne felejtse megadni saját telefonszámát!');
 		if($email == '') throw new \Exception('Kérjük, ne felejtse megadni saját e-mail címét!');
 
+		$termek = '<style>
+			.mail-termek-row{
+				position: relative;
+				background: #f7f7f7;
+				padding: 10px;
+				border: 2px solid #e9e9e9;
+				border-radius: 5px;
+				margin: 15px 0;
+			}
+			.mail-termek-row .img{
+				float: left;
+				width: 20%;
+				max-width: 20%;
+				box-sizing: border-box;
+			}
+			.mail-termek-row .img img{
+				width: 100%;
+				max-width: 100%;
+			}
+			.mail-termek-row .data{
+				float: left;
+				width: 80%;
+				box-sizing: border-box;
+				padding-left: 15px;
+			}
+			.mail-termek-row .data .name a{
+				display: block;
+				color: #f09f0f;
+				font-weight: bold;
+				margin-bottom: 15px;
+				font-size: 18px;
+			}
+			.mail-termek-row .data .cat{
+				color: #575757;
+				font-size: 15px;
+			}
+			.mail-termek-row .data .cat strong {
+				color: #3a3a3a;
+			}
+			.mail-termek-row .data .sdesc{
+				color: #919191;
+				font-size: 12px;
+				line-height: 1.5;
+				text-align:justify;
+				margin-top: 5px;
+			}
+			.mail-termek-row .data .meta{
+				color: #acacac;
+				font-size: 10px;
+				margin-top: 5px;
+			}
+		</style>';
+		$termek .= '<div class="mail-termek-row" style>
+			<div class="img"><img src="'.$product['profil_kep'].'" alt="'.$product['nev'].'"/></div>
+			<div class="data">
+				<div class="name"><a href="'.$this->settings['page_url'].'/termek/'.\Helper::makeSafeUrl($product['nev'],'_-'.$product['ID']).'">'.$product['nev'].'</a></div>
+				<div class="cat"><strong>'.$product['kategoriaNev'].'</strong> / '.$product['csoport_kategoria'].'</div>
+				<div class="sdesc">'.$product['rovid_leiras'].'</div>
+				<div class="meta">#'.$product['ID'].' &nbsp; Cikkszám:'.$product['cikkszam'].'</div>
+			</div>
+			<div style="clear:both;"></div>
+		</div>';
+
 		// Admin értesítése beérkezésről
 		$mail = new Mailer( $this->settings['page_title'], SMTP_USER, $this->settings['mail_sender_mode'] );
 		$mail->add( $this->settings['alert_email'] );
@@ -1789,6 +1852,7 @@ class Shop
 			'name' => $name,
 			'phone' => $phone,
 			'email' => $email,
+			'termek' => $termek,
 			'message' => $message,
 			'targy' => 'Termék ár kérés'
 		);
@@ -1800,14 +1864,6 @@ class Shop
 		// Felhasználó értesítés kézbesítésről
 		$mail = new Mailer( $this->settings['page_title'], SMTP_USER, $this->settings['mail_sender_mode'] );
 		$mail->add( $email );
-
-		$termek = '<div class="mail-termek-row">
-			<div class="img"><img src="'.$product['profil_kep'].'" alt="'.$product['nev'].'"/></div>
-			<div class="data">
-				<div class="name"><a href="'.$this->settings['page_url'].'/'.\Helper::makeSafeUrl($product['nev'],'_-'.$product['ID']).'">'.$product['nev'].'</a></div>
-				<div class="cat">'.$product['csoport_kategoria'].'</div>
-			</div>
-		</div>';
 
 		$arg = array(
 			'settings' => $this->settings,

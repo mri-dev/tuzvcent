@@ -2137,6 +2137,7 @@ md-toast{
 		background: #f7f7f7;
 		padding: 15px;
     border-left: 5px solid $color-red;
+		position: relative;
 
 		.pick-label{
 			background: $color-red;
@@ -2147,6 +2148,14 @@ md-toast{
 			i{
 				margin-right: 3px;
 			}
+		}
+
+		.closer {
+			position: absolute;
+			right: 10px;
+	    top: 10px;
+	    color: #cacaca;
+	    font-size: 0.8em;
 		}
 
 		h3 {
@@ -2273,6 +2282,12 @@ md-toast{
 							color: $color-grey;
 							& > span {
 								margin-right: 10px;
+							}
+
+							.ids{
+								a {
+									color: #acacac;
+								}
 							}
 
 							.keywords{

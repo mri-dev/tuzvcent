@@ -126,14 +126,14 @@
                 </div>
                 <div class="cat-list-holder dropdown-content">
                   <div class="helpdesk-search">
-                    <form class="" action="/tudastar" method="get">
+                    <form class="" action="/tudastar" method="get" onsubmit="prepareHelpdeskHeaderSearch(this); return false;">
                       <input type="text" name="tags" value="" placeholder="Keresés a tudástárban..." autocomplete="off">
                     </form>
                   </div>
                   <?php if ( $this->helpdesk_categories['data'] ): ?>
                     <ul>
                     <?php foreach ( $this->helpdesk_categories['data'] as $hdc ): if($hdc['itemcount'] == 0){ continue; } ?>
-                        <li><a href="/tudastar/?cat=<?=$hdc['ID']?>">(<?=$hdc['itemcount']?>) <?=$hdc['cim']?></a></li>
+                        <li><a href="/tudastar#?cat=<?=$hdc['ID']?>">(<?=$hdc['itemcount']?>) <?=$hdc['cim']?></a></li>
                     <?php endforeach; ?>
                     </ul>
                   <?php endif; ?>

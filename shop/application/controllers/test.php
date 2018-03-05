@@ -49,7 +49,7 @@ class test extends Controller
 			$arg = array(
 				'settings' => $this->view->settings
 			);
-			$template = (new Template( VIEW . 'templates/mail/' ))->get( 'admin_requestrecall', $arg );
+			$template = (new Template( VIEW . 'templates/mail/' ))->get( 'admin_requesttermprice', $arg );
 
 			echo $template;
 		}
