@@ -277,7 +277,9 @@ class termekek extends Controller
 								'termek_site_url' => $_POST['termek_site_url'],
 								'referer_price_discount' => $_POST['referer_price_discount'],
 								'show_stock' => $_POST['show_stock'],
-								'sorrend' =>  (isset($_POST['sorrend']) ? $_POST['sorrend'] : 100)
+								'sorrend' =>  (isset($_POST['sorrend']) ? $_POST['sorrend'] : 100),
+								'meta_title' => $_POST['meta_title'],
+								'meta_desc' => $_POST['meta_desc']
 							) ) );
 							Helper::reload( '/termekek/t/edit/'.$this->view->gets[3].'/?backmsg=success&msg='.$save);
 						} catch (Exception $e){

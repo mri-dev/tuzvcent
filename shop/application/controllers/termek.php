@@ -95,10 +95,23 @@ class termek extends Controller{
 			$this->shop->logTermekView(Product::getTermekIDFromUrl());
 			$this->shop->logLastViewedTermek(Product::getTermekIDFromUrl());
 
+			// Meta
+			$desc = substr(strip_tags($this->view->product['rovid_leiras']), 0, 250).'...';
+			
+			$meta_title = $product['meta_title'];
+			$meta_desc = $product['meta_desc'];
+
+			if ($meta_title != '') {
+				$title = $meta_title;
+			}
+
+			if ($meta_desc != '') {
+				$desc = $meta_desc;
+			}
+
 			// SEO Információk
 			$SEO = null;
 			// Site info
-			$desc = substr(strip_tags($this->view->product['rovid_leiras']), 0, 250).'...';
 			$SEO .= $this->view->addMeta('description',addslashes($desc));
 			$keyw = $this->view->product['kulcsszavak'];
 			$keyw .= " ".$this->view->product['csoport_kategoria'];

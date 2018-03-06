@@ -64,49 +64,46 @@
 		<div class="col-md-8" style="padding-left:0;">
 				<input type="hidden" name="tid" value="<?=$this->termek[ID]?>">
 				<div class="con">
-					<div class="row np checkprim">
-						<div class="col-md-4">
-							<label><input type="checkbox" name="lathato" <?=($this->termek['lathato'] == 1)?'checked':''?>/> Aktív / Látható</label>
-					    </div>
-						<div class="col-md-4">
-							<label><input type="checkbox" name="akcios" id="akciosTgl" onclick="javascript:if($(this).is(':checked')){$('#vakcios').show(0);}else{$('#vakcios').hide(0);}" <?=($this->termek['akcios'] == 1)?'checked':''?>  /> Akciós</label>
-					    </div>
-						<div class="col-md-4">
-							 <label><input type="checkbox" name="ujdonsag" <?=($this->termek['ujdonsag'] == 1)?'checked':''?>/> Újdonság</label>
+					<div class="checkins">
+						<div class="">
+							<input type="checkbox" id="lathato" name="lathato" <?=($this->termek['lathato'] == 1)?'checked':''?>/> <label for="lathato">Aktív / Látható</label>
 						</div>
-						<div class="col-md-4">
-							<label><input type="checkbox" name="argep" <?=($this->termek['argep'] == 1)?'checked':''?>/> ÁRGÉP listába</label>
+						<div class="">
+							<input type="checkbox" name="akcios" id="akciosTgl" onclick="javascript:if($(this).is(':checked')){$('#vakcios').show(0);}else{$('#vakcios').hide(0);}" <?=($this->termek['akcios'] == 1)?'checked':''?>  /> <label for="akciosTgl">Akciós</label>
 						</div>
-						<div class="col-md-4">
-							<label><input type="checkbox" name="arukereso" <?=($this->termek['arukereso'] == 1)?'checked':''?>/> ÁRUKERESŐ listába</label>
+						<div class="">
+							 <input type="checkbox" name="ujdonsag" id="ujdonsag"  <?=($this->termek['ujdonsag'] == 1)?'checked':''?>/> <label for="ujdonsag">Újdonság</label>
 						</div>
-						<div class="col-md-4">
-							<label><input type="checkbox" <?=($this->termek['pickpackszallitas'] == 1)?'checked':''?> name="pickpackszallitas" /> Pick Pack Pont-ra szállítható</label>
+						<div class="">
+							<input type="checkbox" name="argep" id="argep" <?=($this->termek['argep'] == 1)?'checked':''?>/> <label for="argep">ÁRGÉP listába</label>
 						</div>
-						<div class="col-md-4">
-							<label><input type="checkbox" <?=($this->termek['no_cetelem'] == 1)?'checked':''?> name="no_cetelem" /> Cetelem hitel alól KIZÁRVA</label>
+						<div class="">
+							<input type="checkbox" name="arukereso" id="arukereso" <?=($this->termek['arukereso'] == 1)?'checked':''?>/> <label for="arukereso">ÁRUKERESŐ listába</label>
 						</div>
-						<div class="col-md-4">
-							<label><input type="checkbox" <?=($this->termek['kiemelt'] == 1)?'checked':''?> name="kiemelt" /> Kiemelt termék</label>
+						<div class="">
+							<input type="checkbox" <?=($this->termek['pickpackszallitas'] == 1)?'checked':''?> name="pickpackszallitas" id="pickpackszallitas" /> <label for="pickpackszallitas">Pick Pack Pont-ra szállítható</label>
 						</div>
-						<div class="col-md-4">
-							<label><input type="checkbox" <?=($this->termek['ajanlorendszer_kiemelt'] == 1)?'checked':''?> name="ajanlorendszer_kiemelt" /> Ajánlórendszer kiemelt ajánlat</label>
+						<div class="" style="display: none;">
+							<input type="checkbox" <?=($this->termek['no_cetelem'] == 1)?'checked':''?> name="no_cetelem" id="no_cetelem" /> <label for="no_cetelem">Cetelem hitel alól KIZÁRVA</label>
 						</div>
-						<div class="col-md-4">
-							<label><input type="checkbox" <?=($this->termek['show_stock'] == 1)?'checked':''?> name="show_stock" /> Készletmegjelenítés</label>
+						<div class="">
+							<input type="checkbox" <?=($this->termek['kiemelt'] == 1)?'checked':''?> name="kiemelt" id="kiemelt" /> <label for="kiemelt">Kiemelt termék</label>
+						</div>
+						<div class="">
+							<input type="checkbox" <?=($this->termek['show_stock'] == 1)?'checked':''?> name="show_stock" id="show_stock" /> <label for="show_stock">Készletmegjelenítés</label>
 						</div>
 					</div>
 				</div>
 
 				<div class="con">
-					<h3>Raktár adatok</h3>
+					<h3>Termék törzsadatok</h3>
 					<div class="row">
 						<div class="col-md-6">
-							<label for="raktar_articleid">articleid</label>
+							<label for="raktar_articleid">Típus azonosító törzskód</label>
 							<input type="text" name="raktar_articleid" id="raktar_articleid" value="<?=$this->termek[raktar_articleid]?>" class="form-control">
 						</div>
 						<div class="col-md-6">
-							<label for="raktar_variantid">variantid</label>
+							<label for="raktar_variantid">Variáció azonosító</label>
 							<input type="text" name="raktar_variantid" id="raktar_variantid" value="<?=$this->termek[raktar_variantid]?>" class="form-control">
 						</div>
 					</div>
@@ -164,28 +161,16 @@
 							</div>
 						</div>
 					</div>
-					<br />
-					<div class="row">
-						<div class="col-md-12">
-							<div>
-								<label for="referer_price_discount">Ajánlórendszer &mdash; kedvezmény összege a termék árából</label>
-								<div class="input-group col-md-12">
-									<input type="text" name="referer_price_discount" id="referer_price_discount" value="<?=$this->termek[referer_price_discount]?>" class="form-control">
-									<span class="input-group-addon">Ft (bruttó)</span>
-								</div>
-							</div>
-						</div>
-					</div>
 
 				</div>
 				<div class="con">
-					<h3>Alapadatok</h3>
+					<h3>Termék adatok</h3>
 					<div class="row">
-						<div class="form-group col-md-3">
+						<div class="form-group col-md-2">
 							<label for="cikkszam">Nagyker kód / Cikkszám</label>
 							<input class="form-control" id="cikkszam" type="text" value="<?=$this->termek['cikkszam']?>"  name="cikkszam">
 						</div>
-						<div class="form-group col-md-3">
+						<div class="form-group col-md-4">
 							<label for="nev">Termék neve*</label>
 							<input type="text" class="form-control" name="nev" id="nev" value="<?=$this->termek[nev]?>">
 						</div>
@@ -206,32 +191,42 @@
 					</div>
 
 					<div class="row">
-						<? if(false): ?>
 						<div class="form-group col-md-3">
-							<label for="meret">Méret</label>
-							<input type="text" class="form-control" name="meret" id="meret" value="<?=$this->termek['meret']?>">
+							<label for="szin">Típus variácó <?=\PortalManager\Formater::tooltip('Több variáció esetén variációk hozhatóak létre, melyet ennél az értéknél lehet megadni. Azonos típus azonosító törzskód és eltérő variácó meghatározásánál a rendszer automatikusan összekapcsolja a termékeket és átjárást biztosít a termék adatlapokon.<br>Pl.: zöld, piros, 16mm, 10 fm, 2x4x10mm, stb...')?></label>
+							<input type="text" class="form-control" name="szin" id="szin" value="<?=$this->termek['szin']?>">
+						</div>
+						<? if(true): ?>
+						<div class="form-group col-md-3">
+							<label for="meret">Kiszerelés <?=\PortalManager\Formater::tooltip('Termékenkét termékkapcsolat hozható létre, amennyiben több fajta kiszerelés van egy-egy azonos termék esetében. Adjuk meg a kiszerelést és ez alapján a vásárló válogathat.<br>Pl.: 1 liter, 1 vödör, 1 zsák, 25 kg, 100 db / csomag, stb...')?></label>
+							<input type="text" class="form-control" name="meret" id="meret" placeholder="1 darab, 25 liter, 100 db / csomag, stb..." value="<?=$this->termek['meret']?>">
 						</div>
 						<? endif; ?>
 						<div class="form-group col-md-3">
-							<label for="szin">Szín</label>
-							<input type="text" class="form-control" name="szin" id="szin" value="<?=$this->termek['szin']?>">
-						</div>
-						<div class="form-group col-md-3">
-							<label for="raktar_keszlet">Raktárkészlet</label>
+							<label for="raktar_keszlet">Raktárkészlet (mennyiség)</label>
 							<input type="number" class="form-control" name="raktar_keszlet" value="<?=$this->termek['raktar_keszlet']?>" id="raktar_keszlet">
-						</div>
-						<div class="form-group col-md-3">
-							<label for="fotermek">Főtermék <?=\PortalManager\Formater::tooltip('Több szín és méret esetén kijelölhetjük, hogy melyik legyen az alapértelmezett, ami megjelenjen a terméklistázásban. A Főtermék-nek NEM jelölt termékek nem fognak megjelenni a listában, hanem csak mint variáció a kapcsolódó terméklapon!')?></label>
-							<input type="checkbox" class="form-control" name="fotermek" id="fotermek" <?=($this->termek && $this->termek['fotermek'] == 1)?'checked="checked"':''?>>
 						</div>
 						<div class="form-group col-md-2">
 							<label for="sorrend">Sorrend</label>
 							<input type="number" class="form-control" name="sorrend" id="sorrend" value="<?=$this->termek['sorrend']?>">
 						</div>
+						<div class="form-group col-md-1">
+							<label for="fotermek">Főtermék <?=\PortalManager\Formater::tooltip('Több szín és méret esetén kijelölhetjük, hogy melyik legyen az alapértelmezett, ami megjelenjen a terméklistázásban. A Főtermék-nek NEM jelölt termékek nem fognak megjelenni a listában, hanem csak mint variáció a kapcsolódó terméklapon!')?></label>
+							<input type="checkbox" class="form-control" name="fotermek" id="fotermek" <?=($this->termek && $this->termek['fotermek'] == 1)?'checked="checked"':''?>>
+						</div>
 					</div>
 
 					<div class="row">
-						<div class="form-group col-md-12">
+						<div class="col-md-3 form-group">
+							<label for="alapertelmezett_kategoria">Alapértelmezett kategória <?=\PortalManager\Formater::tooltip('A termék elsődleges, alapértelmezett kategóriája.<br>Mindenképp legyen kiválasztva egy alapértelmezett kategória. Egyes beállítások ettől az értéktől függnek vagy válnak elérhetővé. Pl.: paraméterek.')?></label>
+							<select class="form-control" name="alapertelmezett_kategoria" id="alapertelmezett_kategoria">
+								<option value="">-- válasszon --</option>
+								<option value="" disabled="disabled"></option>
+								<? if( count($this->termek['in_cat_ids']) > 0 ): foreach ( $this->termek['in_cat_ids'] as $key => $kids ) { ?>
+									<option value="<?=$kids?>" <?=($kids == $this->termek['alapertelmezett_kategoria']) ? 'selected="selected"': ''?>><?=$this->termek['in_cat_names'][$key]?></option>
+								<? } endif;  ?>
+							</select>
+						</div>
+						<div class="form-group col-md-9">
 							<label for="kulcsszavak">Kulcsszavak: <?=\PortalManager\Formater::tooltip('A kulcsszavak meghatározása fontos dolog, mivel ezek alapján tud pontosabb keresési találatot kapni a felhasználó. <br> <strong>A kulcsszavakat szóközzel elválasztva adja meg. Pl.: fekete úszó rövidnadrág</strong>')?></label>
 							<input type="text" class="form-control" name="kulcsszavak" id="kulcsszavak" value="<?=$this->termek['kulcsszavak']?>">
 						</div>
@@ -256,7 +251,7 @@
 					<h3>Tulajdonságok</h3>
 					<div class="row np">
 						<div class="col-md-12">
-							<div class="form-group col-md-6">
+							<div class="form-group col-md-4">
 								<label for="szall">Szállítási idő*</label>
 								<select name="szallitasID" id="szall" class="form-control">
 									<option value="">-- válasszon --</option>
@@ -266,7 +261,7 @@
 									<? endforeach; ?>
 								</select>
 							</div>
-							<div class="form-group col-md-6 ">
+							<div class="form-group col-md-4">
 								<label for="keszlet">Állapot*</label>
 								<select name="keszletID" id="keszlet" class="form-control">
 									<option value="">-- válasszon --</option>
@@ -276,93 +271,90 @@
 									<? endforeach; ?>
 								</select>
 							</div>
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="form-group col-md-12">
-							<label for="garancia">Garancia (hónap; -1 = élettartam)</label>
-							<input class="form-control" type="number" id="garancia" value="<?=$this->termek['garancia_honap']?>" min="-1" name="garancia">
+							<div class="form-group col-md-4">
+								<label for="garancia">Garancia (hónap; -1 = élettartam)</label>
+								<input class="form-control" type="number" id="garancia" value="<?=$this->termek['garancia_honap']?>" min="-1" name="garancia">
+							</div>
 						</div>
 					</div>
 
 				</div>
 				<div class="con" ng-app="Documents" ng-controller="List" ng-init="init(<?=$this->termek['ID']?>)">
-				<h3>Csatolt dokumentumok, hivatkozások<em class="info">Csatolja hozzá ehhez a termékhez azokat a dokumentumokat, amelyek érdekesek vagy szükségesek lehetnek a vásárló részére.</em></h3>
-				<div class="row">
-					<div class="col-md-12">
-						<md-autocomplete
-			          md-selected-item="selectedItem"
-			          md-search-text-change="searchTextChange(searcher)"
-								md-selected-item-change="selectedItemChange(d)"
-			          md-search-text="searcher"
-			          md-selected-item-change=""
-			          md-items="d in findSearchDocs(searcher)"
-			          md-item-text="d.cim"
-			          md-min-length="0"
-								md-menu-class="docsautocomplist"
-			          placeholder="Dokumentum keresése...">
-			        <md-item-template>
-			          <div class="item">
-									<i class="fa fa-link" title="Hivatkozás" ng-show="(d.tipus == 'external')"></i><i title="Feltöltött dokumentum" class="fa fa-file-o" ng-show="(d.tipus == 'local')"></i> <strong>{{d.cim}}</strong> <span class="ext" ng-show="(d.tipus == 'local')" title="Fájlkiterjesztés">({{d.ext}})</span> <span class="keywords"><em>{{d.keywords}}</em></span>
-			          </div>
-			        </md-item-template>
-			      </md-autocomplete>
-					</div>
-				</div>
-				<h3>Csatolt dokumentumok listája</h3>
-
-				<div class="row" ng-show="docs_in_sync">
-					<div class="col-md-12">
-						<div class="alert alert-success">
-							Dokumentumok szinkronizálása folyamatban...<i class="fa fa-spin fa-spinner"></i>
+					<h3>Csatolt dokumentumok, hivatkozások<em class="info">Csatolja hozzá ehhez a termékhez azokat a dokumentumokat, amelyek érdekesek vagy szükségesek lehetnek a vásárló részére.</em></h3>
+					<div class="row">
+						<div class="col-md-12">
+							<md-autocomplete
+				          md-selected-item="selectedItem"
+				          md-search-text-change="searchTextChange(searcher)"
+									md-selected-item-change="selectedItemChange(d)"
+				          md-search-text="searcher"
+				          md-selected-item-change=""
+				          md-items="d in findSearchDocs(searcher)"
+				          md-item-text="d.cim"
+				          md-min-length="0"
+									md-menu-class="docsautocomplist"
+				          placeholder="Dokumentum keresése...">
+				        <md-item-template>
+				          <div class="item">
+										<i class="fa fa-link" title="Hivatkozás" ng-show="(d.tipus == 'external')"></i><i title="Feltöltött dokumentum" class="fa fa-file-o" ng-show="(d.tipus == 'local')"></i> <strong>{{d.cim}}</strong> <span class="ext" ng-show="(d.tipus == 'local')" title="Fájlkiterjesztés">({{d.ext}})</span> <span class="keywords"><em>{{d.keywords}}</em></span>
+				          </div>
+				        </md-item-template>
+				      </md-autocomplete>
 						</div>
 					</div>
-				</div>
+					<h3>Csatolt dokumentumok listája</h3>
 
-				<div class="docs-list">
-					<div class="loading-text" ng-show="loading">
-						<div class="alert alert-warning">
-							Becsatolt dokumentumok listájának betöltése folyamatban... <i class="fa fa-spin fa-spinner"></i>
-						</div>
-					</div>
-					<div class="empty-list-text" ng-show="!error && docs.length===0 && !loading">
-						Nincs csatolt dokumentum ehhez a termékhez.
-					</div>
-					<div class="alert alert-danger" ng-show="error">
-						{{error}}
-					</div>
-					<div class="docsautocomplist docs-inserted" ng-repeat="doc in docs" ng-show="!loading">
-						<div class="item">
-							<div class="del" title="Dokumentum eltávolítása">
-								<i class="fa fa-times" ng-click="removeDocument(doc.doc_id)"></i>
+					<div class="row" ng-show="docs_in_sync">
+						<div class="col-md-12">
+							<div class="alert alert-success">
+								Dokumentumok szinkronizálása folyamatban...<i class="fa fa-spin fa-spinner"></i>
 							</div>
-							<i class="fa fa-link" title="Hivatkozás" ng-show="(doc.tipus == 'external')"></i><i title="Feltöltött dokumentum" class="fa fa-file-o" ng-show="(doc.tipus == 'local')"></i> <strong>{{doc.cim}}</strong> <span class="ext" ng-show="(doc.tipus == 'local')" title="Fájlkiterjesztés">({{doc.ext}})</span> <span class="keywords"><em>{{doc.keywords}}</em></span>
+						</div>
+					</div>
+
+					<div class="docs-list">
+						<div class="loading-text" ng-show="loading">
+							<div class="alert alert-warning">
+								Becsatolt dokumentumok listájának betöltése folyamatban... <i class="fa fa-spin fa-spinner"></i>
+							</div>
+						</div>
+						<div class="empty-list-text" ng-show="!error && docs.length===0 && !loading">
+							Nincs csatolt dokumentum ehhez a termékhez.
+						</div>
+						<div class="alert alert-danger" ng-show="error">
+							{{error}}
+						</div>
+						<div class="docsautocomplist docs-inserted" ng-repeat="doc in docs" ng-show="!loading">
+							<div class="item">
+								<div class="del" title="Dokumentum eltávolítása">
+									<i class="fa fa-times" ng-click="removeDocument(doc.doc_id)"></i>
+								</div>
+								<i class="fa fa-link" title="Hivatkozás" ng-show="(doc.tipus == 'external')"></i><i title="Feltöltött dokumentum" class="fa fa-file-o" ng-show="(doc.tipus == 'local')"></i> <strong>{{doc.cim}}</strong> <span class="ext" ng-show="(doc.tipus == 'local')" title="Fájlkiterjesztés">({{doc.ext}})</span> <span class="keywords"><em>{{doc.keywords}}</em></span>
+							</div>
 						</div>
 					</div>
 				</div>
+				<div class="con">
+					<h3>Meta beállítások<em class="info">Közösségi oldalakon és keresőoptimalizálákor megjelenő adatok. Ha üresen hagyjuk, akkor az alapértelmezett adatok jelennek meg.</em></h3>
+					<div class="row">
+						<div class="col-md-12">
+							<label for="meta_title">Meta főcím / termékcím:</label>
+							<input type="text" class="form-control" name="meta_title" maxlength="70" id="meta_title" value="<?=$this->termek['meta_title']?>">
+						</div>
+					</div>
+					<br>
+					<div class="row">
+						<div class="col-md-12">
+							<label for="meta_title">Meta leírás:</label>
+							<textarea name="meta_desc" class="form-control no-editor" maxlength="150" id="meta_desc"><?=$this->termek['meta_desc']?></textarea>
+						</div>
+					</div>
 				</div>
 	    </div>
 
 	    <div class="col-md-4"  style="padding-right:0;">
-
 	   		<? if( true ): ?>
-	    	<div class="con">
-	        	<h3>Alapértelmezett kategória <?=\PortalManager\Formater::tooltip('Válasszuk ki az alapértelmezett termék kategóriát. A kiválasztott alapértelmezett kategória lesz a terméknél a hivatkozó kategória. Pl.: termék alaplapon, egyéb termék ajánlatok')?> <em class="info">A termék elsődleges, alapértelmezett kategóriája.</em></h3>
-	            <div class="row" style="">
-					<div class="col-md-12">
-						<select class="form-control" name="alapertelmezett_kategoria">
-							<option value="">-- válasszon --</option>
-							<option value="" disabled="disabled"></option>
-							<? if( count($this->termek['in_cat_ids']) > 0 ): foreach ( $this->termek['in_cat_ids'] as $key => $kids ) { ?>
-								<option value="<?=$kids?>" <?=($kids == $this->termek['alapertelmezett_kategoria']) ? 'selected="selected"': ''?>><?=$this->termek['in_cat_names'][$key]?></option>
-							<? } endif;  ?>
-
-						</select>
-					</div>
-	            </div>
-	        </div>
-	        <div class="con" style="display:block;">
+	      <div class="con" style="display:block;">
 				<h3>Kategória, amibe megjelenjen (<?=count($this->termek['in_cat_ids'])?>) <em class="info"><a href="/kategoriak" target="_blank"><i class="fa fa-gear"></i> kategóriák szerkesztése</a></em></h3>
 				<div style="padding:0 0 15px 15px;">
 					<div class="tree overflowed">
@@ -374,10 +366,10 @@
 					</div>
 				</div>
 			</div>
-	    	<? endif; ?>
+	    <? endif; ?>
 
 			<? if( $this->termek['alapertelmezett_kategoria'] ): ?>
-	     	<div class="con">
+	     	<div class="con con-extra">
 	     		<div style="float: right;"><a href="/kategoriak/parameterek">paraméter beállítások <i class="fa fa-gear"></i></a></div>
             	<h3>Paraméterek</h3>
                 <div style="">
@@ -415,7 +407,7 @@
 
 	</form>
 
-            <div class="con nb">
+            <div class="con con-extra">
 				<h3>
 					<i class="fa fa-upload hbtn" title="új kép feltöltése" key="upImg"></i>
 					Képek (<?=count($this->termek[images])?>)
@@ -455,7 +447,7 @@
 	        </div>
 
 			<? if( true ): ?>
-	        <div class="con nb">
+	        <div class="con con-extra">
             	<h3>Termék másolat <?=\PortalManager\Formater::tooltip('Javasolt termék variációhoz, ahol a termék adatai nagy részében megegyeznek.')?> <em class="info">Lemásolhatja tetszőletes számban a terméket</em></h3>
                 <div class="row" style="">
 					<div class="col-md-12">
@@ -476,7 +468,7 @@
 
 
 			<? if( true ): ?>
-	        <div class="con nb">
+	        <div class="con con-extra">
             	<h3>Ajánlott termékek <em class="info">Fűzzön a termékhez ajánlott termékeket</em></h3>
                	<div class="row">
                		<div class="col-md-12">

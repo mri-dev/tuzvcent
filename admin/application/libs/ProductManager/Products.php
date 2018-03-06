@@ -288,6 +288,9 @@ class Products
 			$letoltesek		= addslashes( $product->getDownloads() );
 			$garancia 		= ( $product->getGuarantee() ) ?: NULL;
 			$link_list		= $product->getLinks();
+			$meta_title 	= addslashes( $product->getMetaTitle() );
+			$meta_desc 	 	= addslashes( $product->getMetaDesc() );
+			$nev 			= addslashes( $product->getName() );
 			$linkek 		= '';
 			$kulcsszavak	= (!$product->getVariable('kulcsszavak')) ? NULL : $product->getVariable('kulcsszavak');
 			$raktar_articleid	= (!$product->getVariable('raktar_articleid')) ? NULL : $product->getVariable('raktar_articleid');
@@ -323,6 +326,8 @@ class Products
 					'leiras' => $leiras,
 					'bankihitel_leiras' => $bankihitel_leiras,
 					'rovid_leiras' => $rovid_leiras,
+					'meta_title' => $meta_title,
+					'meta_desc' => $meta_desc,
 					'marketing_leiras' => $marketing_leiras,
 					'letoltesek' => $letoltesek,
 					'lathato' => $lathato,
@@ -817,8 +822,10 @@ class Products
 
 		// GROUP BY
 		if ( !$admin_listing ) {
-			if( isset($arg['favorite']) && $arg['favorite'] === true ) {
-
+			if( isset($arg['favorite']) ) {
+				$add = "GROUP BY p.ID";
+				$whr .= $add;
+				$qry .= $add;
 			} else {
 				if( !empty($arg['meret']) ) {
 					$add = "GROUP BY p.raktar_articleid";

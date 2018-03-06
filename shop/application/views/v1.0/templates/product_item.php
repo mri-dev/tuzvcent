@@ -58,6 +58,9 @@
     </div>
     <?php if ($show_variation): ?>
     <div class="variation">
+      <?php if (isset($meret)): ?>
+        <span class="kiszereles" title="Kiszerelés"><?=$meret?>:</span>
+      <?php endif; ?>
       <strong title="Termék variáció"><?=$szin?></strong>
     </div>
     <?php endif; ?>

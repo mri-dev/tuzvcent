@@ -36,7 +36,7 @@ input[type=checkbox]{
 	margin:0;
 }
 body{
-	background:#FCFCFC;
+	background: #f4f4f4;
 	font-family:'myriadpro', 'PT Sans', sans-serif;
 	font-size:1.43em;
 	height: 100%;
@@ -326,7 +326,7 @@ body.blured-bg #content .container-fluid{
 	/*background:#ededed;*/
 	border-style:solid;
 	border-width:18px;
-	border-color: transparent #FCFCFC transparent transparent;
+	border-color: transparent #f4f4f4 transparent transparent;
 	width:16px;
 	height:100%;
 	position:absolute;
@@ -385,6 +385,12 @@ body.blured-bg #content .container-fluid{
 	color:#737373;
 	margin-bottom:5px;
 }
+.con.con-extra {
+  background: #f9f9f9;
+  border: 2px solid #eae8e8;
+  border-top: 5px solid #c9e0e8 !important;
+  color: #505050;
+}
 
 .con h2, .con h3 {
 	color:#474343;
@@ -394,6 +400,9 @@ body.blured-bg #content .container-fluid{
 }
 .con h3{
 	font-size:18px;
+}
+.con.con-extra h3 {
+  color: #5397af;
 }
 .innerContent > .row > div[class*=col-md-] {
 	padding:0 5px 0 0;
@@ -1301,8 +1310,8 @@ div.np{
 	margin: 15px;
 	font-weight:400;
 	text-transform:uppercase;
-	color:#888;
-	font-size:18px;
+  color: #de676c;
+  font-size: 1.56em;
 }
 .create-product h3 .info{
 	text-transform: none;
@@ -1310,10 +1319,47 @@ div.np{
 	display: block;
 	margin-top:4px;
 }
-.create-product .row > div[class^=col-]{
 
+.create-product .checkins{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  margin: -5px;
 }
-
+.create-product .checkins > div{
+  flex-basis: calc(100%/4);
+  padding: 5px;
+}
+.create-product .checkins > div label{
+  background: #f1f1f1;
+  padding: 10px 10px 10px 35px;
+  display: block;
+  cursor: pointer;
+  position: relative;
+}
+.create-product .checkins > div input[type=checkbox]{
+  display: none;
+}
+.create-product .checkins > div input[type=checkbox] + label:before{
+  content:"\f096";
+  font-family: 'FontAwesome';
+  position: absolute;
+  color: #afafaf;
+  font-size: 20px;
+  top: 50%;
+  left: 10px;
+  -webkit-transform:translateY(-50%);
+          transform:translateY(-50%);
+}
+.create-product .checkins > div input[type=checkbox]:checked + label{
+  background: #51bd73;
+  color: white;
+}
+.create-product .checkins > div input[type=checkbox]:checked + label:before{
+  color: white;
+  content:"\f046";
+}
 .create-product label{
 	color:#222;
 	font-size:13px;
@@ -1326,18 +1372,7 @@ div.np{
 .create-product .con.nb{
 	border-top:1px solid #ddd;
 }
-.create-product .checkprim label{
-	background:#eee;
-	border:1px solid #ddd;
-	padding:5px 10px;
-	display:block;
-	width:100%;
-	text-align:left;
-	margin-bottom:10px;
-}
-.create-product .checkprim > div{
-	text-align:center;
-}
+
 .create-product .pdright{
 	padding:0 15px;
 }
