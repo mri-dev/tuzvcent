@@ -76,7 +76,7 @@
 						echo '<i style="width:15px;" class="fa fa-file"></i>';
 					break;
 					case 'requesttermprice':
-						echo '<i style="width:15px;" class="fa fa-cash"></i>';
+						echo '<i style="width:15px;" class="fa fa-archive"></i>';
 					break;
 				}
 			?>

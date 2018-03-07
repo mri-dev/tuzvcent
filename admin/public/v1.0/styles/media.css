@@ -107,7 +107,9 @@ div[class*=col-p-5]{
 .con > form > .row {
 	margin: 0 -15px;
 }
-
+.dashboard .row{
+  margin-bottom: 35px;
+}
 button, input[type=button], input[type=submit]{
 	color:#ffffff;
 	background: #fab108;
@@ -403,9 +405,6 @@ body.blured-bg #content .container-fluid{
 }
 .con.con-extra h3 {
   color: #5397af;
-}
-.innerContent > .row > div[class*=col-md-] {
-	padding:0 5px 0 0;
 }
 .con-del {
 	border-top:3px solid #D45B5B;
@@ -988,7 +987,7 @@ button.watch i{
 	color:white;
 }
 div.divider{
-	background:#ddd;
+	background: #ececec;
 	height:1px;
 }
 div.np{
@@ -1004,7 +1003,9 @@ div.np{
 .box{
 	background:#fff;
 	position:relative;
-	border:1px solid #d8d8d8;
+	border:1px solid #e2e2e2;
+  border-radius: 3px;
+  overflow: hidden;
 }
 .box > .head{
 	position:relative;
@@ -1013,8 +1014,8 @@ div.np{
 	padding:5px 10px;
 	text-transform:uppercase;
 	overflow:hidden;
-	background:#67DCFD;
-	color: white;
+  background: #f3f3f3;
+  color: #808080;
 }
 .box .box-head{
 	background:#eaeaea;
@@ -1031,17 +1032,17 @@ div.np{
 	background:#d45b5b;
 	color:white;
 }
-.box.orange > .head{
-	background:#FF8202;
-	color:white;
+.box.orange > .head .n,
+.box.orange > .head .txt > div:last-child{
+	color: #ff901d;
 }
-.box.blue > .head{
-	background:#0093BC;
-	color:white;
+.box.blue > .head .n,
+.box.blue > .head .txt > div:last-child{
+	color:#0093BC;
 }
-.box.green > .head{
-	background:#98bc72;
-	color:white;
+.box.green > .head .n,
+.box.green > .head .txt > div:last-child{
+	color: #13b73e;
 }
 .box > .head:before{
 	z-index:1;
@@ -1051,9 +1052,9 @@ div.np{
 	content:"";
 	height:100%;
 	width:100%;
-	-moz-box-shadow:inset 200px 0 0 #fff;
-	-webkit-box-shadow:inset 200px 0 0 #fff;
-	box-shadow:inset 200px 0 0 #fff;
+	-moz-box-shadow:inset 200px 0 0 #e2e2e2;
+	-webkit-box-shadow:inset 200px 0 0 #e2e2e2;
+	box-shadow:inset 200px 0 0 #e2e2e2;
 	-moz-transform:skewX(-25deg);
 	-webkit-transform:skewX(-25deg);
 	-o-transform:skewX(-25deg);
@@ -1068,6 +1069,7 @@ div.np{
 	font-size:45px;
 	line-height:45px;
 	padding-right:10px;
+  color: #141414;
 }
 .box > .head > .btn{
 	position:absolute;
@@ -1077,7 +1079,7 @@ div.np{
 }
 .box > .head > .btn > a{
 	font-size:30px;
-	color:white;
+	color:#a0a0a0;
 	opacity:0.2;
 	filter:alpha(opacity=20);
 	display:block;
@@ -1109,9 +1111,18 @@ div.np{
 .box > .c{
 	position:relative;
 	overflow:hidden;
-	padding:10px 0;
+	padding:0;
 	font-size:12px;
 	color:#888;
+}
+.box > .c .bgtxt{
+	font-size: 1.3em;
+}
+.box > .c .no-item{
+	font-size: 1.2em;
+  text-align: center;
+  padding: 50px;
+  color: #b7b7b7;
 }
 .box > .c:before{
 	z-index:1;
@@ -1121,9 +1132,9 @@ div.np{
 	content:"";
 	height:100%;
 	width:100%;
-	-moz-box-shadow:inset 200px 0 0 #aaa;
-	-webkit-box-shadow:inset 200px 0 0 #aaa;
-	box-shadow:inset 200px 0 0 #aaa;
+	-moz-box-shadow:inset 200px 0 0 #e8e8e8;
+	-webkit-box-shadow:inset 200px 0 0 #e8e8e8;
+	box-shadow:inset 200px 0 0 #e8e8e8;
 	-moz-transform:skewX(-25deg);
 	-webkit-transform:skewX(-25deg);
 	-o-transform:skewX(-25deg);
@@ -1134,12 +1145,11 @@ div.np{
 	pointer-events:none;
 }
 .box > .c > .row{
-	margin-bottom:10px;
-	padding:2px 0;
+	padding: 15px 0;
+  margin: 0 !important;
 }
 .box > .c > .row:hover{
-
-	background:#eee;
+	background: #fafafa;
 }
 .box > .c > .row:last-child{
 	margin:0;
@@ -1154,9 +1164,6 @@ div.np{
 	font-size:12px;
 	margin:10px;
 	margin-top:30px;
-}
-.box > .c > .divider{
-	margin-bottom:8px;
 }
 .box > .c > .divider.clear{
 	margin:0;
