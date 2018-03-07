@@ -11,6 +11,7 @@
 
 <h1>Dashboard</h1>
 <div class="clr"></div>
+
 	<? if(true): ?>
   <div class="row">
     <div class="col-md-4">
@@ -104,12 +105,6 @@
                 </div>
             </div>
             <div class="c">
-                <div class="row">
-                  <div class="col-md-2">Feladó</div>
-                  <div class="col-md-3">Téma</div>
-                  <div class="col-md-3">Időpont</div>
-                  <div class="col-md-4">Kapcsolt elem</div>
-                </div>
                 <? if(count($this->stats[lastMessages][data]) > 0): ?>
                 <? foreach($this->stats[lastMessages][data] as $d): ?>
                 <div class="row">
@@ -161,7 +156,7 @@
             <div class="head">
                 <div class="btn"><a href="/forgalom"><i class="fa fa-arrow-circle-right"></i></a></div>
                 <div class="txt">
-                    <div><h4><i class="fa fa-money"></i> <strong>FORGALOM</strong> ADATOK</h4></div>
+                    <div><h4><strong>FORGALOM</strong> ADATOK</h4></div>
                 </div>
             </div>
             <div class="c traffic-info" style="padding:0;">
@@ -218,13 +213,13 @@
         	<div class="head">
             	<div class="btn"><a title="Teljes lista megtekintése" href="/stat/termek"><i class="fa fa-arrow-circle-right"></i></a></div>
                 <div class="txt">
-                	<div><h4><i class="fa fa-eye"></i> <strong>TERMÉK NÉZETTSÉG</strong> STATISZTIKA</h4></div>
+                	<div><h4><strong>TERMÉK NÉZETTSÉG</strong> STATISZTIKA</h4></div>
                 </div>
             </div>
             <div class="c">
             	<? foreach($this->stats[termekView][data] as $d): ?>
                  <div class="row">
-                	<div class="col-md-3"><strong><?=$d[me]?></strong> <span title="Oldal betöltés / Megjelenés"><i class="fa fa-eye"></i></span></div>
+                	<div class="col-md-3"><strong><?=$d[me]?></strong> <span title="Oldal betöltés / Megjelenés">AV</span></div>
                     <div class="col-md-9 title">
                         <strong><a href="/termekek/t/edit/<?=$d[termekID]?>"><?=$d[nev]?></a></strong> &nbsp; <a href="<?=HOMEDOMAIN.'termek/'.\PortalManager\Formater::makeSafeUrl($d['nev'],'_-'.$d['termekID'])?>" target="_blank" style="color:black;" title="Publikus adatlap"><i class="fa fa-external-link"></i></a>
                         <div class="stat-feat-info">
@@ -249,7 +244,7 @@
           	<div class="head">
               	<div class="btn"><a title="Teljes lista megtekintése"  href="/stat/kereses"><i class="fa fa-arrow-circle-right"></i></a></div>
                   <div class="txt">
-                  	<div><h4><i class="fa fa-search"></i> <strong>TERMÉK KERESÉS</strong> STATISZTIKA</h4></div>
+                  	<div><h4><strong>TERMÉK KERESÉS</strong> STATISZTIKA</h4></div>
                   </div>
               </div>
               <div class="c">
@@ -280,7 +275,7 @@
           	<div class="head">
               	<div class="btn"><a title="Teljes lista megtekintése"  href="/stat/kategoria"><i class="fa fa-arrow-circle-right"></i></a></div>
                   <div class="txt">
-                  	<div><h4><i class="fa fa-bars"></i> <strong>KATEGÓRIA NÉZETTSÉG</strong> STATISZTIKA</h4></div>
+                  	<div><h4><strong>KATEGÓRIA NÉZETTSÉG</strong> STATISZTIKA</h4></div>
                   </div>
               </div>
               <div class="c">
