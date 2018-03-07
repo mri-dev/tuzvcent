@@ -1,5 +1,4 @@
 <div style="float:right;">
-    <a href="/felhasznalok/containers" class="btn btn-default"><i class="fa fa-circle-thin"></i> felhasználói körök</a>
     <a href="/account/?t=create&ret=/felhasznalok" class="btn btn-primary"><i class="fa fa-plus"></i> új felhasználó</a>
 </div>
 <h1>Felhasználók <span><strong><?=Helper::cashFormat($this->users[info][total_num])?> db</strong> felhasználó <? if($_COOKIE[filtered] == '1'): ?><span class="filtered">Szűrt listázás <a href="/<?=$this->gets[0]?>/clearfilters/" class="btn btn-danger">eltávolítás</a></span><? endif; ?></span></h1>
@@ -21,8 +20,7 @@
             <th width="200">E-mail</th>
             <th width="250">Számlázási adat</th>
             <th width="250">Szállítási adat</th>
-            <th width="100" title="Megrendeléseinek összesített értéke">Fizetett össz.</th>            
-            <th width="150">Hozott forgalom (ajánló kóddal)</th>
+            <th width="100" title="Megrendeléseinek összesített értéke">Fizetett össz.</th>
             <th width="50">Kedvezménye</th>
             <th width="100">Engedélyezve</th>
             <th width="100">Aktiválva</th>
@@ -36,7 +34,6 @@
     		<td><input type="text" name="ID" class="form-control" value="<?=$_COOKIE[filter_ID]?>" /></td>
     		<td><input type="text" name="nev" class="form-control" placeholder="felhasználó neve..." value="<?=$_COOKIE[filter_nev]?>" /></td>
             <td><input type="text" name="email" class="form-control" placeholder="e-mail cím..." value="<?=$_COOKIE[filter_email]?>" /></td>
-            <td></td>
             <td></td>
             <td></td>
             <td></td>
@@ -68,8 +65,8 @@
                 <? if( $d['total_data']['szamlazasi_adat'] ): ?>
                     <strong><?=$d['total_data']['szamlazasi_adat']['nev']?></strong><br>
 					<?=$d['total_data']['szamlazasi_adat']['irsz']?> <?=$d['total_data']['szamlazasi_adat']['city']?>, <?=$d['total_data']['szamlazasi_adat']['uhsz']?>
-                <? else: ?> 
-                    &mdash; hiányzó adat &mdash;  
+                <? else: ?>
+                    &mdash; hiányzó adat &mdash;
                 <? endif; ?>
             </td>
             <td>
@@ -77,19 +74,12 @@
                     <strong><?=$d['total_data']['szallitasi_adat']['nev']?></strong><br>
                     <?=$d['total_data']['szallitasi_adat']['irsz']?> <?=$d['total_data']['szallitasi_adat']['city']?>, <?=$d['total_data']['szallitasi_adat']['uhsz']?> <br>
                     Telefon: <?=$d['total_data']['szallitasi_adat']['phone']?>
-                <? else: ?> 
-                    &mdash; hiányzó adat &mdash;  
-                <? endif; ?>                
+                <? else: ?>
+                    &mdash; hiányzó adat &mdash;
+                <? endif; ?>
             </td>
             <td align="center">
             	<?=Helper::cashFormat($d[totalOrderPrices])?> Ft
-            </td>
-            <td align="center">
-                  <?php if ($d['totalReferredOrderPrices']): ?>
-                    <a target="_blank" href="/partnerSale?partner=<?=$d[total_data][data][refererID]?>"><?=Helper::cashFormat($d['totalReferredOrderPrices'])?> Ft</a>           
-                <? else: ?>
-                n.a.
-                <?php endif; ?>
             </td>
             <td align="center">
             	<?=$d[total_data][kedvezmeny]?>%
@@ -99,9 +89,9 @@
             <td align="center"><?=Helper::softDate($d[utoljara_belepett])?>	<br><em>(<?=Helper::distanceDate($d[utoljara_belepett])?>)</em></td>
             <td align="center"><?=Helper::softDate($d[regisztralt])?> <br><em>(<?=Helper::distanceDate($d[regisztralt])?>)</em></td>
             <td class="center">
-                <div class="dropdown">               
+                <div class="dropdown">
                     <i class="fa fa-gear dropdown-toggle" title="Beállítások" id="dm<?=$d['ID']?>" data-toggle="dropdown"></i>
-                      <ul class="dropdown-menu" role="menu" aria-labelledby="dm<?=$d['ID']?>">  
+                      <ul class="dropdown-menu" role="menu" aria-labelledby="dm<?=$d['ID']?>">
                         <li role="presentation"><a role="menuitem" tabindex="-1" href="/account/?t=edit&ID=<?=$d['ID']?>&ret=<?=$_SERVER[REQUEST_URI]?>">Szerkesztés <i class="fa fa-pencil"></i></a></li>
                       </ul>
                 </div>
@@ -128,20 +118,20 @@
     $(function(){
         $('.termeklista i.vtgl').click(function(){
             visibleToggler($(this));
-        });     
+        });
     })
     function visibleToggler(e){
-        var id      = e.attr('fid'); 
+        var id      = e.attr('fid');
         var src     = e.attr('class').indexOf('check');
         var mode    = e.attr('mode');
-        
+
         if(src >= 0){
             e.removeClass('fa-check').addClass('fa-spinner fa-spin');
             doChange(e, mode, id, false);
         }else{
             e.removeClass('fa-times').addClass('fa-spinner fa-spin');
             doChange(e, mode, id, true);
-        }   
+        }
     }
     function doChange(e, mode, id, show){
         var v = (show) ? '1' : '0';

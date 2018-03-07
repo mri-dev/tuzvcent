@@ -30,7 +30,7 @@
 						</div>
 					</div>
 
-					<br>				
+					<br>
 					<h3 style="margin: 0 0 5px 0;">Számlázási adatok</h3>
 					<div class="divider" style="margin-bottom: 10px;"></div>
 					<div class="row">
@@ -41,13 +41,13 @@
 						<div class="col-sm-6">
 							<label for="data_felhasznalo_adatok_szamlazas_state">Megye*</label>
 							<select name="data[felhasznalo_adatok][szamlazas_state]" class="form-control" id="data_felhasznalo_adatok_szamlazas_state" required>
-	                            <option value="" selected="selected">-- válasszon --</option>
-	                            <option value="" disabled="disabled"></option>
-	                            <? foreach( $this->states as $s ): ?>
-	                                <option value="<?=$s?>" <?=($s==$data[szamlazas_state])?'selected="selected"':''?>><?=$s?></option>
-	                            <? endforeach; ?>
-	                        </select>
-						</div>					
+                  <option value="" selected="selected">-- válasszon --</option>
+                  <option value="" disabled="disabled"></option>
+                  <? foreach( $this->states as $s ): ?>
+                      <option value="<?=$s?>" <?=($s==$data[szamlazas_state])?'selected="selected"':''?>><?=$s?></option>
+                  <? endforeach; ?>
+              </select>
+						</div>
 					</div>
 					<br>
 					<div class="row">
@@ -64,8 +64,8 @@
 							<input type="text" id="data_felhasznalok_uhsz" class="form-control" name="data[felhasznalo_adatok][szamlazas_uhsz]" value="<?=$data[szamlazas_uhsz]?>" required>
 						</div>
 					</div>
-					
-					<br>				
+
+					<br>
 					<h3 style="margin: 0 0 5px 0;">Szállítási adatok</h3>
 					<div class="divider" style="margin-bottom: 10px;"></div>
 					<div class="row">
@@ -76,13 +76,13 @@
 						<div class="col-sm-6">
 							<label for="data_felhasznalo_adatok_szallitas_state">Megye*</label>
 							<select name="data[felhasznalo_adatok][szallitas_state]" class="form-control" id="data_felhasznalo_adatok_szallitas_state" required>
-	                            <option value="" selected="selected">-- válasszon --</option>
-	                            <option value="" disabled="disabled"></option>
-	                            <? foreach( $this->states as $s ): ?>
-	                                <option value="<?=$s?>" <?=($s==$data[szallitas_state])?'selected="selected"':''?>><?=$s?></option>
-	                            <? endforeach; ?>
-	                        </select>
-						</div>					
+                    <option value="" selected="selected">-- válasszon --</option>
+                    <option value="" disabled="disabled"></option>
+                    <? foreach( $this->states as $s ): ?>
+                        <option value="<?=$s?>" <?=($s==$data[szallitas_state])?'selected="selected"':''?>><?=$s?></option>
+                    <? endforeach; ?>
+                </select>
+						</div>
 					</div>
 					<br>
 					<div class="row">
@@ -105,31 +105,18 @@
 							<label for="data_felhasznalo_adatok_szallitas_phone">Telefonszám</label>
 							<input type="text" id="data_felhasznalok_phone" class="form-control" name="data[felhasznalo_adatok][szallitas_phone]" value="<?=$data[szallitas_phone]?>">
 						</div>
-					</div>					
+					</div>
 					<br>
 					<div class="row">
 						<div class="col-sm-12">
-							<label for="data_felhasznalo_user_group">Felhasználó csoport</label>
+							<label for="data_felhasznalo_user_group">Vásárlói csoport</label>
 							<select name="data[felhasznalok][user_group]" class="form-control" id="data_felhasznalo_user_group" required>
-	                            <option value="" selected="selected">-- válasszon --</option>
-	                            <option value="" disabled="disabled"></option>
-	                            <? foreach( $this->user_groupes as $key => $value ): ?>
-	                                <option value="<?=$key?>" <?=($key==$data[user_group])?'selected="selected"':''?>><?=$value?></option>
-	                            <? endforeach; ?>
-	                        </select>
-						</div>
-					</div>				
-					<br>
-					<div class="row">
-						<div class="col-sm-12">
-							<label for="data_felhasznalo_show_on_facelist">Kolléga listában megjelen</label>
-							<select name="data[felhasznalo_adatok][show_on_facelist]" class="form-control" id="data_felhasznalo_show_on_facelist" required>
-	                            <option value="" selected="selected">-- válasszon --</option>
-	                            <option value="" disabled="disabled"></option>
-	                            <? foreach( array( 0 => 'Nem', 1 => 'Igen' ) as $key => $value ): ?>
-	                                <option value="<?=$key?>" <?=($key==$data[show_on_facelist])?'selected="selected"':''?>><?=$value?></option>
-	                            <? endforeach; ?>
-	                        </select>
+                  <option value="" selected="selected">-- válasszon --</option>
+                  <option value="" disabled="disabled"></option>
+                  <? foreach( $this->user_groupes as $key => $value ): ?>
+                      <option value="<?=$key?>" <?=($key==$data[user_group])?'selected="selected"':''?>><?=$value?></option>
+                  <? endforeach; ?>
+              </select>
 						</div>
 					</div>
 				</div>
@@ -148,7 +135,7 @@
 							<div class="col-sm-12">
 								<label for="data_felhasznalo_adatok_company_name">Cég neve</label>
 								<input type="text" id="data_felhasznalo_adatok_company_name" class="form-control" name="data[felhasznalo_adatok][company_name]" value="<?=$data[company_name]?>">
-							</div>				
+							</div>
 						</div>
 						<br>
 						<div class="row">
@@ -159,7 +146,7 @@
 							<div class="col-sm-6">
 								<label for="data_felhasznalo_adatok_company_hq">Cég székhelye</label>
 								<input type="text" id="data_felhasznalo_adatok_company_hq" class="form-control" name="data[felhasznalo_adatok][company_hq]" value="<?=$data[company_hq]?>">
-							</div>					
+							</div>
 						</div>
 						<br>
 						<div class="row">
@@ -170,7 +157,7 @@
 							<div class="col-sm-6">
 								<label for="data_felhasznalo_adatok_company_bankszamlaszam">Bankszámlaszám</label>
 								<input type="text" id="data_felhasznalo_adatok_company_bankszamlaszam" class="form-control" name="data[felhasznalo_adatok][company_bankszamlaszam]" value="<?=$data[company_bankszamlaszam]?>">
-							</div>					
+							</div>
 						</div>
 					</div>
 				</div>
@@ -188,7 +175,7 @@
 								<label for="data_felhasznalo_adatok_casadapont_tanacsado_profil">Mellkép (arckép)</label>
 								<input type="file" id="data_felhasznalo_adatok_casadapont_tanacsado_profil" class="form-control" name="profil[]">
 								<div class="right"><img src="/<?=$data['casadapont_tanacsado_profil']?>" style="width: 150px;"></div>
-							</div>					
+							</div>
 						</div>
 					</div>
 				</div>

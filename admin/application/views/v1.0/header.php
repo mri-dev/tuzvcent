@@ -183,9 +183,11 @@
                 <li class="<?=($this->gets[0] == 'termekek')?'on':''?>"><a href="/termekek" title="Termékek"><span class="ni">2</span><i class="fa fa-cubes"></i> Termékek</a></li>
                 <!--<li class="<?=($this->gets[0] == 'lookbook')?'on':''?>"><a href="/lookbook" title="Lookbook"><span class="ni">2</span><i class="fa fa-book"></i> Lookbook</a></li>-->
                 <li class="<?=($this->gets[0] == 'felhasznalok')?'on':''?>"><a href="/felhasznalok" title="Felhasználók"><span class="ni">2</span><i class="fa fa-group"></i> Felhasználók</a></li>
+                <?php if (false): ?>
                 <? if($this->gets[0] == 'felhasznalok' || ($this->gets[0] == 'felhasznalok' && $this->gets[1] == 'containers') || ($this->gets[0] == 'felhasznalok' && $this->gets[1] == 'container_new')) : ?>
                 <li class="<?=(($this->gets[0] == 'felhasznalok' && $this->gets[1] == 'containers') || ($this->gets[0] == 'felhasznalok' && $this->gets[1] == 'container_new'))?'on':''?> sub"><a href="/felhasznalok/containers" title="Felhasználói körök"><span class="ni">2</span> Felhasználói körök</a></li>
             	  <? endif; ?>
+                <? endif; ?>
                 <?php if (false): ?>
                 <li class="<?=($this->gets[0] == 'partnerek')?'on':''?>"><a href="/partnerek" title="Partnerek"><span class="ni">2</span><i class="fa fa-group"></i> Partnerek</a></li>
                 <li class="<?=($this->gets[0] == 'uzletek')?'on':''?>"><a href="/uzletek" title="Üzletek"><span class="ni">2</span><i class="fa fa-home"></i> Üzletek</a></li>

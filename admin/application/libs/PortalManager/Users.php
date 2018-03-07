@@ -24,12 +24,11 @@ class Users
 	const USERGROUP_PARTNER		= 'partner';
 	const USERGROUP_RESELLER 	= 'reseller';
 	const USERGROUP_SALES 		= 'sales';
+	const USERGROUP_COMPANY 	= 'company';
 
 	private $user_groupes = array(
-		'user' 		=> 'Felhasználók',
-		'partner' 	=> 'Partner (besorolás előtt, alapé.)',
-		'reseller' 	=> 'Viszonteladó',
-		'sales' 	=> 'Üzletkötő'
+		'user' => 'Magánszemély',
+		'company' => 'Cég'
 	);
 
 	public 	$user 		= false;

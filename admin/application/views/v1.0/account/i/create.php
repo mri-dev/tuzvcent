@@ -29,7 +29,7 @@
 						</div>
 					</div>
 
-					<br>				
+					<br>
 					<h3 style="margin: 0 0 5px 0;">Számlázási adatok</h3>
 					<div class="divider" style="margin-bottom: 10px;"></div>
 					<div class="row">
@@ -46,7 +46,7 @@
 	                                <option value="<?=$s?>" <?=($s==$_POST[data][felhasznalo_adatok][szamlazas_state])?'selected="selected"':''?>><?=$s?></option>
 	                            <? endforeach; ?>
 	                        </select>
-						</div>					
+						</div>
 					</div>
 					<br>
 					<div class="row">
@@ -63,8 +63,8 @@
 							<input type="text" id="data_felhasznalok_uhsz" class="form-control" name="data[felhasznalo_adatok][szamlazas_uhsz]" value="<?=$_POST[data][felhasznalo_adatok][szamlazas_uhsz]?>" required>
 						</div>
 					</div>
-					
-					<br>				
+
+					<br>
 					<h3 style="margin: 0 0 5px 0;">Szállítási adatok</h3>
 					<div class="divider" style="margin-bottom: 10px;"></div>
 					<div class="row">
@@ -81,7 +81,7 @@
 	                                <option value="<?=$s?>" <?=($s==$_POST[data][felhasznalo_adatok][szallitas_state])?'selected="selected"':''?>><?=$s?></option>
 	                            <? endforeach; ?>
 	                        </select>
-						</div>					
+						</div>
 					</div>
 					<br>
 					<div class="row">
@@ -104,7 +104,7 @@
 							<label for="data_felhasznalo_adatok_szallitas_phone">Telefonszám</label>
 							<input type="text" id="data_felhasznalok_phone" class="form-control" name="data[felhasznalo_adatok][szallitas_phone]" value="<?=$_POST[data][felhasznalo_adatok][szallitas_phone]?>">
 						</div>
-					</div>									
+					</div>
 					<br>
 					<div class="row">
 						<div class="col-sm-12">
@@ -121,6 +121,7 @@
 				</div>
 			</div>
 			<div class="col-sm-6">
+				<?php if (false): ?>
 				<div class="con">
 					<div style="float:right;">
 						<label>Igen <input type="checkbox" name="is_reseller" <?=($_GET[reseller]=='1')?'checked="checked"':''?> onclick="if($(this).is(':checked')){$('#reseller_v').slideDown(200);}else{$('#reseller_v').slideUp(200);}" value="1"></label>
@@ -133,7 +134,7 @@
 							<div class="col-sm-12">
 								<label for="data_felhasznalo_adatok_company_name">Cég neve</label>
 								<input type="text" id="data_felhasznalo_adatok_company_name" class="form-control" name="data[felhasznalo_adatok][company_name]" value="<?=$_POST[data][felhasznalo_adatok][company_name]?>">
-							</div>				
+							</div>
 						</div>
 						<br>
 						<div class="row">
@@ -144,7 +145,7 @@
 							<div class="col-sm-6">
 								<label for="data_felhasznalo_adatok_company_hq">Cég székhelye</label>
 								<input type="text" id="data_felhasznalo_adatok_company_hq" class="form-control" name="data[felhasznalo_adatok][company_hq]" value="<?=$_POST[data][felhasznalo_adatok][company_hq]?>">
-							</div>					
+							</div>
 						</div>
 						<br>
 						<div class="row">
@@ -155,7 +156,7 @@
 							<div class="col-sm-6">
 								<label for="data_felhasznalo_adatok_company_bankszamlaszam">Bankszámlaszám</label>
 								<input type="text" id="data_felhasznalo_adatok_company_bankszamlaszam" class="form-control" name="data[felhasznalo_adatok][company_bankszamlaszam]" value="<?=$_POST[data][felhasznalo_adatok][company_bankszamlaszam]?>">
-							</div>					
+							</div>
 						</div>
 					</div>
 				</div>
@@ -175,20 +176,26 @@
 							<div class="col-sm-6">
 								<label for="data_felhasznalo_adatok_casadapont_tanacsado_profil">Mellkép (arckép)</label>
 								<input type="file" id="data_felhasznalo_adatok_casadapont_tanacsado_profil" class="form-control" name="profil[]">
-							</div>					
+							</div>
 						</div>
 					</div>
 				</div>
+				<?php endif; ?>
+
 				<div class="con">
 					<div class="row np">
-						<div class="col-sm-6">
-							<label><input type="checkbox" name="flag[alert_user]"> felhasználó e-mail értesítése</label>
-						</div>
-						<div class="col-sm-6 right">
+						<?php if (false): ?>
+							<div class="col-sm-6">
+								<label><input type="checkbox" name="flag[alert_user]"> felhasználó e-mail értesítése</label>
+							</div>
+						<?php endif; ?>
+						
+						<div class="col-sm-12 right">
 							<button class="btn btn-success" name="createUserByAdmin">Létrehozás <i class="fa fa-plus-circle"></i></button>
 						</div>
 					</div>
 				</div>
+
 			</div>
 		</div>
 	</div>
