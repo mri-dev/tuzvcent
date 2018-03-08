@@ -178,12 +178,21 @@
             </div>
             <div class="div">&nbsp;</div>
             <div class="account">
-              <a href="/user/belepes" class="holder">
-                <div class="ico">
-                  <img src="<?=IMG?>icons/lock.svg" alt="Belépés">
-                </div>
-                Belépés
-              </a>
+              <?php if ( !$this->user ): ?>
+                <a href="/user/belepes" class="holder">
+                  <div class="ico">
+                    <img src="<?=IMG?>icons/lock.svg" alt="Belépés">
+                  </div>
+                  Belépés
+                </a>
+              <?php else: ?>
+                <a href="/user" class="holder">
+                  <div class="ico">
+                    <i class="fa fa-user"></i>
+                  </div>
+                  Fiókom
+                </a>
+              <?php endif; ?>
             </div>
             <div class="div"></div>
             <div class="cart">

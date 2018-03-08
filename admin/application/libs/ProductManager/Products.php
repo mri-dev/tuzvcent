@@ -822,7 +822,7 @@ class Products
 
 		// GROUP BY
 		if ( !$admin_listing ) {
-			if( isset($arg['favorite']) ) {
+			if( isset($arg['favorite']) && !empty($arg['favorite']) ) {
 				$add = "GROUP BY p.ID";
 				$whr .= $add;
 				$qry .= $add;
@@ -872,7 +872,6 @@ class Products
 				}
 			}
 		}
-
 
 		// Összes kategórián belüli termék ID összegyűjtése
 		$ids_query = $this->db->query( "SELECT p.ID FROM shop_termekek as p WHERE 1=1 ".$whr );

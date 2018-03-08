@@ -1,12 +1,12 @@
-<? 
+<?
 class felhasznalok extends Controller{
-		function __construct(){	
+		function __construct(){
 			parent::__construct( array( 'admin' => true ));
 			parent::$pageTitle = 'Felhasználók';
-			
+
 			if(Post::on('filterList')){
 				$filtered = false;
-				
+
 				if($_POST[ID] != ''){
 					setcookie('filter_ID',$_POST[ID],time()+60*24,'/'.$this->view->gets[0]);
 					$filtered = true;
@@ -37,77 +37,77 @@ class felhasznalok extends Controller{
 				}else{
 					setcookie('filter_aktivalva','',time()-100,'/'.$this->view->gets[0]);
 				}
-				
-				
+
+
 				if($filtered){
 					setcookie('filtered','1',time()+60*24*7,'/'.$this->view->gets[0]);
 				}else{
 					setcookie('filtered','',time()-100,'/'.$this->view->gets[0]);
-				}				
+				}
 				Helper::reload();
 			}
-			
+
 			$arg = array();
 			$arg[limit] = 50;
 			$filters = Helper::getCookieFilter('filter',array('filtered'));
-			
+
 			if( isset($_GET['ID']) ) {
 				$filters['ID'] = $_GET['ID'];
 			}
 
-			$filters['user_group'] = 'user';
+			//$filters['user_group'] = 'user';
 
 			$arg[filters] = $filters;
-			
+
 			$this->view->users = $this->User->getUserList($arg);
-		
+
 			$this->view->adm = $this->AdminUser;
 			$this->view->adm->logged = $this->AdminUser->isLogged();
-						
+
 			// SEO Információk
 			$SEO = null;
 			// Site info
 			$SEO .= $this->view->addMeta('description','');
 			$SEO .= $this->view->addMeta('keywords','');
 			$SEO .= $this->view->addMeta('revisit-after','3 days');
-			
+
 			// FB info
 			$SEO .= $this->view->addOG('type','website');
 			$SEO .= $this->view->addOG('url',DOMAIN);
 			$SEO .= $this->view->addOG('image',DOMAIN.substr(IMG,1).'noimg.jpg');
 			$SEO .= $this->view->addOG('site_name',TITLE);
-			
+
 			$this->view->SEOSERVICE = $SEO;
 		}
 
 		function containers()
 		{
 			// Felhasználó törlése a konténerből
-			if( isset($_GET[t])  ) 
+			if( isset($_GET[t])  )
 			{
-				try 
+				try
 				{
 					$this->User->deleteUserFromContainer( $_GET['uid'], $_GET['cid'] );
 					Helper::reload( '/felhasznalok/containers/?s='.$_GET['cid']  );
-				} 
-				catch( \Exception $e ) 
+				}
+				catch( \Exception $e )
 				{
 					$this->view->msg = Helper::makeAlertMsg( 'pError', $e->getMessage() );
-				}				
+				}
 			}
 
 			// Új felhasználó hozzáadása egy konténerhez
-			if( Post::on('container') ) 
+			if( Post::on('container') )
 			{
-				try 
+				try
 				{
 					$this->User->addUserToContainer( $_POST['user_id'], $_POST['container'] );
 					Helper::reload( '/felhasznalok/containers/?s='.$_POST['container']  );
-				} 
-				catch( \Exception $e ) 
+				}
+				catch( \Exception $e )
 				{
 					$this->view->msg = Helper::makeAlertMsg( 'pError', $e->getMessage() );
-				}				
+				}
 			}
 
 			$this->out('containers', $this->User->getContainers());
@@ -115,65 +115,65 @@ class felhasznalok extends Controller{
 
 		function container_edit()
 		{
-			
-			if( Post::on('saveContainer') ) 
+
+			if( Post::on('saveContainer') )
 			{
-				try 
+				try
 				{
 					$id = $_POST['saveContainer'];
 					unset($_POST['saveContainer']);
 
 					$this->User->saveContainer( $id, $_POST);
 					Helper::reload();
-				} 
-				catch( \Exception $e ) 
+				}
+				catch( \Exception $e )
 				{
 					$this->view->msg = Helper::makeAlertMsg( 'pError', $e->getMessage() );
-				}				
+				}
 			}
 			$this->out('container', $this->User->getContainer($this->gets[2]));
 		}
 
 		function container_del()
 		{
-			
-			if( Post::on('delContainer') ) 
+
+			if( Post::on('delContainer') )
 			{
-				try 
+				try
 				{
 					$id = $_POST['delContainer'];
 
 					$this->User->delContainer( $id );
 					Helper::reload('/felhasznalok/containers/');
-				} 
-				catch( \Exception $e ) 
+				}
+				catch( \Exception $e )
 				{
 					$this->view->msg = Helper::makeAlertMsg( 'pError', $e->getMessage() );
-				}				
+				}
 			}
 			$this->out('container', $this->User->getContainer($this->gets[2]));
 		}
 
 		function container_new()
 		{
-			
-			if( Post::on('addContainer') ) 
+
+			if( Post::on('addContainer') )
 			{
-				try 
+				try
 				{
 					unset($_POST['addContainer']);
 
 					$this->User->addContainer( $_POST );
 					Helper::reload('/felhasznalok/containers/');
-				} 
-				catch( \Exception $e ) 
+				}
+				catch( \Exception $e )
 				{
 					$this->view->msg = Helper::makeAlertMsg( 'pError', $e->getMessage() );
-				}				
+				}
 			}
 			$this->out('container', $this->User->getContainer($this->gets[2]));
 		}
-		
+
 		function clearfilters(){
 			setcookie('filter_ID','',time()-100,'/'.$this->view->gets[0]);
 			setcookie('filter_nev','',time()-100,'/'.$this->view->gets[0]);
@@ -183,7 +183,7 @@ class felhasznalok extends Controller{
 			setcookie('filtered','',time()-100,'/'.$this->view->gets[0]);
 			Helper::reload('/'.$this->view->gets[0]);
 		}
-		
+
 		function __destruct(){
 			// RENDER OUTPUT
 				parent::bodyHead();					# HEADER

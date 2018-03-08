@@ -38,13 +38,6 @@ class user extends Controller{
 				$this->out( 'msg', Helper::makeAlertMsg('pSuccess',$_GET['msg']) );
 			}
 
-			// Kupon tulajdonok
-			$this->coupon_ref = $this->db->squery("SELECT coupon_code, name FROM ".\PortalManager\Coupons::DB_TABLE." WHERE admin_checked = 1 and author = :id;",  array( 'id' => $this->view->user[data][ID]));
-
-			if ($this->coupon_ref->rowCount() != 0) {
-				$this->out('coupon_refers', true);
-			}
-			
 			// Megrendelések
 			$arg = array();
 			$this->view->orders = $this->User->getOrders($this->view->user[data][ID],$arg);
@@ -78,7 +71,8 @@ class user extends Controller{
 			}
 		}
 
-		function beallitasok(){
+		function beallitasok()
+		{
 			if ( !$this->view->user ) {
 				Helper::reload('/user/belepes');
 			}
@@ -205,7 +199,7 @@ class user extends Controller{
 			if( Post::on('registerUser') ) {
 				try{
 					$re = $this->User->add($_POST);
-					Helper::reload('/user/regisztracio?msg=Sikeresen rögzítettük regisztrációját! E-mail címére elküldök az aktiváló e-mailt. Ha nem találja beérkezett üzenetei közt, kérjük, hogy nézze meg levélszemét (SPAM) mappájában is!');
+					Helper::reload('/user/regisztracio?successreg=1&msg=Sikeresen rögzítettük regisztrációját! E-mail címére elküldtük az aktiváló e-mailt. Ha nem találja beérkezett üzenetei közt, kérjük, hogy nézze meg levélszemét (SPAM) mappájában is!');
 				}catch(Exception $e){
 					$err = $e->getCode();
 					$this->out( 'err', $err );

@@ -57,14 +57,22 @@
     	<? if(count($this->users[data]) > 0): foreach($this->users[data] as $d):  ?>
     	<tr>
 	    	<td align="center"><?=$d[ID]?></td>
-	        <td>
-          		<strong><?=$d[nev]?></strong>
+	          <td>
+          		<strong><?=$d[nev]?></strong> <?php if ( $d['user_group'] == 'company' ): ?>
+                <span class="company">(<?php echo $d['total_data']['data']['company_name']; ?>)</span>
+              <?php endif; ?>
+              <div>
+                <span class="usergroup"><?=$d['user_group_name']?></span>
+              </div>
             </td>
             <td align="center"><?=$d[email]?></td>
             <td>
                 <? if( $d['total_data']['szamlazasi_adat'] ): ?>
-                    <strong><?=$d['total_data']['szamlazasi_adat']['nev']?></strong><br>
-					<?=$d['total_data']['szamlazasi_adat']['irsz']?> <?=$d['total_data']['szamlazasi_adat']['city']?>, <?=$d['total_data']['szamlazasi_adat']['uhsz']?>
+                  <strong><?=$d['total_data']['szamlazasi_adat']['nev']?></strong><br>
+                  <?=$d['total_data']['szamlazasi_adat']['irsz']?> <?=$d['total_data']['szamlazasi_adat']['city']?>, <?=$d['total_data']['szamlazasi_adat']['uhsz']?>
+                  <?php if ( $d['total_data']['szamlazasi_adat']['adoszam'] != '' ): ?>
+                    <div>Adószám: <strong><?php echo $d['total_data']['szamlazasi_adat']['adoszam']; ?></strong></div>
+                  <?php endif; ?>
                 <? else: ?>
                     &mdash; hiányzó adat &mdash;
                 <? endif; ?>

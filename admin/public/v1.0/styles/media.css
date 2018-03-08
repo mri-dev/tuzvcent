@@ -666,7 +666,13 @@ i.edit:hover{
 }
 .termeklista .search td button{
 	padding:8px;
-
+}
+.termeklista .company{
+	color: #969696;
+}
+.termeklista .usergroup{
+  color: #c5171e;
+  font-size: 10px;
 }
 .termeklista .search td i{
 	line-height:15px;

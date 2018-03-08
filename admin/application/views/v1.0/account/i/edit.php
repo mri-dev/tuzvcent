@@ -122,19 +122,20 @@
 				</div>
 			</div>
 			<div class="col-sm-6">
-				<? if($data[user_group] != \PortalManager\Users::USERGROUP_USER): ?>
+				<? if($data[user_group] == \PortalManager\Users::USERGROUP_COMPANY): ?>
 				<div class="con">
-					<div style="float:right;">
-						<label>Igen <input type="checkbox" name="is_reseller" <?=($data[user_group]=='reseller')?'checked="checked"':''?> onclick="if($(this).is(':checked')){$('#reseller_v').slideDown(200);}else{$('#reseller_v').slideUp(200);}" value="1"></label>
-					</div>
-					<h3 style="margin:0;">Viszonteladó</h3>
+					<h3 style="margin:0;">Céges adatok</h3>
 					<div class="clr"></div>
-					<div id="reseller_v" style="display:<?=($data[user_group]=='reseller')?'block':''?>;">
+					<div id="reseller_v">
 						<div class="divider" style="margin-bottom: 10px;"></div>
 						<div class="row">
-							<div class="col-sm-12">
+							<div class="col-sm-8">
 								<label for="data_felhasznalo_adatok_company_name">Cég neve</label>
 								<input type="text" id="data_felhasznalo_adatok_company_name" class="form-control" name="data[felhasznalo_adatok][company_name]" value="<?=$data[company_name]?>">
+							</div>
+							<div class="col-sm-4">
+								<label for="data_felhasznalo_adatok_company_adoszam">Adószám</label>
+								<input type="text" id="data_felhasznalo_adatok_company_adoszam" class="form-control" name="data[felhasznalo_adatok][company_adoszam]" value="<?=$data[company_adoszam]?>">
 							</div>
 						</div>
 						<br>
@@ -146,35 +147,6 @@
 							<div class="col-sm-6">
 								<label for="data_felhasznalo_adatok_company_hq">Cég székhelye</label>
 								<input type="text" id="data_felhasznalo_adatok_company_hq" class="form-control" name="data[felhasznalo_adatok][company_hq]" value="<?=$data[company_hq]?>">
-							</div>
-						</div>
-						<br>
-						<div class="row">
-							<div class="col-sm-6">
-								<label for="data_felhasznalo_adatok_company_adoszam">Adószám</label>
-								<input type="text" id="data_felhasznalo_adatok_company_adoszam" class="form-control" name="data[felhasznalo_adatok][company_adoszam]" value="<?=$data[company_adoszam]?>">
-							</div>
-							<div class="col-sm-6">
-								<label for="data_felhasznalo_adatok_company_bankszamlaszam">Bankszámlaszám</label>
-								<input type="text" id="data_felhasznalo_adatok_company_bankszamlaszam" class="form-control" name="data[felhasznalo_adatok][company_bankszamlaszam]" value="<?=$data[company_bankszamlaszam]?>">
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="con">
-					<h3 style="margin:0;">Tanácsadó</h3>
-					<div class="clr"></div>
-					<div id="tanacsado_v">
-						<div class="divider" style="margin-bottom: 10px;"></div>
-						<div class="row">
-							<div class="col-sm-6">
-								<label for="data_felhasznalo_adatok_casadapont_tanacsado_titulus">Titulus</label>
-								<input type="text" id="data_felhasznalo_adatok_casadapont_tanacsado_titulus" class="form-control" name="data[felhasznalo_adatok][casadapont_tanacsado_titulus]" value="<?=$data[casadapont_tanacsado_titulus]?>">
-							</div>
-							<div class="col-sm-6">
-								<label for="data_felhasznalo_adatok_casadapont_tanacsado_profil">Mellkép (arckép)</label>
-								<input type="file" id="data_felhasznalo_adatok_casadapont_tanacsado_profil" class="form-control" name="profil[]">
-								<div class="right"><img src="/<?=$data['casadapont_tanacsado_profil']?>" style="width: 150px;"></div>
 							</div>
 						</div>
 					</div>

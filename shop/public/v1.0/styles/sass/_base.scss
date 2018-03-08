@@ -3225,16 +3225,18 @@ md-toast{
 .orderDone {
 	text-align: center;
 	margin: 10% 0;
+	line-height: 1.4;
 }
 .orderDone h1 {
-	color: $color-pr;
+	color: black;
 	text-transform: uppercase;
 	font-family: $font-cond;
+	margin: 0 0 15px 0;
 }
 .orderDone h1 i {
 	font-size: 86px;
 	margin-bottom: 12px;
-	color: $color-pr;
+	color: $color-green;
 }
 
 .order {
@@ -3254,7 +3256,7 @@ md-toast{
 	}
 	.orderpage .head {
 		position: relative;
-		padding: 20px;
+		padding: 20px 0;
 	}
 	.serial {
 		float:right;
@@ -3263,8 +3265,12 @@ md-toast{
 	}
 
 	.orderState {
-		padding: 10px 20px;
-    	line-height: 200%;
+		padding: 30px 0;
+    line-height:2;
+
+		h5 {
+			margin-bottom: 5px;
+		}
 	}
 
 	h1 {
@@ -3275,22 +3281,30 @@ md-toast{
 		color: $color-pr;
 	}
 
+	.sub {
+		color: #444444;
+
+		em{
+			color: #acacac;
+		}
+	}
+
 	.orderStatus {
-		font-size: 1.5em;
+		font-size: 1.8em;
 	}
 
 	h4 {
-		font-size: 1.8em;
-		padding: 8px 15px;
-		background-color: darken($color-sec, 50%);
+		font-size: 1.4em;
+		padding:12px;
+		background-color: #d6d9dc;
 		text-transform: uppercase;
 		font-family: $font-cond;
 		text-align: center;
 		margin: 0;
-		color: white;
+		color: $color-grey;
 	}
 	.items-table {
-		padding: 5px;
+		padding: 10px 0;
 
 		table {
 			margin: 0;
@@ -3301,7 +3315,7 @@ md-toast{
 	}
 	.datas {
 		.data {
-			padding: 0 8px;
+			padding: 10px 0;
 
 			.payu-paid-done {
 				background: green;
@@ -3322,19 +3336,20 @@ md-toast{
 	.datas .head {
 		font-size: 1em;
 		padding: 8px;
-		background-color: #eaeaea;
+		background-color: #eceff2;
 		font-family: $font-cond;
-		margin-bottom: 8px;
+		margin: 10px 0 0 0;
 	}
 
 	.inforows {
+		margin: 10px -10px;
 		div {
 			margin-bottom: 5px;
 			line-height: 20px;
 		}
 		div:nth-child(odd) {
 			color: #aaa;
-			font-size: 0.8em;
+			font-size: 1em;
 		}
 	}
 }
@@ -3490,6 +3505,63 @@ md-toast{
 		width: 500px;
 		margin: 20px auto;
 	}
+	.success-reg-msg{
+		text-align: center;
+		padding: 50px 0;
+		h1 {
+			color: black;
+			i{
+				color: $color-green;
+				font-size: 60px;
+				margin-bottom: 20px;
+			}
+			margin: 0 0 15px 0;
+		}
+
+		p {
+			font-size: 1.2em;
+			text-align: center;
+			line-height: 1.2;
+			color: #7c7c7c;
+		}
+	}
+	.group-selector{
+		.groups{
+			width: 80%;
+			margin: 0 auto;
+			display: -webkit-box;
+		  display: -ms-flexbox;
+		  display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+
+			& > div {
+				flex-basis: 50%;
+				padding: 10px;
+			}
+
+			a{
+				background: #eceff2;
+				width: 100%;
+				display: block;
+				text-align: center;
+				padding: 60px 40px;
+				font-size: 1.4em;
+				text-transform: uppercase;
+				font-weight: bold;
+				text-decoration: none;
+		    color: $color-orange;
+				@include border-radius(10px);
+				-webkit-transition: all .4s;
+  				transition: all .4s;
+
+				&:hover{
+					background: $color-red;
+					color: white;
+				}
+			}
+		}
+	}
 }
 
 
@@ -3537,6 +3609,21 @@ md-toast{
 	ul li.active a {
 		border-right: 5px solid $color-pr;
 		font-weight: bold;
+	}
+
+	.logged-as{
+		text-align: center;
+		font-size: 1.1em;
+		margin: 0 0 15px 0;
+		padding: 0 0 15px 0;
+		border-bottom: 1px solid #f1f1f1;
+		color: #7c7c7c;
+		line-height: 1.4;
+
+		strong{
+			font-size: 1.6em;
+			color: $color-red;
+		}
 	}
 }
 
@@ -4657,9 +4744,10 @@ input[type=email][required].ng-touched.ng-valid + span:before
 
 .not-enought-price-for-order {
 	background: #EC4E4E;
-	padding: 5px 10px;
-	font-size: 0.9em;
+	padding: 15px;
+	font-size: 1.1em;
 	color: white;
+	text-align: center;
 	margin-bottom: 10px;
 }
 

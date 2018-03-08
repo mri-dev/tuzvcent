@@ -52,9 +52,13 @@ class Users
 		$this->getUser();
 	}
 
-	public function getUserGroupes()
+	public function getUserGroupes( $key = false )
 	{
-		return $this->user_groupes;
+		if ( !$key ) {
+			return $this->user_groupes;
+		} else {
+			return $this->user_groupes[$key];
+		}
 	}
 
 	function get( $arg = array() )
@@ -672,7 +676,6 @@ class Users
 		if($company_address == '') 			throw new \Exception('A cég címe hiányzik. Kérjük adja meg!');
 		if($company_hq == '') 				throw new \Exception('A cég telephelye hiányzik. Kérjük adja meg!');
 		if($company_adoszam == '') 			throw new \Exception('A cég adószáma hiányzik. Kérjük adja meg!');
-		if($company_bankszamlaszam == '') 	throw new \Exception('A cég bankszámlaszáma hiányzik. Kérjük adja meg!');
 
 		foreach ( $post as $key => $value )
 		{
@@ -814,9 +817,9 @@ class Users
 		}
 
 		if(!$this->isActivated($data[email])){
-			$resendemailtext = '<form method="post" action=""><div class="text-form">Nem kapta meg az aktiváló e-mailt? <button name="activationEmailSendAgain" value="'.$data['email'].'" class="btn btn-sm btn-danger">Aktiváló e-mail újraküldése!</button></div></form>';
+			$resendemailtext = '<form method="post" action=""><div class="text-form">Nem kapta meg az aktiváló e-mailt?<br><br><button name="activationEmailSendAgain" value="'.$data['email'].'" class="btn btn-sm btn-danger">Aktiváló e-mail újraküldése!</button></div></form>';
 
-			throw new \Exception('A fiók még nincs aktiválva! <br>'.$resendemailtext ,1001);
+			throw new \Exception('<br>A fiók még nincs aktiválva!'.$resendemailtext ,1001);
 		}
 
 		if(!$this->isEnabled($data[email])){
@@ -1016,9 +1019,9 @@ class Users
 
 	}
 
-	function add( $data ){
-
-		$user_group = 'user';
+	function add( $data )
+	{
+		$user_group = $data['group'];
 
 		// Felhasználó használtság ellenőrzése
 		if($this->userExists('email',$data['email']))
@@ -1032,21 +1035,26 @@ class Users
 			throw new \Exception('Ezzel az e-mail címmel már regisztráltak! '.$resendemailtext,1002);
 		}
 
+		if ( empty($user_group) )
+		{
+			throw new \Exception('Sikertelen regisztráció. A regisztrációs oldalon indítsa el a regisztrációt.', 0000);
+		}
+
 		if ( !is_numeric($data['szall_phone']) )
 		{
 			throw new \Exception('A telefonszám megadásánál kérjük, hogy csak természetes számokat használjon. Pl.: 06102030400',1003);
 		}
 
-		/* * /
-		// Kikapcsolva , mert nem kell
-		if( $data['group'] == 'partner' )
+		/* */
+		// Céges reg esetén
+		if( $data['group'] == self::USERGROUP_COMPANY )
 		{
 			$user_group = $data['group'];
 
-			if( empty($data['reseller']['company_name']) ) 		throw new \Exception('Kérjük, hogy adja meg a cég nevét!', 		2001);
-			if( empty($data['reseller']['company_hq']) ) 		throw new \Exception('Kérjük, hogy adja meg a cég székhelyét!', 2002);
-			if( empty($data['reseller']['company_adoszam']) ) 	throw new \Exception('Kérjük, hogy adja meg a cég adószámát!', 	2003);
-			if( empty($data['reseller']['company_address']) ) 	throw new \Exception('Kérjük, hogy adja meg a cég postacímét!', 2004);
+			if( empty($data[self::USERGROUP_COMPANY]['company_name']) ) 		throw new \Exception('Kérjük, hogy adja meg a cég nevét!', 2001);
+			if( empty($data[self::USERGROUP_COMPANY]['company_hq']) ) 		throw new \Exception('Kérjük, hogy adja meg a cég székhelyét!', 2002);
+			if( empty($data[self::USERGROUP_COMPANY]['company_adoszam']) ) 	throw new \Exception('Kérjük, hogy adja meg a cég adószámát!', 2003);
+			if( empty($data[self::USERGROUP_COMPANY]['company_address']) ) 	throw new \Exception('Kérjük, hogy adja meg a cég postacímét!', 2004);
 		}
 		/* */
 
@@ -1083,16 +1091,16 @@ class Users
 
 
 			/**
-			 * RESELLER
+			 * Céges reg esetén adatok mentése
 			 * */
-			if( $data['group'] == 'partner' )
+			if( $data['group'] == self::USERGROUP_COMPANY )
 			{
 				// Reseller adatok mentése
-				/* * /
-				$this->addAccountDetail( $uid, 'company_name', $data['reseller']['company_name'] );
-				$this->addAccountDetail( $uid, 'company_hq', $data['reseller']['company_hq'] );
-				$this->addAccountDetail( $uid, 'company_adoszam', $data['reseller']['company_adoszam'] );
-				$this->addAccountDetail( $uid, 'company_address', $data['reseller']['company_address'] );
+				/* */
+				$this->addAccountDetail( $uid, 'company_name', $data[self::USERGROUP_COMPANY]['company_name'] );
+				$this->addAccountDetail( $uid, 'company_hq', $data[self::USERGROUP_COMPANY]['company_hq'] );
+				$this->addAccountDetail( $uid, 'company_adoszam', $data[self::USERGROUP_COMPANY]['company_adoszam'] );
+				$this->addAccountDetail( $uid, 'company_address', $data[self::USERGROUP_COMPANY]['company_address'] );
 				/* */
 
 			}
@@ -1157,7 +1165,7 @@ class Users
 			// Partner
 			case self::USERGROUP_PARTNER:
 
-				$url 		= 'http://casada.chr.hu/subscriber.php?g=88&f=7a7daf7d8f';
+				$url 		= '';
 				$request 	= (new Request)->post( $url, array(
 					// E-mail cím
 					'subscr' 	=> trim($data[email]),
@@ -1362,6 +1370,7 @@ class Users
 
 		$B = array();
 		foreach($data as $d){
+			$d['user_group_name'] = $this->getUserGroupes( $d['user_group'] );
 			$d[total_data] = $this->get(array( 'user' => $d['email'] ));
 			$B[] = $d;
 		}
