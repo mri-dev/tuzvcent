@@ -1,7 +1,7 @@
 <?php
 namespace PortalManager;
 
-class Redirector 
+class Redirector
 {
 	const TABLE 		= "redirector";
 
@@ -17,7 +17,7 @@ class Redirector
 		$this->get 	= $get;
 		$this->site = $site;
 
-		return $this;	
+		return $this;
 	}
 
 	public function start()
@@ -34,14 +34,14 @@ class Redirector
 		$redirect = $this->geturl();
 
 		// Feldolgoz
-		if ($redirect) 
+		if ($redirect)
 		{
 			$this->has_red 		= true;
 			$this->target_url 	= $redirect;
 		}
 	}
 
-	
+
 	public function hasRedirect()
 	{
 		return $this->has_red;
@@ -58,13 +58,13 @@ class Redirector
 		}
 
 		$to = 'http://'.$_SERVER['HTTP_HOST'].'/'.$this->target_url;
-		
+
 		return $to;
 	}
 
 	public function getGET()
 	{
-		return $get;
+		return $this->get;
 	}
 
 	public function __destruct()
@@ -76,6 +76,9 @@ class Redirector
 
 	private function geturl()
 	{
-		return $this->db->query("SELECT redirect_to FROM ".self::TABLE." WHERE 1=1 and site = '".$this->site."' and watch='".$this->get."' LIMIT 0,1")->fetchColumn();
+		$trimmed = rtrim($this->getGET(),'/');
+		$trim_add = $trimmed . '/';
+		$q = "SELECT redirect_to FROM ".self::TABLE." WHERE 1=1 and site = '".$this->site."' and (watch='".$this->getGET()."' or watch='".$trimmed."' or watch='".$trim_add."') LIMIT 0,1";
+		return $this->db->query($q)->fetchColumn();
 	}
 }

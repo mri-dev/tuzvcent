@@ -11,13 +11,13 @@ class Redirectors
 	{
 		$this->db 	= $arg['db'];
 
-		return $this;	
+		return $this;
 	}
 
 	public function get( $id )
 	{
 		if( !$id ) return false;
-	
+
 		return $this->db->squery("SELECT * FROM ".self::TABLE." WHERE ID = :id", array( 'id' => $id ))->fetch(\PDO::FETCH_ASSOC);
 	}
 
@@ -26,13 +26,13 @@ class Redirectors
 		extract($post);
 
 		if ( empty($site) ) {
-			throw new \Exception("Kérjük, hogy válassza ki a site-ot.");		 
+			throw new \Exception("Kérjük, hogy válassza ki a site-ot.");
 		}
 		if ( empty($watch) ) {
-			throw new \Exception("[Indító URL]: Kérjük, hogy határozza meg azt az elérési utat, amit át szeretne irányítani.");		 
+			throw new \Exception("[Indító URL]: Kérjük, hogy határozza meg azt az elérési utat, amit át szeretne irányítani.");
 		}
 		if ( empty($redirect_to) ) {
-			throw new \Exception("[Átirányítási cél URL]: Kérjük, hogy határozza meg azt az elérési utat, ahova át szeretné irányítani az indító URL-t.");		 
+			throw new \Exception("[Átirányítási cél URL]: Kérjük, hogy határozza meg azt az elérési utat, ahova át szeretné irányítani az indító URL-t.");
 		}
 
 		$this->db->insert(
@@ -53,13 +53,13 @@ class Redirectors
 		extract($post);
 
 		if ( empty($site) ) {
-			throw new \Exception("Kérjük, hogy válassza ki a site-ot.");		 
+			throw new \Exception("Kérjük, hogy válassza ki a site-ot.");
 		}
 		if ( empty($watch) ) {
-			throw new \Exception("[Indító URL]: Kérjük, hogy határozza meg azt az elérési utat, amit át szeretne irányítani.");		 
+			throw new \Exception("[Indító URL]: Kérjük, hogy határozza meg azt az elérési utat, amit át szeretne irányítani.");
 		}
 		if ( empty($redirect_to) ) {
-			throw new \Exception("[Átirányítási cél URL]: Kérjük, hogy határozza meg azt az elérési utat, ahova át szeretné irányítani az indító URL-t.");		 
+			throw new \Exception("[Átirányítási cél URL]: Kérjük, hogy határozza meg azt az elérési utat, ahova át szeretné irányítani az indító URL-t.");
 		}
 
 		$this->db->update(
@@ -74,6 +74,8 @@ class Redirectors
 		$list = array();
 
 		$q = "SELECT * FROM ".self::TABLE." ORDER BY site ASC";
+
+		$arg['multi'] = true;
 
 		extract($this->db->q($q, $arg));
 

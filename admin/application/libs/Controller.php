@@ -5,6 +5,7 @@ use PortalManager\AdminUser;
 use PortalManager\Menus;
 use PortalManager\Template;
 use PortalManager\Users;
+use PortalManager\Redirector;
 use ShopManager\Shop;
 use PortalManager\News;
 use PortalManager\Portal;
@@ -69,6 +70,10 @@ class Controller {
 
         $this->out( 'db',   $this->db );
         $this->out( 'user', $this->User->get( self::$user_opt ) );
+
+        // redirector
+        $redrirector = new Redirector('shop', ltrim($_SERVER['REQUEST_URI'], '/'), array('db' => $this->db));
+        $redrirector->start();
 
         $templates = new Template( VIEW . 'templates/' );
         $this->out( 'templates', $templates );

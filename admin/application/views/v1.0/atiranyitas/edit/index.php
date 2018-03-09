@@ -5,34 +5,27 @@
 <?=$this->msg?>
 <div class="con">
 	<form method="post" action="">
+		<input type="hidden" name="site" value="shop">
 		<div class="row">
-			<div class="col-sm-2">
-				<label for="site">Site</label>
-				<select name="site" id="site" class="form-control">
-					<option value="" selected="selected">-- válasszon --</option>
-					<option value="shop" <?=($this->redirect[site] == 'shop')?'selected="selected"':''?>>Shop</option>
-					<option value="blog" <?=($this->redirect[site] == 'blog')?'selected="selected"':''?>>Blog</option>
-				</select>				
-			</div>
-			<div class="col-sm-4">
+			<div class="col-sm-6">
 				<label for="watch">Indító URL<sup>1</sup></label>
 				<input type="text" class="form-control" name="watch" id="watch" value="<?=$this->redirect[watch]?>">
-				pl.: masszazsfotelek/
+				pl.:regi/url
 			</div>
 			<div class="col-sm-4">
 				<label for="redirect_to">Átirányítási cél URL<sup>2</sup></label>
 				<input type="text" class="form-control" name="redirect_to" id="redirect_to" value="<?=$this->redirect[redirect_to]?>">
-				pl.: termekek/masszazsfotelek_-1
+				pl.: uj/url
 			</div>
 			<div class="col-sm-2 right">
 				<br>
-				<button class="btn btn-success" name="editRedirect" value="1">Változások mentése <i class="fa fa-save"></i></button>		
+				<button class="btn btn-success" name="editRedirect" value="1">Változások mentése <i class="fa fa-save"></i></button>
 			</div>
-		</div>	
+		</div>
 		<div class="divider" style="margin: 8px 0;"></div>
 		<em>
-			<div><sup>1</sup> A domain címét ne írja be csak az utána lévő elérhetőséget. Pl.: fotel/, massazsfotelek/, fitnessztermekek/, stb.</div>
-			<div><sup>2</sup> Megadhat helyi URL-t és külső hivatkozást is. Külső hivatkozás esetén használjon http:// vagy https:// protokollal kezdődő URL-eket. Pl.: http://www.google.com/, http://www.casada.com</div>
-		</em>	
+			<div><sup>1</sup> A domain címét ne írja be csak az utána lévő elérhetőséget. Pl.: aloldal, kapcsolat, stb.</div>
+			<div><sup>2</sup> Megadhat helyi URL-t és külső hivatkozást is. Külső hivatkozás esetén használjon http:// vagy https:// protokollal kezdődő URL-eket. Pl.: http://www.google.com/, http://www.tuzvedelmicentrum.hu</div>
+		</em>
 	</form>
 </div>

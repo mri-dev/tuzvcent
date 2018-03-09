@@ -140,7 +140,8 @@
                     </div>
                     <div class="col-md-4 left">
                         <? if($d[item_id]): ?>
-                            <strong><?=$d[item_nev]?></strong>
+                          <a title="Termék adatlapja" target="_blank" href="<?php echo $d['item_url']; ?>"><strong><?=$d[item_nev]?></strong></a><br>
+                          <a href="/termekek/t/edit/<?=$d[item_id]?>">Termék szerkesztése >></a>
                         <?php else: ?>
                           &mdash;
                         <? endif; ?>

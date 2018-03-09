@@ -180,8 +180,8 @@ class AdminUser
 
 			$q = "SELECT
 				u.*,
-				CONCAT(m.neve,' ',t.nev) as item_nev,
-				getTermekUrl(u.item_id,'".DOMAIN."') as item_url
+				t.nev as item_nev,
+				getTermekUrl(u.item_id,'".$this->settings['page_url']."') as item_url
 			FROM uzenetek as u
 			LEFT OUTER JOIN shop_termekek as t ON t.ID = u.item_id
 			LEFT OUTER JOIN shop_markak as m ON m.ID = t.marka
