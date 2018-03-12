@@ -8,6 +8,7 @@
                     'nev' => 'Név',
                     'uhsz' => 'Utca, házszám',
                     'city' => 'Város',
+                    'adoszam' => 'Adószám',
                     'irsz' => 'Irányítószám',
                     'phone' => 'Telefonszám',
                     'state' => 'Megye'
@@ -66,10 +67,10 @@
                             <thead>
                                 <tr>
                                     <td>Termék</td>
-                                    <td width="150">Állapot</td>
-                                    <td width="80">Me.</td>
-                                    <td width="120">Egységár</td>
-                                    <td width="120">Ár</td>
+                                    <td width="150" class="center">Állapot</td>
+                                    <td width="80" class="center">Me.</td>
+                                    <td width="120" class="center">Egységár</td>
+                                    <td width="120" class="center">Ár</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -86,8 +87,8 @@
                                             <div class="name">
                                                 <a href="<?=$d[url]?>" target="_blank"><?=$d[nev]?></a>
                                                 <div class="sel-types">
-                                                    <? if($d['meret']): ?><em>Méret:</em> <strong><?=$d['meret']?></strong><? endif;?>
-                                                    <? if($d['szin']): ?><em>Szín:</em> <strong><?=$d['szin']?></strong><? endif;?>
+                                                  <? if($d['szin']): ?><em>Variáció:</em> <strong><?=$d['szin']?></strong><? endif;?>
+                                                  <? if($d['meret']): ?><em>Kiszerelés:</em> <strong><?=$d['meret']?></strong><? endif;?>
                                                 </div>
                                             </div>
                                         </div>

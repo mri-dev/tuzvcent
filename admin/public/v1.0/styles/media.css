@@ -632,10 +632,20 @@ i.edit:hover{
 .termeklista .item-number {
 	font-size:12px;
 	font-style:italic;
-	color: #999;
+	color: #d4d4d4;
+}
+.termeklista .cikkszam{
+  font-size: 10px;
+  font-family: monospace;
 }
 .termeklista .item-number .number {
-	color: #222;
+	margin-right: 5px;
+}
+.termeklista .item-number .number.tid {
+	color: #444444;
+}
+.termeklista .item-number .number strong {
+	color: #6ab969;
 }
 .termeklista .nev{
 	font-size:14px;
@@ -983,6 +993,7 @@ button.watch i{
 	background:#333;
 	border-top:1px solid #111;
 	border-left:none !important;
+  color: #a7a7a7;
 }
 .orderInfo .save button{
 	text-transform: uppercase;
@@ -991,6 +1002,9 @@ button.watch i{
 .orderInfo .save i{
 	line-height:normal;
 	color:white;
+}
+.orderInfo .save.right input[type=checkbox]{
+	vertical-align: middle;
 }
 div.divider{
 	background: #ececec;
@@ -1756,10 +1770,9 @@ table.termekfrissites > tbody > tr.not-in-product > td{
 .row.on-edit,
 .row.on-del
 {
-	background: #f4f4f4;
-	border: 1px solid #d8d8d8;
-	border-bottom:1px solid #0AC8FF;
-	border-left:2px solid #0AC8FF;
+  background: #f9f9f9;
+  border: 1px solid #d8d8d8;
+  border-left: 3px solid #ffab05;
 }
 .row.on-edit{
 	border:1px solid #419641;
@@ -2867,6 +2880,15 @@ fieldset.block {
 	-moz-border-radius: 3px;
 	border-radius: 3px;
 	font-size: 0.85em;
+}
+.hasRegisteredByCompany{
+  background: #ff6945;
+  padding: 2px 4px;
+  color: #ffffff;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  font-size: 0.85em;
 }
 
 .status {

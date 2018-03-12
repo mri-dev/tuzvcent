@@ -2,8 +2,8 @@
 namespace PortalManager;
 
 /**
-* Formázási fügvények gyűjteménye. 
-* 
+* Formázási fügvények gyűjteménye.
+*
 * class Formater
 * @package PortalManager
 * @version v1.0
@@ -13,7 +13,7 @@ class Formater
 
 	public function discountPrice( &$price, $percent = 0, $round = false )
 	{
-		if( $percent == 0 || !$percent || $percent < 0 ) return $price; 
+		if( $percent == 0 || !$percent || $percent < 0 ) return $price;
 		$price = $price - ( $price / 100 * $percent );
 
 		if( $round ) {
@@ -46,27 +46,27 @@ class Formater
 		$ora 		= 0;
 		$ora_pref 	= '0';
 		$perc 		= 0;
-		$perc_pref 	= ':';	
+		$perc_pref 	= ':';
 
 		$times[] = '--:--';
 		$times[] = '00:00';
 
-		while( $ora < 24 ) 
+		while( $ora < 24 )
 		{
 			$perc += $step_min;
 
 			if($perc == 60)
 			{
-				$perc = 0; 
+				$perc = 0;
 				$perc_pref = ':0';
 
 				$ora += 1;
-			} else 
+			} else
 			{
 				$perc_pref = ':';
 			}
 
-			if( $ora >= 10 ) 
+			if( $ora >= 10 )
 			{
 				$ora_pref = '';
 			}
@@ -84,7 +84,7 @@ class Formater
 
 	public static function cashFormat($cash){
 		$cash = number_format($cash,0,""," ");
-		return $cash;	
+		return $cash;
 	}
 
 	public static function addValueToUrlStrlist2( $gets = array(), $get_pos = 1, $key, $value, $separator = '_' )
@@ -99,7 +99,7 @@ class Formater
 			unset($list[$inx]);
 		} else {
 			$list[] = $value;
-		}	
+		}
 
 		$x_keys = explode("::", $gets[$get_pos] );
 
@@ -124,7 +124,7 @@ class Formater
 					$key_filter .= "::".self::makeUrlStrlist( $key, $list, $separator );
 				}
 			}
-			
+
 		}
 
 		while ( $step < $get_pos ) {
@@ -168,27 +168,27 @@ class Formater
 				$newurl = self::makeUrlStrlist( $key, $list ).'::'.$gets[2];
 				$newurl = trim($newurl,'::');
 				$url = str_replace($hashkey, $newurl , $temp);
-				
+
 			} else if(is_numeric($gets[2]) || $gets[2] == '') {
 
-				$replace_key =  urlencode( $gets[0].'/'.$gets[1]);				
+				$replace_key =  urlencode( $gets[0].'/'.$gets[1]);
 				$temp = str_replace($replace_key, $hashkey, $current_url );
 				$url = str_replace($hashkey, $replace_key.'/'.self::makeUrlStrlist( $key, $list ), $temp);
 			}
-			
+
 			return $url;
 		} else {
 			$replace_key = self::makeUrlStrlist($key, $list, $separator);
 		}
-				
+
 		$temp = str_replace( trim($replace_key,"::"), $hashkey, $current_url );
-		
+
 		if ( in_array($value, $list)) {
 			$inx = array_search($value,$list);
 			unset($list[$inx]);
 		} else {
 			$list[] = $value;
-		}	
+		}
 
 
 		$new_keystr = self::makeUrlStrlist( $key, $list, $separator );
@@ -204,7 +204,7 @@ class Formater
 		$items = array();
 
 
-		if( $row[0] ) { 
+		if( $row[0] ) {
 			foreach ( $row as $r ) {
 				$i = explode($separator, $r);
 				if (reset($i) == $key) {
@@ -253,16 +253,16 @@ class Formater
 			} else {
 				return str_replace( 'images/','', IMG).str_replace('src/','',$source);
 			}
-			
+
 		}
 	}
-	
+
 	public static function tooltip($msg)
 	{
 		$tooltip = '<span class="tooltip-view"><i class="fa fa-question-circle"></i> ';
 
 		$tooltip .= '<span class="tip-msg">'.$msg.'</span>';
-		$tooltip .= '</span>'; 
+		$tooltip .= '</span>';
 
 		return $tooltip;
 	}
@@ -277,15 +277,15 @@ class Formater
 			$used_date = $date;
 		}
 
-		if ( $format_patern ) {			
+		if ( $format_patern ) {
 			$fdate = new \DateTime( $used_date );
 			$fdate = $fdate->format( $format_patern );
 		} else {
 			$fdate = $used_date;
 		}
 
-		$fdate = str_replace( 
-			array('Jan','Feb','Marc', 'Apr', 'May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'),
+		$fdate = str_replace(
+			array('Jan','Feb','Mar', 'Apr', 'May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'),
 			array('január','február','március','április','május','június','julius','augusztus','szeptember','október','november','december'),
 			$fdate
 		);
@@ -303,14 +303,14 @@ class Formater
 		if($date == '0000-00-00 00:00:00' || !$date ){ return 'sose'; }
 		$now 		= strtotime(NOW);
 		$date 		= strtotime($date);
-		$mode 		= 'past'; 
+		$mode 		= 'past';
 		if($date < $now){
 			$dif_sec =  $now - $date ;
 		}else{
 			$mode = 'future';
 			$dif_sec =  $date - $now ;
 		}
-	
+
 		$ret 		= '';
 		///////////////////////////////
 		$perc 	= 60;
@@ -331,7 +331,7 @@ class Formater
 						$np = floor($dif_sec / $nap);
 						if($np == 1){
 							$ret = __('tegnap');
-						}else 
+						}else
 							$ret = $np.' '.__('napja');
 					}else if($dif_sec > $honap && $dif_sec <= $ev){ // Hónap
 						$ret = floor($dif_sec / $honap).' '.__('hónapja');
@@ -356,19 +356,19 @@ class Formater
 					}
 				break;
 			}
-			
-		
+
+
 		return $ret;
 	}
-	
+
 	public static function makeSafeUrl($str,$after = ''){
 		$f 		= array(' ',',','á','Á','é','É','í','Í','ú','Ú','ü','Ü','ű','Ű','ö','Ö','ő','Ő','ó','Ó','(',')','\'','"',"=","/","\\","?","&","!");
 		$t 		= array('-','','a','a','e','e','i','i','u','u','u','u','u','u','o','o','o','o','o','o','','','','','','','','','','');
 		$str 	= str_replace($f,$t,$str);
 		$str 	= strtolower($str);
-		
+
 		$ret = $str . $after;
-		return $ret;			
+		return $ret;
 	}
 }
 ?>

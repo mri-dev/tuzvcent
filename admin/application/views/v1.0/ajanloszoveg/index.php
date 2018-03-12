@@ -21,43 +21,39 @@
 <? endif; ?>
 
 <? if($this->gets[1] != 'torles'): ?>
-<div class="row">
-    <div class="col-md-12">
-        <div class="con <?=($this->gets[1] == 'szerkeszt')?'con-edit':''?>">
-            <form action="" method="post">
-            <h2><? if($this->gets[1] == 'szerkeszt'): ?>Ajánló szerkesztése<? else: ?>Új ajánló hozzáadása<? endif; ?></h2>
-            <br>
-            <div class="row">     
-                <div class="col-md-2">
-                    <label for="sorrend">Sorrend:</label>
-                    <input type="number" class="form-control" value="<?=($this->ajanlo ? $this->ajanlo['sorrend'] : '')?>" id="sorrend" name="sorrend" />
-                </div>           
-                <div class="col-md-1">
-                    <label for="lathato">Látható:</label>
-                    <input type="checkbox" class="form-control" <?=($this->ajanlo && $this->ajanlo['lathato'] == '1' ? 'checked="checked"' : '')?> id="lathato" name="lathato" />
-                </div>
-            </div>
-            <br />
-            <div class="row">
-                <div class="col-md-12">
-                    <label for="tartalom">Ajánló felirat</label>
-                    <div style="background:#fff;"><textarea name="tartalom" id="tartalom" class="form-control"><?=($this->ajanlo ? $this->ajanlo['tartalom'] : '')?></textarea></div>
-                </div>
-            </div>
-            <br>
-            <div class="row">
-                <div class="col-md-12 right">
-                    <? if($this->gets[1] == 'szerkeszt'): ?>
-                    <a href="/<?=$this->gets[0]?>"><button type="button" class="btn btn-danger btn-3x"><i class="fa fa-arrow-circle-left"></i> bezár</button></a>
-                    <button name="saveHighlight" class="btn btn-success">Változások mentése <i class="fa fa-check-square"></i></button>
-                    <? else: ?>
-                    <button name="addHighlight" value="1" class="btn btn-primary">Hozzáadás <i class="fa fa-check-square"></i></button>
-                    <? endif; ?>
-                </div>
-            </div>
-            </form>
+<div class="con <?=($this->gets[1] == 'szerkeszt')?'con-edit':''?>">
+    <form action="" method="post">
+    <h2><? if($this->gets[1] == 'szerkeszt'): ?>Ajánló szerkesztése<? else: ?>Új ajánló hozzáadása<? endif; ?></h2>
+    <br>
+    <div class="row">
+        <div class="col-md-2">
+            <label for="sorrend">Sorrend:</label>
+            <input type="number" class="form-control" value="<?=($this->ajanlo ? $this->ajanlo['sorrend'] : '')?>" id="sorrend" name="sorrend" />
+        </div>
+        <div class="col-md-1">
+            <label for="lathato">Látható:</label>
+            <input type="checkbox" class="form-control" <?=($this->ajanlo && $this->ajanlo['lathato'] == '1' ? 'checked="checked"' : '')?> id="lathato" name="lathato" />
         </div>
     </div>
+    <br />
+    <div class="row">
+        <div class="col-md-12">
+            <label for="tartalom">Ajánló felirat</label>
+            <div style="background:#fff;"><textarea name="tartalom" id="tartalom" class="form-control"><?=($this->ajanlo ? $this->ajanlo['tartalom'] : '')?></textarea></div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-12 right">
+            <? if($this->gets[1] == 'szerkeszt'): ?>
+            <a href="/<?=$this->gets[0]?>"><button type="button" class="btn btn-danger btn-3x"><i class="fa fa-arrow-circle-left"></i> bezár</button></a>
+            <button name="saveHighlight" class="btn btn-success">Változások mentése <i class="fa fa-check-square"></i></button>
+            <? else: ?>
+            <button name="addHighlight" value="1" class="btn btn-primary">Hozzáadás <i class="fa fa-check-square"></i></button>
+            <? endif; ?>
+        </div>
+    </div>
+    </form>
 </div>
 <? endif; ?>
 
@@ -84,7 +80,7 @@
             </td>
             <td class="center actions">
                 <a href="/<?=$this->gets[0]?>/szerkeszt/<?=$d['ID']?>" title="Szerkesztés"><i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
-                <a href="/<?=$this->gets[0]?>/torles/<?=$d['ID']?>" title="Törlés"><i class="fa fa-times"></i></a>                
+                <a href="/<?=$this->gets[0]?>/torles/<?=$d['ID']?>" title="Törlés"><i class="fa fa-times"></i></a>
             </td>
         </tr>
         <? endforeach; else: ?>

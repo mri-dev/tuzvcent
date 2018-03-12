@@ -271,7 +271,8 @@ class AdminUser
 
 		return $data;
 	}
-	function getMegrendelesek($arg = array()){
+	function getMegrendelesek($arg = array())
+	{
 		$stat = array();
 		$q = "SELECT
 			o.*
@@ -349,6 +350,13 @@ class AdminUser
 			$d['payu_ipn'] 	= $this->getPayUIPN( $d['azonosito'] );
 			$d['coupon'] 	= false;
 			$d['referer'] 	= false;
+
+			if ( $d['userID'] != '' ) {
+				$d['user'] = $this->db->query(sprintf("SELECT f.nev, f.user_group, f.email FROM felhasznalok as f WHERE ID = %d", (int)$d['userID']))->fetch(\PDO::FETCH_ASSOC);
+			} else {
+				$d['user'] = false;
+			}
+
 
 			//$d[ppp_adat] 	= $this->getPickPackPontAdat($d[pickpackpont_uzlet_kod]);
 

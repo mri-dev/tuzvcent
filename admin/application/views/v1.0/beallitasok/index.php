@@ -385,13 +385,6 @@
                 <br>
                 <div class="row np">
                     <div class="col-md-12">
-                        <label for="basics_referer_min_price">Ajánló rendszer &mdash; Minimális rendelés összeglimit határ</label>
-                        <input type="text" id="basics_referer_min_price" name="referer_min_price" class="form-control" value="<?=$this->settings['referer_min_price']?>">
-                    </div>
-                </div>
-                <br>
-                <div class="row np">
-                    <div class="col-md-12">
                         <label for="basics_banktransfer_author">Banki adat - Tulajdonos</label>
                         <input type="text" id="basics_banktransfer_author" name="banktransfer_author" class="form-control" value="<?=$this->settings['banktransfer_author']?>">
                     </div>
@@ -414,6 +407,9 @@
                 <br>
                 <div class="divider"></div>
                 <br>
+								<?php if (false): ?>
+
+
                 <h3>OTP Kártyás fizetés</h3>
                 <div class="row np">
                     <div class="col-md-12">
@@ -428,6 +424,8 @@
                         <input type="text" id="basics_payu_secret" name="payu_secret" class="form-control" value="<?=$this->settings['payu_secret']?>">
                     </div>
                 </div>
+								<?php endif; ?>
+
 								<?php if (false): ?>
                 <br>
                 <div class="divider"></div>
@@ -526,6 +524,8 @@
                     </div>
 										<?php endif; ?>
                 </div>
+
+								<?php if (false): ?>
                 <br>
                 <div class="divider"></div>
                 <br>
@@ -542,12 +542,15 @@
                         </select>
                     </div>
                 </div>
+								<?php endif; ?>
+
                 <br>
                 <div class="divider"></div>
                 <br>
                 <h3>Fizetési kulcsok</h3>
                 <div class="row np">
-                    <div class="col-md-3">
+										<?php if (false): ?>
+										<div class="col-md-3">
                         <label for="basics_flagkey_pay_payu"><u>Simple</u> fizetési kulcs ID</label>
                         <select name="flagkey_flagkey_pay_payu" id="basics_flagkey_pay_payu" class="form-control">
                             <option value="">-- válasszon --</option>
@@ -557,6 +560,7 @@
                             <? endforeach; ?>
                         </select>
                     </div>
+										<?php endif; ?>                    
 										<?php if (false): ?>
                     <div class="col-md-3" style="padding-left:8px;">
                         <label for="basics_flagkey_pay_cetelem"><u>Cetelem</u> fizetési kulcs ID</label>

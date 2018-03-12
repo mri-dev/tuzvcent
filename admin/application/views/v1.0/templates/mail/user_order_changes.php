@@ -1,4 +1,4 @@
-<? require "head.php"; 
+<? require "head.php";
 $szamlazasi_keys 	= json_decode($szamlazasi_keys, true);
 $szallitasi_keys 	= json_decode($szallitasi_keys, true);
 $total 				= 0;
@@ -8,7 +8,7 @@ $total 				= 0;
 <div><strong><u><?=$orderData[azonosito]?></u></strong> azonosítójú rendelése <strong><u><?=date('Y-m-d H:i:s')?></u></strong> időponttal megváltozott.</div>
 <div><h3>Változások:</h3></div>
 <? foreach($changedData as $chkey => $chv){
-	
+
 	$keyname = $strKey[$chkey];
 
 	if($chkey == 'termekAllapot') {
@@ -17,14 +17,14 @@ $total 				= 0;
 	if($chkey == 'uj_termek') {
 		$after = ' ('.$chv.' db hozzáadott termék)';
 	}
-	echo '<div>- ' . $keyname . $after . '</div>';	
-} 
+	echo '<div>- ' . $keyname . $after . '</div>';
+}
 ?>
 <div></div>
 <div><h3>Megrendelés állapota:</h3></div>
 <div><strong style="color:<?=$orderAllapotok[$allapot][szin]?>;"><?=$orderAllapotok[$allapot][nev]?></strong></div>
 
-<div><h3>Termékek</h3></div> 
+<div><h3>Termékek</h3></div>
 <table class="if" width="100%" style="border-collapse:collapse;" cellpadding="10" cellspacing="0">
 <thead>
 	<tr>
@@ -63,7 +63,7 @@ $total 				= 0;
 		<td colspan="6" align="right">Kedvezmény:</td>
 		<td align="center"><?=(($kedvezmeny > 0) ? Helper::cashFormat($kedvezmeny) : 0 )?> Ft</td>
 	</tr>
-	<? 
+	<?
 		if($kedvezmeny > 0) 		$total -= $kedvezmeny;
 		if($szallitasi_koltseg > 0) $total += $szallitasi_koltseg;
 	?>
@@ -73,13 +73,19 @@ $total 				= 0;
 	</tr>
 </tbody>
 </table>
-<div><h3>Számlázási adatok</h3></div> 
+<div><h3>Számlázási adatok</h3></div>
 <table class="if" width="100%" border="1" style="border-collapse:collapse;" cellpadding="10" cellspacing="0">
 <tbody>
 	<tr>
 		<td width="150" align="left">Név</td>
 		<td align="left"><strong><?=$szamlazasi_keys[nev]?></strong></td>
 	</tr>
+	<?php if ( $szamlazasi_keys[adoszam] != '' ): ?>
+		<tr>
+			<td width="150" align="left">Adószám</td>
+			<td align="left"><strong><?=$szamlazasi_keys[adoszam]?></strong></td>
+		</tr>
+	<?php endif; ?>
 	<tr>
 		<td align="left">Utca, házszám</td>
 		<td align="left"><strong><?=$szamlazasi_keys[uhsz]?></strong></td>
@@ -98,7 +104,7 @@ $total 				= 0;
 	</tr>
 </tbody>
 </table>
-<div><h3>Szállítási adatok</h3></div> 
+<div><h3>Szállítási adatok</h3></div>
 <table class="if" width="100%" border="1" style="border-collapse:collapse;" cellpadding="10" cellspacing="0">
 <tbody>
 	<tr>
@@ -187,7 +193,7 @@ $total 				= 0;
 		<tr>
 			<td align="left">Bank:</td>
 			<td align="left"><strong><?=$settings['banktransfer_bank']?></strong></td>
-		</tr>		
+		</tr>
 		<tr>
 			<td align="left">Közleménybe:<br><em style="font-size:12px;">(megrendelés azonosító)</em></td>
 			<td align="left"><strong><?=$orderData[azonosito]?></strong></td>
@@ -196,7 +202,7 @@ $total 				= 0;
 	</table>
 <? } ?>
 
-<br>				
+<br>
 <div>Megrendelését nyomon követheti weboldalunkon. Regisztrált tagként, bejelentkezés után a megrendelések menüpont alatt keresse. <br /><br />
 <strong>Ha Ön nem regisztrált felhasználó a(z) <?=$settings['page_title']?> oldalon, ezen a linken megtekintheti aktuális megrendelését:</strong><br />
 <a href="<?=$settings['domain']?>/order/<?=$accessKey?>"><?=$settings['domain']?>/order/<?=$accessKey?></a>

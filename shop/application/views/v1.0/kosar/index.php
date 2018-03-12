@@ -396,10 +396,14 @@
 	                        	<div class="head">Számlázási adatok</div>
 	                            <div class="p10 input-fields">
 	                            	<div class="row">
-	                            		<div class="col-sm-12">
-	                                         <input type="text" class="form-control" name="szam_nev" value="<?=($this->orderExc)?$_POST[szam_nev]:(($this->storedString[1])?$this->storedString[1][szam_nev]:$this->user[data][nev])?>" placeholder="Név" />
-	                                         <? if($this->orderExc && in_array('szam_nev',$this->orderExc[input])): ?><span class="errMsg">Kérjük, töltse ki ezt a mezőt!</span><? endif; ?>
-	                                    </div>
+	                            		<div class="col-sm-8">
+                                       <input type="text" class="form-control" name="szam_nev" value="<?=($this->orderExc)?$_POST[szam_nev]:(($this->storedString[1])?$this->storedString[1][szam_nev]:$this->user[szamlazasi_adat][nev])?>" placeholder="Név" />
+                                       <? if($this->orderExc && in_array('szam_nev',$this->orderExc[input])): ?><span class="errMsg">Kérjük, töltse ki ezt a mezőt!</span><? endif; ?>
+                                  </div>
+																	<div class="col-sm-4">
+                                       <input type="text" class="form-control" name="szam_adoszam" value="<?=($this->orderExc)?$_POST[szam_adoszam]:(($this->storedString[1])?$this->storedString[1][szam_adoszam]:$this->user[szamlazasi_adat][adoszam])?>" placeholder="Adószám" />
+                                       <? if($this->orderExc && in_array('szam_adoszam',$this->orderExc[input])): ?><span class="errMsg">Kérjük, töltse ki ezt a mezőt!</span><? endif; ?>
+                                  </div>
 	                            	</div>
 	                            	<div class="row">
 	                            		<div class="col-sm-12">
@@ -588,6 +592,16 @@
 	                                    	<?=$this->storedString[1][szam_nev]?>
 	                                    </div>
 	                                </div>
+																	<?php if ( $this->storedString[1][szam_adoszam] != '' ): ?>
+																	<div class="row np">
+		                                	<div class="col-sm-5">
+		                                    	<strong>Adószám</strong>
+		                                    </div>
+		                                    <div class="col-sm-7 right">
+		                                    	<?=$this->storedString[1][szam_adoszam]?>
+		                                    </div>
+		                                </div>
+																	<?php endif; ?>
 	                                <div class="row np">
 	                                	<div class="col-sm-5">
 	                                    	<strong>Utca, házszám</strong>
@@ -777,8 +791,8 @@
 	                    </div>
 	                	<? endif;?>
 
-	                    <? if( $this->partner_referer->isValid() ): ?>
-						<div class="row np topDiv">
+	                    <? if( $this->partner_referer && $this->partner_referer->isValid() ): ?>
+											<div class="row np topDiv">
 	                    	<div class="col-sm-12">
 	                        	<div class="p10">
 	                            	<h4>Ajánló partner</h4>
@@ -791,8 +805,8 @@
 	                    </div>
 	                    <? endif; ?>
 
-	                    <? if( $this->coupon->isRunning() ): ?>
-						<div class="row np topDiv">
+	                    <? if( $this->coupon && $this->coupon->isRunning() ): ?>
+											<div class="row np topDiv">
 	                    	<div class="col-sm-12">
 	                        	<div class="p10">
 	                            	<h4>Felhasznált kupon</h4>
@@ -806,7 +820,7 @@
 	                    <? endif; ?>
 
 
-						<div class="row np topDiv">
+											<div class="row np topDiv">
 	                    	<div class="col-sm-12">
 	                        	<div class="p10">
 	                            	<h4>Megjegyzés a megrendeléshez</h4>

@@ -1,9 +1,9 @@
 <div class="row" style="padding:4px 0;">
 	<div class="col-md-1" style="line-height:35px;">
-		#Termék ID
+		#ID
 	</div>
 	<div class="col-md-3">
-		<input type="text" name="new_product[]" value="" class="form-control">
+		<input type="text" name="new_product[]" value="" class="form-control" placeholder="A termék belső ID-ja">
 	</div>
 	<div class="col-md-1" style="line-height:35px;">
 		Mennyiség:

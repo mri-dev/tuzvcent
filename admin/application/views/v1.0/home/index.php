@@ -92,7 +92,7 @@
   </div>
 
   <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-12">
         <? if(true): ?>
         <div class="box">
             <div class="head">
@@ -107,7 +107,7 @@
                 <div class="row">
                   <div class="col-md-2">Feladó</div>
                   <div class="col-md-3">Téma</div>
-                  <div class="col-md-3">Időpont</div>
+                  <div class="col-md-3  center">Időpont</div>
                   <div class="col-md-4">Kapcsolt elem</div>
                 </div>
                 <? if(count($this->stats[lastMessages][data]) > 0): ?>
@@ -157,6 +157,8 @@
         </div>
         <? endif; ?>
     </div>
+
+    <?php if (false): ?>
     <div class="col-md-4">
          <div class="box">
             <div class="head">
@@ -211,6 +213,7 @@
             </div>
         </div>
     </div>
+    <?php endif; ?>
   </div>
 
   <div class="row">

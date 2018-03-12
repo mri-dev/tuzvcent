@@ -507,7 +507,8 @@ class Admin
 		return $back;
 	}
 
-	function saveOrderData($orderID, $post){
+	function saveOrderData($orderID, $post)
+	{
 		if($orderID == '') return false;
 
 		$accessKey 		= $post[accessKey][$orderID];
@@ -595,11 +596,9 @@ class Admin
 
 					$added_new_items[] = $new_id;
 
-
 					// Készlet kivonás
 					if ( $this->settings['stock_withdrawal'] == '1' ) {
-						// Kikapcsoltam, CLORADE végzi
-						//$this->db->query("UPDATE shop_termekek SET raktar_keszlet = raktar_keszlet - ".$post['new_product_number'][$newi]." WHERE ID = ".$new_id);
+						$this->db->query("UPDATE shop_termekek SET raktar_keszlet = raktar_keszlet - ".$post['new_product_number'][$newi]." WHERE ID = ".$new_id);
 					}
 				}
 			}
@@ -815,53 +814,56 @@ class Admin
 
 		// E-mail Értesítő kiküldése
 		// User alert
-		$orderData = $this->getOrderData($accessKey);
-		extract($orderData);
+		if( isset( $post['alert_email_out'][$orderID] ) )
+		{
+			$orderData = $this->getOrderData($accessKey);
+			extract($orderData);
 
-		$is_pickpackpont = ( $szallitasiModID == $this->settings['flagkey_pickpacktransfer_id'] ) ? true : false;
-		$is_eloreutalas = ( $fizetesiModID == $this->settings['flagkey_pay_banktransfer'] ) ? true : false;
-		$is_payu = ( $fizetesiModID == $this->settings['flagkey_pay_payu'] ) ? true : false;
+			$is_pickpackpont = ( $szallitasiModID == $this->settings['flagkey_pickpacktransfer_id'] ) ? true : false;
+			$is_eloreutalas = ( $fizetesiModID == $this->settings['flagkey_pay_banktransfer'] ) ? true : false;
+			$is_payu = ( $fizetesiModID == $this->settings['flagkey_pay_payu'] ) ? true : false;
 
-		$total 		= 0;
-		$mail = new Mailer(
-			$this->settings['page_title'],
-			SMTP_USER,
-			$this->settings['mail_sender_mode']
-		);
+			$total = 0;
+			$mail = new Mailer(
+				$this->settings['page_title'],
+				SMTP_USER,
+				$this->settings['mail_sender_mode']
+			);
 
-		$mail->add( $email );
+			$mail->add( $email );
 
-		$arg = array(
-			'settings' 		=> $this->settings,
-			'infoMsg' 		=> 'Ezt az üzenetet a rendszer küldte. Kérjük, hogy ne válaszoljon rá!',
-			'nev' 			=> $nev,
-			'email' 		=> $email,
-			'orderData' 	=> $orderData,
-			'cart' 			=> $items,
-			'total' 		=> $total,
-			'szallitasi_koltseg' => $szallitasi_koltseg,
-			'kedvezmeny' 	=> $orderData['kedvezmeny'],
-			'szamlazasi_keys' => $szamlazasi_keys,
-			'szallitasi_keys' => $szallitasi_keys,
-			'atvetel' 		=> $this->getSzallitasiModeData($szallitasiModID,'nev'),
-			'fizetes' 		=> $this->getFizetesiModeData($fizetesiModID,'nev'),
-			'ppp_uzlet_str' => $pppkod,
-			'is_pickpackpont' => $is_pickpackpont,
-			'orderID' 		=> $orderID,
-			'megjegyzes' 	=> $comment,
-			'is_eloreutalas' => $is_eloreutalas,
-			'accessKey' => $accessKey,
-			'termekAllapotok' => $this->getMegrendeltTermekAllapotok(),
-			'orderAllapotok' => $this->getMegrendelesAllapotok(),
-			'changedData' => $changedData,
-			'allapot' => $allapot,
-			'strKey' => $strKey,
-			'ppp_uzlet_str' => $pickpackpont_uzlet_kod,
-		);
+			$arg = array(
+				'settings' 		=> $this->settings,
+				'infoMsg' 		=> 'Ezt az üzenetet a rendszer küldte. Kérjük, hogy ne válaszoljon rá!',
+				'nev' 			=> $nev,
+				'email' 		=> $email,
+				'orderData' 	=> $orderData,
+				'cart' 			=> $items,
+				'total' 		=> $total,
+				'szallitasi_koltseg' => $szallitasi_koltseg,
+				'kedvezmeny' 	=> $orderData['kedvezmeny'],
+				'szamlazasi_keys' => $szamlazasi_keys,
+				'szallitasi_keys' => $szallitasi_keys,
+				'atvetel' 		=> $this->getSzallitasiModeData($szallitasiModID,'nev'),
+				'fizetes' 		=> $this->getFizetesiModeData($fizetesiModID,'nev'),
+				'ppp_uzlet_str' => $pppkod,
+				'is_pickpackpont' => $is_pickpackpont,
+				'orderID' 		=> $orderID,
+				'megjegyzes' 	=> $comment,
+				'is_eloreutalas' => $is_eloreutalas,
+				'accessKey' => $accessKey,
+				'termekAllapotok' => $this->getMegrendeltTermekAllapotok(),
+				'orderAllapotok' => $this->getMegrendelesAllapotok(),
+				'changedData' => $changedData,
+				'allapot' => $allapot,
+				'strKey' => $strKey,
+				'ppp_uzlet_str' => $pickpackpont_uzlet_kod,
+			);
 
-		$mail->setSubject( 'Megrendelése megváltozott: '.$orderData[azonosito] );
-		$mail->setMsg( (new Template( VIEW . 'templates/mail/' ))->get( 'user_order_changes', $arg ) );
-		$re = $mail->sendMail();
+			$mail->setSubject( 'Megrendelése megváltozott: '.$orderData[azonosito] );
+			$mail->setMsg( (new Template( VIEW . 'templates/mail/' ))->get( 'user_order_changes', $arg ) );
+			$re = $mail->sendMail();
+		}
 
 		/**
 		 * WebshopSale report
@@ -991,6 +993,8 @@ class Admin
 			/* */
 
 			// Partner ajánlónak egyenleg jóváírás
+			// KIKAPCSOLVA IDEIGLENESEN, MERT NINCS RÁ SZÜKSÉG
+			/* * /
 			if ( $orderData['referer_code'] )
 			{
 				if( $this->db->query("SELECT 1 FROM shop_partner_balance_log WHERE felh_id = ".$orderData['referer']->getPartnerID()." and order_id = ".$orderData[ID].";")->rowCount() == 0 )
@@ -1042,7 +1046,7 @@ class Admin
 				}
 
 			}
-
+			/* */
 		}
 
 

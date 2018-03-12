@@ -2,6 +2,7 @@
 <?
 $nevek = array(
 	'nev' => 'Név',
+	'adoszam' => 'Adószám',
 	'uhsz' => 'Utca, házszám',
 	'city' => 'Város',
 	'irsz' => 'Irányítószám',
@@ -109,6 +110,9 @@ Megrendelések
                 <div>
                     <? if($d['userID']): ?>
                     <span class="hasRegistered">Regisztrált tag <i class="fa fa-check"></i></span>
+										<?php if ($d['user'] && $d['user']['user_group'] == \PortalManager\Users::USERGROUP_COMPANY ): ?>
+											<span class="hasRegisteredByCompany" title="Cégként regisztrált">Cég</span>
+										<?php endif; ?>
                     <? endif; ?>
 					<a href="<?=HOMEDOMAIN?>order/<?=$d[accessKey]?>" target="_blank">Publikus adatlap</a>
 					<? if( $d[comment] != '' ): ?>
@@ -159,8 +163,7 @@ Megrendelések
                         	<thead>
                         		<tr>
                         			<th colspan="2">Termék</th>
-                                    <th width="50">Méret</th>
-                                    <th>Szín</th>
+                              <th width="150">Cikkszám</th>
                         			<th width="50">Me.</th>
                         			<th width="80">E. Ár</th>
                         			<th width="120">Össz. Ár</th>
@@ -175,22 +178,24 @@ Megrendelések
                                 	<td width="35"><div class="img"><img src="<?=\PortalManager\Formater::productImage($item[profil_kep], 75, \ProductManager\Products::TAG_IMG_NOPRODUCT)?>" alt="" /></div></td>
                     				<td>
 									   <a href="<?=HOMEDOMAIN.'termek/'.\PortalManager\Formater::makeSafeUrl($item[termekNev],'_-'.$item[termekID])?>" target="_blank"><?=($item[termekNev]) ?: '-törölt termék-'?></a>
-                                       <div class="item-number">#<span class="number"><?=$item['termekID']?></span> &nbsp; Cikkszám: <span class="number"><?=$item['cikkszam']?></span> &nbsp; articleid: <span class="number"><?=$item['raktar_articleid']?></span> &nbsp; variantid: <span class="number"><?=$item['raktar_variantid']?></span></div>
+                                       <div class="item-number">
+																				 <span class="number tid" title="Termék ID">#<?=$item['termekID']?></span>
+																				 <?php if ( $item['szin'] != '' ): ?>
+																				 <span class="number tvar" title="Termék variáció">Var.: <strong><?php echo $item['szin']; ?></strong></span>
+																				 <?php endif; ?>
+																				 <?php if ( $item['meret'] != '' ): ?>
+																				 <span class="number tkisz" title="Termék kiszerelés">Kisz.: <strong><?php echo $item['meret']; ?></strong></span>
+																				 <?php endif; ?>
+																			</div>
                                     </td>
-                                    <td class="center">
-                                        <strong><?=$item['meret']?></strong>
-                                    </td>
-                                    <td class="center">
-                                         <strong><?=$item['szin']?></strong>
-                                    </td>
+																		<td class="center"><span class="cikkszam"><?=$item['cikkszam']?></span></td>
                                     <td class="center">
                                     	<input type="number" name="termekMe[<?=$d[ID]?>][<?=$item[ID]?>]" value="<?=$item[me]?>" min="0" class="form-control" />
                                         <input type="hidden" value="<?=$item[me]?>" name="prev_termekMe[<?=$d[ID]?>][<?=$item[ID]?>]" />
                                     </td>
                                     <td class="center">
-                                        <?=Helper::cashFormat($item[egysegAr])?> Ft
-                                    	<input style="display: none;" type="number" name="termekAr[<?=$d[ID]?>][<?=$item[ID]?>]" value="<?=round($item[egysegAr])?>" min="0" class="form-control" />
-                                        <input type="hidden" value="<?=round($item[egysegAr])?>" name="prev_termekAr[<?=$d[ID]?>][<?=$item[ID]?>]" />
+																			<input type="number" name="termekAr[<?=$d[ID]?>][<?=$item[ID]?>]" value="<?=$item[egysegAr]?>" min="0" class="form-control" />
+                                      <input type="hidden" value="<?=$item[egysegAr]?>" name="prev_termekAr[<?=$d[ID]?>][<?=$item[ID]?>]" />
 									</td>
                                     <td class="center"><?=Helper::cashFormat($item[subAr])?> Ft</td>
                                     <td class="center" width="200">
@@ -204,7 +209,7 @@ Megrendelések
                     			</tr>
                                 <? endforeach; ?>
                                 <tr style="background:#f3f3f3;">
-                                    <td class="right" colspan="6">Termékek összesített ára:</td>
+                                    <td class="right" colspan="5">Termékek összesített ára:</td>
                                     <td class="center"><strong><?=Helper::cashFormat($c_total)?> Ft</strong></td>
                                     <td class="right" colspan="2">
                                         <a href="javascript:void(0);" onclick="addNewItem(<?=$d[ID]?>);">termék hozzáadás <i class="fa fa-plus"></i></a>
@@ -416,7 +421,8 @@ Megrendelések
 						<? endif; ?>
                     </div>
                     <div class="col-md-6 right save">
-                       <button name="saveOrder" value="<?=$d[ID]?>" class="btn btn-success btn-sm">Változások mentése <i class="fa fa-save"></i></button>
+											<input type="checkbox" id="alert_email_out" name="alert_email_out[<?=$d[ID]?>]" checked="checked" value="1"> <label for="alert_email_out">e-mail értesítés változásról</label>
+                    	&nbsp;&nbsp;&nbsp; <button name="saveOrder" value="<?=$d[ID]?>" class="btn btn-success btn-sm">Változások mentése <i class="fa fa-save"></i></button>
                     </div>
                 </div>
             </td>
