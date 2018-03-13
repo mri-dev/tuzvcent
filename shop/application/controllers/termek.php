@@ -9,7 +9,8 @@ class termek extends Controller{
 
 			$products = new Products( array(
 				'db' => $this->db,
-				'user' => $this->User->get()
+				'user' => $this->User->get(),
+				'settings' => $this->view->settings
 			) );
 
 			$product =  $products->get( Product::getTermekIDFromUrl() );
@@ -97,7 +98,7 @@ class termek extends Controller{
 
 			// Meta
 			$desc = substr(strip_tags($this->view->product['rovid_leiras']), 0, 250).'...';
-			
+
 			$meta_title = $product['meta_title'];
 			$meta_desc = $product['meta_desc'];
 

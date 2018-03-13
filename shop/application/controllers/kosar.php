@@ -83,7 +83,7 @@ class kosar extends Controller{
 
 			$this->out( 'partner_referer', $partner_ref );
 			/* */
-			
+
 			/**
 			 * Kupon kód ellenőrzése
 			 * */
@@ -117,8 +117,6 @@ class kosar extends Controller{
 				setcookie( '__order_step_1poststr', json_encode($temp, JSON_UNESCAPED_UNICODE), time() + 3600 * 48, '/' );
 				Helper::reload('/kosar/');
 			}
-
-
 
 			if($this->view->gets[1] == '5'){
 				Helper::reload('/kosar/done/'.$_COOKIE[lastOrderedKey]);
@@ -156,7 +154,6 @@ class kosar extends Controller{
 				$this->view->canOrder = false;
 			}*/
 
-
 			if(Post::on('orderState')){
 				/**
 				* Virtuálos egyenleg felhasználás
@@ -179,7 +176,6 @@ class kosar extends Controller{
 					setcookie("coupon_code", 	null, time()-3600, "/kosar");
 					setcookie("partner_code", 	null, time()-3600, "/kosar");
 				}
-
 
 				try{
 					$step = $this->shop->doOrder($_POST, array( 'user' => $this->view->user ));

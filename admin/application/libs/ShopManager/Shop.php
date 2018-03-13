@@ -2199,18 +2199,22 @@ class Shop
 
 							$total += ( $d[ar] * $d[me] );
 
-							$this->db->insert('order_termekek',
-								array(
-									'orderKey' 			=> $orderID,
-									'gepID'			 	=> $mid,
-									'userID' 			=> $uid,
-									'email' 			=> $email,
-									'termekID' 			=> $d['termekID'],
-									'me' 				=> $d['me'],
-									'egysegAr' 			=> $d['ar'],
+							$this->db->insert('order_termekek', array(
+									'orderKey' => $orderID,
+									'gepID' => $mid,
+									'userID' => $uid,
+									'email' => $email,
+									'termekID' => $d['termekID'],
+									'me' => $d['me'],
+									'egysegAr' => $d['ar'],
 									'egysegArKedvezmeny'=> $kedv
-								)
-							);
+							));
+
+							// Készlet levonás
+							if ( $this->settings['stock_withdrawal'] == '1' ) {
+								$levon = (int)$d['me'];
+								$this->db->query("UPDATE shop_termekek SET raktar_keszlet = raktar_keszlet - ".$levon." WHERE ID = ".$d['termekID']);
+							}
 
 							$temp_cart[] = $d;
 						}
@@ -2226,6 +2230,7 @@ class Shop
 
 						$cart = $temp_cart;
 						unset( $temp_cart );
+
 					}
 
 
@@ -2313,7 +2318,7 @@ class Shop
 						$re = $mail->sendMail();
 
 						// Feliratkozás
-						if ( $_POST['subscribe'] ) {
+						if ( isset($_POST['subscribe']) ) {
 							$portal = new Portal( array( 'db' => $this->db ));
 							$portal->feliratkozas( $nev, $email, 'megrendelés' );
 						}
@@ -2325,15 +2330,16 @@ class Shop
 						}
 
 						// Clear cookies
-						setcookie('__order_step_1poststr','',time()-3600);
-						setcookie('__order_step_2poststr','',time()-3600);
-						setcookie('__order_step_3poststr','',time()-3600);
-						setcookie('__order_step_4poststr','',time()-3600);
-						setcookie('orderStep','',time()-3600);
-						setcookie('partner_code','',time()-3600);
-						setcookie('coupon_code','',time()-3600);
+						setcookie('__order_step_1poststr',null,time()-3600,'/');
+						setcookie('__order_step_2poststr',null,time()-3600,'/');
+						setcookie('__order_step_3poststr',null,time()-3600,'/');
+						setcookie('__order_step_4poststr',null,time()-3600,'/');
+						//setcookie('orderStep',null,time()-3600,'/');
+						setcookie('partner_code',null,time()-3600,'/');
+						setcookie('coupon_code',null,time()-3600,'/');
 
-						setcookie('lastOrderedKey',$accessKey,time()+3600);
+						setcookie('acceptedOrder',null,time()-3600,'/kosar');
+						setcookie('lastOrderedKey',$accessKey,time()+3600,'/kosar');
 				}
 			break;
 		}

@@ -1,31 +1,9 @@
-<? require "head.php";
-$szamlazasi_keys 	= json_decode($szamlazasi_keys, true);
-$szallitasi_keys 	= json_decode($szallitasi_keys, true);
-$total 				= 0;
-?>
-
+<? require "head.php"; ?>
 <h2>Tisztelt <?=$nev?>!</h2>
-<div><strong><u><?=$orderData[azonosito]?></u></strong> azonosítójú rendelése <strong><u><?=date('Y-m-d H:i:s')?></u></strong> időponttal megváltozott.</div>
-<div><h3>Változások:</h3></div>
-<? foreach($changedData as $chkey => $chv){
-
-	$keyname = $strKey[$chkey];
-
-	if($chkey == 'termekAllapot') {
-		$after = ' ('.$chv.' db termék)';
-	}
-	if($chkey == 'uj_termek') {
-		$after = ' ('.$chv.' db hozzáadott termék)';
-	}
-	echo '<div>- ' . $keyname . $after . '</div>';
-}
-?>
-<div></div>
-<div><h3>Megrendelés állapota:</h3></div>
-<div><strong style="color:<?=$orderAllapotok[$allapot][szin]?>;"><?=$orderAllapotok[$allapot][nev]?></strong></div>
-
-<div><h3>Termékek</h3></div>
-<table class="if" width="100%" style="border-collapse:collapse;" cellpadding="10" cellspacing="0">
+<h3>Köszönjük, hogy a(z) <?=$settings['page_title']?> webáruházat választotta!</h3>
+<div>A rendelés azonosítója: <strong><?=$orderData[azonosito]?></strong></div>
+<div><h3>Megrendelt termékek</h3></div>
+<table class="if" width="100%" border="1" style="border-collapse:collapse;" cellpadding="10" cellspacing="0">
 <thead>
 	<tr>
 		<th align="center">Me.</th>
@@ -38,9 +16,10 @@ $total 				= 0;
 	</tr>
 </thead>
 <tbody style="color:#888;">
-<? foreach($cart as $d){
+	<?
+	foreach($cart as $d){
 	$total += ($d[ar]*$d[me]);
-?>
+	?>
 	<tr>
 		<td align="center"><?=$d[me]?>x</td>
 		<td><a href="<?=$d[url]?>"><?=$d[nev]?></a></td>
@@ -48,9 +27,9 @@ $total 				= 0;
 		<td align="center"><?=$d[meret]?></td>
 		<td align="center"><?=round($d[ar])?> Ft</td>
 		<td align="center"><?=round($d[ar]*$d[me])?> Ft</td>
-		<td align="center"><strong style="color:<?=$termekAllapotok[$d[allapotID]][szin]?>;"><?=$termekAllapotok[$d[allapotID]][nev]?></strong></td>
+		<td align="center"><strong style="color:#CC0000;">Feldolgozás alatt</strong></td>
 	</tr>
-<? } ?>
+	<? } ?>
 	<tr>
 		<td colspan="6" align="right">Összesen:</td>
 		<td align="center"><?=$total?> Ft</td>
@@ -61,15 +40,14 @@ $total 				= 0;
 	</tr>
 	<tr>
 		<td colspan="6" align="right">Kedvezmény:</td>
-		<td align="center"><?=(($kedvezmeny > 0) ? Helper::cashFormat($kedvezmeny) : 0 )?> Ft</td>
+		<td align="center"><?=( ( !$kedvezmeny && $kedvezmeny == '') ? '0' : round($kedvezmeny) )?> Ft</td>
 	</tr>
 	<?
-		if($kedvezmeny > 0) 		$total -= $kedvezmeny;
-		if($szallitasi_koltseg > 0) $total += $szallitasi_koltseg;
+	if($szallitasi_koltseg > 0) $total += $szallitasi_koltseg;
 	?>
 	<tr>
 		<td colspan="6" align="right"><strong>Végösszeg:</strong></td>
-		<td align="center"><strong><?=round($total)?> Ft</strong></td>
+		<td align="center"><strong><?=round($total-$kedvezmeny)?> Ft</strong></td>
 	</tr>
 </tbody>
 </table>
@@ -81,10 +59,10 @@ $total 				= 0;
 		<td align="left"><strong><?=$szamlazasi_keys[nev]?></strong></td>
 	</tr>
 	<?php if ( $szamlazasi_keys[adoszam] != '' ): ?>
-		<tr>
-			<td width="150" align="left">Adószám</td>
-			<td align="left"><strong><?=$szamlazasi_keys[adoszam]?></strong></td>
-		</tr>
+	<tr>
+		<td width="150" align="left">Adószám</td>
+		<td align="left"><strong><?=$szamlazasi_keys[adoszam]?></strong></td>
+	</tr>
 	<?php endif; ?>
 	<tr>
 		<td align="left">Utca, házszám</td>
@@ -93,10 +71,6 @@ $total 				= 0;
 	<tr>
 		<td align="left">Város</td>
 		<td align="left"><strong><?=$szamlazasi_keys[city]?></strong></td>
-	</tr>
-	<tr>
-		<td align="left">Megye</td>
-		<td align="left"><strong><?=$szamlazasi_keys[state]?></strong></td>
 	</tr>
 	<tr>
 		<td align="left">Irányítószám</td>
@@ -120,10 +94,6 @@ $total 				= 0;
 		<td align="left"><strong><?=$szallitasi_keys[city]?></strong></td>
 	</tr>
 	<tr>
-		<td align="left">Megye</td>
-		<td align="left"><strong><?=$szallitasi_keys[state]?></strong></td>
-	</tr>
-	<tr>
 		<td align="left">Irányítószám</td>
 		<td align="left"><strong><?=$szallitasi_keys[irsz]?></strong></td>
 	</tr>
@@ -133,51 +103,49 @@ $total 				= 0;
 	</tr>
 </tbody>
 </table>
-
 <div><h3>Egyéb adatok</h3></div>
 <table class="if" width="100%" border="1" style="border-collapse:collapse;" cellpadding="10" cellspacing="0">
-	<tbody>
-		<? if($orderData[used_cash] != 0): ?>
-		<tr>
-			<td width="150" align="left">Felhasznált egyenleg</td>
-			<td align="left"><strong><?=$orderData[used_cash]?> Ft</strong></td>
-		</tr>
-		<? endif; ?>
-		<? if( $orderData[coupon_code] ): ?>
-		<tr>
-			<td width="150" align="left">Felhasznált kuponkód</td>
-			<td align="left"><strong><?=$orderData[coupon_code]?></strong></td>
-		</tr>
-		<? endif; ?>
-		<? if( $orderData[referer_code] ): ?>
-		<tr>
-			<td width="150" align="left">Felhasznált ajánló partnerkód</td>
-			<td align="left"><strong><?=$orderData[referer_code]?></strong></td>
-		</tr>
-		<? endif; ?>
-		<tr>
-			<td width="150" align="left">Megjegyzés</td>
-			<td align="left"><strong><?=$megjegyzes?></strong></td>
-		</tr>
-		<tr>
-			<td align="left">Átvétel módja</td>
-			<td align="left">
-			<strong><?=$atvetel?></strong>
-			<? if( $is_pickpackpont ){ ?>
-				(<?=$ppp_uzlet_str?>)
-			<? } ?></td>
-		</tr>
-		<tr>
-			<td align="left">Fizetés módja</td>
-			<td align="left"><strong><?=$fizetes?></strong></td>
-		</tr>
-		<tr>
-			<td align="left">Megrendelve</td>
-			<td align="left"><strong><?=$orderData[idopont]?></strong></td>
-		</tr>
-	</tbody>
+<tbody>
+	<? if($orderData[used_cash] != 0): ?>
+	<tr>
+		<td width="150" align="left">Felhasznált egyenleg</td>
+		<td align="left"><strong><?=$orderData[used_cash]?> Ft</strong></td>
+	</tr>
+	<? endif; ?>
+	<? if( $orderData[coupon_code] ): ?>
+	<tr>
+		<td width="150" align="left">Felhasznált kuponkód</td>
+		<td align="left"><strong><?=$orderData[coupon_code]?></strong></td>
+	</tr>
+	<? endif; ?>
+	<? if( $orderData[referer_code] ): ?>
+	<tr>
+		<td width="150" align="left">Felhasznált ajánló partnerkód</td>
+		<td align="left"><strong><?=$orderData[referer_code]?></strong></td>
+	</tr>
+	<? endif; ?>
+	<tr>
+		<td width="150" align="left">Megjegyzés</td>
+		<td align="left"><strong><?=$megjegyzes?></strong></td>
+	</tr>
+	<tr>
+		<td align="left">Átvétel módja</td>
+		<td align="left"><strong><?=$atvetel?></strong></td>
+	</tr>
+	<tr>
+		<td align="left">Fizetés módja</td>
+		<td align="left"><strong><?=$fizetes?></strong>
+		<? if( $is_pickpackpont ){ ?>
+			(<?=$ppp_uzlet_str?>)
+		<? } ?>
+		</td>
+	</tr>
+	<tr>
+		<td align="left">Megrendelve</td>
+		<td align="left"><strong><?=date('Y-m-d H:i:s')?></strong></td>
+	</tr>
+</tbody>
 </table>
-
 <? if( $is_eloreutalas ){ ?>
 	<div><h3>Átutaláshoz szükséges adatok</h3></div>
 	<table class="if" width="100%" border="1" style="border-collapse:collapse;" cellpadding="10" cellspacing="0">
@@ -196,12 +164,11 @@ $total 				= 0;
 		</tr>
 		<tr>
 			<td align="left">Közleménybe:<br><em style="font-size:12px;">(megrendelés azonosító)</em></td>
-			<td align="left"><strong><?=$orderData[azonosito]?></strong></td>
+			<td align="left"><strong><strong><?=$orderData[azonosito]?></strong></td>
 		</tr>
 	</tbody>
 	</table>
 <? } ?>
-
 <br>
 <div>Megrendelését nyomon követheti weboldalunkon. Regisztrált tagként, bejelentkezés után a megrendelések menüpont alatt keresse. <br /><br />
 <strong>Ha Ön nem regisztrált felhasználó a(z) <?=$settings['page_title']?> oldalon, ezen a linken megtekintheti aktuális megrendelését:</strong><br />

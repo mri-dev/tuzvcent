@@ -407,9 +407,62 @@
                 <br>
                 <div class="divider"></div>
                 <br>
+
+								<h3>Készlethiány beállítások</h3>
+                <div class="row np">
+                    <div class="col-md-3">
+											<label for="basics_stock_outselling">Készlet nélküli továbbértékesítés <?=\PortalManager\Formater::tooltip('A termékek továbbra is vásárolhatóak, ha elfogy a készletről.')?></label>
+											<select name="stock_outselling" id="basics_stock_outselling" class="form-control">
+													<option value="0" <?=($this->settings['stock_outselling'] == '0' ? 'selected="selected"' : '')?>>Nem</option>
+													<option value="1" <?=($this->settings['stock_outselling'] == '1' ? 'selected="selected"' : '')?>>Igen</option>
+											</select>
+                    </div>
+										<div class="col-md-3" style="padding-left:8px;">
+											<label for="basics_stock_outselling_status">Termék állapot felülírás: <u>elfogyás esetén</u> <?=\PortalManager\Formater::tooltip('A terméknél beállított állapotot erre állítja be, ha elfogyott a készlet.')?></label>
+											<select name="stock_outselling_status" id="basics_stock_outselling_status" class="form-control">
+													<option value="" <?=($this->settings['stock_outselling_status'] == 0)?'selected="selected"':''?>>Ne írja felül</option>
+													<option value="" disabled="disabled"></option>
+													<? foreach( $this->termek_allapotok as $d ): ?>
+													<option value="<?=$d['ID']?>" <?=($this->settings['stock_outselling_status'] == $d['ID'])?'selected="selected"':''?>><?=$d['nev']?></option>
+													<? endforeach; ?>
+											</select>
+										</div>
+										<div class="col-md-3" style="padding-left:8px;">
+											<label for="basics_stock_outselling_status_off">Termék állapot felülírás: <u>ha nincs továbbértékesítés</u> <?=\PortalManager\Formater::tooltip('A terméknél beállított állapotot erre állítja be, ha elfogyott a készlet és nincs továbbértékesítés.')?></label>
+											<select name="stock_outselling_status_off" id="basics_stock_outselling_status_off" class="form-control">
+													<option value="" <?=($this->settings['stock_outselling_status_off'] == 0)?'selected="selected"':''?>>Ne írja felül</option>
+													<option value="" disabled="disabled"></option>
+													<? foreach( $this->termek_allapotok as $d ): ?>
+													<option value="<?=$d['ID']?>" <?=($this->settings['stock_outselling_status_off'] == $d['ID'])?'selected="selected"':''?>><?=$d['nev']?></option>
+													<? endforeach; ?>
+											</select>
+										</div>
+                </div>
+								<br>
+								<div class="row">
+									<div class="col-md-3 col-md-offset-3" style="padding-left:8px;">
+										<label for="basics_stock_outselling_transport">Termék szállítási idő felülírás: <u>elfogyás esetén</u> <?=\PortalManager\Formater::tooltip('A terméknél beállított szállítási időt erre állítja be, ha elfogyott a készlet.')?></label>
+										<select name="stock_outselling_transport" id="basics_stock_outselling_transport" class="form-control">
+												<option value="" <?=($this->settings['stock_outselling_transport'] == 0)?'selected="selected"':''?>>Ne írja felül</option>
+												<option value="" disabled="disabled"></option>
+												<? foreach( $this->szallitasi_idok as $d ): ?>
+												<option value="<?=$d['ID']?>" <?=($this->settings['stock_outselling_transport'] == $d['ID'])?'selected="selected"':''?>><?=$d['nev']?></option>
+												<? endforeach; ?>
+										</select>
+									</div>
+									<div class="col-md-3" style="padding-left:8px;">
+										<label for="basics_stock_outselling_transport_off">Termék szállítási idő felülírás: <u>ha nincs továbbértékesítés</u> <?=\PortalManager\Formater::tooltip('A terméknél beállított szállítási időt erre állítja be, ha elfogyott a készlet és nincs továbbértékesítés.')?></label>
+										<select name="stock_outselling_transport_off" id="basics_stock_outselling_transport_off" class="form-control">
+												<option value="" <?=($this->settings['stock_outselling_transport_off'] == 0)?'selected="selected"':''?>>Ne írja felül</option>
+												<option value="" disabled="disabled"></option>
+												<? foreach( $this->szallitasi_idok as $d ): ?>
+												<option value="<?=$d['ID']?>" <?=($this->settings['stock_outselling_transport_off'] == $d['ID'])?'selected="selected"':''?>><?=$d['nev']?></option>
+												<? endforeach; ?>
+										</select>
+									</div>
+								</div>
+
 								<?php if (false): ?>
-
-
                 <h3>OTP Kártyás fizetés</h3>
                 <div class="row np">
                     <div class="col-md-12">
@@ -560,7 +613,7 @@
                             <? endforeach; ?>
                         </select>
                     </div>
-										<?php endif; ?>                    
+										<?php endif; ?>
 										<?php if (false): ?>
                     <div class="col-md-3" style="padding-left:8px;">
                         <label for="basics_flagkey_pay_cetelem"><u>Cetelem</u> fizetési kulcs ID</label>

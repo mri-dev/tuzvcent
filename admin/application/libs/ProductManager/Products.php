@@ -22,10 +22,12 @@ class Products
 	private $qry_str = null;
 	private $selected_sizes = array();
 	public $item_ids = array();
+	public $settings = array();
 
 	public function __construct( $arg = array() ) {
 		$this->db = $arg[db];
 		$this->user = $arg[user];
+		$this->settings = $arg['settings'];
 
 		return $this;
 	}
@@ -1611,24 +1613,8 @@ class Products
 		$data['related_products_ids']	= $this->getRelatedIDS( $product_id );
 		$data['nav'] = array_reverse($categories->getCategoryParentRow((int)$data['alapertelmezett_kategoria'], false));
 
-		$keszlet_info = 			$data['keszletNev'];
-		switch( $keszlet_info ) {
-			case 'Raktáron':
-				$keszlet_info = '<span style="color:green;">'.$keszlet_info.'</span>';
-			break;
-			case 'Elfogyott':
-				$keszlet_info = '<span style="color:red;">'.$keszlet_info.'</span>';
-			break;
-			case 'Rendelhető':
-				$keszlet_info = '<span style="color:orange;">'.$keszlet_info.'</span>';
-			break;
-			default:
-			break;
-		}
-		$data['keszlet_info'] 		= $keszlet_info;
-
-		$szallitas_info = $data['szallitasNev'];
-		$data['szallitas_info'] = $szallitas_info;
+		$data['keszlet_info'] = $this->checkProductStockName( $data['keszletID'], $data['raktar_keszlet'], true );
+		$data['szallitas_info'] = $this->checkProductTransportName( $data['szallitasID'], $data['raktar_keszlet'] );
 
 		// Csatolt dokumentumokat
 		$data['documents'] = $this->getTermDocuments( $product_id );
@@ -1638,6 +1624,48 @@ class Products
 		$this->getProductLinksFromCategoryHashkeys( $data['in_cat_page_hashkeys'], $data['link_lista'] );
 
 		return $data;
+	}
+
+	public function checkProductTransportName( $szallitasID, $keszlet = 1 )
+	{
+		$outselling = ($this->settings['stock_outselling'] == 1) ? true : false;
+
+		if ( $outselling ) {
+			$statkey = (int)$this->settings['stock_outselling_transport'];
+		}  else {
+			$statkey = (int)$this->settings['stock_outselling_transport_off'];
+		}
+
+		if ( $statkey == 0 || $keszlet > 0 ) {
+			$statkey = $szallitasID;
+		}
+
+		$stockdata = $this->db->query("SELECT elnevezes FROM shop_szallitasi_ido WHERE ID = ".$statkey)->fetch(\PDO::FETCH_ASSOC);
+
+		return $stockdata['elnevezes'];
+	}
+
+	public function checkProductStockName( $keszeltID, $keszlet = 1, $formated = false )
+	{
+		$outselling = ($this->settings['stock_outselling'] == 1) ? true : false;
+
+		if ( $outselling ) {
+			$statkey = (int)$this->settings['stock_outselling_status'];
+		}  else {
+			$statkey = (int)$this->settings['stock_outselling_status_off'];
+		}
+
+		if ( $statkey == 0 || $keszlet > 0 ) {
+			$statkey = $keszeltID;
+		}
+
+		$stockdata = $this->db->query("SELECT elnevezes, color FROM shop_termek_allapotok WHERE ID = ".$statkey)->fetch(\PDO::FETCH_ASSOC);
+
+		if ( $formated ) {
+			return '<span style="color:'.$stockdata['color'].';">'.$stockdata['elnevezes'].'</span>';
+		} else {
+			return $stockdata['elnevezes'];
+		}
 	}
 
 	public function getTermDocuments( $termid = 0 )

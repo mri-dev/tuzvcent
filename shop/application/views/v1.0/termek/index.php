@@ -85,6 +85,11 @@
             <? endif; ?>
             </div>
         </div>
+        <? if($this->product['show_stock'] == '1' && $this->product['raktar_keszlet'] > 0): ?>
+        <div class="stock">
+          Készleten: <strong><?php echo $this->product['raktar_keszlet']; ?> db</strong>
+        </div>
+        <? endif; ?>
         <div class="divider"></div>
         <div class="short-desc">
           <?=$this->product['rovid_leiras']?>
@@ -133,6 +138,13 @@
             </div>
           </div>
           <div id="cart-msg"></div>
+          <? if($this->settings['stock_outselling'] == '0' && $this->product['raktar_keszlet'] <= 0): ?>
+          <div class="out-of-stock">
+            A termék jelenleg nem rendelhető.
+          </div>
+          <? endif; ?>
+
+          <?php if ( $this->product['raktar_keszlet'] > 0 || $this->settings['stock_outselling'] == '1'): ?>
           <div class="group" style="margin: 10px -10px 0 0;">
             <?
             if( count($this->product['hasonlo_termek_ids']['colors'][$this->product['szin']]['size_set']) > 1 ):
@@ -169,6 +181,7 @@
               <?php endif; ?>
             </div>
           </div>
+          <?php endif; ?>
           <div class="group helpdesk-actions">
               <div class="tudastar">
                 <div class="wrapper icoed">

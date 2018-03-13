@@ -15,7 +15,7 @@
 						<div>
 							<div class="col-sm-6">
 								<label for="coupon_code">Kupon kódja</label>
-								<input type="text" id="coupon_code" name="coupon_code" value="<?=(isset($_POST[coupon_code])) ? $_POST[coupon_code] : 'CASADA-'.date('Y').'-'.strtoupper(strrev(uniqid()))?>" class="form-control">
+								<input type="text" id="coupon_code" name="coupon_code" value="<?=(isset($_POST[coupon_code])) ? $_POST[coupon_code] : 'TUZVED-'.date('Y').'-'.strtoupper(strrev(uniqid()))?>" class="form-control">
 								<small>Ha nem generált kóddal szeretne kupont létrehozni, akkor írja be a kívánt kuponkódot.</small>
 							</div>
 							<div class="col-sm-6">
@@ -65,7 +65,7 @@
 								<option value="percentage">Százalék (%)</option>
 								<option value="cash">Pénzösszeg (Ft)</option>
 							</select>
-						</div>						
+						</div>
 						<div class="col-sm-6">
 							<label for="discount_value">Kedvezmény érték</label>
 							<input type="number" id="discount_value" name="discount_value" value="0" class="form-control">
@@ -75,7 +75,16 @@
 					<br>
 				</div>
 			</div>
+
+			<div class="con">
+				<div class="row np">
+					<div class="col-sm-12 right">
+						<button class="btn btn-success" name="createCoupon">Létrehozás <i class="fa fa-plus-circle"></i></button>
+					</div>
+				</div>
+			</div>
 		</div>
+		<?php if (false): ?>
 		<div class="col-sm-6">
 			<div class="con">
 				<h3>Termék szükítés</h3>
@@ -86,12 +95,12 @@
 					<input type="checkbox" name="exlude_for_product" onclick="if($(this).is(':checked')){$('#prod-list').slideDown(200);}else{$('#prod-list').slideUp(200);}">
 					Igen, kiválasztom, hogy melyik termékekre legyen élrvényes a kupon.</label>
 					</label>
-					<br>					
+					<br>
 					<div class="prod-list" id="prod-list" style="display: none;">
 					<div class="divider"></div>
 					<? foreach($this->footer_products as $t): ?>
 					<div>
-						<input type="checkbox" id="fp_<?=$t['product_id']?>" name="for_products[<?=$t['raktar_articleid']?>]"> <label for="fp_<?=$t['product_id']?>"><?=$t['product_nev']?></label>	
+						<input type="checkbox" id="fp_<?=$t['product_id']?>" name="for_products[<?=$t['raktar_articleid']?>]"> <label for="fp_<?=$t['product_id']?>"><?=$t['product_nev']?></label>
 					</div>
 					<? endforeach; ?>
 					</div>
@@ -106,11 +115,11 @@
 					<input type="checkbox" name="has_author" onclick="if($(this).is(':checked')){$('#auth-list').slideDown(200);}else{$('#auth-list').slideUp(200);}">
 					Igen, kiválasztom a kupon tulajdonosát.</label>
 					</label>
-					<br>					
-					<div class="prod-list" id="auth-list" style="display: none;">
-					<div class="divider"></div>		
 					<br>
-						<div class="row np">		    				
+					<div class="prod-list" id="auth-list" style="display: none;">
+					<div class="divider"></div>
+					<br>
+						<div class="row np">
 	        				<div class="col-sm-10">
 	        					<input type="text" class="form-control userReceiver" cid="1" placeholder="Felhasználó keresése név vagy email szerint...">
 	        					<div class="userReceiver-list" id="userReceiver_list1"></div>
@@ -122,14 +131,8 @@
 					</div>
 				</div>
 			</div>
-			<div class="con">
-				<div class="row np">
-					<div class="col-sm-12 right">
-						<button class="btn btn-success" name="createCoupon">Létrehozás <i class="fa fa-plus-circle"></i></button>
-					</div>
-				</div>
-			</div>
 		</div>
+		<?php endif; ?>
 	</div>
 	</form>
 </div>
@@ -160,10 +163,10 @@
         			ct.html("");
         		}
         	}, "json");
-			       	
+
         });
 
-         
+
     })
 
 	function saveReceiver( cid, id ){

@@ -370,7 +370,7 @@
 
 			<? if( $this->termek['alapertelmezett_kategoria'] ): ?>
 	     	<div class="con con-extra">
-	     		<div style="float: right;"><a href="/kategoriak/parameterek">paraméter beállítások <i class="fa fa-gear"></i></a></div>
+	     		<div style="float: right;"><a href="/kategoriak/parameterek">Paraméter beállítások <i class="fa fa-gear"></i></a></div>
             	<h3>Paraméterek</h3>
                 <div style="">
                 <? if(count($this->parameterek) == 0): ?> <span class="subt"><i class="fa fa-info-circle"></i> nincsennek paraméterek meghatározva</span><? endif; ?>
@@ -411,7 +411,7 @@
 				<h3>
 					<i class="fa fa-upload hbtn" title="új kép feltöltése" key="upImg"></i>
 					Képek (<?=count($this->termek[images])?>)
-					<em class="info">A képre kattintva lecserélheti a profilképet!</em>
+					<em class="info">A képre kattintva beállíthatja az alapértelmezett profilképet.</em>
 				</h3>
                 <div class="row">
                 	<div class="col-md-12 upImg" style="display:none;">
@@ -448,7 +448,7 @@
 
 			<? if( true ): ?>
 	        <div class="con con-extra">
-            	<h3>Termék másolat <?=\PortalManager\Formater::tooltip('Javasolt termék variációhoz, ahol a termék adatai nagy részében megegyeznek.')?> <em class="info">Lemásolhatja tetszőletes számban a terméket</em></h3>
+            	<h3>Termék másolat <?=\PortalManager\Formater::tooltip('Javasolt termék variációhoz, ahol a termék adatai nagy részében megegyeznek.')?> <em class="info">Lemásolhatja tetszőletes számban a terméket.</em></h3>
                 <div class="row" style="">
 					<div class="col-md-12">
 						<?=$this->copyMsg?>
@@ -469,7 +469,7 @@
 
 			<? if( true ): ?>
 	        <div class="con con-extra">
-            	<h3>Ajánlott termékek <em class="info">Fűzzön a termékhez ajánlott termékeket</em></h3>
+            	<h3>Ajánlott termékek <em class="info">Fűzzön a termékhez ajánlott termékeket.</em></h3>
                	<div class="row">
                		<div class="col-md-12">
                			<label for="productRelativesText">Keresés</label>

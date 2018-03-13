@@ -1120,6 +1120,15 @@ h1{
 						align-items: center;
 					}
 				}
+				.stock {
+					margin-top: 10px;
+			    color: #959595;
+			    font-size: 0.9em;
+
+					strong {
+						color: #747474;
+					}
+				}
 				.short-desc{
 					font-size: 1.05em;
 					line-height: 1.3;
@@ -1167,6 +1176,13 @@ h1{
 				}
 
 				.cart-info{
+					.out-of-stock{
+						background: #ffeeee;
+				    padding: 20px;
+				    text-align: center;
+				    color: $color-red;
+				    font-size: 1.1em;
+					}
 					.group{
 						display: -webkit-box;
 					  display: -ms-flexbox;
