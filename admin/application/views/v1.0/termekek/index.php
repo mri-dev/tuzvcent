@@ -1,7 +1,10 @@
 <div style="float:right;">
-    <!--<a href="/termekek/import" class="btn btn-default"><i class="fa fa-newspaper-o"></i> termékek importálása</a>-->
-    <!--<a href="/termekek/kepek" class="btn btn-default"><i class="fa fa-picture-o"></i> képek frissítése</a>-->
-    <a href="/termekek/fizetesi_mod" class="btn btn-default"><i class="fa fa-money"></i> fizetési módok</a>
+  <?php if (false): ?>
+    <a href="/termekek/import" class="btn btn-default"><i class="fa fa-newspaper-o"></i> termékek importálása</a>
+    <a href="/termekek/kepek" class="btn btn-default"><i class="fa fa-picture-o"></i> képek frissítése</a>
+  <?php endif; ?>
+  <a href="/termekek/termek_allapotok" class="btn btn-default"><i class="fa fa-cubes"></i> termék állapotok</a>
+  <a href="/termekek/fizetesi_mod" class="btn btn-default"><i class="fa fa-money"></i> fizetési módok</a>
 	<a href="/termekek/szallitasi_mod" class="btn btn-default"><i class="fa fa-truck"></i> szállítási módok</a>
 	<a href="/termekek/szallitasi_ido" class="btn btn-default"><i class="fa fa-clock-o"></i> szállítási idők</a>
 	<a href="/termekek/uj" class="btn btn-info"><i class="fa fa-plus-circle"></i> új termék</a>

@@ -1688,6 +1688,16 @@ class AdminUser
 
 		return $data;
 	}
+	function getFizetesiModData($id){
+		extract($this->db->q("SELECT * FROM shop_fizetesi_modok WHERE ID = $id"));
+
+		return $data;
+	}
+	function getTermekAllapotData($id){
+		extract($this->db->q("SELECT * FROM shop_termek_allapotok WHERE ID = $id"));
+
+		return $data;
+	}
 	function addMenu($post){
 		extract($post);
 
@@ -1725,6 +1735,16 @@ class AdminUser
 			array_combine(
 			array('nev'),
 			array($nev)
+			)
+		);
+	}
+	function addTermekAllapot($post){
+		extract($post);
+
+		$this->db->insert('shop_termek_allapotok',
+			array_combine(
+			array('elnevezes', 'color'),
+			array($nev, $color)
 			)
 		);
 	}
@@ -1767,7 +1787,17 @@ class AdminUser
 		extract($post);
 		$this->db->update('shop_fizetesi_modok',
 			array(
-				'nev' 			=> $ne
+				'nev' 			=> $nev
+			),
+			"ID = $id"
+		);
+	}
+	function saveTermekAllapot($post){
+		extract($post);
+		$this->db->update('shop_termek_allapotok',
+			array(
+				'elnevezes' => $nev,
+				'color' => $color
 			),
 			"ID = $id"
 		);
@@ -1873,6 +1903,10 @@ class AdminUser
 	function delFizetesiMod($id){
 		if($id == '') return false;
 		$this->db->query("DELETE FROM shop_fizetesi_modok WHERE ID = $id");
+	}
+	function delTermekAllapot($id){
+		if($id == '') return false;
+		$this->db->query("DELETE FROM shop_termek_allapotok WHERE ID = $id");
 	}
 	function delPage($id){
 		if($id == '') return false;

@@ -25,7 +25,7 @@ class Pages
 	function __construct( $page_id = false, $arg = array() )
 	{
 		$this->db = $arg[db];
-		
+
 		if ( $page_id ) {
 			$this->selected_page_id = $page_id;
 		}
@@ -38,7 +38,7 @@ class Pages
 			SELECT 				*
 			FROM 				oldalak
 		";
-		
+
 		if (is_numeric($page_id_or_slug)) {
 			$qry .= " WHERE ID = ".$page_id_or_slug;
 		}else {
@@ -61,10 +61,10 @@ class Pages
 	{
 		$deep 		= 0;
 
-		$cim 	= ($data['cim']) ?: false;		
+		$cim 	= ($data['cim']) ?: false;
 		$parent = ($data['parent']) ?: false;
 		$eleres = ($data['eleres']) ?: false;
-		$szoveg = ($data['szoveg']) ?: NULL;		
+		$szoveg = ($data['szoveg']) ?: NULL;
 		$boritokep = ($data['boritokep']) ?: NULL;
 		$lathato= ($data['lathato'] == 'on') ? 1 : 0;
 		$gyujto	= ($data['gyujto'] == 'on') ? 1 : 0;
@@ -82,7 +82,7 @@ class Pages
 		// Képek
 		$kepek = '';
 
-		if ( count($data['image_set']) > 0) 
+		if ( count($data['image_set']) > 0)
 			foreach ($data['image_set'] as $kep ) {
 				if ( $kep != '' ) {
 					$kepek .= $kep.";;";
@@ -94,7 +94,7 @@ class Pages
 			$kepek = NULL;
 		}
 
-		if (!$cim) { throw new \Exception("Kérjük, hogy adja meg az <strong>Oldal címét</strong>!"); } 
+		if (!$cim) { throw new \Exception("Kérjük, hogy adja meg az <strong>Oldal címét</strong>!"); }
 
 
 		if (!$eleres) {
@@ -112,11 +112,11 @@ class Pages
 				'szoveg' => $szoveg,
 				'deep' => $deep,
 				'idopont' => NOW,
-				'lathato' => $lathato,				
+				'lathato' => $lathato,
 				'boritokep' => $boritokep,
 				'gyujto' => $gyujto,
 				'kepek' => $kepek,
-				'sorrend' => $data['sorrend'],				
+				'sorrend' => $data['sorrend'],
 				'hashkey' => $hashkey,
 				'hashkey_keywords' => $hashkey_kw
 			)
@@ -127,7 +127,7 @@ class Pages
 	{
 		$deep 		= 0;
 
-		$cim 	= ($data['cim']) ?: false;		
+		$cim 	= ($data['cim']) ?: false;
 		$parent = ($data['parent']) ?: false;
 		$eleres = ($data['eleres']) ?: false;
 		$szoveg = ($data['szoveg']) ?: NULL;
@@ -140,7 +140,7 @@ class Pages
 			// Képek
 		$kepek = '';
 
-		if ( count($data['image_set']) > 0) 
+		if ( count($data['image_set']) > 0)
 			foreach ($data['image_set'] as $kep ) {
 				if ( $kep != '' ) {
 					$kepek .= $kep.";;";
@@ -160,7 +160,7 @@ class Pages
 			$parent = NULL;
 		}
 
-		if (!$cim) { throw new \Exception("Kérjük, hogy adja meg az <strong>Oldal címét</strong>!"); } 
+		if (!$cim) { throw new \Exception("Kérjük, hogy adja meg az <strong>Oldal címét</strong>!"); }
 
 
 		if (!$eleres) {
@@ -195,15 +195,15 @@ class Pages
 		$text = Formater::makeSafeUrl($text,'');
 
 		$qry = $this->db->query(sprintf("
-			SELECT 		eleres 
-			FROM 		oldalak 
-			WHERE 		eleres = '%s' or 
-						eleres like '%s-_' or 
-						eleres like '%s-__' 
-			ORDER BY 	eleres DESC 
+			SELECT 		eleres
+			FROM 		oldalak
+			WHERE 		eleres = '%s' or
+						eleres like '%s-_' or
+						eleres like '%s-__'
+			ORDER BY 	eleres DESC
 			LIMIT 		0,1", trim($text), trim($text), trim($text) ));
 		$last_text = $qry->fetch(\PDO::FETCH_COLUMN);
-		
+
 		if( $qry->rowCount() > 0 ) {
 
 			$last_int = (int)end(explode("-",$last_text));
@@ -212,7 +212,7 @@ class Pages
 				$last_text = str_replace('-'.$last_int, '-'.($last_int+1) , $last_text);
 			} else {
 				$last_text .= '-1';
-			}			
+			}
 		} else {
 			$last_text = $text;
 		}
@@ -241,15 +241,15 @@ class Pages
 
 		// Legfelső színtű oldalak
 		$qry = "
-			SELECT 			* 
-			FROM 			oldalak 
+			SELECT 			*
+			FROM 			oldalak
 			WHERE 			ID IS NOT NULL ";
 
 		if ( !$this->is_admin ) {
 			$qry .= " and lathato = 1 ";
 		}
 
-		
+
 		if ( !$top_page_id ) {
 			$qry .= " and szulo_id IS NULL ";
 		} else {
@@ -260,17 +260,17 @@ class Pages
 			ORDER BY 		sorrend ASC;";
 
 		$top_page_qry 	= $this->db->query($qry);
-		$top_page_data 	= $top_page_qry->fetchAll(\PDO::FETCH_ASSOC); 
+		$top_page_data 	= $top_page_qry->fetchAll(\PDO::FETCH_ASSOC);
 
-		if( $top_page_qry->rowCount() == 0 ) return $this; 
-		
+		if( $top_page_qry->rowCount() == 0 ) return $this;
+
 		foreach ( $top_page_data as $top_page ) {
 			$this->tree_items++;
 			$this->tree_steped_item[] = $top_page;
 
 			// Aloldalak betöltése
 			$top_page['child'] = $this->getChildItems($top_page['ID']);
-			
+
 			$tree[] = $top_page;
 		}
 
@@ -286,15 +286,15 @@ class Pages
 
 	/**
 	 * Végigjárja az összes oldalt, amit betöltöttünk a getTree() függvény segítségével. while php függvénnyel
-	 * járjuk végig. A while függvényen belül használjuk a the_page() objektum függvényt, ami az aktuális oldal 
+	 * járjuk végig. A while függvényen belül használjuk a the_page() objektum függvényt, ami az aktuális oldal
 	 * adataiat tartalmazza tömbbe sorolva.
 	 * @return boolean
 	 */
 	public function walk()
-	{	
+	{
 		if( !$this->tree_steped_item ) return false;
 
-		$this->current_item = $this->tree_steped_item[$this->walk_step];	
+		$this->current_item = $this->tree_steped_item[$this->walk_step];
 
 		$this->walk_step++;
 
@@ -306,7 +306,7 @@ class Pages
 			return false;
 		}
 
-		return true;	
+		return true;
 	}
 
 	public function getWalkInfo()
@@ -321,7 +321,7 @@ class Pages
 
 	/**
 	 * A walk() fgv-en belül visszakaphatjuk az aktuális oldal elem adatait tömbbe tárolva.
-	 * @return array 
+	 * @return array
 	 */
 	public function the_page()
 	{
@@ -339,20 +339,20 @@ class Pages
 
 		// Gyerek oldalak
 		$child_page_qry 	= $this->db->query( sprintf("
-			SELECT 			* 
-			FROM 			oldalak 
+			SELECT 			*
+			FROM 			oldalak
 			WHERE 			szulo_id = %d
 			ORDER BY 		sorrend ASC;", $parent_id));
-		$child_page_data	= $child_page_qry->fetchAll(\PDO::FETCH_ASSOC); 
+		$child_page_data	= $child_page_qry->fetchAll(\PDO::FETCH_ASSOC);
 
-		if( $child_page_qry->rowCount() == 0 ) return false; 
+		if( $child_page_qry->rowCount() == 0 ) return false;
 		foreach ( $child_page_data as $child_page ) {
 			$this->tree_items++;
 
 			$this->tree_steped_item[] = $child_page;
 
 			$child_page['child'] = $this->getChildItems($child_page['ID']);
-			
+
 			$tree[] = $child_page;
 		}
 
@@ -361,7 +361,7 @@ class Pages
 
 	public function textRewrites( $text )
 	{
-		$template 	= new Template ( VIEW . 'templates/' ); 
+		$template 	= new Template ( VIEW . 'templates/' );
 		$Tabledata 	= new Tabledata;
 
 		// Kép
@@ -384,11 +384,11 @@ class Pages
 		// Aloldal beszúrása
 		if ( isset($_GET['page']) ) {
 				$sub = $this->db->query(sprintf("SELECT szoveg FROM oldalak WHERE eleres = '%s';", $_GET['page']));
-				
+
 				if( $sub->rowCount() == 0 ) {
 					$sub = false;
 				} else {
-					$sub = $sub->fetch(\PDO::FETCH_COLUMN); 
+					$sub = $sub->fetch(\PDO::FETCH_COLUMN);
 					$sub = str_replace( '../../src/uploads/', UPLOADS, $sub );
 				}
 
@@ -449,7 +449,7 @@ class Pages
 		if ( !$kep ) {
 			return $set;
 		}
-		
+
 		$kep = rtrim($kep,";;");
 		$kepek = explode(";;", $kep);
 
@@ -459,6 +459,74 @@ class Pages
 		}
 
 		return $set;
+	}
+	public function getMeta( $key = false )
+	{
+		$back = array();
+
+		$set = array(
+			'title' => array(
+				'A' => 'meta_title',
+				'B' => 'cim'
+			),
+			'desc' => array(
+				'A' => 'meta_desc',
+				'B' => 'szoveg'
+			),
+			'image' => array(
+				'A' => 'meta_image',
+				'B' => false
+			));
+
+		if ( !$key ) {
+			return false;
+		} else {
+			if ( isset( $set[$key]['A'] ) ) {
+				$a = $set[$key]['A'];
+				$b = $set[$key]['B'];
+
+				$qry = "SELECT " . $a . " FROM oldalak WHERE ID = ".$this->getId();
+				$qry = $this->db->query($qry);
+				$qry = $qry->fetch(\PDO::FETCH_ASSOC);
+				if ( !empty($qry[$a]) && !is_null($qry[$a]) ) {
+					if ($key == 'image') {
+						return str_replace('/src/','',SOURCE) . $qry[$a];
+					} else {
+						return $qry[$a];
+					}
+				} else {
+					switch ($key) {
+						case 'image':
+							$back = IMG . 'no-image-meta.jpg';
+						break;
+
+						case 'desc':
+							$qry = "SELECT " . $b . " FROM oldalak WHERE ID = ".$this->getId();
+							$qry = $this->db->query($qry);
+							$qry = $qry->fetch(\PDO::FETCH_ASSOC);
+							if (!empty($qry[$b])) {
+								$desc = substr(strip_tags($qry[$b]),0,300).'...';
+								//$desc = preg_replace('/\s+/', '', $desc);
+								return $desc;
+							} else return false;
+						break;
+
+						default:
+							$qry = "SELECT " . $b . " FROM oldalak WHERE ID = ".$this->getId();
+							$qry = $this->db->query($qry);
+							$qry = $qry->fetch(\PDO::FETCH_ASSOC);
+							if (!empty($qry[$b])) {
+								return $qry[$b];
+							} else return false;
+						break;
+					}
+				}
+			} else {
+				$back = false;
+			}
+		}
+
+		return $back;
 	}
 	public function getParentKey()
 	{

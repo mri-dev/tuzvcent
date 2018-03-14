@@ -6,10 +6,12 @@
     <title><?=$this->title?></title>
     <?=$this->addMeta('robots','index,folow')?>
     <?=$this->SEOSERVICE?>
+    <?php if ( $this->settings['FB_APP_ID'] != '' ): ?>
     <meta property="fb:app_id" content="<?=$this->settings['FB_APP_ID']?>" />
+    <?php endif; ?>
     <? $this->render('meta'); ?>
 </head>
-<body ng-controller="App" ng-init="init(<?=($this->gets[0] == 'kosar' && $this->gets[1] == 4)?'true':'false'?>)">
+<body class="<?=$this->bodyclass?>" ng-controller="App" ng-init="init(<?=($this->gets[0] == 'kosar' && $this->gets[1] == 4)?'true':'false'?>)">
 <? if(!empty($this->settings[google_analitics])): ?>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

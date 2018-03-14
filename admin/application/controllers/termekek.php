@@ -550,7 +550,45 @@ class termekek extends Controller
 			}
 
 			if($this->view->gets[2] == 'szerkeszt'){
-				$this->view->sm = $this->AdminUser->getSzallitasModData($this->view->gets[3]);
+				$this->view->sm = $this->AdminUser->getFizetesiModData($this->view->gets[3]);
+			}
+
+
+			$this->view->n = $this->AdminUser->getFizetesiModok();
+		}
+
+		function termek_allapotok(){
+
+			if(Post::on('add')){
+				try{
+					$this->AdminUser->addTermekAllapot($_POST);
+					Helper::reload();
+				}catch(Exception $e){
+					$this->view->err 	= true;
+					$this->view->msg 	= Helper::makeAlertMsg('pError', $e->getMessage());
+				}
+			}
+			if(Post::on('save')){
+				try{
+					$this->AdminUser->saveTermekAllapot($_POST);
+					Helper::reload('/termekek/termek_allapotok');
+				}catch(Exception $e){
+					$this->view->err 	= true;
+					$this->view->msg 	= Helper::makeAlertMsg('pError', $e->getMessage());
+				}
+			}
+			if(Post::on('delId')){
+				try{
+					$this->AdminUser->delTermekAllapot($this->view->gets[3]);
+					Helper::reload('/termekek/termek_allapotok');
+				}catch(Exception $e){
+					$this->view->err 	= true;
+					$this->view->msg 	= Helper::makeAlertMsg('pError', $e->getMessage());
+				}
+			}
+
+			if($this->view->gets[2] == 'szerkeszt'){
+				$this->view->sm = $this->AdminUser->getTermekAllapotData($this->view->gets[3]);
 			}
 
 
