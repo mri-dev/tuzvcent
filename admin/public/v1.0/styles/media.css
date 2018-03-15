@@ -400,6 +400,12 @@ body.blured-bg #content .container-fluid{
 	font-size:22px;
 	margin: 0 0 10px 0;
 }
+.con h2 .filteralert,
+.con h3 .filteralert{
+  color: green;
+  font-size: 0.8em;
+  text-transform: none;
+}
 .con h3{
 	font-size:18px;
 }
@@ -552,8 +558,10 @@ i.edit:hover{
 	max-height: 100%;
 }
 .con.edit{
-	border:2px solid #94b477;
-	background:#f4f9ef;
+	border-top:4px solid #94b477;
+}
+.con.edit h2{
+	color: #94b477;
 }
 #fillerParams{
 	margin-top:5px;
@@ -1729,10 +1737,36 @@ table.termekfrissites > tbody > tr.not-in-product > td{
     filter        : blur(0px) !important;
 }
 
+.filter-box{
+  background: #f7f7f7;
+  padding: 15px 0;
+  border: 1px solid #ebebeb;
+  border-radius: 3px;
+}
+
 .categories .row {
 	border: 1px solid #eee;
 	padding: 2px 5px;
 	margin: 5px 0;
+}
+.tudastar-list a.title{
+  font-weight: bold;
+  margin: 0 0 5px 0;
+}
+.tudastar-list .cat i,
+.tudastar-list .keywords i{
+  font-size: 10px;
+  width: 14px;
+  text-align: center;
+}
+.tudastar-list .cat{
+  font-size: 0.85em;
+  color: black;
+  font-weight: bold;
+}
+.tudastar-list .keywords{
+  font-size: 0.75em;
+  color: #acacac;
 }
 .hashkey {
 	color: #aaa;

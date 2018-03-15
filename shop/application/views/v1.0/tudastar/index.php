@@ -42,7 +42,7 @@
           <span class="pick-label"><i class="fa fa-thumb-tack"></i> Kiválasztott bejegyzés</span> <a class="closer" href="javascript:void(0);" ng-click="removeHighlightArticle()">bezárás <i class="fa fa-times"></i> </a>
           <h3 class="title">{{picked_article.cim}}</h3>
           <div class="description">
-            {{picked_article.szoveg}}
+            <div ng-bind-html="picked_article.szoveg|unsafe"></div>
             <div class="metas">
               <span class="date" title="Cikk utolsó frissítésének ideje"><i class="fa fa-clock-o"></i> {{picked_article.idopont}}</span> <span class="keywords"><i class="fa fa-tags"></i> <span class="tag" ng-class="(inSearchTag(k))?'filtered':''" ng-click="putTagToSearch(k)" ng-repeat="k in picked_article.kulcsszavak">{{k}}</span></span>
             </div>
@@ -64,7 +64,7 @@
                   <i class="fa fa-plus" ng-hide="selected_article == a.ID"></i><i class="fa fa-minus" ng-show="selected_article == a.ID"></i> <strong>{{a.cim}}</strong>
                 </div>
                 <div class="description" ng-show="selected_article == a.ID"?'picked':''>
-                  {{a.szoveg}}
+                  <div ng-bind-html="a.szoveg|unsafe"></div>
                   <div class="metas">
                     <span class="date" title="Cikk utolsó frissítésének ideje"><i class="fa fa-clock-o"></i> {{a.idopont}}</span> <span class="keywords"><i class="fa fa-tags"></i> <span class="tag" ng-class="(inSearchTag(k))?'filtered':''" ng-click="putTagToSearch(k)" ng-repeat="k in a.kulcsszavak">{{k}}</span></span> <span class="ids"><i class="fa fa-link"></i> <a href="javascript:void(0);" ng-click="highlightArticle(a.ID)" title="Bejegyzés hivatkozása">#{{a.ID}}</a></span>
                   </div>
