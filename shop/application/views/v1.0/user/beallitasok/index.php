@@ -125,6 +125,7 @@
         </div>
 
         <div class="divider"></div>
+
         <? if( isset( $_GET['missed_details']) && in_array( 'szamlazasi', $missed_details) ): ?>
             <?=Helper::makeAlertMsg('pWarning', '<BR><strong>HIÁNYZÓ ADAT:</strong><BR>Kérjük, hogy pótolja a hiányzó SZÁMLÁZÁSI adatait.' );?>
         <? endif; ?>
@@ -156,4 +157,5 @@
             </form>
         </div>
     </div>
+  </div>
 </div>

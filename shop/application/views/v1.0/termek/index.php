@@ -191,7 +191,7 @@
                     </div>
                   </div>
                   <div class="text">
-                    <a href="/tudastar" target="_blank">
+                    <a href="<?=($this->product['tudastar_url'] != '')?$this->product['tudastar_url']:'/tudastar'?>" target="_blank">
                       TUDÁSTÁR
                       <div class="t">
                         Olvassa el!
@@ -250,6 +250,8 @@
             </div>
           </div>
         <?php endif; ?>
+
+        <?php if ( !empty($this->product['leiras']) ): ?>
         <div class="description">
           <div class="head">
             <h3>Termék leírás</h3>
@@ -259,6 +261,8 @@
             <?=$this->product['leiras']?>
           </div>
         </div>
+        <?php endif; ?>
+
         <?php if ($this->product['documents']): ?>
         <div class="documents">
           <div class="head">

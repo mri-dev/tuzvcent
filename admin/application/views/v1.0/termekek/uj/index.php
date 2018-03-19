@@ -10,62 +10,61 @@
 			<div class="col-md-8" style="padding-left:0;">
 
 				<div class="con">
-					<h3>Raktár adatok</h3>
+					<h3>Termék törzsadatok</h3>
 					<div class="row">
 						<div class="col-md-6">
-							<label for="raktar_articleid">articleid</label>
+							<label for="raktar_articleid">Típus azonosító törzskód</label>
 							<input type="text" name="raktar_articleid" id="raktar_articleid" value="<?=$this->termek[raktar_articleid]?>" class="form-control">
 						</div>
 						<div class="col-md-6">
-							<label for="raktar_variantid">variantid</label>
+							<label for="raktar_variantid">Variáció azonosító</label>
 							<input type="text" name="raktar_variantid" id="raktar_variantid" value="<?=$this->termek[raktar_variantid]?>" class="form-control">
+						</div>
+					</div>
+				</div>
+
+				<div class="con">
+					<div class="checkins">
+						<div class="">
+							<input type="checkbox" id="lathato" name="lathato" <?=($this->termek['lathato'] == 1)?'checked':''?>/> <label for="lathato">Aktív / Látható</label>
+						</div>
+						<div class="">
+							<input type="checkbox" name="akcios" id="akciosTgl" onclick="javascript:if($(this).is(':checked')){$('#vakcios').show(0);}else{$('#vakcios').hide(0);}" <?=($_COOKIE[cr_akcios] == 'on' && false)?'checked':''?>/> <label for="akciosTgl">Akciós</label>
+						</div>
+						<div class="">
+							 <input type="checkbox" name="ujdonsag" id="ujdonsag" <?=($_COOKIE[cr_ujdonsag] == 'on')?'checked':''?> /> <label for="ujdonsag">Újdonság</label>
+						</div>
+						<div class="">
+							<input type="checkbox" name="argep" id="argep" <?=($_COOKIE[cr_argep] == 'on')?'checked':'checked'?>/> <label for="argep">ÁRGÉP listába</label>
+						</div>
+						<div class="">
+							<input type="checkbox" name="arukereso" id="arukereso" <?=($_COOKIE[cr_arukereso] == 'on')?'checked':'checked'?> /> <label for="arukereso">ÁRUKERESŐ listába</label>
+						</div>
+						<div class="">
+							<input type="checkbox" <?=($_COOKIE[cr_pickpackszallitas] == 'on')?'checked':'checked'?> name="pickpackszallitas" id="pickpackszallitas" /> <label for="pickpackszallitas">Pick Pack Pont-ra szállítható</label>
+						</div>
+						<div class="" style="display: none;">
+							<input type="checkbox" <?=($_COOKIE[cr_no_cetelem] == 'on')?'checked':''?> name="no_cetelem" id="no_cetelem" /> <label for="no_cetelem">Cetelem hitel alól KIZÁRVA</label>
+						</div>
+						<div class="">
+							<input type="checkbox" <?=($_COOKIE[cr_kiemelt] == 'on')?'checked':'checked'?> name="kiemelt" id="kiemelt" /> <label for="kiemelt">Kiemelt termék</label>
+						</div>
+						<div class="">
+							<input type="checkbox" <?=($_COOKIE[cr_show_stock] == 'on')?'checked':'checked'?> name="show_stock" id="show_stock" /> <label for="show_stock">Készletmegjelenítés</label>
 						</div>
 					</div>
 				</div>
 
 
 				<div class="con">
-					<h3>Alapadatok</h3>
+					<h3>Termék adatok</h3>
 
-					<div class="row checkprim" style="padding:0 10px;">
-						<div class="col-md-4">
-							<label><input type="checkbox" name="akcios" id="akciosTgl" onclick="javascript:if($(this).is(':checked')){$('#vakcios').show(0);}else{$('#vakcios').hide(0);}" <?=($_COOKIE[cr_akcios] == 'on' && false)?'checked':''?>  /> Akciós</label>
-					   </div>
-						<div class="col-md-4">
-							 <label><input type="checkbox" name="ujdonsag" <?=($_COOKIE[cr_ujdonsag] == 'on')?'checked':''?>  /> Újdonság</label>
-						</div>
-						<div class="col-md-4">
-							<label><input type="checkbox" name="argep" <?=($_COOKIE[cr_argep] == 'on')?'checked':'checked'?>  /> ÁRGÉP listába</label>
-						</div>
-						<div class="col-md-4">
-							<label><input type="checkbox" name="arukereso" <?=($_COOKIE[cr_arukereso] == 'on')?'checked':'checked'?>  /> ÁRUKERESŐ listába</label>
-						</div>
-						<div class="col-md-4">
-							<label><input type="checkbox" <?=($_COOKIE[cr_pickpackszallitas] == 'on')?'checked':'checked'?> name="pickpackszallitas" /> Pick Pack Pont-ra szállítható</label>
-						</div>
-						<div class="col-md-4">
-							<label><input type="checkbox" <?=($_COOKIE[cr_no_cetelem] == 'on')?'checked':''?> name="no_cetelem" /> Cetelem alól KIZÁRVA</label>
-						</div>
-
-						<div class="col-md-4">
-							<label><input type="checkbox" <?=($_COOKIE[cr_kiemelt] == 'on')?'checked':'checked'?> name="kiemelt" /> Kiemelt termék</label>
-						</div>
-						<div class="col-md-4">
-							<label><input type="checkbox" <?=($_COOKIE[cr_ajanlorendszer_kiemelt] == 'on')?'checked':'checked'?> name="ajanlorendszer_kiemelt" /> Ajánlórendszer kiemelt ajánlat</label>
-						</div>
-
-						<div class="col-md-4">
-							<label><input type="checkbox" <?=($_COOKIE[cr_show_stock] == 'on')?'checked':'checked'?> name="show_stock" /> Készletmegjelenítés</label>
-						</div>
-					</div>
-
-					<br>
 					<div class="row">
-						<div class="form-group col-md-3">
+						<div class="form-group col-md-2">
 							<label for="nagyker_kod">Nagyker kód / Cikkszám</label>
 							<input type="text" class="form-control" name="nagyker_kod" id="nagyker_kod" value="<?=($this->err)?$_POST[nagyker_kod]:''?>">
 						</div>
-						<div class="form-group col-md-3 <?=($this->err && $_POST[nev] == '')?'has-error':''?>">
+						<div class="form-group col-md-4 <?=($this->err && $_POST[nev] == '')?'has-error':''?>">
 							<label for="nev">Termék neve*</label>
 							<input type="text" class="form-control required reqInput" name="nev" id="nev" value="<?=($this->err)?$_POST[nev]:''?>">
 						</div>
@@ -86,116 +85,60 @@
 					</div>
 
 					<div class="row">
-						<? if(false): ?>
 						<div class="form-group col-md-3">
-							<label for="meret">Méret</label>
+							<label for="szin">Típus variácó <?=\PortalManager\Formater::tooltip('Több variáció esetén variációk hozhatóak létre, melyet ennél az értéknél lehet megadni. Azonos típus azonosító törzskód és eltérő variácó meghatározásánál a rendszer automatikusan összekapcsolja a termékeket és átjárást biztosít a termék adatlapokon.<br>Pl.: zöld, piros, 16mm, 10 fm, 2x4x10mm, stb...')?></label>
+							<input type="text" class="form-control" name="szin" id="szin" value="<?=($this->err)?$_POST[szin]:''?>">
+						</div>
+						<? if(true): ?>
+						<div class="form-group col-md-3">
+							<label for="meret">Kiszerelés <?=\PortalManager\Formater::tooltip('Termékenkét termékkapcsolat hozható létre, amennyiben több fajta kiszerelés van egy-egy azonos termék esetében. Adjuk meg a kiszerelést és ez alapján a vásárló válogathat.<br>Pl.: 1 liter, 1 vödör, 1 zsák, 25 kg, 100 db / csomag, stb...')?></label>
 							<input type="text" class="form-control" name="meret" id="meret" value="<?=($this->err)?$_POST[meret]:''?>">
 						</div>
 						<? endif; ?>
-						<div class="form-group col-md-3">
-							<label for="szin">Szín</label>
-							<input type="text" class="form-control" name="szin" id="szin" value="<?=($this->err)?$_POST[szin]:''?>">
-						</div>
-						<div class="form-group col-md-3">
-							<label for="raktar_keszlet">Raktárkészlet</label>
+						<div class="form-group col-md-2">
+							<label for="raktar_keszlet">Raktárkészlet (mennyiség)</label>
 							<input type="number" class="form-control" name="raktar_keszlet" value="<?=($this->err) ? $_POST['raktar_keszlet'] : '0'?>" id="raktar_keszlet">
-						</div>
-						<div class="form-group col-md-3">
-							<label for="fotermek">Főtermék <?=\PortalManager\Formater::tooltip('Több szín és méret esetén kijelölhetjük, hogy melyik legyen az alapértelmezett, ami megjelenjen a terméklistázásban. A Főtermék-nek NEM jelölt termékek nem fognak megjelenni a listában, hanem csak mint variáció a kapcsolódó terméklapon!')?></label>
-							<input type="checkbox" class="form-control" name="fotermek" value="1" id="fotermek" value="<?=($this->err && $_POST[fotermek] == 'on')?'checked="checked"':''?>">
 						</div>
 						<div class="form-group col-md-2">
 							<label for="sorrend">Sorrend</label>
 							<input type="number" class="form-control" name="sorrend" id="sorrend" value="<?=($this->err) ? $_POST['sorrend'] : '100'?>">
 						</div>
+						<div class="form-group col-md-2">
+							<label for="fotermek">Főtermék <?=\PortalManager\Formater::tooltip('Több variáció és kiszerelés esetén kijelölhetjük, hogy melyik legyen az alapértelmezett, ami megjelenjen a terméklistázásban. A Főtermék-nek NEM jelölt termékek nem fognak megjelenni a listában, hanem csak mint variáció a kapcsolódó terméklapon!')?></label>
+							<input type="checkbox" class="form-control" name="fotermek" value="1" id="fotermek" value="<?=($this->err && $_POST[fotermek] == 'on')?'checked="checked"':''?>">
+						</div>
 					</div>
 
 					<div class="row">
 						<div class="form-group col-md-12">
-							<label for="kulcsszavak">Kulcsszavak: <?=\PortalManager\Formater::tooltip('A kulcsszavak meghatározása fontos dolog, mivel ezek alapján tud pontosabb keresési találatot kapni a felhasználó. <br> <strong>A kulcsszavakat szóközzel elválasztva adja meg. Pl.: fekete úszó rövidnadrág</strong>')?></label>
+							<label for="kulcsszavak">Kulcsszavak <?=\PortalManager\Formater::tooltip('A kulcsszavak meghatározása fontos dolog, mivel ezek alapján tud pontosabb keresési találatot kapni a felhasználó. <br> <strong>A kulcsszavakat szóközzel elválasztva adja meg. Pl.: fekete úszó rövidnadrág</strong>')?></label>
 							<input type="text" class="form-control" placeholder="" name="kulcsszavak" id="kulcsszavak" value="<?=($this->err) ? $_POST['kulcsszavak'] : ''?>">
 						</div>
 					</div>
 
 					<div class="row">
 						<div class="form-group col-md-12">
-							<label for="ajandek">Ajándék:</label>
-							<input type="text" class="form-control" name="ajandek" id="ajandek" value="<?=($this->err) ? $_POST['ajandek'] : ''?>">
+							<label for="tudastar_url">Tudástár URL <?=\PortalManager\Formater::tooltip('A termék adatlapon megjelenő tudástár hivatkozásra kattintva erre az URL-re fog érkezni a látogató. Ez lehet egy előzetesen leszűrt (kulcsszó vagy konkrét cikk alapján) tudástár hivatkozás, mely a termékkel kapcsolatos cikk(ek)et listázza ki.')?></label>
+							<input type="text" class="form-control" placeholder="" name="tudastar_url" id="tudastar_url" value="<?=($this->err) ? $_POST['tudastar_url'] : ''?>">
 						</div>
 					</div>
 
 					<div class="row">
 						<div class="form-group col-md-12">
-							<label for="marketing_leiras">Termék rövid leírása</label>
-							<textarea name="marketing_leiras" class="form-control" id="marketing_leiras"><?=($this->err)?$_POST[marketing_leiras]:''?></textarea>
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="form-group col-md-12">
-							<label for="rovid_leiras">Termék leírása</label>
+							<label for="rovid_leiras">Termék rövid leírása</label>
 							<textarea name="rovid_leiras" class="form-control" id="rovid_leiras"><?=($this->err)?$_POST[rovid_leiras]:''?></textarea>
 						</div>
 					</div>
 
 					<div class="row">
 						<div class="form-group col-md-12">
-							<label for="leiras">Szállítás és beüzemelés</label>
+							<label for="leiras">Termék leírása</label>
 							<textarea name="leiras" class="form-control" id="leiras"><?=($this->err)?$_POST[leiras]:''?></textarea>
 						</div>
 					</div>
-
-					<div class="row">
-						<div class="form-group col-md-12">
-							<label for="letoltesek">Letöltések</label>
-							<textarea name="letoltesek" class="form-control" id="letoltesek"><?=($this->err)?$_POST[letoltesek]:''?></textarea>
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="form-group col-md-12">
-							<label for="bankihitel_leiras">Áruhitel</label>
-							<textarea name="bankihitel_leiras" class="form-control" id="bankihitel_leiras"><?=($this->err)?$_POST[bankihitel_leiras]:''?></textarea>
-						</div>
-					</div>
-
-
 				</div>
-
-				<div class="con">
-					<h3>Termék külső hivatkozása (SITE URL)</h3>
-					<input type="text" class="form-control" name="termek_site_url" id="termek_site_url" value="<?=($this->err)?$_POST[termek_site_url]:''?>">
-
-					<h3>Csatolt hivatkozások</h3>
-					<div class="row pdright np">
-						<div class="col-md-12">
-							<div class="alink">
-								<? $linkek = Product::attackedLink($this->termek[linkek]); ?>
-								<? $k = 0; foreach($linkek as $lk): $k++; ?>
-								<div class="row link">
-									<div class="col-md-1"><?=$k?>#</div>
-									<div class="col-md-4"><input type="text" name="linkNev[]" class="form-control" value="<?=$lk[nev]?>" placeholder="Felirat" /></div>
-									<div class="col-md-7"><input type="text" name="linkUrl[]" class="form-control" value="<?=$lk[url]?>" placeholder="URL"/></div>
-								</div>
-								<br />
-								<? endforeach; ?>
-								<div class="row link">
-									<div class="col-md-1"><em>új</em></div>
-									<div class="col-md-4"><input type="text" name="linkNev[]" class="form-control" value="" placeholder="Felirat" /></div>
-									<div class="col-md-7"><input type="text" name="linkUrl[]" class="form-control" value="" placeholder="URL"/></div>
-								</div>
-								<br />
-								<div class="row">
-									<div class="col-md-12">
-										<a href="javascript:void(0);" id="addMoreLink"><i class="fa fa-plus"></i> új hivatkozás hozzáadása</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
 			</div>
+
 			<div class="col-md-4">
 				<div class="con">
 					<h3>Ár <em class="info">Kérjük, a beszerzési árat adja meg!</em></h3>
@@ -221,18 +164,6 @@
 							</div>
 						</div>
 						<div class="info">A végfelhasználói ár az aktuálisan kiválasztott <a href="/markak" target="_blank" title="Márka árrések beállítása">márka árrései alapján</a> kerül automatikus kiszámításra!</div>
-						<br>
-						<div>
-							<div class="left">
-								<div>
-									<label for="referer_price_discount">Ajánlórendszer &mdash; kedvezmény összege a termék árából</label>
-									<div class="input-group col-md-12">
-										<input type="text" name="referer_price_discount" id="referer_price_discount" value="0" class="form-control">
-										<span class="input-group-addon">Ft (bruttó)</span>
-									</div>
-								</div>
-							</div>
-						</div>
 					</div>
 				</div>
 
@@ -248,22 +179,23 @@
 						</div>
 					</div>
 				</div>
+
 				<? if( false ):  ?>
 				<div class="con">
 					<h3>Termék kapcsolatok <em class="info">Azonos termékek összekapcsolása, mint termék variáció</em></h3>
 					<div class="row">
-	               		<div class="col-md-12">
-	               			<label for="productRelativesText">Keresés</label>
-	               			<input type="text" id="productRelativesText" exc-id="0" value="" class="form-control">
-	               		</div>
-	               	</div>
-	               	<br>
-	               	<div class="row">
-	               		<div class="col-md-12">
-	               			<label for="">Lehetséges termékek (<span id="productRelativesNumber">0</span>)</label>
-	               			<div class="productRelativesList" id="productRelativesList">írja be előbb a termék nevét</div>
-	               		</div>
-	               	</div>
+         		<div class="col-md-12">
+         			<label for="productRelativesText">Keresés</label>
+         			<input type="text" id="productRelativesText" exc-id="0" value="" class="form-control">
+         		</div>
+         	</div>
+         	<br>
+         	<div class="row">
+         		<div class="col-md-12">
+         			<label for="">Lehetséges termékek (<span id="productRelativesNumber">0</span>)</label>
+         			<div class="productRelativesList" id="productRelativesList">írja be előbb a termék nevét</div>
+         		</div>
+         	</div>
 				</div>
 				<? endif; ?>
 

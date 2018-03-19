@@ -609,11 +609,31 @@ i.edit:hover{
 	padding:3px;
 	height:25px;
 }
+.termeklista .cikkszam input{
+	font-size: 0.9em;
+}
+.termeklista .filter-inps{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  margin: 0 -5px;
+}
+.termeklista .filter-inps > div {
+  padding: 0 5px;
+  flex: 1;
+}
+.termeklista .filter-inps > div.nev {
+  flex: initial;
+  flex-basis: 50%;
+}
 .termeklista .img{
 	position:relative;
 	text-align:center;
-	width:35px;
-	height:35px;
+	width:50px;
+	height:50px;
+  border-radius: 5px;
 	border:2px solid #eeeeee;
 	overflow:hidden;
 	float:left;
@@ -658,6 +678,19 @@ i.edit:hover{
 .termeklista .nev{
 	font-size:14px;
 	font-weight:bold;
+}
+.termeklista .inps {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.termeklista .inps > div {
+  padding: 0 5px 0 0;
+}
+.termeklista .inps > div input {
+  font-size: 0.9em;
 }
 .termeklista i[class*=check]{
 	color:#72a843;
@@ -1340,6 +1373,11 @@ div.np{
 	margin:8px 12px;
 }
 .msgContainer .tbl strong{ color:black; }
+
+.create-product .form-group label{
+  line-height: 1.0;
+  margin-bottom: 10px;
+}
 
 .create-product h3{
 	margin: 15px;

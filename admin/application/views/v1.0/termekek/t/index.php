@@ -227,8 +227,15 @@
 							</select>
 						</div>
 						<div class="form-group col-md-9">
-							<label for="kulcsszavak">Kulcsszavak: <?=\PortalManager\Formater::tooltip('A kulcsszavak meghatározása fontos dolog, mivel ezek alapján tud pontosabb keresési találatot kapni a felhasználó. <br> <strong>A kulcsszavakat szóközzel elválasztva adja meg. Pl.: fekete úszó rövidnadrág</strong>')?></label>
+							<label for="kulcsszavak">Kulcsszavak <?=\PortalManager\Formater::tooltip('A kulcsszavak meghatározása fontos dolog, mivel ezek alapján tud pontosabb keresési találatot kapni a felhasználó. <br> <strong>A kulcsszavakat szóközzel elválasztva adja meg. Pl.: fekete úszó rövidnadrág</strong>')?></label>
 							<input type="text" class="form-control" name="kulcsszavak" id="kulcsszavak" value="<?=$this->termek['kulcsszavak']?>">
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="form-group col-md-12">
+							<label for="tudastar_url">Tudástár URL <?=\PortalManager\Formater::tooltip('A termék adatlapon megjelenő tudástár hivatkozásra kattintva erre az URL-re fog érkezni a látogató. Ez lehet egy előzetesen leszűrt (kulcsszó vagy konkrét cikk alapján) tudástár hivatkozás, mely a termékkel kapcsolatos cikk(ek)et listázza ki.')?></label>
+							<input type="text" class="form-control" name="tudastar_url" id="tudastar_url" value="<?=$this->termek['tudastar_url']?>">
 						</div>
 					</div>
 

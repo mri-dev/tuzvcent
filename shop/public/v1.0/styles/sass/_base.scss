@@ -2199,9 +2199,9 @@ md-toast{
 	}
 	.picked-article{
 		margin: 0 0 25px 0;
-		background: #f7f7f7;
+		background: #ffffff;
 		padding: 15px;
-    border-left: 5px solid $color-red;
+		border: 5px solid $color-red;
 		position: relative;
 
 		.pick-label{
@@ -2233,6 +2233,26 @@ md-toast{
 			color: #000000;
 			line-height: 1.53;
 			font-size: 1.1em;
+
+			h2, h3, h4, h5{
+				color: #000000;
+			}
+			h2{ font-size: 1.7em; }
+			h3{ font-size: 1.5em; }
+			h4{ font-size: 1.3em; }
+			p{
+				margin: 10px 0 5px 0;
+			}
+
+			ul{
+				list-style: circle;
+				margin: 0 0 0 25px;
+			}
+
+			ol{
+				list-style-type: decimal;
+				margin: 0 0 0 25px;
+			}
 		}
 		.metas{
 			margin-top: 10px;
@@ -2339,7 +2359,26 @@ md-toast{
 						line-height: 1.53;
 						font-size: 1.1em;
 						margin-bottom: 20px;
-    				padding: 0 0 0 15px;
+    				padding: 0 0 0 17px;
+
+						h2, h3, h4{
+							font-weight: bold;
+							color: #343434;
+						}
+
+						p{
+							margin: 10px 0 5px 0;
+						}
+
+						ul{
+							list-style: circle;
+							margin: 0 0 0 25px;
+						}
+
+						ol{
+							list-style-type: decimal;
+							margin: 0 0 0 25px;
+						}
 
 						.metas{
 							margin-top: 10px;
@@ -2353,6 +2392,11 @@ md-toast{
 								a {
 									color: #acacac;
 								}
+							}
+
+							.totop{
+								float: right;
+								cursor: pointer;
 							}
 
 							.keywords{

@@ -41,7 +41,8 @@ class Product
 		'meret' => NULL,
 		'fotermek' => 1,
 		'lathato' => 0,
-		'raktar_keszlet' => 0
+		'raktar_keszlet' => 0,
+		'tudastar_url' => NULL,
 	);
 
 	public function __construct() {
@@ -105,6 +106,11 @@ class Product
 		return $this->product['nev'];
 	}
 
+	public function getTudastarURL()
+	{
+		return $this->product['tudastar_url'];
+	}
+
 	public function getManufacturerId()
 	{
 		return $this->product['marka'];
@@ -119,7 +125,7 @@ class Product
 	{
 		return $this->product['meta_title'];
 	}
-	
+
 	public function getMetaDesc()
 	{
 		return $this->product['meta_desc'];

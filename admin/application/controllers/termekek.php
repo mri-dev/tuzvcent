@@ -126,6 +126,11 @@ class termekek extends Controller
 			$products = new Products( array( 'db' => $this->db ) );
 
 			$filters = Helper::getCookieFilter('filter',array('filtered'));
+
+			// GETS
+			if (isset($_GET['article'])) {
+				$filters['raktar_articleid'] = $_GET['article'];
+			}
 			$arg = array(
 				'admin' => true,
 				'filters' => $filters,
@@ -275,6 +280,7 @@ class termekek extends Controller
 								'csoport_kategoria' => $_POST['csoport_kategoria'],
 								'ajandek' => $_POST['ajandek'],
 								'termek_site_url' => $_POST['termek_site_url'],
+								'tudastar_url' => $_POST['tudastar_url'],
 								'referer_price_discount' => $_POST['referer_price_discount'],
 								'show_stock' => $_POST['show_stock'],
 								'sorrend' =>  (isset($_POST['sorrend']) ? $_POST['sorrend'] : 100),

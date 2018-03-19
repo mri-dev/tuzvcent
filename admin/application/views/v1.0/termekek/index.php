@@ -9,7 +9,13 @@
 	<a href="/termekek/szallitasi_ido" class="btn btn-default"><i class="fa fa-clock-o"></i> szállítási idők</a>
 	<a href="/termekek/uj" class="btn btn-info"><i class="fa fa-plus-circle"></i> új termék</a>
 </div>
-<h1>Termékek <span><strong><?=Helper::cashFormat($this->products->getItemNumbers())?> db</strong> termék <? if($_COOKIE[filtered] == '1'): ?><span class="filtered">Szűrt termék listázás <a href="/termekek/clearfilters/" title="szűrés eltávolítása" class="actions"><i class="fa fa-times-circle"></i></a></span><? endif; ?></span></h1>
+<?php if (isset($_GET['article'])): ?>
+  <h1 class="fil-torzs"><strong><?=$_GET['article']?></strong> &mdash; törzstermékek <span><strong><?=Helper::cashFormat($this->products->getItemNumbers())?> db</strong> termék <? if($_COOKIE[filtered] == '1'): ?><span class="filtered">Szűrt termék listázás <a href="/termekek/clearfilters/" title="szűrés eltávolítása" class="actions"><i class="fa fa-times-circle"></i></a></span><? endif; ?></span></h1>
+  <a href="/termekek"> <i class="fa fa-arrow-left"></i> vissza a teljes listára</a>
+<?php else: ?>
+  <h1>Termékek <span><strong><?=Helper::cashFormat($this->products->getItemNumbers())?> db</strong> termék <? if($_COOKIE[filtered] == '1'): ?><span class="filtered">Szűrt termék listázás <a href="/termekek/clearfilters/" title="szűrés eltávolítása" class="actions"><i class="fa fa-times-circle"></i></a></span><? endif; ?></span></h1>
+<?php endif; ?>
+
 <?=$this->rmsg?>
 <div style="float:right;">
 	<?=$this->fb_login_status?>
@@ -24,72 +30,84 @@
 <div class="tbl-container overflowed">
 <table class="table termeklista table-bordered">
 	<thead>
-    	<tr>
-			<th title="Termék ID" width="50">#</th>
-			<? if( true ): ?>
-			<th width="80">#Cikkszám</th>
-			<? endif; ?>
-	        <th>Elnevezés</th>
-            <th width="60">Méret</th>
-            <th width="110">Szín</th>
-            <th width="120">Márka</th>
-            <th width="80">Nettó ár</th>
-            <th width="80">Bruttó ár</th>
-            <th width="80">Ár</th>
-            <th width="90">Egyedi ár</th>
-            <th width="100">Száll. idő</th>
-            <th width="120">Állapot</th>
-            <th width="65">Készlet</th>
-            <th width="75">Aktív</th>
-            <!-- <th width="20" title="Főtermék">Fő</th>-->
-            <th width="20"></th>
-        </tr>
+  	<tr>
+    	<th title="Termék ID" width="50">#</th>
+    	<? if( true ): ?>
+    	<th width="120">#Cikkszám</th>
+    	<? endif; ?>
+      <th>Termék</th>
+      <th width="120">Márka</th>
+      <th width="80">Nettó ár</th>
+      <th width="80">Bruttó ár</th>
+      <th width="80">Ár</th>
+      <th width="90">Egyedi ár</th>
+      <th width="100">Száll. idő</th>
+      <th width="120">Állapot</th>
+      <th width="65">Készlet</th>
+      <th width="75">Aktív</th>
+      <!-- <th width="20" title="Főtermék">Fő</th>-->
+      <th width="20"></th>
+    </tr>
 	</thead>
     <tbody>
     	<tr class="search <? if($_COOKIE['filtered'] == '1'): ?>filtered<? endif;?>">
     		<td><input type="text" name="ID" class="form-control" value="<?=$_COOKIE['filter_ID']?>" /></td>
     		<? if( true ): ?>
-			<td>
+			<td class="">
 				<input type="text" name="cikkszam" placeholder="azonosító..." class="form-control" value="<?=$_COOKIE['filter_cikkszam']?>" />
 			</td>
 			<? endif; ?>
-    		<td><input type="text" name="nev" class="form-control" placeholder="termék elnevezése..." value="<?=$_COOKIE['filter_nev']?>" /></td>
-            <td><input type="text" name="meret" class="form-control" placeholder="méret..." value="<?=$_COOKIE['filter_meret']?>" /></td>
-            <td><input type="text" name="szin" class="form-control" placeholder="szín..." value="<?=$_COOKIE['filter_szin']?>" /></td>
+    		<td>
+          <div class="filter-inps">
+            <div class="nev">
+              <input type="text" name="nev" class="form-control" placeholder="termék elnevezése..." value="<?=$_COOKIE['filter_nev']?>" />
+            </div>
+            <div class="szin">
+              <input type="text" name="szin" class="form-control" placeholder="Variáció" value="<?=$_COOKIE['filter_szin']?>" />
+            </div>
+            <div class="meret">
+              <input type="text" name="meret" class="form-control" placeholder="Kiszerelés" value="<?=$_COOKIE['filter_meret']?>" />
+            </div>
+          </div>
+        </td>
     		<td><select class="form-control"  name="marka" style="max-width:150px;">
-            	<option value="" selected="selected"># Mind</option>
-                	<? foreach($this->markak as $m): ?>
-                    <option value="<?=$m['ID']?>" <?=($m['ID'] == $_COOKIE['filter_marka'])?'selected':''?>><?=$m['neve']?></option>
-                    <? endforeach; ?>
-                </select></td>
+        	<option value="" selected="selected"># Mind</option>
+            	<? foreach($this->markak as $m): ?>
+                <option value="<?=$m['ID']?>" <?=($m['ID'] == $_COOKIE['filter_marka'])?'selected':''?>><?=$m['neve']?></option>
+                <? endforeach; ?>
+            </select>
+        </td>
     		<td></td>
-    		<td></td>
-    		<td></td>
-            <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
     		<td><select class="form-control"  name="szallitasID" style="max-width:150px;">
             <option value="" selected="selected"># Mind</option>
 				<? foreach($this->szallitas as $sz): ?>
                 <option value="<?=$sz['ID']?>" <?=($sz['ID'] == $_COOKIE['filter_szallitasID'])?'selected':''?>><?=$sz['elnevezes']?></option>
                 <? endforeach; ?>
-            </select></td>
+            </select>
+        </td>
     		<td><select class="form-control"  name="keszletID" style="max-width:150px;">
             <option value="" selected="selected"># Mind</option>
 				<? foreach($this->keszlet as $k): ?>
                 <option value="<?=$k['ID']?>" <?=($k['ID'] == $_COOKIE['filter_keszletID'])?'selected':''?>><?=$k['elnevezes']?></option>
                 <? endforeach; ?>
-            </select></td>
-            <td></td>
-            <td align="center"><select class="form-control"  name="lathato" style="max-width:150px;">
-                <option value="" selected="selected">X / ✓</option>
-               <option value="0" <?=('0' == $_COOKIE['filter_lathato'])?'selected':''?>>X</option>
-               <option value="1" <?=('1' == $_COOKIE['filter_lathato'])?'selected':''?>>✓</option>
-            </select></td>
+            </select>
+        </td>
+        <td></td>
+        <td align="center"><select class="form-control"  name="lathato" style="max-width:150px;">
+              <option value="" selected="selected">X / ✓</option>
+             <option value="0" <?=('0' == $_COOKIE['filter_lathato'])?'selected':''?>>X</option>
+             <option value="1" <?=('1' == $_COOKIE['filter_lathato'])?'selected':''?>>✓</option>
+          </select>
+        </td>
             <!--<td align="center">
                 <input type="checkbox" name="fotermek" <?=($_COOKIE['filter_fotermek'] == '1')?'checked="checked"':''?> >
             </td>-->
     		<td align="center">
-            	<button name="filterList" class="btn btn-default"><i class="fa fa-search"></i></button>
-            </td>
+        	<button name="filterList" class="btn btn-default"><i class="fa fa-search"></i></button>
+        </td>
     	</tr>
     	<? if( $this->products->hasItems() ): foreach($this->termekek as $d):  ?>
     	<tr>
@@ -98,36 +116,35 @@
 				<input type="checkbox" name="selectedItem[]" value="<?=$d['product_id']?>" />
 			</td>
 			<? if( true ): ?>
-			<td>
+			<td class="cikkszam">
 				<input type="text" class="form-control action" mode="cikkszam" tid="<?=$d['product_id']?>" min="0" value="<?=$d['cikkszam']?>" />
 			</td>
 			<? endif; ?>
 	        <td>
             <div class="ind">
-                <? if($d['no_cetelem'] == '1'): ?> <img src="<?=IMG?>icons/no_cetelem.png" alt="Cetelem" title="Cetelem finanszírozásra nem igényelhető" /><? endif; ?>
+                <? if($d['no_cetelem'] == '1' && false): ?> <img src="<?=IMG?>icons/no_cetelem.png" alt="Cetelem" title="Cetelem finanszírozásra nem igényelhető" /><? endif; ?>
               	<? if($d['pickpackszallitas'] == '0'): ?> <img src="<?=IMG?>icons/no_ppp.png" alt="Pick Pack Pont" title="PickPackPont-ra NEM szállítható" /><? endif; ?>
                 <? if($d['akcios'] == '1'): ?><span class="akcios itemInf" itemId="<?=$d['product_id']?>" title="Akciós termék">A</span><? endif; ?>
                 <? if($d['ujdonsag'] == '1'): ?><span class="ujdonsag itemInf" title="Újdonság termék">U</span><? endif; ?>
                 <? if($d['kiemelt'] == '1'): ?><span class="kiemelt itemInf" title="Kiemelt termék">K</span><? endif; ?>
             </div>
             <div class="img"><a class="zoom" href="<?=$d['profil_kep']?>" target="_blank"><img src="<?=$d['profil_kep_small']?>" alt="" /></a></div>
-			<div class="nev">
-				<a title="Szerkesztés" href="/termekek/t/edit/<?=$d['product_id']?>" style="color:black;" ><?=$d['product_nev']?></a>
-            </div>
-            <div class="inkat">
-                <em title="Kulcsszavak"><?=$d['kulcsszavak']?></em>
-            </div>
+		         <div class="nev">
+				       <a title="Szerkesztés" href="/termekek/t/edit/<?=$d['product_id']?>" style="color:black;" ><?=$d['product_nev']?></a>
+             </div>
+             <div class="inps">
+               <div class="szin">
+                 <input type="text" class="form-control action" mode="szin" tid="<?=$d['product_id']?>" value="<?=$d['szin']?>" placeholder="Variáció" />
+               </div>
+               <div class="meret">
+                 <input type="text" class="form-control action" mode="meret" tid="<?=$d['product_id']?>" value="<?=$d['meret']?>" placeholder="Kiszerelés" />
+               </div>
+             </div>
             <? if( true ): ?>
             	<span class="modkat">
-                    <strong><a href="javascript:void(0);" title="Kategóriába listázva" class="itemInf" itemId="<?=$d['product_id']?>"><?=count($d[inKatList])?> <i class="fa fa-th-list"></i></a></strong><? if(count($d['hasonlo_termek_ids']['ids']) > 0): ?>&nbsp;&nbsp;&nbsp;<span title="Termék variáció kapcsolatok száma"><?=count($d['hasonlo_termek_ids']['ids'])?> <i class="fa fa-th"></i></span><? endif;?>
-                </span>
+                  <strong><a href="javascript:void(0);" title="Kategóriába listázva" class="itemInf" itemId="<?=$d['product_id']?>"><?=count($d[inKatList])?> <i class="fa fa-th-list"></i></a></strong><? if(count($d['hasonlo_termek_ids']['ids']) > 0): ?>&nbsp;&nbsp;&nbsp;<span title="Termék variáció kapcsolatok száma"><a href="/termekek/?article=<?=$d[raktar_articleid]?>"><?=count($d['hasonlo_termek_ids']['ids'])?> <i class="fa fa-th"></i></a></span><? endif;?>
+              </span>
             <? endif; ?>
-            </td>
-            <td>
-                <input type="text" class="form-control action" mode="meret" tid="<?=$d['product_id']?>" value="<?=$d['meret']?>" />
-            </td>
-            <td>
-                <input type="text" class="form-control action" mode="szin" tid="<?=$d['product_id']?>" value="<?=$d['szin']?>" />
             </td>
             <td>
             	<select class="form-control  action"  mode="marka" tid="<?=$d['product_id']?>" style="max-width:120px;">
@@ -138,15 +155,15 @@
             </td>
             <td>
             	<input type="number" step="any" class="form-control action" mode="netto_ar" tid="<?=$d['product_id']?>" min="0" value="<?=$d[netto_ar]?>" />
-                <? if($d[akcios] == '1'): ?>
-				<input type="number" step="any" class="form-control action" mode="akcios_netto_ar" tid="<?=$d['product_id']?>" min="0" value="<?=$d[akcios_netto_ar]?>" />
-				<? endif;?>
-                </td>
+              <? if($d[akcios] == '1'): ?>
+      				<input type="number" step="any" class="form-control action" mode="akcios_netto_ar" tid="<?=$d['product_id']?>" min="0" value="<?=$d[akcios_netto_ar]?>" />
+      				<? endif;?>
+            </td>
             <td>
             <input type="number" step="any" class="form-control action" mode="brutto_ar" tid="<?=$d['product_id']?>" min="0" value="<?=$d[brutto_ar]?>" />
             <? if($d[akcios] == '1'): ?>
-				<input type="number" step="any" class="form-control action" mode="akcios_brutto_ar" tid="<?=$d['product_id']?>" min="0" value="<?=$d[akcios_brutto_ar]?>" />
-				<? endif;?>
+    				<input type="number" step="any" class="form-control action" mode="akcios_brutto_ar" tid="<?=$d['product_id']?>" min="0" value="<?=$d[akcios_brutto_ar]?>" />
+    				<? endif;?>
             </td>
             <td align="center">
 				<? if($d[akcios] == '0'): ?>
@@ -158,26 +175,27 @@
                 <div class="arres">(<?=number_format(($d[ar] - $d[brutto_ar]) / ($d[ar] / 100),2,"."," ")?>%)</div>
             </td>
             <td align="center">
-				<input type="number" step="any" class="form-control action" mode="egyedi_ar" tid="<?=$d['product_id']?>" min="0" value="<?=$d[egyedi_ar]?>" />
+		          <input type="number" step="any" class="form-control action" mode="egyedi_ar" tid="<?=$d['product_id']?>" min="0" value="<?=$d[egyedi_ar]?>" />
             	<? if(!is_null($d[egyedi_ar])): ?>
                 <div class="arres">(<?=number_format(($d[egyedi_ar] - $d[brutto_ar]) / ($d[egyedi_ar] / 100),2,"."," ")?>%)</div>
                 <? endif; ?>
             </td>
-	        <td>
-			<select class="form-control  action" mode="szallitasi_ido" tid="<?=$d['product_id']?>" style="max-width:150px;">
-				<? foreach($this->szallitas as $sz): ?>
-                <option value="<?=$sz[ID]?>" <?=($sz[ID] == $d[szallitasID])?'selected':''?>><?=$sz[elnevezes]?></option>
-                <? endforeach; ?>
-            </select></td>
+	          <td>
+		        <select class="form-control  action" mode="szallitasi_ido" tid="<?=$d['product_id']?>" style="max-width:150px;">
+		          <? foreach($this->szallitas as $sz): ?>
+              <option value="<?=$sz[ID]?>" <?=($sz[ID] == $d[szallitasID])?'selected':''?>><?=$sz[elnevezes]?></option>
+              <? endforeach; ?>
+            </select>
+            </td>
             <td>
             <select class="form-control  action" mode="allapot" tid="<?=$d['product_id']?>" style="max-width:150px;">
-				<? foreach($this->keszlet as $k): ?>
+		          <? foreach($this->keszlet as $k): ?>
                 <option value="<?=$k[ID]?>" <?=($k[ID] == $d[keszletID])?'selected':''?>><?=$k[elnevezes]?></option>
-                <? endforeach; ?>
+              <? endforeach; ?>
             </select>
             </td>
             <td align="center">
-				<input type="number" step="any" class="form-control action" mode="raktar_keszlet" tid="<?=$d['product_id']?>" min="-1" value="<?=$d['raktar_keszlet']?>" />
+			          <input type="number" step="any" class="form-control action" mode="raktar_keszlet" tid="<?=$d['product_id']?>" min="-1" value="<?=$d['raktar_keszlet']?>" />
             </td>
             <td align="center"><? if($d['lathato'] == '1'): ?><i class="fa fa-check vtgl" title="Aktív / Kattintson az inaktiváláshoz" tid="<?=$d['product_id']?>"></i><? else: ?><i class="fa fa-times vtgl" title="Inaktív / Kattintson az aktiváláshoz" tid="<?=$d['product_id']?>"></i><? endif; ?></td>
             <!--<td align="center"><? if($d['fotermek'] == '1'): ?><i class="fa fa-check ftgl" title="Főtermék / Kattintson az inaktiváláshoz" tid="<?=$d['product_id']?>"></i><? else: ?><i class="fa fa-times ftgl" title="Nem főtermék / Kattintson az aktiváláshoz" tid="<?=$d['product_id']?>"></i><? endif; ?></td>-->
@@ -475,32 +493,8 @@
 			}
 			autoShowInfos();
 		});
-		$('.modkat i').click(function(){
-			$('.modkat .shinkat').hide(0);
-			$('.modkat i').removeClass('showed');
-			var key = $(this).attr('key');
-			var sh 	= $(this).attr('sh');
+  })
 
-
-			if(sh == 0){
-				$('.modkat #inkatid'+key).show(0).html('<div style="padding:10px; text-align:center;"><i class="fa fa-spinner fa-spin"></i> betöltés...</div>');
-				$(this).attr('sh',1);
-				$(this).addClass('showed');
-				loadKatValaszto(key);
-			}else{
-				$('.modkat #inkatid'+key).hide(0);
-				$(this).attr('sh',0);
-			}
-		});
-	})
-	function loadKatValaszto(tid){
-		$.post("<?=AJAX_GET?>",{
-			type : 'loadCheckKat',
-			id 	: tid,
-		},function(d){
-			$('.modkat #inkatid'+tid).html(d);
-		},"html");
-	}
 	function autoShowInfos(){
 		var stored = localStorage.getItem('showMoreInfoOnTermekList');
 		console.log('StoredFlag: '+stored);

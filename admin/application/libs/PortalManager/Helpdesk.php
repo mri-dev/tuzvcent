@@ -251,11 +251,25 @@ class Helpdesk
           }
         }
 
+        $this->prepareArticlesContent( $d['szoveg'] );
+
         $data[] = $d;
       }
     }
 
     return $data;
+  }
+
+  private function prepareArticlesContent( &$content )
+  {
+    $content = str_replace(array(
+      '../src/'
+    ),
+    array(
+      SOURCE
+    ), $content);
+
+    return $content;
   }
 
   public function searchByKeywords( $data, $search )

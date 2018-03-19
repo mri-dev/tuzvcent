@@ -477,7 +477,7 @@ tc.controller('ActionButtons', ['$scope', '$http', '$mdDialog', '$mdToast', func
 
 }]);
 
-tc.controller('Tudastar',['$scope', '$http', '$mdToast', '$element', '$location', function($scope, $http, $mdToast, $element, $location)
+tc.controller('Tudastar',['$scope', '$http', '$mdToast', '$element', '$location', '$window', function($scope, $http, $mdToast, $element, $location, $window)
 {
   $scope.found_items = 0;
   $scope.loading = false;
@@ -660,6 +660,10 @@ tc.controller('Tudastar',['$scope', '$http', '$mdToast', '$element', '$location'
     }
 
     $scope.doSearch( false );
+  }
+
+  $scope.toTop = function(){
+    $window.scrollTo(0, 0);
   }
 
   $scope.putTagToSearch = function( tag ){

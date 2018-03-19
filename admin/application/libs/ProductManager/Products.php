@@ -85,6 +85,7 @@ class Products
 			$csoport_kategoria	= (!$product->getVariable('csoport_kategoria')) ? NULL : $product->getVariable('csoport_kategoria');
 			$ajandek 			= (!$product->getVariable('ajandek')) ? NULL : $product->getVariable('ajandek');
 			$termek_site_url 	= (!$product->getVariable('termek_site_url')) ? NULL : $product->getVariable('termek_site_url');
+			$tudastar_url 	= (!$product->getVariable('tudastar_url')) ? NULL : $product->getVariable('tudastar_url');
 			$referer_price_discount 	= (!$product->getVariable('referer_price_discount')) ? 0 : $product->getVariable('referer_price_discount');
 			$sorrend 			= (!$product->getVariable('sorrend')) ? 0 : $product->getVariable('sorrend');
 
@@ -132,6 +133,7 @@ class Products
 					'csoport_kategoria' => $csoport_kategoria,
 					'ajandek' => $ajandek,
 					'termek_site_url' => $termek_site_url,
+					'tudastar_url' => $tudastar_url,
 					'lathato' => $lathato,
 					'kiemelt'=> $kiemelt,
 					'ajanlorendszer_kiemelt' => $ajanlorendszer_kiemelt,
@@ -303,6 +305,7 @@ class Products
 			$csoport_kategoria	= (!$product->getVariable('csoport_kategoria')) ? NULL : $product->getVariable('csoport_kategoria');
 			$ajandek 			= (!$product->getVariable('ajandek')) ? NULL : $product->getVariable('ajandek');
 			$termek_site_url 	= (!$product->getVariable('termek_site_url')) ? NULL : $product->getVariable('termek_site_url');
+			$tudastar_url 	= (!$product->getVariable('tudastar_url')) ? NULL : $product->getVariable('tudastar_url');
 			$referer_price_discount 	= (!$product->getVariable('referer_price_discount')) ? 0 : $product->getVariable('referer_price_discount');
 			$sorrend 			= (!$product->getVariable('sorrend')) ? 0 : $product->getVariable('sorrend');
 
@@ -358,6 +361,7 @@ class Products
 					'kiemelt'=> $kiemelt,
 					'ajanlorendszer_kiemelt' => $ajanlorendszer_kiemelt,
 					'termek_site_url' => $termek_site_url,
+					'tudastar_url' => $tudastar_url,
 					'referer_price_discount' => $referer_price_discount,
 					'sorrend' => $sorrend,
 					'show_stock' => $show_stock
