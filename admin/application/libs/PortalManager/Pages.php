@@ -71,6 +71,10 @@ class Pages
 		$hashkey= ($data['hashkey']) ?: NULL;
 		$hashkey_kw= ($data['hashkey_keywords']) ?: NULL;
 
+		$meta_title = ($data['meta_title']) ?: NULL;
+		$meta_desc = ($data['meta_desc']) ?: NULL;
+		$meta_image = ($data['meta_image']) ?: NULL;
+
 		if ($parent) {
 			$xparent = explode('_',$parent);
 			$deep = $xparent[1]+1;
@@ -118,7 +122,10 @@ class Pages
 				'kepek' => $kepek,
 				'sorrend' => $data['sorrend'],
 				'hashkey' => $hashkey,
-				'hashkey_keywords' => $hashkey_kw
+				'hashkey_keywords' => $hashkey_kw,
+				'meta_title' => $meta_title,
+				'meta_desc' => $meta_desc,
+				'meta_image' => $meta_image,
 			)
 		);
 	}
@@ -136,6 +143,10 @@ class Pages
 		$gyujto	= ($data['gyujto'] == 'on') ? 1 : 0;
 		$hashkey= ($data['hashkey']) ?: NULL;
 		$hashkey_kw= ($data['hashkey_keywords']) ?: NULL;
+
+		$meta_title = ($data['meta_title']) ?: NULL;
+		$meta_desc = ($data['meta_desc']) ?: NULL;
+		$meta_image = ($data['meta_image']) ?: NULL;
 
 			// Képek
 		$kepek = '';
@@ -184,7 +195,10 @@ class Pages
 				'gyujto' => $gyujto,
 				'sorrend' => $data['sorrend'],
 				'hashkey' => $hashkey,
-				'hashkey_keywords' => $hashkey_kw
+				'hashkey_keywords' => $hashkey_kw,
+				'meta_title' => $meta_title,
+				'meta_desc' => $meta_desc,
+				'meta_image' => $meta_image,
 			),
 			sprintf("ID = %d", $this->selected_page_id)
 		);
@@ -459,6 +473,10 @@ class Pages
 		}
 
 		return $set;
+	}
+	public function getMetaValue( $key )
+	{
+		return $this->current_get_item['meta_'.$key];
 	}
 	public function getMeta( $key = false )
 	{

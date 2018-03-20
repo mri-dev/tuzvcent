@@ -180,6 +180,9 @@
                   <div class="category-title head">
                       <?php if ($this->myfavorite): ?>
                         <h1>Kedvencnek jelölt termékek</h1>
+                        <div class="push-cart-favorite">
+                          <a href="/kedvencek/?order=1&after=/kosar">Kedvenceket a kosárba teszem <i class="fa fa-cart-plus"></i></a>
+                        </div>
                       <?php elseif($this->category->getName() != ''): ?>
                         <h1><?=$this->category->getName()?></h1>
                       <?php else: ?>

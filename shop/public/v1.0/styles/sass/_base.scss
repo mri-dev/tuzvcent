@@ -966,6 +966,19 @@ body.singlepage{
 		margin: 0 0 10px 0;
 		color: $color-orange;
 	}
+	.push-cart-favorite{
+		float:right;
+		margin-top: -32px;
+
+		a{
+			background: $color-green;
+			color: white;
+			display: block;
+			padding: 10px;
+			border-radius: 4px;
+			text-decoration: none;
+		}
+	}
 	.category-title {
 		.filters {
 			float: right;

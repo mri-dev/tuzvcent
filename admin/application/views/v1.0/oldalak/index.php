@@ -141,6 +141,31 @@
                    <a href="javascript:void(0);" onclick="$('.imageset').append(addImagesetRow());"><i class="fa fa-plus"></i> új kép hozzáadása</a>
                 </div>
             </div>
+						<br>
+						<h3>Meta adatok</h3>
+						<p>
+							Az adatok hiányában az alapértelmezett, rendelkezésre álló adatok alapján lesznek összeállítva a meta adatok. Ezek a keresők és a social oldalak szempontjából fontosak.
+						</p>
+						<div class="row">
+							<div class="col-md-6">
+								<label for="meta_title">Cím</label>
+								<input type="text" id="meta_title" class="form-control" name="meta_title" value="<?=($this->page ? $this->page->getMetaValue('title') : '')?>">
+							</div>
+							<div class="col-md-6">
+								<label for="meta_image">Kép</label>
+								<div class="input-group">
+									<input type="text" id="meta_image" index="1" class="form-control" name="meta_image" value="<?=($this->page ? $this->page->getMetaValue('image') : '')?>">
+									<div class="input-group-addon"><a title="Kép kiválasztása" href="<?=FILE_BROWSER_IMAGE?>&field_id=meta_image" data-fancybox-type="iframe" class="iframe-btn" type="button"><i class="fa fa-search"></i></a></div>
+								</div>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-md-12">
+								<label for="meta_desc">Leírás</label>
+								<textarea name="meta_desc" class="no-editor form-control" id="meta_desc" maxlength="350"><?=($this->page ? $this->page->getMetaValue('desc') : '')?></textarea>
+							</div>
+						</div>
             </form>
         </div>
     </div>

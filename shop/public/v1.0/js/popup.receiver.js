@@ -1,6 +1,6 @@
-var casada = angular.module('casada', ['ngCookies']);
+var pilot = angular.module('pilot', ['ngCookies']);
 
-casada.controller("popupReceiver", ['$scope', '$sce', '$cookies', '$http', '$location', '$window', '$timeout', function($scope, $sce, $cookies, $http, $location, $window, $timeout)
+pilot.controller('popupReceiver', ['$scope', '$sce', '$cookies', '$http', '$location', '$window', '$timeout', function($scope, $sce, $cookies, $http, $location, $window, $timeout)
 {
 	var ctrl 	= this;
 	var _url 	= $location.absUrl();
@@ -14,7 +14,7 @@ casada.controller("popupReceiver", ['$scope', '$sce', '$cookies', '$http', '$loc
 		'responsiveBreakpoint' : 960,
 		'domain' : false,
 		'receiverdomain' : '',
-		'imageRoot' : 'https://www.cp.ws1.web-pro.hu/'
+		'imageRoot' : 'https://www.cp.tuzvedelmicentrum.web-pro.hu/'
 	};
 
 	var param 	= function(obj) {

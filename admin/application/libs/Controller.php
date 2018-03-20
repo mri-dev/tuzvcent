@@ -196,7 +196,9 @@ class Controller {
             $v[$d[bKulcs]] = $d[bErtek];
         }
 
-        $v['domain'] = 'http://'.str_replace( array('www.', 'http://'), '', $v['page_url']);
+        $protocol = ($_SERVER['HTTPS']) ? 'https://' : 'http://';
+
+        $v['domain'] = $protocol.str_replace( array('http://','https://'), '', $v['page_url']);
 
         if (strpos($v['alert_email'],",") !== false)
         {

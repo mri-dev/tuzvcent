@@ -110,6 +110,10 @@ class termekek extends Controller {
 			$this->out( 'productFilters', $products->productFilters( (array)$products->getLoadedIDS() ) );
 			$this->out( 'filters', $products->getFilters($_GET,'fil'));
 
+			if ( $myfavorite && isset($_GET['order']) && $_GET['order'] == '1' ) {
+				$products->pushFavoriteToCart( $_GET['after'] );
+			}
+
 			/****
 			* TOP TERMÉKEK
 			*****/

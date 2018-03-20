@@ -1977,6 +1977,38 @@ class Products
 		);
 	}
 
+	public function pushFavoriteToCart( $redirect = false )
+	{
+		$ids = array();
+		$mid = \Helper::getMachineID();
+		$favs = $this->db->query("SELECT termekID FROM shop_termek_favorite WHERE mid = '$mid'");
+
+		if ( $favs->rowCount() != 0) {
+			$favs = $favs->fetchAll(\PDO::FETCH_ASSOC);
+
+			foreach ( $favs as $f ) {
+				$id = (int)$f['termekID'];
+				$c = $this->db->query("SELECT ID FROM shop_kosar WHERE gepID = '$mid' and termekID = $id");
+				if ($c->rowCount() == 0) {
+					$this->db->insert(
+						'shop_kosar',
+						array(
+							'gepID' => $mid,
+							'termekID' => $id,
+							'me' => 1
+						)
+					);
+				}
+			}
+
+			if ( $redirect ) {
+				\Helper::reload( $redirect );
+			}
+		}
+
+		return false;
+	}
+
 	/*===============================
 	=            GETTERS            =
 	===============================*/
