@@ -165,6 +165,13 @@
                         <input type="text" id="basics_page_description" name="page_description" class="form-control" value="<?=$this->settings['page_description']?>">
                     </div>
                 </div>
+								<br>
+								<div class="row np">
+                    <div class="col-md-12">
+                        <label for="basics_about_us">Weboldal bemutatkozás szövege</label>
+                        <textarea name="about_us" id="basics_about_us" class="form-control no-editor" style="max-width: 100%;"><?=$this->settings['about_us']?></textarea>
+                    </div>
+                </div>
                 <br>
                 <div class="row np">
                     <div class="col-md-5">
