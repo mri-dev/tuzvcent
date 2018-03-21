@@ -522,8 +522,6 @@ tc.controller('Tudastar',['$scope', '$http', '$mdToast', '$element', '$location'
     }
 
     $location.path('?', false).search(src);
-
-    console.log(src);
   }
 
   $scope.prepareFilters = function(){
@@ -549,8 +547,6 @@ tc.controller('Tudastar',['$scope', '$http', '$mdToast', '$element', '$location'
     });
 
     l = l.slice(0, -1);
-
-    console.log(l);
 
     return l;
   }
@@ -651,6 +647,7 @@ tc.controller('Tudastar',['$scope', '$http', '$mdToast', '$element', '$location'
 
   $scope.filterCategory = function( catid )
   {
+    $scope.selected_article = false;
     var key = 'cat' + catid;
     if ( typeof $scope.catFilters[key] === 'undefined') {
       $scope.catFilters[key] = {};

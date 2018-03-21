@@ -1,5 +1,3 @@
-
-
 <h1>Üzenetek <span><strong><?=Helper::cashFormat($this->uzenetek[info][total_num])?> db</strong> üzenet <? if($_COOKIE[filtered] == '1'): ?><span class="filtered">Szűrt üzenetek listázása <a href="/uzenetek/clearfilters/" class="btn btn-danger">eltávolítás</a></span><? endif; ?></span></h1>
 <?=$this->rmsg?>
 <div class="clr"></div>

@@ -2617,7 +2617,14 @@ class AdminUser
 
 		$q = "SELECT u.* FROM uzenetek as u WHERE u.ID = $msgID";
 
-		return $this->db->query($q)->fetch(\PDO::FETCH_ASSOC);
+		$data = $this->db->query($q)->fetch(\PDO::FETCH_ASSOC);
+
+		if ( $data['tipus'] == 'requesttermprice' )
+		{
+			$data['item'] = $this->getTermekAdat( $data['item_id'] );
+		}
+
+		return $data;
 	}
 
 	function getUzenetek($arg = array()){

@@ -1,4 +1,4 @@
-<? 
+<?
 use PopupManager\Creatives;
 use PopupManager\Creative;
 use PopupManager\CreativeScreens;
@@ -6,15 +6,17 @@ use PopupManager\CreativeScreen;
 
 class popup extends Controller
 {
-		function __construct(){	
+		function __construct(){
 			parent::__construct();
 			parent::$pageTitle = 'Felugróablak kezelő / Adminisztráció';
 
 			$this->view->adm = $this->AdminUser;
 			$this->view->adm->logged = $this->AdminUser->isLogged();
 
+			define('PILOT_ANGULAR_CALL', true);
 
-			switch ($_GET['v']) 
+
+			switch ($_GET['v'])
 			{
 				case 'creative_create':
 
@@ -22,18 +24,18 @@ class popup extends Controller
 					$creative = new Creatives(array('db' => $this->db));
 
 					// Creative létrehozás
-					if (Post::on('createCreative')) 
+					if (Post::on('createCreative'))
 					{
-						try 
+						try
 						{
 							unset($_POST['createCreative']);
 							$id = $creative->create($_POST);
 							Helper::reload('/popup/');
-						} 
-						catch ( Exception $e ) 
+						}
+						catch ( Exception $e )
 						{
 							$this->view->err	= true;
-							$this->view->msg	= Helper::makeAlertMsg('pError', $e->getMessage()); 
+							$this->view->msg	= Helper::makeAlertMsg('pError', $e->getMessage());
 						}
 					}
 
@@ -56,53 +58,53 @@ class popup extends Controller
 					}
 
 					// Creative törlése
-					if (Post::on('deleteCreative')) 
+					if (Post::on('deleteCreative'))
 					{
-						try 
+						try
 						{
 							$creative->delete();
 							Helper::reload('/popup/');
-						} 
-						catch ( Exception $e ) 
+						}
+						catch ( Exception $e )
 						{
 							$this->view->err	= true;
-							$this->view->msg	= Helper::makeAlertMsg('pError', $e->getMessage()); 
+							$this->view->msg	= Helper::makeAlertMsg('pError', $e->getMessage());
 						}
 					}
 
 					// Screen létrehozás
-					if (Post::on('createScreen')) 
+					if (Post::on('createScreen'))
 					{
-						try 
+						try
 						{
 							unset($_POST['createScreen']);
 							$id = $screens->create($_POST);
 							Helper::reload('/popup/?v=screen&s='.$id);
-						} 
-						catch ( Exception $e ) 
+						}
+						catch ( Exception $e )
 						{
 							$this->view->err	= true;
-							$this->view->msg	= Helper::makeAlertMsg('pError', $e->getMessage()); 
+							$this->view->msg	= Helper::makeAlertMsg('pError', $e->getMessage());
 						}
 					}
 
-					
+
 					// Creative változások mentése
-					if (Post::on('saveCreative')) 
+					if (Post::on('saveCreative'))
 					{
 						// Kreatív adatok
 						$creative = new Creatives(array('db' => $this->db));
 
-						try 
+						try
 						{
 							unset($_POST['saveCreative']);
 							$id = $creative->save($_GET[c], $_POST);
 							Helper::reload();
-						} 
-						catch ( Exception $e ) 
+						}
+						catch ( Exception $e )
 						{
 							$this->view->err	= true;
-							$this->view->msg	= Helper::makeAlertMsg('pError', $e->getMessage()); 
+							$this->view->msg	= Helper::makeAlertMsg('pError', $e->getMessage());
 						}
 					}
 				break;
@@ -118,52 +120,52 @@ class popup extends Controller
 
 
 					// Screen törlése
-					if (Post::on('deleteScreen')) 
+					if (Post::on('deleteScreen'))
 					{
-						try 
+						try
 						{
 							$screen->delete();
 							Helper::reload('/popup/?v=creative&c='.$screen->getCreativeID());
-						} 
-						catch ( Exception $e ) 
+						}
+						catch ( Exception $e )
 						{
 							$this->view->err	= true;
-							$this->view->msg	= Helper::makeAlertMsg('pError', $e->getMessage()); 
+							$this->view->msg	= Helper::makeAlertMsg('pError', $e->getMessage());
 						}
 					}
 
 					// Screen másolása
-					if ($_GET['a'] == 'copy') 
+					if ($_GET['a'] == 'copy')
 					{
-						try 
+						try
 						{
 							$screen->copy();
 							Helper::reload('/popup/?v=creative&c='.$screen->getCreativeID());
-						} 
-						catch ( Exception $e ) 
+						}
+						catch ( Exception $e )
 						{
 							$this->view->err	= true;
-							$this->view->msg	= Helper::makeAlertMsg('pError', $e->getMessage()); 
+							$this->view->msg	= Helper::makeAlertMsg('pError', $e->getMessage());
 						}
 					}
 
 					// Screen alapadatok módosítása
-					if (Post::on('saveScreenSettings')) 
+					if (Post::on('saveScreenSettings'))
 					{
 						unset($_POST['saveScreenSettings']);
 						$screen->saveSettings($_POST);
 						Helper::reload();
 					}
 				break;
-				
+
 				default:
 					$creatives = new Creatives(array('db' => $this->db));
 					$this->out('creatives',$creatives);
 				break;
-			}	
+			}
 
 		}
-		
+
 		function __destruct(){
 			// RENDER OUTPUT
 				parent::bodyHead();					# HEADER
