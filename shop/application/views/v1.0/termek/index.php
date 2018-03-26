@@ -1,5 +1,5 @@
 <?php
-  $ar = $this->product['brutto_ar'];
+  $ar = $this->product['ar'];
 
   if( $this->product['akcios'] == '1' && $this->product['akcios_fogy_ar'] > 0)
   {

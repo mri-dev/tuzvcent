@@ -102,7 +102,8 @@ class termekek extends Controller {
 
 			$products = (new Products( array(
 				'db' => $this->db,
-				'user' => $this->User->get()
+				'user' => $this->User->get(),
+				'settings' => $this->view->settings
 			) ))->prepareList( $arg );
 
 			$this->out( 'products', $products );

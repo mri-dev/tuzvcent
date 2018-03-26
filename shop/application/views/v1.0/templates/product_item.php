@@ -27,7 +27,7 @@
 
     <div class="prices">
       <?php
-        $ar = $brutto_ar;
+        //$ar = $brutto_ar;
         $wo_price = ($without_price == '1') ? true : false;
         if( $akcios == '1' ) $ar = $akcios_fogy_ar;
       ?>

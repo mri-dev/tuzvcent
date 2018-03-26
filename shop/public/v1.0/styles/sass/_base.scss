@@ -426,7 +426,7 @@ body.singlepage{
 			border: .4px solid #bfbfbf;
 
 			& > .wrapper {
-				padding: 0px;
+				padding: 1px;
 				position: relative;
 
 				.ajanlott{
@@ -461,10 +461,16 @@ body.singlepage{
     		padding: 5px;
 				position: relative;
 				overflow: hidden;
+				height: 200px;
 				img {
-					width: 80%;
-					max-width: 80%;
+					width: 100%;
+					max-width: 100%;
 					margin: 0 auto;
+					left: 50%;
+					top: 50%;
+					position: absolute;
+					-webkit-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);
 				}
 				.short-desc {
 					z-index: 2;

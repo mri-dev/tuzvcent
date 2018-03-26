@@ -951,8 +951,8 @@ class Products
 			if( $d['akcios'] == '1') {
 				$arInfo['ar'] = $arInfo['ar'];
 			}
-
-			$arInfo['ar'] 			= ($this->settings['round_price_5'] == '1') ? round($arInfo['ar'] / 5) * 5 : $arInfo['ar'] ;
+			
+			$arInfo['ar'] = ($this->settings['round_price_5'] == '1') ? round($arInfo['ar'] / 5) * 5 : $arInfo['ar'] ;
 			$akcios_arInfo['ar'] 	= ($this->settings['round_price_5'] == '1') ? round($akcios_arInfo['ar'] / 5) * 5 : $akcios_arInfo['ar'] ;
 
 			// Kategória lista, ahol szerepel a termék
@@ -960,11 +960,11 @@ class Products
 
 			$d['link'] 				= DOMAIN.'termek/'.\PortalManager\Formater::makeSafeUrl( $d['product_nev'], '_-'.$d['product_id'] );
 			$d['hasonlo_termek_ids']= $this->getProductRelatives( $d['product_id'] );
-			$d['parameters'] 		= $this->getParameters( $d['product_id'], $d['alapertelmezett_kategoria'] );
-			$d['inKatList'] 		= $in_cat;
-			$d['ar'] 				= $arInfo['ar'];
-			$d['akcios_fogy_ar']	= $akcios_arInfo['ar'];
-			$d['arres_szazalek'] 	= $arInfo['arres'];
+			$d['parameters'] = $this->getParameters( $d['product_id'], $d['alapertelmezett_kategoria'] );
+			$d['inKatList'] = $in_cat;
+			$d['ar'] = $arInfo['ar'];
+			$d['akcios_fogy_ar'] = $akcios_arInfo['ar'];
+			$d['arres_szazalek'] = $arInfo['arres'];
 
 			$bdata[]	 			= $d;
 		}
