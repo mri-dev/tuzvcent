@@ -45,7 +45,9 @@ class Products
 		if( !$product->getTransportTimeId() ) throw new \Exception('Szállítási időt kötelező kiválasztani!');
 		if( !$product->getStatusId() ) throw new \Exception('Állapotot kötelező kiválasztani!');
 		if( !$product->getCategoryList() ) throw new \Exception('Termék kategória kiválasztása kötelező!');
-		if( !$product->getPrice() ) throw new \Exception('Termék árát kötelező megadni!');
+		if( !$product->isWithoutPrice() ) {
+			if( !$product->getPrice() ) throw new \Exception('Termék árát kötelező megadni!');
+		}
 
 		if( true ){
 			$cikkszam 		= $product->getItemNumber();
@@ -54,6 +56,7 @@ class Products
 			$pickpackszallitas 	= ( !$product->isAllowToPickPackPont() ) ? 0 : 1;
 			$no_cetelem 	= ( $product->isAllowCetelem() ) ? 0 : 1;
 			$akcios 		= ( !$product->isDiscounted() ) ? 0 : 1;
+			$without_price= ( !$product->isWithoutPrice() ) ? 0 : 1;
 			$netto_ar 		= $product->getPrice( 'netto' );
 			$brutto_ar 		= $product->getPrice( 'brutto' );
 			$akcios_n_ar 	= ( $product->isDiscounted() ) ? $product->getPrice( 'netto', 'akcios' ) : 0;
@@ -139,7 +142,8 @@ class Products
 					'ajanlorendszer_kiemelt' => $ajanlorendszer_kiemelt,
 					'referer_price_discount' => $referer_price_discount,
 					'sorrend' => $sorrend,
-					'show_stock' => $show_stock
+					'show_stock' => $show_stock,
+					'without_price' => $without_price
 				)
 			);
 
@@ -272,6 +276,7 @@ class Products
 			$pickpackszallitas 	= ( !$product->isAllowToPickPackPont() ) ? 0 : 1;
 			$no_cetelem 	= ( $product->isAllowCetelem() ) ? 0 : 1;
 			$akcios 		= ( !$product->isDiscounted() ) ? 0 : 1;
+			$without_price= ( !$product->isWithoutPrice() ) ? 0 : 1;
 			$netto_ar 		= $product->getPrice( 'netto' );
 			$brutto_ar 		= $product->getPrice( 'brutto' );
 			$akcios_n_ar 	= ( $product->isDiscounted() ) ? $product->getPrice( 'netto', 'akcios' ) : 0;
@@ -364,7 +369,8 @@ class Products
 					'tudastar_url' => $tudastar_url,
 					'referer_price_discount' => $referer_price_discount,
 					'sorrend' => $sorrend,
-					'show_stock' => $show_stock
+					'show_stock' => $show_stock,
+					'without_price' => $without_price
 				),
 				sprintf("ID = %d", $product->getId())
 			);
@@ -951,7 +957,7 @@ class Products
 			if( $d['akcios'] == '1') {
 				$arInfo['ar'] = $arInfo['ar'];
 			}
-			
+
 			$arInfo['ar'] = ($this->settings['round_price_5'] == '1') ? round($arInfo['ar'] / 5) * 5 : $arInfo['ar'] ;
 			$akcios_arInfo['ar'] 	= ($this->settings['round_price_5'] == '1') ? round($akcios_arInfo['ar'] / 5) * 5 : $akcios_arInfo['ar'] ;
 

@@ -22,6 +22,7 @@ class Product
 		'allapot' => 0,
 		'akcios' => 0,
 		'ujdonsag' => 0,
+		'without_price' => 0,
 		'arukereso' => 1,
 		'argep' => 1,
 		'pickpackpont' => 1,
@@ -163,6 +164,11 @@ class Product
 	public function isNewest()
 	{
 		return ($this->product['ujdonsag'] == 1 ? true : false );
+	}
+
+	public function isWithoutPrice()
+	{
+		return ($this->product['without_price'] == 1 ? true : false );
 	}
 
 	public function isListedInArukereso()

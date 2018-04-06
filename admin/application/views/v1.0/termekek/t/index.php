@@ -112,6 +112,9 @@
 				<div class="con">
 					<div class="row">
 						<h3>Termék ár</h3>
+						<div class="col-md-12">
+							<input type="checkbox" id="without_price" name="without_price" <?=($this->termek[without_price]=='1')?'checked="checked"':''?> /> <label for="without_price">Ár nélküli listázás</label>							
+						</div>
 						<div class="col-md-6">
 							<div>
 								<label for="ar_by">Eredeti ár</label>

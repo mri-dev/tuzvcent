@@ -143,6 +143,9 @@
 				<div class="con">
 					<h3>Ár <em class="info">Kérjük, a beszerzési árat adja meg!</em></h3>
 					<div class="pdright">
+						<div class="">
+							<input type="checkbox" id="without_price" name="without_price" <?=($_POST[without_price]=='1')?'checked="checked"':''?> /> <label for="without_price">Ár nélküli listázás</label>
+						</div>
 						<div class="input-group">
 							<input type="number" name="ar" id="ar" min="0" value="0" class="form-control required reqInput">
 							<span class="input-group-addon">Ft beszerzési ár</span>

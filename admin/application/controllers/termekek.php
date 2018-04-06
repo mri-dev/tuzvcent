@@ -257,6 +257,7 @@ class termekek extends Controller
 								'szin' => $_POST['szin'],
 								'meret' => $_POST['meret'],
 								'fotermek' => ($_POST['fotermek'] == 'on' ? 1 : 0),
+								'without_price' => ($_POST['without_price'] == 'on' ? 1 : 0),
 								'kiemelt' => ($_POST['kiemelt'] == 'on' ? 1 : 0),
 								'ajanlorendszer_kiemelt' =>  ($_POST['ajanlorendszer_kiemelt'] == 'on' ? 1 : 0),
 								'lathato' => ($_POST['lathato'] == 'on' ? 1 : 0),
