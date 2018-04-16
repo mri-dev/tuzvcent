@@ -612,9 +612,15 @@ class Products
 		$add = '';
 
 		if (!$admin_listing) {
-			$add = " and p.lathato = 1 and p.profil_kep IS NOT NULL ";
+			$add = " and p.lathato = 1 ";
 			$whr .= $add;
 			$size_whr .= $add;
+
+			// Kép nélküliek rejtése
+			/*$add = " and p.profil_kep IS NOT NULL ";
+			$whr .= $add;
+			$size_whr .= $add;
+			*/
 
 			if(!empty($arg['meret']) && $arg['meret'][0] != ''){
 				$add = " and p.meret IN ('".trim(implode("','",$arg['meret']))."') ";

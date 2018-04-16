@@ -7741,31 +7741,40 @@ a.cetelem-startrans {
 .page .page-view .content p {
   margin: 10px 0 5px 0;
 }
-
+/* line 5808, sass/_base.scss */
+.page .page-view .content ol {
+  list-style-type: decimal;
+  margin: 10px 0 0 15px;
+}
 /* line 5811, sass/_base.scss */
+.page .page-view .content ol > li {
+  padding: 0 0 5px 5px;
+}
+
+/* line 5819, sass/_base.scss */
 .cetelem-calc {
   font-size: 0.8em;
   padding: 5px;
   background: #F1F1F3;
   position: relative;
 }
-/* line 5817, sass/_base.scss */
+/* line 5825, sass/_base.scss */
 .cetelem-calc #preload {
   text-align: center;
   padding: 8px;
   color: black;
 }
-/* line 5822, sass/_base.scss */
+/* line 5830, sass/_base.scss */
 .cetelem-calc #preload i {
   font-size: 28px;
 }
-/* line 5827, sass/_base.scss */
+/* line 5835, sass/_base.scss */
 .cetelem-calc .error {
   text-align: center;
   color: red;
   padding: 10px;
 }
-/* line 5833, sass/_base.scss */
+/* line 5841, sass/_base.scss */
 .cetelem-calc #next, .cetelem-calc #prev {
   cursor: pointer;
   background: #85A774;
@@ -7776,27 +7785,27 @@ a.cetelem-startrans {
   bottom: 2px;
   z-index: 1;
 }
-/* line 5843, sass/_base.scss */
+/* line 5851, sass/_base.scss */
 .cetelem-calc #next:hover, .cetelem-calc #prev:hover {
   background: #3E9219;
 }
-/* line 5848, sass/_base.scss */
+/* line 5856, sass/_base.scss */
 .cetelem-calc #prev {
   left: 2px;
 }
-/* line 5852, sass/_base.scss */
+/* line 5860, sass/_base.scss */
 .cetelem-calc #next {
   right: 2px;
 }
-/* line 5857, sass/_base.scss */
+/* line 5865, sass/_base.scss */
 .cetelem-calc #results .result {
   display: none;
 }
-/* line 5861, sass/_base.scss */
+/* line 5869, sass/_base.scss */
 .cetelem-calc #results .result.active {
   display: block;
 }
-/* line 5865, sass/_base.scss */
+/* line 5873, sass/_base.scss */
 .cetelem-calc #results .constuction {
   float: right;
   font-weight: bold;
@@ -7806,40 +7815,40 @@ a.cetelem-startrans {
   margin-bottom: 5px;
   color: #309033;
 }
-/* line 5875, sass/_base.scss */
+/* line 5883, sass/_base.scss */
 .cetelem-calc #results .havi {
   font-style: italic;
   color: #727273;
   font-size: 0.8em;
 }
-/* line 5881, sass/_base.scss */
+/* line 5889, sass/_base.scss */
 .cetelem-calc #results .ownSharePrice {
   border-top: 1px solid #d7d7d7;
   padding-top: 5px;
   margin-top: 5px;
   font-size: 0.8em;
 }
-/* line 5887, sass/_base.scss */
+/* line 5895, sass/_base.scss */
 .cetelem-calc #results .ownSharePrice input {
   border: none;
   padding: 4px;
   width: 60px;
 }
-/* line 5893, sass/_base.scss */
+/* line 5901, sass/_base.scss */
 .cetelem-calc #results .ownSharePrice input + button {
   height: 21px;
   background: #DADADA;
   color: #848484;
   border: none;
 }
-/* line 5901, sass/_base.scss */
+/* line 5909, sass/_base.scss */
 .cetelem-calc #results .futamidok {
   text-align: center;
   margin-top: 8px;
   display: block;
   position: relative;
 }
-/* line 5910, sass/_base.scss */
+/* line 5918, sass/_base.scss */
 .cetelem-calc #results:after {
   content: "";
   background: url("//www.cp.tuzvedelmicentrum.web-pro.hu/src/images/cetelem_babu.png") no-repeat center;

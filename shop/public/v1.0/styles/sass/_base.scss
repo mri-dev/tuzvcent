@@ -5804,6 +5804,14 @@ a.cetelem-startrans {
 			p {
 				margin: 10px 0 5px 0;
 			}
+
+			ol{
+				list-style-type: decimal;
+				margin: 10px 0 0 15px;
+				& > li {
+					padding: 0 0 5px 5px;
+				}
+			}
 		}
 	}
 }

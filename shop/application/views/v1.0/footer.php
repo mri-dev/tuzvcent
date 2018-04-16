@@ -136,7 +136,7 @@
 						<div class="flex">
 							<div class=""><a href="/p/aszf">Általános Szerződési Feltételek</a></div>
 							<div class=""><a href="/p/aszf#garancia">Garancia</a></div>
-							<div class=""><a href="/p/aszf#szallitasfizetes">Szállítás & Fizetés</a></div>
+							<div class=""><a href="/p/szallitasi_feltetelek">Szállítás & Fizetés</a></div>
 							<div class=""><a href="/kapcsolat">Ügyfélszolgálat és Kapcsolat</a></div>
 						</div>
 					</div>
