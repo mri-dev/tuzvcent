@@ -173,6 +173,8 @@ class Products
 					'src' => 'img',
 					'upDir' => $idir,
 					'noRoot' => true,
+					'makeThumbImg' => true,
+					'makeWaterMark' => true,
 					'fileName' => $imgName,
 					'maxFileSize' => 1024
 				));

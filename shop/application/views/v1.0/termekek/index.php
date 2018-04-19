@@ -168,8 +168,8 @@
                         <? foreach( $this->parent_menu as $cat ): ?>
                         <div class="item">
                           <div class="wrapper">
-                            <div class="img"><a href="<?=$cat['link']?>"><img src="<?=rtrim(IMGDOMAIN,"/").$cat['kep']?>" alt="<?=$cat['neve']?>"></a></div>
-                            <div class="title"><a href="<?=$cat['link']?>"><?=$cat['neve']?></a></div>
+                            <div class="img"><a title="<?=$cat['neve']?>" href="<?=$cat['link']?>"><img src="<?=rtrim(IMGDOMAIN,"/").$cat['kep']?>" alt="<?=$cat['neve']?>"></a></div>
+                            <div class="title"><a title="<?=$cat['neve']?>" href="<?=$cat['link']?>"><?=$cat['neve']?></a></div>
                           </div>
                         </div>
                         <? endforeach; ?>
@@ -246,9 +246,22 @@
               </div>
             </div>
           </div>
-
         </div>
     </div>
+    <script type="text/javascript">
+      $(function(){
+        fixSubcatTitle();
+        $( window ).resize(function(){
+          fixSubcatTitle();
+        });
+      });
+
+      function fixSubcatTitle() {
+        $('.sub-categories .item .title a').css({
+          width: $('.sub-categories .item .img').width()
+        });
+      }
+    </script>
 <? else: ?>
     <?=$this->render('home')?>
 <? endif; ?>
