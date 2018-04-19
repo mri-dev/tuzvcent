@@ -76,6 +76,7 @@ class Products
 			$letoltesek		= addslashes( $product->getDownloads() );
 			$rovid_leiras	= addslashes( $product->getShortDescription() );
 			$marketing_leiras 	= (!$product->getVariable('marketing_leiras')) ? NULL : $product->getVariable('marketing_leiras');
+			$kulcsszavak	= (!$product->getVariable('kulcsszavak')) ? NULL : $product->getVariable('kulcsszavak');
 			$garancia 		= ( $product->getGuarantee() ) ?: NULL;
 			$link_list		= $product->getLinks();
 			$szin 			= $product->getVariable('szin');
@@ -113,6 +114,7 @@ class Products
 					'marketing_leiras' => $marketing_leiras,
 					'letoltesek' => $letoltesek,
 					'rovid_leiras' => $rovid_leiras,
+					'kulcsszavak' => $kulcsszavak,
 					'netto_ar' => $netto_ar,
 					'brutto_ar' => $brutto_ar,
 					'lathato' => $lathato,
