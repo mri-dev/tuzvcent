@@ -85,7 +85,7 @@
                                                 </a>
                                             </div>
                                             <div class="name">
-                                                <a href="<?=$d[url]?>" target="_blank"><?=$d[nev]?></a>
+                                                <a href="<?=$d[url]?>" target="_blank"><?=($d[nev] != '')?$d[nev]:'- törölt termék (#'.$d[termekID].')'?></a>
                                                 <div class="sel-types">
                                                   <? if($d['szin']): ?><em>Variáció:</em> <strong><?=$d['szin']?></strong><? endif;?>
                                                   <? if($d['meret']): ?><em>Kiszerelés:</em> <strong><?=$d['meret']?></strong><? endif;?>

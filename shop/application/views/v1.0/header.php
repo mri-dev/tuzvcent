@@ -36,7 +36,7 @@
   <div class="top">
     <div class="pw">
       <div class="flex">
-        <div class="social">
+        <div class="social hide-on-mobile">
           <div class="flex flexmob-exc-resp">
             <?php if ( !empty($this->settings['social_facebook_link'])) : ?>
             <div class="facebook">
@@ -67,6 +67,12 @@
             </div>
             <div class="ajanlatkeres">
               <button type="button" ng-click="requestAjanlat()">Ingyenes árajánlat</button>
+            </div>
+            <div class="helpdesk show-on-mobile">
+              <a href="/tudastar"><i class="fa fa-lightbulb-o"></i></a>
+            </div>
+            <div class="kapcsolat show-on-mobile">
+              <a href="/kapcsolat"><i class="fa fa-envelope-o"></i></a>
             </div>
           </div>
         </div>
@@ -151,10 +157,15 @@
   <div class="main">
     <div class="pw">
       <div class="flex">
+        <div class="menu-tgl show-on-mobile">
+          <div class="">
+            <i class="fa fa-bars"></i>
+          </div>
+        </div>
         <div class="logo">
           <a href="<?=$this->settings['page_url']?>"><img src="<?=IMG?>tuzvedelmicentrum_logo.svg" alt="<?=$this->settings['page_title']?>"></a>
         </div>
-        <div class="searcher">
+        <div class="searcher hide-on-mobile">
           <div class="searchform">
             <form class="" action="/termekek/" method="get">
             <div class="flex flexmob-exc-resp">
@@ -170,7 +181,7 @@
         </div>
         <div class="actions">
           <div class="flex">
-            <div class="favorite">
+            <div class="favorite hide-on-mobile">
               <a href="/kedvencek" class="holder">
                 <div class="ico">
                   <span class="badge">{{fav_num}}</span>
@@ -179,8 +190,8 @@
                 Kedvencek
               </a>
             </div>
-            <div class="div">&nbsp;</div>
-            <div class="account">
+            <div class="div hide-on-mobile">&nbsp;</div>
+            <div class="account hide-on-mobile">
               <?php if ( !$this->user ): ?>
                 <a href="/user/belepes" class="holder">
                   <div class="ico">
@@ -197,7 +208,7 @@
                 </a>
               <?php endif; ?>
             </div>
-            <div class="div"></div>
+            <div class="div hide-on-mobile"></div>
             <div class="cart">
               <div class="holder" id="mb-cart">
                 <div class="flex" mb-event="true" data-mb='{ "event": "toggleOnClick", "target" : "#mb-cart" }'>
@@ -206,8 +217,8 @@
                     <img src="<?=IMG?>icons/cart.svg" alt="Kosár" />
                   </div>
                   <div class="info">
-                    <div class="h">Kosár tartalom</div>
-                    <div class="l">Összeg</div>
+                    <div class="h hide-on-mobile">Kosár tartalom</div>
+                    <div class="l hide-on-mobile">Összeg</div>
                     <div class="cash"><span class="amount" id="cart-item-prices">0</span> Ft</div>
                   </div>
                 </div>
@@ -228,8 +239,8 @@
                 </div>
               </div>
             </div>
-            <div class="div"></div>
-            <div class="contact">
+            <div class="div hide-on-mobile"></div>
+            <div class="contact hide-on-mobile">
               <a href="/kapcsolat" class="holder">
                 <div class="ico">
                   <i class="fa fa-fire-extinguisher"></i>
@@ -242,7 +253,7 @@
       </div>
     </div>
   </div>
-  <div class="bottom">
+  <div class="bottom hide-on-mobile">
     <div class="pw">
       <div class="nav">
 				<ul>

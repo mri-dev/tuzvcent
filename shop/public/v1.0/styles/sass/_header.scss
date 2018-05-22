@@ -96,6 +96,25 @@ header {
 							text-transform: uppercase;
 						}
 					}
+					&.helpdesk,
+					&.kapcsolat{
+						flex: initial;
+						flex-basis: 40px;
+						text-align: center;
+						a{
+							background: #242424;
+							padding: 10px;
+							display: block;
+							line-height: 1;
+							@include border-radius(5px);
+
+							i {
+								margin: 0;
+								padding: 0;
+								line-height: 1;
+							}
+						}
+					}
 				}
 			}
 		}
@@ -205,6 +224,18 @@ header {
 			align-items: center;
 		}
 
+		.menu-tgl{
+			flex-basis: 50px;
+			text-align: center;
+			& > div {
+				height: 100%;
+				position: relative;
+
+				i {
+					font-size: 24px;
+				}
+			}
+		}
 		.logo {
 			flex-basis: $size-sidebar;
 		}

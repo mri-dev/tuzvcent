@@ -21,6 +21,7 @@
 	define('POPUP_IMG_ROOT', $protocol.'www.cp.tuzvedelmicentrum.web-pro.hu');
 	define('CETELEM_SANDBOX_MODE', false);
 	//define('CETELEM_HAS_ERROR', true);
+	define('VERSIONTIMESTAMP', uniqid());
 
 	// Facebook APP
 		define('FBAPPID','114468722051781');
