@@ -6,6 +6,7 @@ class home extends Controller{
 			parent::$pageTitle = '';
 
 			$this->out('homepage', true);
+			$this->out('bodyclass', 'homepage');
 
 			// SEO Információk
 			$SEO = null;

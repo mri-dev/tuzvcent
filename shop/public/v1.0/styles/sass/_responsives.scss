@@ -398,6 +398,15 @@
 		padding: 0 !important;
 	}
 
+	.nextOrded .col2{
+		width: 100%;
+		.coupon-code{
+			padding-top: 10px;
+		}
+	}
+	.nextOrded input[type=checkbox] + label {
+		line-height: 1.1 !important;
+	}
 	.nextOrded .allStepView ul li {
 		float: none;
 		width: 100%;
@@ -406,8 +415,12 @@
 		display: none;
 	}
 	.nextOrded .allStepView ul li.done:after{
-		left: auto;
+		left: 20px;
 		top: 50%;
+	}
+
+	.nextOrded h2.title{
+		margin: 0;
 	}
 
 	.shop-search-view {
@@ -692,11 +705,72 @@
 	.order .inforows{
 		margin: 10px -5px;
 	}
+	.tudastar-page .header{
+		padding: 10px;
+	}
+	.tudastar-page .header h1{
+		font-size: 2em;
+	}
+	.tudastar-page .searcher{
+		padding: 0 10px;
+	}
+	.tudastar-page .content-holder > .findcats,
+	.tudastar-page .content-holder > .articles{
+		flex-basis: 100%;
+		padding: 10px;
+	}
+	.tudastar-page .content-holder .findcats{
+		background: #f4f4f4;
+	}
+	.tudastar-page .searcher{
+		margin: 10px 0;
+	}
+	.tudastar-page .article-groups .article-group{
+		margin-bottom: 25px;
+	}
+	.tudastar-page .article-groups .article-group h3.title{
+		font-size: 1.4em;
+	}
+	.tudastar-page .article-groups .article-group .articles article .question{
+    font-size: 1.15em;
+    margin: 10px 0;
+	}
+	.tudastar-page .article-groups .article-group h3.title + .article-number{
+		margin: 10px 0 0 0;
+	}
+	header{
+		margin-bottom: 15px;
+	}
+
+	body.homepage header{
+		margin-bottom: 0;
+	}
+	.cartItems .cart-head{
+		padding: 0 10px 10px 10px;
+	}
+	.nextOrded .stepzerostarter .cartInfo,
+	.nextOrded .stepzerostarter .megrendel{
+		flex-basis: 100%;
+	}
+	.nextOrded .stepzerostarter .cartInfo	{
+		text-align: center;
+	}
+	.nextOrded .stepzerostarter{
+		height: auto;
+	}
+	.nextOrded .stepzerostarter .megrendel{
+		button {
+			width: 100%;
+		}
+	}
 }
 
 /* 0 - 640 px - SMARTPHONE */
 @media all and (max-width: 640px)
 {
+	.tudastar-page .article-groups .article-group{
+		margin-bottom: 15px;
+	}
 	.account .login-form{
 		width: 100%;
 		padding: 0 10px;
@@ -751,9 +825,6 @@
 	}
 	.viewSwitcher > div {
 		width: 100%;
-	}
-	.website {
-		margin-top: 61px;
 	}
 
 	.kollega-list {

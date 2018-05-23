@@ -5,8 +5,8 @@
   </div>
   <div class="searcher">
     <div class="insider">
-      <div layout="row">
-        <div flex="90">
+      <div class="flex">
+        <div class="src">
           <md-chips
             ng-model="searchKeys"
             md-removable="true"
@@ -15,7 +15,7 @@
             delete-hint="Nyomjon törlést a kulcsszó törléséhez"
             secondary-placeholder="+kulcsszó"></md-chips>
         </div>
-        <div flex>
+        <div class="button">
           <md-button class="md-raised md-warn md-hue-5" ng-click="doSearch(false)">Keresés <i class="fa fa-search"></i></md-button>
         </div>
       </div>
@@ -27,8 +27,8 @@
   <div class="loading-screen" ng-show="loading">
     Tudástár cikkeinek betöltése folyamatban <i class="fa fa-spin fa-spinner"></i>
   </div>
-  <div class="row">
-    <div class="col-md-3">
+  <div class="flex content-holder">
+    <div class="findcats">
       <div class="categories" ng-show="loaded && !loading">
         <h2>Témakörök</h2>
         <div class="cat" ng-repeat="c in categories" ng-click="filterCategory(c.ID)" ng-class="(catInFilter(c.ID))?'infilter':''">
@@ -36,7 +36,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-9">
+    <div class="articles">
       <div ng-show="loaded && !loading">
         <div class="picked-article" ng-show="picked_article">
           <span class="pick-label"><i class="fa fa-thumb-tack"></i> Kiválasztott bejegyzés</span> <a class="closer" href="javascript:void(0);" ng-click="removeHighlightArticle()">bezárás <i class="fa fa-times"></i> </a>

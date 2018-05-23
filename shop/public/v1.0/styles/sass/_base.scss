@@ -2220,6 +2220,24 @@ md-toast{
 			color: white;
 			}
 		}
+
+		.flex {
+			.src {
+				flex: 1;
+			}
+			.button {
+				flex-basis: 100px;
+			}
+		}
+	}
+	.content-holder{
+		.findcats{
+			flex-basis: $size-sidebar;
+		}
+		& > .articles{
+			flex: 1;
+			padding-left: 25px;
+		}
 	}
 	.loading-screen{
 		padding: 40px;

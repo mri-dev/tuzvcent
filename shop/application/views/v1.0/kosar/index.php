@@ -879,7 +879,7 @@
                        			<? if( false ): ?>
                        			<div class="left"><input type="checkbox" checked="checked" id="subscribe" name="subscribe" /><label for="subscribe">Felirakozok hírlevélre!</label></div>
                        			<? endif; ?>
-                             	<div class="left"><input type="checkbox" id="aszf_ok" name="aszf_ok"><label for="aszf_ok">Megrendelésemmel elfogadom a(z) <?=$this->settings['page_title']?> mindenkor hatályos <a href="<?=$this->settings['ASZF_URL']?>" target="_blank">Általános Szerződési Feltételek</a>et!</label></div>
+                             	<div class="left"><input type="checkbox" id="aszf_ok" name="aszf_ok"><label for="aszf_ok">Megrendelésemmel elfogadom a(z) <?=$this->settings['page_title']?> mindenkor hatályos <a href="<?=$this->settings['ASZF_URL']?>" target="_blank">Általános Szerződési Feltételek</a>et és az <a href="/p/adatvedelmi-tajekoztato">Adatvédelmi tájékoztatót</a>. Hozzájárulok, hogy személyes adataimat tárolják a megrendelés teljesítés céljából!</label></div>
 	                        </div>
 	                    </div>
 	                </div>
