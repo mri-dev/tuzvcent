@@ -12,7 +12,7 @@
 			<div class="pw">
 				<div class="wrapper">
 					<div class="flex">
-						<div class="about">
+						<div class="about hide-on-mobile">
 							<div class="wrapper">
 								<h3>Rólunk</h3>
 								<div class="aboutus">
@@ -76,7 +76,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="subs">
+						<div class="subs hide-on-mobile">
 							<div class="subbox">
 								<div class="wrapper">
 									<div class="title">

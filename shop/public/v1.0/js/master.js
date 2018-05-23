@@ -55,12 +55,14 @@ $(function(){
 
 	// Auto Resizer
 	autoresizeImages();
+	fixmobilenav();
 
 	var width = $(window).width();
 	$(window).resize(function(){
 	   if($(this).width() != width){
 	      autoresizeImages();
 	   }
+		 fixmobilenav();
 	});
 
 	// Dropdown select mobil click helper
@@ -317,7 +319,37 @@ $(function(){
 			});
 		}
 	});
+
+	$('.mobile-nav .close').click(function(){
+		$('.mobile-nav > .holder').animate({
+			left: '-100%'
+		}, 400, function(){
+			$('body').removeClass('noscroll');
+			$('.mobile-nav').fadeOut(400);
+		});
+	});
+
+	$('.menu-tgl').click(function(){
+		if ( !$(this).hasClass('opened') ) {
+			$('.mobile-nav').fadeIn(400, function(){
+				$('body').addClass('noscroll');
+				$('.mobile-nav > .holder').animate({
+					left: '0%'
+				}, 400);
+			});
+		}
+	});
 })
+
+// Fix mobile nav wrapper height
+function fixmobilenav() {
+	$('.mobile-nav .wrapper').css({
+		height: $(window).height() - $('.mobile-nav .header').height() - 1
+	});
+	$('.cart .floating').css({
+		width: $(window).width() - 8
+	});
+}
 
 function autoresizeImages(){
 	var images = $('.img-auto-cuberatio');

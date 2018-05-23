@@ -13,6 +13,126 @@
 </head>
 <body class="<?=$this->bodyclass?>" ng-controller="App" ng-init="init(<?=($this->gets[0] == 'kosar' && $this->gets[1] == 4)?'true':'false'?>)">
 <div ng-show="showed" ng-controller="popupReceiver" class="popupview" data-ng-init="init({'contentWidth': 1150, 'domain': '.tuzvedelmicentrum.web-pro.hu', 'receiverdomain' : '<?=POPUP_RECEIVER_URL?>', 'imageRoot' : '<?=POPUP_IMG_ROOT?>/'})"><ng-include src="'/<?=VIEW?>popupview.html'"></ng-include></div>
+<div class="mobile-nav">
+  <div class="holder">
+    <div class="header">
+      <div class="close">
+        <i class="fa fa-angle-left"></i>
+      </div>
+      <div class="text">
+        Navigáció
+      </div>
+    </div>
+    <div class="wrapper">
+      <div class="searcher">
+        <div class="w">
+          <div class="searchform">
+            <form class="" action="/termekek/" method="get">
+            <div class="flex flexmob-exc-resp">
+              <div class="input">
+                <input type="text" name="src" value="<?=$_GET['src']?>" placeholder="Keresés...">
+              </div>
+              <div class="button">
+                <button type="submit"><i class="fa fa-search"></i></button>
+              </div>
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="shortcuts">
+        <div class="flex flexmob-exc-resp">
+          <div class="favorite">
+            <a href="/kedvencek" class="holder">
+              <div class="ico">
+                <span class="badge">{{fav_num}}</span>
+                <i class="fa fa-heart"></i>
+              </div>
+              Kedvencek
+            </a>
+          </div>
+          <div class="account">
+            <?php if ( !$this->user ): ?>
+              <a href="/user/belepes" class="holder">
+                <div class="ico">
+                  <img src="<?=IMG?>icons/lock.svg" alt="Belépés">
+                </div>
+                Belépés
+              </a>
+            <?php else: ?>
+              <a href="/user" class="holder">
+                <div class="ico">
+                  <i class="fa fa-user"></i>
+                </div>
+                Fiókom
+              </a>
+            <?php endif; ?>
+          </div>
+        </div>
+      </div>
+      <div class="nav">
+        <div class="header">
+          Menü
+        </div>
+        <ul>
+          <li><a href="/">Főoldal</a></li>
+					<? foreach ( $this->menu_header->tree as $menu ): ?>
+					<li>
+						<a href="<?=($menu['link']?:'')?>">
+							<? if($menu['kep']): ?><img src="<?=\PortalManager\Formater::sourceImg($child['kep'])?>"><? endif; ?>
+							<?=$menu['nev']?> <? if($menu['child']): ?><i class="fa fa-angle-down"></i><? endif; ?></a>
+						<? if($menu['child']): ?>
+						<div class="sub nav-sub-view">
+						<? foreach($menu['child'] as $child): ?>
+						<?
+							$has_stacklink = false;
+							//print_r($child['child']);
+							if( $child['child'] && count($child['child']) > 0) {
+								foreach($child['child'] as $e):
+									if ( strpos($e['css_class'], 'nav-link-stackview') !== false ) {
+										$has_stacklink = true;
+										break;
+									}
+								endforeach;
+							}
+						?>
+						<div class="sub-col <?=($has_stacklink) ? 'has-stacklink' : ''?> <?=($child['lista'] ? 'kat-childlist' : '')?>">
+							<div class="item item-header <?=$child['css_class']?>" >
+							<? if($child['link']): ?><a href="<?=$child['link']?>"><? endif; ?>
+							<? if($child['kep']): ?><img src="<?=\PortalManager\Formater::sourceImg($child['kep'])?>"><? endif; ?>
+							<span style="<?=$child['css_styles']?>"><?=$child['nev']?></span>
+							<? if($child['link']): ?></a><? endif; ?>
+							</div>
+							<? if($child['lista']): ?>
+							<? foreach ($child['lista'] as $elem ) { ?>
+								<div class="item <?=$elem['css_class']?>">
+									<? if($elem['link']): ?><a href="<?=$elem['link']?>"><? endif; ?>
+									<span style="<?=$elem['css_styles']?>"><?=$elem['neve']?></span>
+									<? if($elem['link']): ?></a><? endif; ?>
+								</div>
+							<? }?>
+							<? endif; ?>
+							<? if($child['child']): ?>
+							<? foreach ($child['child'] as $elem ) { ?>
+								<div class="item <?=$elem['css_class']?>">
+									<? if($elem['link']): ?><a href="<?=$elem['link']?>"><? endif; ?>
+									<? if($elem['kep']): ?><img src="<?=\PortalManager\Formater::sourceImg($elem['kep'])?>"><? endif; ?>
+									<span style="<?=$elem['css_styles']?>"><?=$elem['nev']?></span>
+									<? if($elem['link']): ?></a><? endif; ?>
+								</div>
+							<? }?>
+							<? endif; ?>
+						</div>
+						<? endforeach; ?>
+						</div>
+						<? endif; ?>
+					</li>
+					<? endforeach; ?>
+				</ul>
+      </div>
+    </div>
+  </div>
+</div>
 <? if(!empty($this->settings[google_analitics])): ?>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

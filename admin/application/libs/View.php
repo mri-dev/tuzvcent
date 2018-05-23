@@ -106,11 +106,16 @@
 		}
 
 		function addJS($file, $type = false, $source = true){
+			$ts = '';
+			if (defined('VERSIONTIMESTAMP')) {
+				$ts = VERSIONTIMESTAMP;
+			}
+
 			if($source){
-				$wt = (!$type) ? JS.$file.'.js' : $file ;
+				$wt = (!$type) ? JS.$file.'.js?t='.$ts : $file.'?t='.$ts ;
 				return '<script type="text/javascript" src="'.$wt.'"></script>'."\n\r";
 			}else{
-				$wt = (!$type) ? SJS.$file.'.js' : $file ;
+				$wt = (!$type) ? SJS.$file.'.js?t='.$ts : $file.'?t='.$ts ;
 				return '<script type="text/javascript" src="'.$wt.'"></script>'."\n\r";
 			}
 		}

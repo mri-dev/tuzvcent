@@ -183,6 +183,7 @@
                         <div class="push-cart-favorite">
                           <a href="/kedvencek/?order=1&after=/kosar">Kedvenceket a kosárba teszem <i class="fa fa-cart-plus"></i></a>
                         </div>
+                        <div class="clr clearfix"></div>
                       <?php elseif($this->category->getName() != ''): ?>
                         <h1><?=$this->category->getName()?></h1>
                       <?php else: ?>

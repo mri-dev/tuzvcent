@@ -18,7 +18,7 @@
       <? endif; ?>
     </div>
 
-    <div class="image">
+    <div class="image img-auto-cuberatio">
 			<a href="<?=$link?>"><img title="<?=$product_nev?>" src="<?=$profil_kep?>" alt="<?=$product_nev?>"></a>
       <div class="short-desc">
         <?php echo $rovid_leiras; ?>

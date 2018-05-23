@@ -315,7 +315,7 @@ header {
 				& > div.cart{
 					flex: 1;
 					position: relative;
-					z-index: 200;
+					z-index: 10;
 
 					&:hover{
 						background-color: #971116;
@@ -911,6 +911,222 @@ header {
 				line-height: 1;
 				padding-left: 8px;
 			}
+		}
+	}
+}
+
+.mobile-nav{
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+
+	& > .holder{
+		position: relative;
+		left: -100%;
+		width: 80%;
+		height: 100%;
+		background: #191919;
+		color: white;
+		border-right: 0.5px solid #3c3b3b;
+		box-shadow: 5px 0 40px -5px black;
+		padding-right: 0.5px;
+
+		& > .header{
+			border-bottom: 1px solid #3c3c3c;
+			height: 40px;
+			text-align: left;
+			position: relative;
+
+			.close{
+				height: 40px;
+				width: 40px;
+				position: absolute;
+				left: 0;
+				top: 0;
+				text-align: center;
+				border-right: 0.5px solid #4d4c4c;
+
+				i {
+					font-size: 24px;
+					line-height: 40px;
+					padding: 0;
+					margin: 0;
+					color: white;
+				}
+			}
+			.text{
+				margin-left: 40px;
+				line-height: 40px;
+				padding: 0 0 0 15px;
+				font-size: 1.2em;
+				letter-spacing: 1px;
+				font-weight: 300;
+				color: #6d6d6d;
+				text-transform: uppercase;
+			}
+		}
+		& > .wrapper{
+			height: 100%;
+    	overflow: auto;
+		}
+
+		.searcher {
+			background: #353535;
+			.w {
+				padding: 10px;
+				.searchform{
+					.flex {
+						.input {
+							height: 35px;
+							flex: 1;
+
+							input {
+								height: 35px;
+								display: block;
+								width: 100%;
+								color: black;
+								font-size: 1.1em;
+								border-radius: 0px;
+								padding: 0 10px;
+							}
+						}
+						.button{
+							flex-basis: 35px;
+							height: 35px;
+							button {
+								background: $color-red;
+								color: white;
+								border: none;
+								height: 35px;
+								width: 40px;
+							}
+						}
+					}
+				}
+			}
+		}
+		.shortcuts{
+			border-bottom: 2px solid #313131;
+	    padding: 0;
+	    background: #0d0d0d;
+
+			.ico {
+				width: 30px;
+				margin: 0 auto;
+				position: relative;
+				img {
+					height: 24px;
+				}
+
+				i {
+					height: 24px;
+					font-size: 24px;
+					line-height: 24px;
+					padding: 0;
+					margin: 0;
+					color: white;
+				}
+			}
+
+			.flex {
+				align-items: center;
+				& > div{
+					text-align: center;
+					flex-basis: 50%;
+					height: 58px;
+
+					a {
+						display: block;
+						height: 100%;
+						padding: 10px;
+						text-decoration: none;
+
+						&:hover, &:focus{
+							background: #282828;
+						}
+					}
+
+					.badge{
+						position: absolute;
+						right: -16px;
+						background: $color-red;
+						z-index: 1;
+					}
+				}
+				& > div.favorite{
+					border-right: 0.4px solid #353535;
+				}
+			}
+		}
+
+		.nav {
+			padding: 10px;
+
+			.sub {
+				display: none;
+				padding: 10px 0;
+
+				.item {
+					a{
+						color: #a5a5a5;
+						font-weight: 300;
+						padding: 5px;
+						display: block;
+						text-decoration: none;
+						position: relative;
+
+						&:hover, &:focus{
+							background: #4c4c4c;
+						}
+					}
+
+					&.text-height-big{
+						line-height: 2;
+					}
+				}
+			}
+
+			& > .header{
+				text-transform: uppercase;
+				font-weight: 300;
+				font-size: 0.8em;
+				letter-spacing: 2px;
+				margin: 10px 0 15px 10px;
+				color: #747474;
+			}
+			& > ul > li{
+				border-bottom: 0.5px solid #3f3f3f;
+				&:hover{
+					& > .sub {
+						display: block;
+					}
+				}
+			}
+			& > ul > li > a {
+				color: #e2e2e2;
+				font-weight: 300;
+				padding: 10px;
+				display: block;
+				text-decoration: none;
+				text-transform: uppercase;
+				font-size: 1.2em;
+				position: relative;
+
+				& > i {
+					position: absolute;
+					right: 10px;
+				}
+
+				&:hover, &:focus{
+					background: $color-orange;
+				}
+			}
+
 		}
 	}
 }
