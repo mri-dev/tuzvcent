@@ -380,6 +380,7 @@
 <pre><?php //print_r($this->product); ?></pre>
 <script type="text/javascript">
     $(function() {
+
         <? if( $_GET['buy'] == 'now'): ?>
         $('#add_cart_num').val(1);
         $('#addtocart').trigger('click');
@@ -425,6 +426,12 @@
 
         });
 
+        fiximageslidewidth();
+
+        $(window).resize(function(){
+          fiximageslidewidth();
+        });
+
         $('.images .all').slick({
           infinite: true,
           slidesToShow: 5,
@@ -433,6 +440,15 @@
           autoplay: true
         });
     })
+
+    function fiximageslidewidth() {
+      var w = $(window).width();
+      if (w <= 360) {
+        $('.images .all').css({
+          width: w - 20
+        });
+      }
+    }
 
     function changeProfilImg(i){
         $('.product-view .main-img a.zoom img').attr('src',i);

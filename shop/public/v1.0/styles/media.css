@@ -1808,7 +1808,7 @@ body.singlepage .website .cover-img {
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
-  box-shadow: inset 0 -200px 200px -80px rgba(0, 0, 0, 0);
+  box-shadow: inset 0 -200px 200px -80px rgba(0, 0, 0, 0.7);
 }
 /* line 86, sass/_base.scss */
 body.singlepage .website .page {
@@ -2245,7 +2245,7 @@ body.singlepage .website .page.covered-page .side-menu {
 .webshop-product-top .items .item .image .short-desc,
 .related-products .items .item .image .short-desc {
   z-index: 2;
-  background: rgba(240, 240, 240, 0);
+  background: rgba(240, 240, 240, 0.81);
   padding: 5px;
   font-size: 0.8em;
   text-align: left;
@@ -4621,7 +4621,7 @@ md-toast {
 /* line 400, scss/_base.scss */
 /* line 2728, sass/_base.scss */
 .dialogBox.overlayed {
-  background: rgba(74, 74, 74, 0);
+  background: rgba(74, 74, 74, 0.91);
   pointer-events: auto;
 }
 
@@ -5605,7 +5605,7 @@ md-toast {
 
 /* line 3532, sass/_base.scss */
 .mobile-nav {
-  background: rgba(33, 33, 33, 0);
+  background: rgba(33, 33, 33, 0.85);
   display: none;
 }
 
@@ -8678,7 +8678,7 @@ footer .menu li a {
     z-index: 111;
     float: none;
     display: none;
-    background: rgba(0, 0, 0, 0.91);
+    background: rgba(0, 0, 0, 0);
     padding-bottom: 25px;
   }
 
@@ -9474,48 +9474,69 @@ footer .menu li a {
   .nextOrded .stepzerostarter .megrendel button {
     width: 100%;
   }
+
+  /* line 767, sass/_responsives.scss */
+  body.homepage footer,
+  body.homepage footer .main {
+    margin-top: 0;
+  }
 }
 /* 0 - 640 px - SMARTPHONE */
 @media all and (max-width: 640px) {
-  /* line 771, sass/_responsives.scss */
+  /* line 775, sass/_responsives.scss */
   .tudastar-page .article-groups .article-group {
     margin-bottom: 15px;
   }
 
-  /* line 774, sass/_responsives.scss */
+  /* line 778, sass/_responsives.scss */
   .account .login-form {
     width: 100%;
     padding: 0 10px;
   }
 
-  /* line 778, sass/_responsives.scss */
+  /* line 782, sass/_responsives.scss */
   .slideShow .info-box {
     font-size: 0.4em;
   }
 
-  /* line 781, sass/_responsives.scss */
+  /* line 785, sass/_responsives.scss */
   body.singlepage .website .cover-img {
     height: 220px;
   }
 
-  /* line 784, sass/_responsives.scss */
+  /* line 788, sass/_responsives.scss */
   .webshop-product-top .items .item, .related-products .items .item {
     flex-basis: calc(100% / 1);
     margin: 0 0 10px 0;
   }
+
+  /* line 792, sass/_responsives.scss */
+  .nextOrded .logIn fieldset > div > a {
+    font-size: 3.4vw;
+  }
+
+  /* line 795, sass/_responsives.scss */
+  .mobile-nav > .holder .nav > ul > li > a {
+    font-size: 4vw;
+  }
+
+  /* line 798, sass/_responsives.scss */
+  header .main .actions .cart .info .cash {
+    font-size: 4vw;
+  }
 }
 /* 0 - 375 px - SMARTPHONE */
 @media all and (max-width: 398px) {
-  /* line 793, sass/_responsives.scss */
+  /* line 806, sass/_responsives.scss */
   body.singlepage .website .cover-img {
     height: 180px;
   }
 
-  /* line 796, sass/_responsives.scss */
+  /* line 809, sass/_responsives.scss */
   .product-view .product-desc {
     width: 100% !important;
   }
-  /* line 799, sass/_responsives.scss */
+  /* line 812, sass/_responsives.scss */
   .product-view .product-desc img {
     width: 90%;
     height: auto;
@@ -9523,36 +9544,46 @@ footer .menu li a {
 }
 /* 0 - 375 px - SMARTPHONE */
 @media all and (max-width: 375px) {
-  /* line 809, sass/_responsives.scss */
+  /* line 822, sass/_responsives.scss */
+  .product-view > .product-data .top-datas .main-data h1 {
+    font-size: 2em;
+  }
+
+  /* line 825, sass/_responsives.scss */
+  .product-view > .product-data .more-datas .info-texts .description .head h3, .product-view > .product-data .more-datas .info-texts .documents .head h3, .product-view > .product-data .more-datas .info-texts .parameters .head h3 {
+    width: 70%;
+  }
+
+  /* line 828, sass/_responsives.scss */
   body {
     font-size: 0.9em;
   }
 
-  /* line 813, sass/_responsives.scss */
+  /* line 832, sass/_responsives.scss */
   .floating-box.contact-msg .labtext {
     left: -85px;
   }
 
-  /* line 817, sass/_responsives.scss */
+  /* line 836, sass/_responsives.scss */
   .product-view .main-view .images .all {
     width: 300px;
   }
 
-  /* line 822, sass/_responsives.scss */
+  /* line 841, sass/_responsives.scss */
   .switcherView .inset iframe {
     width: 100% !important;
   }
 
-  /* line 826, sass/_responsives.scss */
+  /* line 845, sass/_responsives.scss */
   .viewSwitcher > div {
     width: 100%;
   }
 
-  /* line 833, sass/_responsives.scss */
+  /* line 852, sass/_responsives.scss */
   .kollega-list ul li {
     width: 50%;
   }
-  /* line 836, sass/_responsives.scss */
+  /* line 855, sass/_responsives.scss */
   .kollega-list ul li + .clr {
     display: none;
   }

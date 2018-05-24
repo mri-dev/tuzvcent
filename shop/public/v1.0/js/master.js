@@ -1,6 +1,6 @@
 $(function(){
 	searchFilters();
-	getLocation();
+	//getLocation();
 
 	$.cookieAccepter('https://www.tuzvedelmicentrum.web-pro.hu/p/aszf/');
 
