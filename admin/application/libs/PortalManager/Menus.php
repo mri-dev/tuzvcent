@@ -356,19 +356,20 @@ class Menus
 					LEFT OUTER JOIN 	shop_termek_kategoriak as k2 ON k2.ID = k.szulo_id
 					WHERE 				k.ID = %d",$item['elem_id']))->fetch(\PDO::FETCH_ASSOC);
 
+				
 				if( $this->final ) {
 					$item['nev'] = ($item['nev'] ?: $kat['neve']);
 
 					$link = DOMAIN.'termekek/'.\PortalManager\Formater::makeSafeUrl($kat['neve'],'_-'.$item['elem_id']);
 					$item['link'] 	= $link;
-
+										
 					$lista = ( new Categories( array( 'db' => $this->db ) ))->getChildCategories( $item['elem_id'], false );
 					$item['lista'] 	= $lista;
 				} else {
 					$item['nev'] = ($item['nev'] ?: ($kat['szulo_neve'] ?$kat['szulo_neve'].' / ':'').$kat['neve']).' <span class="menu-type-prefix">(Kiválasztott kategória: <a title="kategória szerkesztése" href=\'/kategoriak/szerkeszt/'.$item['elem_id'].'\'>'.($kat['szulo_neve'] ? $kat['szulo_neve'].' / ' : '').$kat['neve'].'</a>)</span>';
 				}
 
-				break;
+			break;
 			case 'kategoria_link':
 				$kat = $this->db->query(sprintf("
 					SELECT 				k.neve,

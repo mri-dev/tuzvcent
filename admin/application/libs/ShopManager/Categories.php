@@ -205,11 +205,10 @@ class Categories
 	 * @param  int $parent_id 	Szülő kategória ID
 	 * @return array 			Szülő kategória alkategóriái
 	 */
-	public function getChildCategories( $parent_id )
+	public function getChildCategories( $parent_id, $want_more = true )
 	{
 		$tree = array();
-
-
+		
 		// Gyerek kategóriák
 		$child_cat_qry 	= $this->db->query( sprintf("
 			SELECT 			*
@@ -219,18 +218,21 @@ class Categories
 		$child_cat_data	= $child_cat_qry->fetchAll(\PDO::FETCH_ASSOC);
 
 		if( $child_cat_qry->rowCount() == 0 ) return false;
+		
 		foreach ( $child_cat_data as $child_cat ) {
 			$this->tree_items++;
 			$child_cat['link'] 	= DOMAIN.'termekek/'.\PortalManager\Formater::makeSafeUrl($child_cat['neve'],'_-'.$child_cat['ID']);
 			$child_cat['kep'] 	= ($child_cat['kep'] == '') ? '/src/images/no-image.png' : $child_cat['kep'];
 			$this->tree_steped_item[] = $child_cat;
-
-			$child_cat['child'] = $this->getChildCategories($child_cat['ID']);
+			
+			if($want_more){
+				$child_cat['child'] = $this->getChildCategories($child_cat['ID']);
+			}
+			
 			$tree[] = $child_cat;
 		}
 
 		return $tree;
-
 	}
 
 
