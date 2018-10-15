@@ -379,7 +379,7 @@
 				<ul>
 					<? foreach ( $this->menu_header->tree as $menu ): ?>
 					<li>
-						<a href="<?=($menu['link']?:'')?>">
+						<a href="<?=($menu['link']?:'')?>" style="<?=$menu['css_styles']?>">
 							<? if($menu['kep']): ?><img src="<?=\PortalManager\Formater::sourceImg($child['kep'])?>"><? endif; ?>
 							<?=$menu['nev']?> <? if($menu['child']): ?><i class="fa fa-angle-down"></i><? endif; ?></a>
 						<? if($menu['child']): ?>

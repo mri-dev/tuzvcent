@@ -1242,7 +1242,7 @@ header .bottom .nav > ul > li > a {
   text-transform: uppercase;
   font-weight: bold;
   font-size: 1em;
-  padding: 0 15px;
+  padding: 0 10px;
   text-decoration: none;
   display: block;
   height: 38px;
@@ -1808,7 +1808,7 @@ body.singlepage .website .cover-img {
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
-  box-shadow: inset 0 -200px 200px -80px rgba(0, 0, 0, 0.7);
+  box-shadow: inset 0 -200px 200px -80px rgba(0, 0, 0, 0);
 }
 /* line 86, sass/_base.scss */
 body.singlepage .website .page {
@@ -2245,7 +2245,7 @@ body.singlepage .website .page.covered-page .side-menu {
 .webshop-product-top .items .item .image .short-desc,
 .related-products .items .item .image .short-desc {
   z-index: 2;
-  background: rgba(240, 240, 240, 0.81);
+  background: rgba(240, 240, 240, 0);
   padding: 5px;
   font-size: 0.8em;
   text-align: left;
@@ -4621,7 +4621,7 @@ md-toast {
 /* line 400, scss/_base.scss */
 /* line 2728, sass/_base.scss */
 .dialogBox.overlayed {
-  background: rgba(74, 74, 74, 0.91);
+  background: rgba(74, 74, 74, 0);
   pointer-events: auto;
 }
 
@@ -5605,7 +5605,7 @@ md-toast {
 
 /* line 3532, sass/_base.scss */
 .mobile-nav {
-  background: rgba(33, 33, 33, 0.85);
+  background: rgba(33, 33, 33, 0);
   display: none;
 }
 
@@ -8196,78 +8196,80 @@ footer .main > .pw > .wrapper .about {
 /* line 24, sass/_footer.scss */
 footer .main > .pw > .wrapper .about .wrapper {
   border: 1px solid #bfbfbf;
-  padding: 15px;
+  padding: 10px;
+  max-height: 175px;
+  overflow: auto;
 }
-/* line 28, sass/_footer.scss */
+/* line 30, sass/_footer.scss */
 footer .main > .pw > .wrapper .about .wrapper .aboutus {
   text-align: justify;
   font-size: 0.85em;
   line-height: 1.3;
 }
-/* line 36, sass/_footer.scss */
+/* line 38, sass/_footer.scss */
 footer .main > .pw > .wrapper .links {
   flex: 1;
 }
-/* line 41, sass/_footer.scss */
+/* line 43, sass/_footer.scss */
 footer .main > .pw > .wrapper .links ul li a {
   color: black;
   display: block;
   padding: 3px 0;
 }
-/* line 49, sass/_footer.scss */
+/* line 51, sass/_footer.scss */
 footer .main > .pw > .wrapper .links > .wrapper {
   padding: 0 40px;
 }
-/* line 52, sass/_footer.scss */
+/* line 54, sass/_footer.scss */
 footer .main > .pw > .wrapper .links > .wrapper > .flex > div {
   flex: 1;
 }
-/* line 58, sass/_footer.scss */
+/* line 60, sass/_footer.scss */
 footer .main > .pw > .wrapper .links .tudastar {
   border: 1px solid #f9d99f;
   padding: 0;
   position: relative;
 }
-/* line 63, sass/_footer.scss */
+/* line 65, sass/_footer.scss */
 footer .main > .pw > .wrapper .links .tudastar h3 {
   padding: 10px 10px 0 10px;
 }
-/* line 67, sass/_footer.scss */
+/* line 69, sass/_footer.scss */
 footer .main > .pw > .wrapper .links .tudastar .article-holder {
   max-height: 135px;
   overflow: auto;
   padding: 10px;
 }
-/* line 74, sass/_footer.scss */
+/* line 76, sass/_footer.scss */
 footer .main > .pw > .wrapper .links .tudastar ul li {
   border-bottom: 1px solid #e0e0e0;
   padding: 2px 0;
 }
-/* line 78, sass/_footer.scss */
+/* line 80, sass/_footer.scss */
 footer .main > .pw > .wrapper .links .tudastar ul li a {
   text-decoration: none !important;
   color: #404040;
   font-size: 0.9em;
   line-height: 1.1;
 }
-/* line 84, sass/_footer.scss */
+/* line 86, sass/_footer.scss */
 footer .main > .pw > .wrapper .links .tudastar ul li a:before {
   color: #404040;
   content: "\f105";
   font-family: 'FontAwesome';
   margin-right: 5px;
 }
-/* line 92, sass/_footer.scss */
+/* line 94, sass/_footer.scss */
 footer .main > .pw > .wrapper .links .tudastar ul li:last-child {
   border-bottom: none;
 }
-/* line 97, sass/_footer.scss */
+/* line 99, sass/_footer.scss */
 footer .main > .pw > .wrapper .links .tudastar .ico {
   position: absolute;
   left: -12px;
   top: -12px;
 }
-/* line 101, sass/_footer.scss */
+/* line 103, sass/_footer.scss */
 footer .main > .pw > .wrapper .links .tudastar .ico .wrap {
   width: 24px;
   height: 24px;
@@ -8281,22 +8283,22 @@ footer .main > .pw > .wrapper .links .tudastar .ico .wrap {
   -ms-border-radius: 24px;
   border-radius: 24px;
 }
-/* line 116, sass/_footer.scss */
+/* line 118, sass/_footer.scss */
 footer .main > .pw > .wrapper .subs {
   flex-basis: 250px;
 }
-/* line 119, sass/_footer.scss */
+/* line 121, sass/_footer.scss */
 footer .main > .pw > .wrapper .subs .subbox {
   background: white;
   border: 1px solid #d9d9d9;
   padding: 15px;
   box-shadow: 0 0 15px -5px #5d5d5d;
 }
-/* line 125, sass/_footer.scss */
+/* line 127, sass/_footer.scss */
 footer .main > .pw > .wrapper .subs .subbox .title {
   text-align: center;
 }
-/* line 129, sass/_footer.scss */
+/* line 131, sass/_footer.scss */
 footer .main > .pw > .wrapper .subs .subbox .form > form > div {
   border: 1px solid #ededed;
   margin: 8px 0;
@@ -8304,14 +8306,14 @@ footer .main > .pw > .wrapper .subs .subbox .form > form > div {
   overflow: hidden;
   padding: 2px;
 }
-/* line 136, sass/_footer.scss */
+/* line 138, sass/_footer.scss */
 footer .main > .pw > .wrapper .subs .subbox .form > form > div.button {
   border: none;
   text-align: center;
   height: auto;
   margin: 0;
 }
-/* line 142, sass/_footer.scss */
+/* line 144, sass/_footer.scss */
 footer .main > .pw > .wrapper .subs .subbox .form > form > div.button button {
   margin: 10px 0 0 0;
   background-color: #ffcc00;
@@ -8326,12 +8328,12 @@ footer .main > .pw > .wrapper .subs .subbox .form > form > div.button button {
   -ms-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 157, sass/_footer.scss */
+/* line 159, sass/_footer.scss */
 footer .main > .pw > .wrapper .subs .subbox .flex .ico {
   flex-basis: 40px;
   height: 40px;
 }
-/* line 160, sass/_footer.scss */
+/* line 162, sass/_footer.scss */
 footer .main > .pw > .wrapper .subs .subbox .flex .ico i {
   line-height: 40px;
   width: 40px;
@@ -8339,12 +8341,12 @@ footer .main > .pw > .wrapper .subs .subbox .flex .ico i {
   color: #f09f0f;
   font-size: 18px;
 }
-/* line 169, sass/_footer.scss */
+/* line 171, sass/_footer.scss */
 footer .main > .pw > .wrapper .subs .subbox .flex .input {
   border-left: 1px solid #ededed;
   flex: 1;
 }
-/* line 172, sass/_footer.scss */
+/* line 174, sass/_footer.scss */
 footer .main > .pw > .wrapper .subs .subbox .flex .input input {
   color: #f09f0f;
   border: none !important;
@@ -8354,36 +8356,36 @@ footer .main > .pw > .wrapper .subs .subbox .flex .input input {
   padding: 0 10px;
   display: block;
 }
-/* line 188, sass/_footer.scss */
+/* line 190, sass/_footer.scss */
 footer .nav {
   background-color: #f09f0f;
   padding: 20px 0;
   color: #404040;
 }
-/* line 194, sass/_footer.scss */
+/* line 196, sass/_footer.scss */
 footer .nav .flex {
   align-items: center;
 }
-/* line 198, sass/_footer.scss */
+/* line 200, sass/_footer.scss */
 footer .nav .logo {
   flex-basis: 280px;
   text-align: left;
 }
-/* line 201, sass/_footer.scss */
+/* line 203, sass/_footer.scss */
 footer .nav .logo img {
   max-width: 80%;
   width: 80%;
 }
-/* line 207, sass/_footer.scss */
+/* line 209, sass/_footer.scss */
 footer .nav .navi {
   flex: 1;
   padding: 0 20px;
 }
-/* line 211, sass/_footer.scss */
+/* line 213, sass/_footer.scss */
 footer .nav .navi .flex {
   justify-content: space-between;
 }
-/* line 215, sass/_footer.scss */
+/* line 217, sass/_footer.scss */
 footer .nav .navi a {
   text-transform: uppercase;
   font-weight: bold;
@@ -8391,70 +8393,70 @@ footer .nav .navi a {
   font-size: 0.95em;
   letter-spacing: -1px;
 }
-/* line 224, sass/_footer.scss */
+/* line 226, sass/_footer.scss */
 footer .nav .dead-subs {
   flex-basis: 250px;
 }
-/* line 229, sass/_footer.scss */
+/* line 231, sass/_footer.scss */
 footer .info {
   font-size: 0.8em;
   background-color: #404040;
   padding: 15px 0;
   color: white;
 }
-/* line 235, sass/_footer.scss */
+/* line 237, sass/_footer.scss */
 footer .info > .pw > .flex {
   align-items: center;
 }
-/* line 239, sass/_footer.scss */
+/* line 241, sass/_footer.scss */
 footer .info .author {
   text-transform: uppercase;
 }
-/* line 242, sass/_footer.scss */
+/* line 244, sass/_footer.scss */
 footer .info .contact {
   font-size: 0.85em;
   flex: 1;
 }
-/* line 245, sass/_footer.scss */
+/* line 247, sass/_footer.scss */
 footer .info .contact .flex {
   align-items: center;
 }
-/* line 247, sass/_footer.scss */
+/* line 249, sass/_footer.scss */
 footer .info .contact .flex > div {
   line-height: 1;
   flex: 1;
 }
-/* line 251, sass/_footer.scss */
+/* line 253, sass/_footer.scss */
 footer .info .contact .flex > div .wrapper {
   padding: 0 10px;
   color: white;
 }
-/* line 255, sass/_footer.scss */
+/* line 257, sass/_footer.scss */
 footer .info .contact .flex > div .wrapper a {
   color: white;
   text-decoration: none;
 }
-/* line 260, sass/_footer.scss */
+/* line 262, sass/_footer.scss */
 footer .info .contact .flex > div .wrapper i {
   color: #f3b23f;
   float: left;
   font-size: 26px;
   margin: 0 8px 0 0;
 }
-/* line 267, sass/_footer.scss */
+/* line 269, sass/_footer.scss */
 footer .info .contact .flex > div .val {
   margin-top: 5px;
 }
-/* line 274, sass/_footer.scss */
+/* line 276, sass/_footer.scss */
 footer .info .social .flex {
   align-items: center;
   justify-content: flex-end;
 }
-/* line 278, sass/_footer.scss */
+/* line 280, sass/_footer.scss */
 footer .info .social .flex > div {
   padding: 0 2px;
 }
-/* line 282, sass/_footer.scss */
+/* line 284, sass/_footer.scss */
 footer .info .social .flex a {
   padding: 0;
   width: 20px;
@@ -8468,11 +8470,11 @@ footer .info .social .flex a {
   -ms-border-radius: 10px;
   border-radius: 10px;
 }
-/* line 297, sass/_footer.scss */
+/* line 299, sass/_footer.scss */
 footer .menu li {
   line-height: 120%;
 }
-/* line 301, sass/_footer.scss */
+/* line 303, sass/_footer.scss */
 footer .menu li a {
   color: white;
   font-family: "Roboto", sans-serif;
