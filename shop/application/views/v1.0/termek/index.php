@@ -48,6 +48,23 @@
           <? } ?>
         </div>
         <?php endif; ?>
+        <?php if ($this->product['documents']): ?>
+        <div class="documents">
+          <div class="head">
+            <h3><i class="fa fa-file-text-o"></i> Dokumentumok</h3>
+          </div>
+          <div class="clr"></div>
+          <div class="c">
+            <div class="docs">
+              <?php foreach ( (array)$this->product['documents'] as $doc ): ?>
+              <div class="doc">
+                <a target="_blank" title="Kiterjesztés: <?=strtoupper($doc['ext'])?>" href="/app/dcl/<?=$doc['hashname']?>"><img src="<?=IMG?>icons/<?=$doc['icon']?>.svg" alt=""><?=$doc['cim']?><?=($doc[filesize])?' <span class="size">&bull; '.strtoupper($doc['ext']).' &bull; '.$doc[filesize].'</span>':''?></a>
+              </div>
+              <?php endforeach; ?>
+            </div>
+          </div>
+        </div>
+        <?php endif; ?>
       </div>
       <div class="main-data">
         <h1><?=$this->product['nev']?></h1>
@@ -92,7 +109,7 @@
         <? endif; ?>
         <div class="divider"></div>
         <div class="short-desc">
-          <?=$this->product['rovid_leiras']?>
+          <?=\ProductManager\Product::modifyDescription($this->product['rovid_leiras'])?>
         </div>
 
         <?
@@ -145,7 +162,7 @@
           <? endif; ?>
 
           <?php if ( $this->product['raktar_keszlet'] > 0 || $this->settings['stock_outselling'] == '1'): ?>
-          <div class="group" style="margin: 10px -10px 0 0;">
+          <div class="group cart-group <?=( count($this->product['hasonlo_termek_ids']['colors'][$this->product['szin']]['size_set']) > 1 )?'havariation':''?>" style="margin: 10px -10px 0 0;">
             <?
             if( count($this->product['hasonlo_termek_ids']['colors'][$this->product['szin']]['size_set']) > 1 ):
                 $colorset = $this->product['hasonlo_termek_ids']['colors'][$this->product['szin']]['size_set'];
@@ -250,35 +267,18 @@
             </div>
           </div>
         <?php endif; ?>
-
-        <?php if ( !empty($this->product['leiras']) ): ?>
-        <div class="description">
-          <div class="head">
-            <h3>Termék leírás</h3>
-          </div>
-          <div class="clr"></div>
-          <div class="c">
-            <?=$this->product['leiras']?>
-          </div>
-        </div>
-        <?php endif; ?>
-
-        <?php if ($this->product['documents']): ?>
-        <div class="documents">
-          <div class="head">
-            <h3>Dokumentumok</h3>
-          </div>
-          <div class="clr"></div>
-          <div class="c">
-            <div class="docs">
-              <?php foreach ( (array)$this->product['documents'] as $doc ): ?>
-              <div class="doc">
-                <a target="_blank" title="Kiterjesztés: <?=strtoupper($doc['ext'])?>" href="/app/dcl/<?=$doc['hashname']?>"><img src="<?=IMG?>icons/<?=$doc['icon']?>.svg" alt=""><?=$doc['cim']?><?=($doc[filesize])?' <span class="size">&bull; '.strtoupper($doc['ext']).' &bull; '.$doc[filesize].'</span>':''?></a>
-              </div>
-              <?php endforeach; ?>
+        <?php if ($this->product['noleiras'] == 0): ?>
+          <?php if ( !empty($this->product['leiras']) ): ?>
+          <div class="description">
+            <div class="head">
+              <h3>Termék leírás</h3>
+            </div>
+            <div class="clr"></div>
+            <div class="c">
+              <?=$this->product['leiras']?>
             </div>
           </div>
-        </div>
+          <?php endif; ?>
         <?php endif; ?>
       </div>
       <?php if ( $this->related_list ): ?>

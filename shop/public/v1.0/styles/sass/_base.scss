@@ -1148,6 +1148,34 @@ body.singlepage{
 						}
 					}
 				}
+
+				.documents{
+					.head{
+						 h3{
+							 background: $color-yellow !important;
+						 }
+					}
+
+					margin: 20px 0 0 0;
+					.c{
+						border: .5px solid #e6e6e6;
+						padding: 15px;
+						font-size: 1.1em;
+						overflow: hidden;
+					}
+
+					.head{
+						h3 {
+							background: #747272;
+							color: white;
+							padding: 8px 12px;
+							text-transform: uppercase;
+							font-weight: bold;
+							font-size: 1.3em;
+							float: left;
+						}
+					}
+				}
 			}
 
 			.main-data {
@@ -1280,16 +1308,18 @@ body.singlepage{
 
 						.h {
 							margin-bottom: 5px;
+							font-size: 0.9em;
+							color: #8c8c8c;
 						}
 
 						.v{
-							font-size: 1.2em;
+							font-size: 1.3em;
 							font-weight: bold;
 						}
 
 						& > div {
-							padding: 0 10px;
-							flex-basis: calc(100%/3);
+							padding: 0 10px 10px 10px;
+							flex-basis: 100%;
 
 							&.size-selector,
 							&.item-num{
@@ -1355,6 +1385,19 @@ body.singlepage{
 						.variation{
 							.v{
 								color: $color-orange;
+							}
+						}
+
+						&.helpdesk-actions{
+							& > div {
+								flex-basis: calc(100% / 3);
+							}
+						}
+
+						&.cart-group:not(.hasvariation){
+							.order{
+								flex-basis: 100%;
+								 padding: 0 10px 0 0 !important;
 							}
 						}
 					}
@@ -1523,9 +1566,7 @@ body.singlepage{
 			margin-top: 25px;
 
 			.info-texts{
-				padding-right: 10px;
 				.description,
-				.documents,
 				.parameters{
 					margin: 0 0 20px 0;
 					.c{
@@ -1613,18 +1654,9 @@ body.singlepage{
 						}
 					}
 				}
-
-				.documents{
-					.head{
-						 h3{
-							 background: $color-yellow;
-						 }
-					}
-				}
 			}
 
 			.related-products {
-				padding-left: 10px;
 				.head{
 					padding: 10px 0;
 					border-top: 5px solid #404040;
@@ -1640,7 +1672,7 @@ body.singlepage{
 			}
 
 			& > div{
-				flex-basis: 50%;
+				flex-basis: 100%;
 			}
 		}
 	}
@@ -1657,7 +1689,7 @@ body.singlepage{
 		flex-basis: 100%;
 		margin:5px 0;
 		a{
-			font-size: 1em;
+			font-size:0.8em;
 			line-height: 1.4;
 			display: block;
 			color: #080808;
@@ -1667,7 +1699,7 @@ body.singlepage{
 				vertical-align: middle;
 				margin-right: 8px;
 				margin-top: -3px;
-				height: 22px;
+				height: 20px;
 			}
 
 			.size {

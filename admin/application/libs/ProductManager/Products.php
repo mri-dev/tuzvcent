@@ -71,6 +71,7 @@ class Products
 			$nev 			= addslashes( $product->getName() );
 			$raktar_keszlet = $product->getStockNumber();
 			$leiras 		= addslashes( $product->getDescription() );
+			$noleiras 	= $product->getVariable('noleiras');
 			$bankihitel_leiras	= (!$product->getVariable('bankihitel_leiras')) ? NULL : $product->getVariable('bankihitel_leiras');
 
 			$letoltesek		= addslashes( $product->getDownloads() );
@@ -110,6 +111,7 @@ class Products
 					'marka' => $marka,
 					'nev' => $nev,
 					'leiras' => $leiras,
+					'noleiras' => $noleiras,
 					'bankihitel_leiras' => $bankihitel_leiras,
 					'marketing_leiras' => $marketing_leiras,
 					'letoltesek' => $letoltesek,
@@ -295,6 +297,7 @@ class Products
 			$nev 			= addslashes( $product->getName() );
 			$raktar_keszlet = $product->getStockNumber();
 			$leiras 		= addslashes( $product->getDescription() );
+			$noleiras 	= $product->getVariable('noleiras');
 			$bankihitel_leiras	= (!$product->getVariable('bankihitel_leiras')) ? NULL : $product->getVariable('bankihitel_leiras');
 			$rovid_leiras	= addslashes( $product->getShortDescription() );
 			$marketing_leiras 	= (!$product->getVariable('marketing_leiras')) ? NULL : $product->getVariable('marketing_leiras');
@@ -338,6 +341,7 @@ class Products
 					'marka' => $marka,
 					'nev' => $nev,
 					'leiras' => $leiras,
+					'noleiras' => $noleiras,
 					'bankihitel_leiras' => $bankihitel_leiras,
 					'rovid_leiras' => $rovid_leiras,
 					'meta_title' => $meta_title,

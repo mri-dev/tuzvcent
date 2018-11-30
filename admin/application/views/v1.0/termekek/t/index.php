@@ -113,7 +113,7 @@
 					<div class="row">
 						<h3>Termék ár</h3>
 						<div class="col-md-12">
-							<input type="checkbox" id="without_price" name="without_price" <?=($this->termek[without_price]=='1')?'checked="checked"':''?> /> <label for="without_price">Ár nélküli listázás</label>							
+							<input type="checkbox" id="without_price" name="without_price" <?=($this->termek[without_price]=='1')?'checked="checked"':''?> /> <label for="without_price">Ár nélküli listázás</label>
 						</div>
 						<div class="col-md-6">
 							<div>
@@ -246,6 +246,12 @@
 						<div class="form-group col-md-12">
 							<label for="rovid_leiras">Termék rövid leírása</label>
 							<textarea name="rovid_leiras" class="form-control" id="rovid_leiras"><?=$this->termek['rovid_leiras']?></textarea>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="form-group col-md-12">
+							<input style="vertical-align: middle;" type="checkbox" name="noleiras" id="noleiras" <?=($this->termek && $this->termek['noleiras'] == 1)?'checked="checked"':''?>> <label for="noleiras">Termék leírás rejtése</label>
 						</div>
 					</div>
 

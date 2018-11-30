@@ -50,6 +50,15 @@ class Product
 		return $this;
 	}
 
+	public static function modifyDescription ( $txt )
+	{
+		$txt = preg_replace('/<a/','<a class="zoom"',$txt);
+
+		$txt = str_replace('../../../../src/uploads/',SOURCE.'uploads/',$txt);
+
+		return $txt;
+	}
+
 	public function setData( $data_array = array() )
 	{
 		if( empty($data_array) ) return $this;
