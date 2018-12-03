@@ -447,6 +447,10 @@
 	$(function(){
 		autoShowInfos();
 
+    $('table.termeklista > tbody').sortable({
+      cursor: 'move'
+    });
+
 		$('#selectAll').change(function(){
 			var sa 	= $(this).is(':checked');
 			var chs = $('.termeklista').find('input[type=checkbox]');

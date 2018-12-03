@@ -523,6 +523,7 @@
 			});
 		} );
 
+
 		$('.modkat i').click(function(){
 			$('.modkat .shinkat').hide(0);
 			$('.modkat i').removeClass('showed');

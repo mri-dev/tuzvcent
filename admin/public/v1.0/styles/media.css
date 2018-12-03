@@ -981,7 +981,9 @@ table.termeklista > tbody > tr > td {
 table.termeklista > tbody > tr > td:nth-child(even) {
 	background: #f8f8f8;
 }
-
+table.termeklista > tbody > tr > td:nth-child(odd) {
+	background: #ffffff;
+}
 table.termeklista > tbody > tr.opened > td{
 	border-top:2px solid #000;
 	background:#eee;
