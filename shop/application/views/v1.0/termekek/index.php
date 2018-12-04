@@ -68,10 +68,11 @@
                   </div>
                   <div class="section-wrapper">
                     <select name="order" class="form-control">
-			                <option value="ar_asc" selected="selected">Ár: növekvő</option>
-                      <option value="ar_desc">Ár: csökkenő</option>
-                      <option value="nev_asc">Név: A-Z</option>
-                      <option value="nev_desc">Név: Z-A</option>
+  			              <option value="" selected="selected">Relevancia</option>
+			                <option value="ar_asc" <?=(isset($_GET['order']) && $_GET['order'] == 'ar_asc')?'selected="selected"':''?>>Ár: növekvő</option>
+                      <option value="ar_desc" <?=(isset($_GET['order']) && $_GET['order'] == 'ar_desc')?'selected="selected"':''?>>Ár: csökkenő</option>
+                      <option value="nev_asc" <?=(isset($_GET['order']) && $_GET['order'] == 'nev_asc')?'selected="selected"':''?>>Név: A-Z</option>
+                      <option value="nev_desc" <?=(isset($_GET['order']) && $_GET['order'] == 'nev_desc')?'selected="selected"':''?>>Név: Z-A</option>
                     </select>
                   </div>
                   <div class="action-group">

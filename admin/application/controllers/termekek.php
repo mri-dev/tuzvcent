@@ -50,6 +50,13 @@ class termekek extends Controller
 					setcookie('filter_ID','',time()-100,'/'.$this->view->gets[0]);
 				}
 
+				if($_POST['catfilter'] != ''){
+					setcookie('filter_catfilter',$_POST['catfilter'],time()+60*24,'/'.$this->view->gets[0]);
+					$filtered = true;
+				}else{
+					setcookie('filter_catfilter','',time()-100,'/'.$this->view->gets[0]);
+				}
+
 				if($_POST['cikkszam'] != ''){
 					setcookie('filter_cikkszam',$_POST['cikkszam'],time()+60*24,'/'.$this->view->gets[0]);
 					$filtered = true;
@@ -131,15 +138,13 @@ class termekek extends Controller
 			if (isset($_GET['article'])) {
 				$filters['raktar_articleid'] = $_GET['article'];
 			}
+
+			$limit = (isset($_COOKIE['filter_catfilter'])) ?  9999 : 50;
 			$arg = array(
 				'admin' => true,
 				'filters' => $filters,
 				'limit' => 50,
-				'page' => Helper::currentPageNum(),
-				'order' => array(
-					'by' => 'p.ID',
-					'how' => 'DESC'
-				)
+				'page' => Helper::currentPageNum()
 			);
 			$products_list = $products->prepareList( $arg )->getList();
 			$this->out( 'products', $products );
@@ -190,6 +195,7 @@ class termekek extends Controller
 		}
 
 		function clearfilters(){
+			setcookie('filter_catfilter','',time()-100,'/'.$this->view->gets[0]);
 			setcookie('filter_ID','',time()-100,'/'.$this->view->gets[0]);
 			setcookie('filter_cikkszam','',time()-100,'/'.$this->view->gets[0]);
 			setcookie('filter_nev','',time()-100,'/'.$this->view->gets[0]);

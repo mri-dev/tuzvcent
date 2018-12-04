@@ -201,6 +201,10 @@ body.blured-bg #top {
 #login .links {
 	float:left;
 }
+.cat-filter{
+  float: right;
+  margin: 10px 0;
+}
 #login .links a {
 	line-height: 28px;
 	color: #444;

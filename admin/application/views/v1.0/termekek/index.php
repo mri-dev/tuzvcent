@@ -20,6 +20,19 @@
 <div style="float:right;">
 	<?=$this->fb_login_status?>
 </div>
+<div class="cat-filter right">
+  <form class="" action="" method="post" id="catfilterform">
+    <input type="hidden" name="filterList" value="1">
+    <label for="catfilter">Kategória szűrés:</label>
+    <select class="form-control" name="catfilter" id="catfilter" onchange="$('#catfilterform').submit();">
+      <option value="" selected="selected">-- Ne legyen szűrve --</option>
+      <? while( $this->categories->walk() ): $item = $this->categories->the_cat(); ?>
+      <option value="<?=$item['ID']?>" <?=(isset($_COOKIE['filter_catfilter']) && $_COOKIE['filter_catfilter'] == $item['ID'])?'selected="selected"':''?>><?=(str_repeat('&mdash;', $item['deep']))?> <?=$item['neve']?></option>
+      <? endwhile; ?>
+    </select>
+  </form>
+</div>
+<div class="clr"></div>
 <?=$this->navigator?>
 <div>
 	<span class="label label-default"><input type="checkbox" id="showKats" /> részletek mutatása</span>
@@ -118,6 +131,7 @@
 			<? if( true ): ?>
 			<td class="cikkszam">
 				<input type="text" class="form-control action" mode="cikkszam" tid="<?=$d['product_id']?>" min="0" value="<?=$d['cikkszam']?>" />
+        <input type="hidden" class="form-control prodsorting" data-tid="<?=$d['product_id']?>" id="proditem<?=$d['product_id']?>_order" value="<?=$d['sorrend']?>" />
 			</td>
 			<? endif; ?>
 	        <td>
@@ -448,7 +462,22 @@
 		autoShowInfos();
 
     $('table.termeklista > tbody').sortable({
-      cursor: 'move'
+      items: $('tr:not(.search)'),
+      cursor: 'move',
+      update: function( event, ui ) {
+        var sortarr = [];
+        jQuery.each($('.termeklista .prodsorting'), function(i,e){
+          $(e).val(i);
+          sortarr[$(e).data('tid')] = i;
+        });
+
+        $.post("<?=AJAX_POST?>",{
+            type : 'termekChangeActions',
+            mode : 'sorting',
+            datas  : sortarr
+        },function(d){
+        },"html");
+      }
     });
 
 		$('#selectAll').change(function(){

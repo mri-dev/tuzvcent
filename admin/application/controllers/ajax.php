@@ -291,6 +291,15 @@ class ajax extends Controller{
 				break;
 				case 'termekChangeActions':
 					switch($mode){
+						case 'sorting':
+							if ($datas && !empty($datas)) {
+								foreach ((array)$datas as $tid => $index) {
+									if ($index != '') {
+										$this->db->query("UPDATE shop_termekek SET sorrend = {$index} WHERE ID = $tid");
+									}
+								}
+							}
+						break;
 						case 'putInKategoria';
 							$param = array();
 							$param[autoRemove] = true;

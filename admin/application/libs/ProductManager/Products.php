@@ -602,6 +602,7 @@ class Products
 				getTermekAr(p.marka, IF(p.akcios,p.akcios_brutto_ar,p.brutto_ar))
 			) as ar,
 			p.fotermek,
+			p.sorrend,
 			(SELECT GROUP_CONCAT(kategoria_id) FROM shop_termek_in_kategoria WHERE termekID = p.ID ) as in_cat,
 			(SELECT neve FROM shop_termek_kategoriak WHERE ID = p.alapertelmezett_kategoria ) as alap_kategoria";
 
@@ -679,6 +680,11 @@ class Products
 			$add = " and p.akcios = 1 ";
 			$whr .= $add;
 			$size_whr .= $add;
+		}
+
+		// Cat filter moduler
+		if (isset($arg['filters']['catfilter'])) {
+			$arg['in_cat'] = trim($arg['filters']['catfilter']);
 		}
 
 		if ( $arg['in_cat'] ) {
@@ -798,6 +804,9 @@ class Products
 						}
 
 					break;
+					// Disable fitlering
+					case 'catfilter':
+					break;
 				}
 
 			}
@@ -893,7 +902,7 @@ class Products
 					$add =  " ORDER BY ".$arg['order']['by']." ".$arg['order']['how'];
 					$qry .= $add;
 				} else {
-					$add =  " ORDER BY ar ASC, fotermek DESC, p.ID DESC ";
+					$add =  " ORDER BY sorrend ASC, fotermek DESC, p.ID DESC ";
 					$qry .= $add;
 				}
 			}
