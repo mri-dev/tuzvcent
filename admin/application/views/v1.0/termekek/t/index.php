@@ -229,9 +229,17 @@
 								<? } endif;  ?>
 							</select>
 						</div>
-						<div class="form-group col-md-9">
+						<div class="form-group col-md-5">
 							<label for="kulcsszavak">Kulcsszavak <?=\PortalManager\Formater::tooltip('A kulcsszavak meghatározása fontos dolog, mivel ezek alapján tud pontosabb keresési találatot kapni a felhasználó. <br> <strong>A kulcsszavakat szóközzel elválasztva adja meg. Pl.: fekete úszó rövidnadrág</strong>')?></label>
 							<input type="text" class="form-control" name="kulcsszavak" id="kulcsszavak" value="<?=$this->termek['kulcsszavak']?>">
+						</div>
+						<div class="form-group col-md-2">
+							<label for="mertekegyseg">Mértékegység</label>
+							<input type="text" class="form-control" name="mertekegyseg" id="mertekegyseg" value="<?=$this->termek['mertekegyseg']?>">
+						</div>
+						<div class="form-group col-md-2">
+							<label for="mertekegyseg_ertek">Mértékegység érték</label>
+							<input type="text" class="form-control" name="mertekegyseg_ertek" id="mertekegyseg_ertek" value="<?=$this->termek['mertekegyseg_ertek']?>">
 						</div>
 					</div>
 

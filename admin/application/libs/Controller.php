@@ -36,8 +36,7 @@ class Controller {
         Helper::setMashineID();
         $this->gets = Helper::GET();
 
-        //$this->memory_usage();
-
+		//$this->memory_usage();
         // CORE
         // $this->model 		= new Model();
         $this->view = new View();
@@ -71,76 +70,79 @@ class Controller {
         $this->out( 'db',   $this->db );
         $this->out( 'user', $this->User->get( self::$user_opt ) );
 
-        // redirector
-        $redrirector = new Redirector('shop', ltrim($_SERVER['REQUEST_URI'], '/'), array('db' => $this->db));
-        $redrirector->start();
+        if ($this->gets[0] != 'ajax')
+        {
+          // redirector
+          $redrirector = new Redirector('shop', ltrim($_SERVER['REQUEST_URI'], '/'), array('db' => $this->db));
+          $redrirector->start();
 
-        $templates = new Template( VIEW . 'templates/' );
-        $this->out( 'templates', $templates );
-        $this->out( 'highlight_text', $this->Portal->getHighlightItems() );
-        $this->out( 'slideshow', $this->Portal->getSlideshow() );
-        $this->out( 'helpdesk_categories', $this->Helpdesk->getCategories(false));
-        $this->out( 'top_helpdesk_articles', $this->Helpdesk->getArticles(false, array('kiemelt'=> true)));
+          $templates = new Template( VIEW . 'templates/' );
+          $this->out( 'templates', $templates );
+          $this->out( 'highlight_text', $this->Portal->getHighlightItems() );
+          $this->out( 'slideshow', $this->Portal->getSlideshow() );
+          $this->out( 'helpdesk_categories', $this->Helpdesk->getCategories(false));
+          $this->out( 'top_helpdesk_articles', $this->Helpdesk->getArticles(false, array('kiemelt'=> true)));
 
-        // Menük
-        $tree = null;
-        $menu_header  = new Menus( false, array( 'db' => $this->db ) );
-        // Header menü
-        $menu_header->addFilter( 'menu_type', 'header' );
-        $menu_header->isFinal(true);
-        $tree   = $menu_header->getTree();
-        $this->out( 'menu_header',  $tree );
+          // Menük
+          $tree = null;
+          $menu_header  = new Menus( false, array( 'db' => $this->db ) );
+          // Header menü
+          $menu_header->addFilter( 'menu_type', 'header' );
+          $menu_header->isFinal(true);
+          $tree   = $menu_header->getTree();
+          $this->out( 'menu_header',  $tree );
 
-        // Footer menü
-        $tree = null;
-        $menu_footer  = new Menus( false, array( 'db' => $this->db ) );
-        $menu_footer->addFilter( 'menu_type', 'footer' );
-        $menu_footer->isFinal(true);
-        $tree   = $menu_footer->getTree();
-        $this->out( 'menu_footer',  $tree );
+          // Footer menü
+          $tree = null;
+          $menu_footer  = new Menus( false, array( 'db' => $this->db ) );
+          $menu_footer->addFilter( 'menu_type', 'footer' );
+          $menu_footer->isFinal(true);
+          $tree   = $menu_footer->getTree();
+          $this->out( 'menu_footer',  $tree );
 
-        unset($tree);
+          unset($tree);
 
-        // Kapcsolat menü üzenet
-        if ( Post::on('contact_form') ) {
-              try {
-                $this->Portal->sendContactMsg();
-                Helper::reload('?msgkey=page_msg&page_msg=Üzenetét sikeresen elküldte. Hamarosan válaszolni fogunk rá!');
-              } catch (Exception $e) {
-                $this->out( 'page_msg', Helper::makeAlertMsg('pError', $e->getMessage()) );
-              }
+          // Kapcsolat menü üzenet
+          if ( Post::on('contact_form') ) {
+                try {
+                  $this->Portal->sendContactMsg();
+                  Helper::reload('?msgkey=page_msg&page_msg=Üzenetét sikeresen elküldte. Hamarosan válaszolni fogunk rá!');
+                } catch (Exception $e) {
+                  $this->out( 'page_msg', Helper::makeAlertMsg('pError', $e->getMessage()) );
+                }
+          }
+
+          if ( $_GET['msgkey'] ) {
+              $this->out( $_GET['msgkey'], Helper::makeAlertMsg('pSuccess', $_GET[$_GET['msgkey']]) );
+          }
+
+          $this->out( 'states', array(
+              0=>"Bács-Kiskun",
+              1=>"Baranya",
+              2=>"Békés",
+              3=>"Borsod-Abaúj-Zemplén",
+              4=>"Budapest",
+              5=>"Csongrád",
+              6=>"Fejér",
+              7=>"Győr-Moson-Sopron",
+              8=>"Hajdú-Bihar",
+              9=>"Heves",
+              10=>"Jász-Nagykun-Szolnok",
+              11=>"Komárom-Esztergom",
+              12=>"Nógrád",
+              13=>"Pest",
+              14=>"Somogy",
+              15=>"Szabolcs-Szatmár-Bereg",
+              16=>"Tolna",
+              17=>"Vas",
+              18=>"Veszprém",
+              19=>"Zala",
+          ) );
         }
 
-        if ( $_GET['msgkey'] ) {
-            $this->out( $_GET['msgkey'], Helper::makeAlertMsg('pSuccess', $_GET[$_GET['msgkey']]) );
-        }
+		    if(!$arg[hidePatern]){ $this->hidePatern = false; }
 
-        $this->out( 'states', array(
-            0=>"Bács-Kiskun",
-            1=>"Baranya",
-            2=>"Békés",
-            3=>"Borsod-Abaúj-Zemplén",
-            4=>"Budapest",
-            5=>"Csongrád",
-            6=>"Fejér",
-            7=>"Győr-Moson-Sopron",
-            8=>"Hajdú-Bihar",
-            9=>"Heves",
-            10=>"Jász-Nagykun-Szolnok",
-            11=>"Komárom-Esztergom",
-            12=>"Nógrád",
-            13=>"Pest",
-            14=>"Somogy",
-            15=>"Szabolcs-Szatmár-Bereg",
-            16=>"Tolna",
-            17=>"Vas",
-            18=>"Veszprém",
-            19=>"Zala",
-        ) );
-
-        if(!$arg[hidePatern]){ $this->hidePatern = false; }
-
-         $this->view->valuta  = 'Ft';
+        $this->view->valuta  = 'Ft';
     }
 
     function out( $viewKey, $output ){

@@ -140,7 +140,6 @@
 							<div class=""><a href="/kapcsolat">Ügyfélszolgálat és Kapcsolat</a></div>
 						</div>
 					</div>
-					<div class="dead-subs"></div>
 				</div>
 			</div>
 		</div>

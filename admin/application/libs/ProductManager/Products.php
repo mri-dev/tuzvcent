@@ -94,6 +94,10 @@ class Products
 			$referer_price_discount 	= (!$product->getVariable('referer_price_discount')) ? 0 : $product->getVariable('referer_price_discount');
 			$sorrend 			= (!$product->getVariable('sorrend')) ? 0 : $product->getVariable('sorrend');
 
+			$mertekegyseg = (!$product->getVariable('mertekegyseg')) ? NULL : $product->getVariable('mertekegyseg');
+		$mertekegyseg_ertek = (!$product->getVariable('mertekegyseg_ertek')) ? 1 : $product->getVariable('mertekegyseg_ertek');
+
+
 			// Csatolt hivatkozások előkészítése
 			if( $link_list ) {
 				foreach( $link_list as $lnev => $url ){
@@ -147,7 +151,9 @@ class Products
 					'referer_price_discount' => $referer_price_discount,
 					'sorrend' => $sorrend,
 					'show_stock' => $show_stock,
-					'without_price' => $without_price
+					'without_price' => $without_price,
+					'mertekegyseg' => $mertekegyseg,
+					'mertekegyseg_ertek' => $mertekegyseg_ertek,
 				)
 			);
 
@@ -321,6 +327,9 @@ class Products
 			$referer_price_discount 	= (!$product->getVariable('referer_price_discount')) ? 0 : $product->getVariable('referer_price_discount');
 			$sorrend 			= (!$product->getVariable('sorrend')) ? 0 : $product->getVariable('sorrend');
 
+			$mertekegyseg = (!$product->getVariable('mertekegyseg')) ? NULL : $product->getVariable('mertekegyseg');
+			$mertekegyseg_ertek = (!$product->getVariable('mertekegyseg_ertek')) ? 1 : $product->getVariable('mertekegyseg_ertek');
+
 			// Csatolt hivatkozások előkészítése
 			if( $link_list ) {
 				foreach( $link_list as $lnev => $url ){
@@ -378,7 +387,9 @@ class Products
 					'referer_price_discount' => $referer_price_discount,
 					'sorrend' => $sorrend,
 					'show_stock' => $show_stock,
-					'without_price' => $without_price
+					'without_price' => $without_price,
+					'mertekegyseg' => $mertekegyseg,
+					'mertekegyseg_ertek' => $mertekegyseg_ertek,
 				),
 				sprintf("ID = %d", $product->getId())
 			);
@@ -1531,17 +1542,18 @@ class Products
 		*/
 
 		$q .= "
-		SELECT			t.ID as termek_to,
+		SELECT	t.ID as termek_to,
 						t.nev,
 						t.fotermek,
 						t.szin,
 						t.profil_kep,
-						t.meret
+						t.meret,
+						CAST(t.meret as unsigned) as ts
 		FROM 			shop_termekek as t
 		WHERE 			t.lathato = 1 and profil_kep IS NOT NULL and t.raktar_articleid = (SELECT raktar_articleid FROM shop_termekek WHERE ID = $product_id)
 		";
 
-		$q .= " ORDER BY CAST(t.meret as unsigned) ASC";
+		$q .= " ORDER BY CAST(t.szin as unsigned) ASC";
 
 		$data = $this->db->query( $q )->fetchAll(\PDO::FETCH_ASSOC);
 

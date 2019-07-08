@@ -437,9 +437,9 @@
 			</div>
     </div>
   </div>
+  <? if( count($this->highlight_text['data']) > 0 ): ?>
   <div class="sec-bottom">
     <div class="pw">
-      <? if( count($this->highlight_text) > 0 ): ?>
       <div class="highlight-view">
       	<div class="items">
       		<div class="hl-cont">
@@ -456,9 +456,9 @@
       		</div>
       	</div>
       </div>
-      <? endif; ?>
     </div>
   </div>
+  <? endif; ?>
 </header>
 <?php if ( !$this->homepage ): ?>
 <!-- Content View -->
