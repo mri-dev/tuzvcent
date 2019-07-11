@@ -346,9 +346,11 @@ function fixmobilenav() {
 	$('.mobile-nav .wrapper').css({
 		height: $(window).height() - $('.mobile-nav .header').height() - 1
 	});
-	$('.cart .floating').css({
-		width: $(window).width() - 8
-	});
+	if ($(window).width() <= 1050 ) {
+		$('.cart .floating').css({
+			width: $(window).width() - 8
+		});
+	}
 }
 
 function autoresizeImages(){
@@ -400,6 +402,7 @@ function postFilterForm() {
 function Cart(){
 	this.content = "#cartContent";
 	this.push = function(i){
+		console.log(i);
 		var oi = $(this.content).find(".item");
 		var ec = '<div class="item i'+i.termekID+'">'+
 		'<div class="img">'+
@@ -415,7 +418,7 @@ function Cart(){
 			'</div>'+
 			'<div class="remove"><i class="fa fa-times "  onclick="Cart.remove('+i.termekID+');" title="Eltávolítás"></i></div>'+
 			'<div class="name"><a href="'+i.url+'">'+i.termekNev+'</a> <span class="in">x '+i.me+'</span></div>'+
-			'<div class="sub"><div class="tipus">Variáció: <span class="val">'+((i.szin) ? i.szin+'</span>' : '')+''+( (i.meret)?', Kiszerelés: <span class="val">'+i.meret+'</span>':'')+'</div><span class="ar">'+( (i.ar != '-1')? i.ar+' Ft / db' : 'Ár: érdeklődjön' )+'</span></div>'+
+			'<div class="sub"><div class="tipus">Variáció: <span class="val">'+((i.szin) ? i.szin+'</span>' : '')+''+( (i.meret)?', Kiszerelés: <span class="val">'+i.meret+'</span>':'')+'</div><span class="ar">'+( (i.ar != '-1')? i.ar+' Ft / '+i.mertekegyseg : 'Ár: érdeklődjön' )+'</span></div>'+
 		'</div>'+
 		'<div class="clr"></div></div>';
 		if(oi.length == 0){

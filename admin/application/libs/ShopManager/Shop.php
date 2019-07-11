@@ -1037,6 +1037,8 @@ class Shop
 			t.no_cetelem,
 			m.elorendelheto,
 			t.nev as termekNev,
+			t.mertekegyseg,
+			t.mertekegyseg_ertek,
 			t.szin,
 			t.meret,
 			t.raktar_articleid,
@@ -1067,6 +1069,10 @@ class Shop
 			{
 				$d[ar] = round($d[ar] / 5) * 5;
 			}
+
+
+			$mertek = ($d['mertekegyseg_ertek'] == '' || $d['mertekegyseg_ertek'] == 1) ? '' : $d['mertekegyseg_ertek'].' ';
+			$d['mertekegyseg'] 	= ( $d['mertekegyseg'] != '' ) ? $mertek.$d['mertekegyseg'] : 'db';
 
 			if ($d['no_cetelem'] == '1')
 			{

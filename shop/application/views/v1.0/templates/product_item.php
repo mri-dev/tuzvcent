@@ -42,11 +42,11 @@
             <div class="ar akcios">
               <div class="old"><?=Helper::cashFormat($brutto_ar)?> <?=$valuta?></div>
               <div class="percents">-<? echo 100-round($akcios_fogy_ar / ($brutto_ar / 100)); ?>%</div>
-              <div class="current"><?=Helper::cashFormat($ar)?> <?=$valuta?></div>
+              <div class="current"><?=Helper::cashFormat($ar)?> <?=$valuta?><span class="megyseg">/<?=$mertekegyseg?></span></div>
             </div>
           <?php else: ?>
             <div class="ar">
-              <div class="current"><?=Helper::cashFormat($ar)?> <?=$valuta?></div>
+              <div class="current"><?=Helper::cashFormat($ar)?> <?=$valuta?><span class="megyseg">/<?=$mertekegyseg?></span></div>
             </div>
           <?php endif; ?>
         <?php endif; ?>

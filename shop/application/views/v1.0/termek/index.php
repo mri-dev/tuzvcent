@@ -42,7 +42,7 @@
           <?  foreach ( $this->product['images'] as $img ) { ?>
           <div class="imgslide img-auto-cuberatio__">
             <div class="wrp">
-              <img class="aw" i="<?=\PortalManager\Formater::productImage($img)?>" src="<?=\PortalManager\Formater::productImage($img, 150)?>" alt="<?=$this->product['nev']?>">
+              <img class="aw" i="<?=\PortalManager\Formater::productImage($img)?>" src="<?=\PortalManager\Formater::productImage($img)?>" alt="<?=$this->product['nev']?>">
             </div>
           </div>
           <? } ?>
@@ -88,9 +88,9 @@
                 </div>
                 <div class="discount_percent">-<? echo 100-round($this->product['akcios_fogy_ar'] / ($this->product['brutto_ar'] / 100)); ?>%</div>
                 <? endif; ?>
-                <div class="current">
-                    <?=\PortalManager\Formater::cashFormat($ar)?> <?=$this->valuta?>
-                </div>
+                <span class="price current <?=( $this->product['akcios'] == '1' && $this->product['akcios_fogy_ar'] > 0)?'discounted':''?>"><?=\PortalManager\Formater::cashFormat($ar)?> <?=$this->valuta?><? if($this->product['mertekegyseg'] != ''): ?><span class="unit-text">/<?=$this->product['mertekegyseg']?></span><? endif; ?></span>
+
+
               <?php endif; ?>
             </div>
             <div class="cimkek">
@@ -102,9 +102,17 @@
             <? endif; ?>
             </div>
         </div>
+        <?php if ($this->product['mertekegyseg_egysegar']): ?>
+        <div class="egysegar">
+         Egységár: <strong><?php echo $this->product['mertekegyseg_egysegar']; ?></strong>
+        </div>
+        <?php endif; ?>
+        <div class="kiszereles">
+          Kiszerelés: <strong><? if($this->product['mertekegyseg'] != ''): ?><?php echo $this->product['mertekegyseg']; ?> / <? endif; ?> <?php echo $this->product['meret']; ?></strong>
+        </div>
         <? if($this->product['show_stock'] == '1' && $this->product['raktar_keszlet'] > 0): ?>
         <div class="stock">
-          Készleten: <strong><?php echo $this->product['raktar_keszlet']; ?> db</strong>
+          Készleten: <strong><?php echo $this->product['raktar_keszlet']; ?> <?php echo $this->product['meret']; ?></strong>
         </div>
         <? endif; ?>
         <div class="divider"></div>

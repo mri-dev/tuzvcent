@@ -606,6 +606,8 @@ class Products
 			p.garancia_honap,
 			p.termek_site_url,
 			p.ajandek,
+			p.mertekegyseg,
+			p.mertekegyseg_ertek,
 			p.rovid_leiras,
 			GROUP_CONCAT(CONCAT('p_',pa.parameterID,':',pa.ertek)) as paramErtek,
 			IF(p.egyedi_ar IS NOT NULL,
@@ -1006,6 +1008,10 @@ class Products
 			$d['akcios_fogy_ar'] = $akcios_arInfo['ar'];
 			$d['arres_szazalek'] = $arInfo['arres'];
 
+			$d['mertekegyseg_egysegar'] = $this->calcEgysegAr($d['mertekegyseg'], $d['mertekegyseg_ertek'], $d['ar']);
+			$mertek = ($d['mertekegyseg_ertek'] == '' || $d['mertekegyseg_ertek'] == 1) ? '' : $d['mertekegyseg_ertek'].' ';
+			$d['mertekegyseg'] 	= ( $d['mertekegyseg'] != '' ) ? $mertek.$d['mertekegyseg'] : 'db';
+
 			$bdata[]	 			= $d;
 		}
 
@@ -1043,6 +1049,35 @@ class Products
 			}
 
 			return $re;
+	}
+
+	public function calcEgysegAr( $me, $mevar, $price)
+	{
+		$ea = 0;
+		$mert = $me;
+		switch ( $me ) {
+			case 'm':
+				$ea = $price / $mevar;
+			break;
+			case 'ml':
+				$ea = $price / $mevar * 1000;
+				$mert = 'l';
+			break;
+			case 'fm':
+				$ea = $price / $mevar;
+				$mert = 'fm';
+			break;
+			case 'g':
+				$ea = $price / $mevar * 1000;
+				$mert = 'kg';
+			break;
+		}
+
+		if ($ea == 0 || $mevar == 1) {
+			return false;
+		} else {
+			return number_format($ea,2, ".", " ") . ' Ft/'.$mert;
+		}
 	}
 
 	public function productFilters( $ids = array() )
@@ -1660,6 +1695,10 @@ class Products
 
 		$data['keszlet_info'] = $this->checkProductStockName( $data['keszletID'], $data['raktar_keszlet'], true );
 		$data['szallitas_info'] = $this->checkProductTransportName( $data['szallitasID'], $data['raktar_keszlet'] );
+
+		$data['mertekegyseg_egysegar'] = $this->calcEgysegAr($data['mertekegyseg'], $data['mertekegyseg_ertek'], $data['ar']);
+		$mertek = ($data['mertekegyseg_ertek'] == '' || $data['mertekegyseg_ertek'] == 1) ? '' : $data['mertekegyseg_ertek'].' ';
+		$data['mertekegyseg'] 	= ( $data['mertekegyseg'] != '' ) ? $mertek.$data['mertekegyseg'] : 'db';
 
 		// Csatolt dokumentumokat
 		$data['documents'] = $this->getTermDocuments( $product_id );

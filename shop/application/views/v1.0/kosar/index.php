@@ -32,7 +32,7 @@
 							<thead>
 								<tr class="item-header">
 									<th class="center">Termék</th>
-									<th class="center">Me.</th>
+									<th class="center" width="130">Me.</th>
 									<th class="center" width="15%">Egységár</th>
 									<th class="center" width="15%">Ár</th>
 									<th class="center"></th>
@@ -50,7 +50,7 @@
 									<td class="main">
 										<div class="img img-thb" onclick="document.location.href='<?=$d[url]?>'">
 											<span class="helper"></span>
-											<a href="<?=$d[url]?>"><img src="<?=Images::getThumbImg(75, $d[profil_kep])?>" alt="<?=$d[termekNev]?>" /></a>
+											<a href="<?=$d[url]?>"><img src="<?=$d[profil_kep]?>" alt="<?=$d[termekNev]?>" /></a>
 										</div>
 										<div class="tinfo">
 											<div class="nev"><a href="<?=$d[url]?>"><?=$d[termekNev]?></a></div>
@@ -65,21 +65,21 @@
 
 										</div>
 									</td>
-									<td class="center"><span><?=$d[me]?> db</span></td>
+									<td class="center"><span><?=$d[me]?> <?=($d['meret'] == '')?'db':$d['meret']?></span><? if($d['mertekegyseg_ertek'] != '' && $d['mertekegyseg'] != 'db'):?><div>(<?=$d['mertekegyseg']?>)</div><?endif;?></td>
 									<td class="center">
 										<? if( $d['discounted'] ): ?>
-											<div><strike><?=Helper::cashFormat($d[prices][old_each])?> Ft</strike></div>
-											<div><strong><?=Helper::cashFormat($d[prices][current_each])?> Ft</strong></div>
+											<div><strike><?=Helper::cashFormat($d[prices][old_each])?> Ft / <?=$d['mertekegyseg']?></strike></div>
+											<div><strong><?=Helper::cashFormat($d[prices][current_each])?> Ft / <?=$d['mertekegyseg']?></strong></div>
 										<? else: ?>
-										<span><?=Helper::cashFormat($d[prices][current_each])?> Ft</span>
+										<span><?=Helper::cashFormat($d[prices][current_each])?> Ft / <?=$d['mertekegyseg']?></span>
 										<? endif; ?>
 									</td>
 									<td class="center">
 										<? if( $d['discounted'] ): ?>
-											<div><strike><?=Helper::cashFormat($d[prices][old_sum])?> Ft</strike></div>
-											<div><strong><?=Helper::cashFormat($d[prices][current_sum])?> Ft</strong></div>
+											<div><strike><?=Helper::cashFormat($d[prices][old_sum])?> Ft</strike> / <?=$d['mertekegyseg']?></div>
+											<div><strong><?=Helper::cashFormat($d[prices][current_sum])?> Ft</strong> / <?=$d['mertekegyseg']?></div>
 										<? else: ?>
-										<span><?=Helper::cashFormat($d[prices][current_sum])?> Ft</span>
+										<span><?=Helper::cashFormat($d[prices][current_sum])?> Ft </span>
 										<? endif; ?>
 									</td>
 									<td class="center action">
