@@ -175,7 +175,7 @@ class termekek extends Controller {
 			// SEO Információk
 			$SEO = null;
 			// Site info
-			$SEO .= $this->view->addMeta('description', 'Minőségi '.strtolower($this->view->category->getName()) . ' a Casada Hungary Kft.-től. Őrizze meg egészségét!');
+			$SEO .= $this->view->addMeta('description', 'Minőségi '.($this->view->category->getName()) . ' a(z) '.$this->view->settings['page_title'].'-tól!');
 			$SEO .= $this->view->addMeta('keywords',$this->view->category->getName());
 			$SEO .= $this->view->addMeta('revisit-after','3 days');
 
