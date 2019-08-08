@@ -44,7 +44,7 @@ class user extends Controller{
 
 			// SEO Információk
 			// Site info
-			$this->SEO .= $this->view->addMeta('description','Casada ügyfélkapu.');
+			$this->SEO .= $this->view->addMeta('description',$this->view->settings['page_title'].' ügyfélkapu.');
 			$this->SEO .= $this->view->addMeta('keywords','');
 			$this->SEO .= $this->view->addMeta('revisit-after','3 days');
 
